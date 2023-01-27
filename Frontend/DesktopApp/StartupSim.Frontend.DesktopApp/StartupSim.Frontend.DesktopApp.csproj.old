@@ -1,0 +1,22 @@
+<Project Sdk="Godot.NET.Sdk/3.4.3">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="**/Scenes/*.tscn" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="StartupSim.Frontend.Domain">
+      <HintPath>$(ProjectDir)\Libs\StartupSim.Frontend.Domain.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ConsoleApp1">
+      <HintPath>$(ProjectDir)\Libs\ConsoleApp1.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  
+</Project>

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/GameFrames/AuctionButton.cs" type="Script" id=1]
+[ext_resource path="res://Resources/Images/auctions_house_normal.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Images/auctions_house_pressed.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Images/auctions_house_hover.png" type="Texture" id=4]
+
+[node name="AuctionButton" type="TextureButton"]
+anchor_right = 0.0484375
+anchor_bottom = 0.0907407
+margin_right = -93.0
+margin_bottom = -98.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+stretch_mode = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}

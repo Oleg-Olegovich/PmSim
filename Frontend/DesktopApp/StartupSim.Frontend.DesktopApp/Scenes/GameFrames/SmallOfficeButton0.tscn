@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/GameFrames/OfficeButton.cs" type="Script" id=1]
+[ext_resource path="res://Resources/Images/small_office_0_pressed.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Images/small_office_0_hover.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Images/small_office_0_normal.png" type="Texture" id=4]
+
+[node name="BigOfficeButton" type="TextureButton"]
+anchor_right = 0.04375
+anchor_bottom = 0.0722222
+margin_right = -84.0
+margin_bottom = -78.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+stretch_mode = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}

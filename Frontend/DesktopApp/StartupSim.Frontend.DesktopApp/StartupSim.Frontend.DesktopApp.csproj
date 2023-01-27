@@ -1,0 +1,24 @@
+<Project Sdk="Godot.NET.Sdk/3.3.0">
+  
+    <PropertyGroup>
+        <LangVersion>7.3</LangVersion>
+        <TargetFramework>net472</TargetFramework>
+    </PropertyGroup>
+  
+    <ItemGroup>
+        <None Include="**/Scenes/*.tscn" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Reference Include="StartupSim.Backend.GameEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\Backend\projects\GameEngine\StartupSim.Backend.GameEngine\bin\Debug\net472\StartupSim.Backend.GameEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="StartupSim.Backend.Gateway.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\Backend\projects\Gateway\StartupSim.Backend.Gateway.Contracts\bin\Debug\net472\StartupSim.Backend.Gateway.Contracts.dll</HintPath>
+        </Reference>
+        <Reference Include="StartupSim.Frontend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(TargetFramework)' == 'net472'">
+          <HintPath>..\..\Domain\StartupSim.Frontend.Domain\bin\Debug\net472\StartupSim.Frontend.Domain.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+  
+</Project>

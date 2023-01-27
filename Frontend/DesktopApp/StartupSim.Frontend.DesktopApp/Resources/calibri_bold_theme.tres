@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://Resources/calibri_bold.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Resources/calibri_bold.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[resource]
+/fonts/calibri_bold = ExtResource( 1 )
+Button/fonts/font = ExtResource( 1 )
+CheckBox/fonts/font = ExtResource( 1 )
+ItemList/fonts/font = ExtResource( 1 )
+Label/fonts/font = ExtResource( 1 )
+LineEdit/fonts/font = ExtResource( 1 )
+OptionButton/fonts/font = ExtResource( 1 )
+PopupMenu/fonts/font = ExtResource( 1 )
+ProgressBar/fonts/font = ExtResource( 1 )
+RichTextLabel/fonts/normal_font = ExtResource( 1 )
+SpinBox/icons/updown = null
+WindowDialog/fonts/title_font = SubResource( 1 )

@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Resources/calibri_bold.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Resources/calibri_bold_theme.tres" type="Theme" id=2]
+[ext_resource path="res://Scripts/SingleSignInScreen.cs" type="Script" id=3]
+
+[node name="Container" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+margin_left = 889.0
+margin_top = 421.0
+margin_right = 1031.0
+margin_bottom = 659.0
+
+[node name="LabelContainer" type="CenterContainer" parent="MainContainer"]
+margin_right = 142.0
+margin_bottom = 51.0
+
+[node name="HeaderLabel" type="Label" parent="MainContainer/LabelContainer"]
+margin_left = 71.0
+margin_right = 71.0
+margin_bottom = 51.0
+theme = ExtResource( 2 )
+align = 1
+valign = 1
+
+[node name="LinesContainer" type="VBoxContainer" parent="MainContainer"]
+margin_top = 55.0
+margin_right = 142.0
+margin_bottom = 116.0
+
+[node name="NameLine" type="LineEdit" parent="MainContainer/LinesContainer"]
+margin_right = 142.0
+margin_bottom = 61.0
+theme = ExtResource( 2 )
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MainContainer"]
+margin_top = 120.0
+margin_right = 142.0
+margin_bottom = 238.0
+
+[node name="NextButton" type="Button" parent="MainContainer/ButtonsContainer"]
+margin_right = 142.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+
+[node name="BackButton" type="Button" parent="MainContainer/ButtonsContainer"]
+margin_top = 61.0
+margin_right = 142.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )

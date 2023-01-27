@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\GameEngine\StartupSim.Backend.GameEngine\StartupSim.Backend.GameEngine.csproj" />
+      <ProjectReference Include="..\StartupSim.Backend.Gateway.Contracts\StartupSim.Backend.Gateway.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.2-mauipre.1.22054.8" />
+    </ItemGroup>
+
+</Project>
