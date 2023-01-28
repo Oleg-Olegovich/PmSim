@@ -7,14 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <WasmExtraFilesToDeploy Include="AppBundle\**"/>
+        <WasmExtraFilesToDeploy Include="AppBundle\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.Web" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia" Version="11.0.0-preview4" />
+        <PackageReference Include="Avalonia.Web" Version="$(AvaloniaVersion)" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\PmSim.Frontend.App\PmSim.Frontend.App.csproj"/>
+        <ProjectReference Include="..\PmSim.Frontend.App\PmSim.Frontend.App.csproj" />
     </ItemGroup>
 </Project>

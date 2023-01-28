@@ -9,6 +9,7 @@
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <AndroidPackageFormat>apk</AndroidPackageFormat>
         <AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,10 +19,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\PmSim.Frontend.App\PmSim.Frontend.App.csproj"/>
+        <ProjectReference Include="..\PmSim.Frontend.App\PmSim.Frontend.App.csproj" />
     </ItemGroup>
 </Project>
