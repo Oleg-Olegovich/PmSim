@@ -1,0 +1,130 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Spacing="20">
+            <!-- Add Controls for Previewer Here -->
+            <Button Content="Click me!"
+                Classes="Stretch"/>
+            <Button Content="Click me!"
+                    Classes="Center"/>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="Button.Menu">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin"
+                Value="5"/>
+    </Style>
+
+    <Style Selector="Button.AttentionGrabbing">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <!-- Stretch button -->
+    <Style Selector="Button.Stretch">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" 
+                Value="Stretch"/>
+        <Setter Property="VerticalAlignment"
+                Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center"/>
+        <Setter Property="VerticalContentAlignment"
+                Value="Center"/>
+    </Style>
+
+    <!-- Center button -->
+    <Style Selector="Button.Center">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment"
+                Value="Center"/>
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center"/>
+    </Style>
+
+    <!-- List icon button -->
+    <Style Selector="Button.List">
+        <Setter Property="Content" Value="{DynamicResource ListIcon}"/>
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <!-- Delete icon button -->
+    <Style Selector="Button.Delete">
+        <Setter Property="Content" Value="{DynamicResource DeleteIcon}"/>
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="MaxWidth" Value="50"/>
+        <Setter Property="MaxHeight" Value="50"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <!-- Load file icon button -->
+    <Style Selector="Button.LoadFile">
+        <Setter Property="Content" Value="{DynamicResource LoadFileIcon}"/>
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="MaxWidth" Value="50"/>
+        <Setter Property="MaxHeight" Value="50"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <!-- Settings icon button -->
+    <Style Selector="Button.Settings">
+        <Setter Property="Content" Value="{DynamicResource SettingsIcon}"/>
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="MaxWidth" Value="50"/>
+        <Setter Property="MaxHeight" Value="50"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <!-- Highlight barcode icon button -->
+    <Style Selector="ToggleButton.BarcodeSelection">
+        <Setter Property="Content" Value="{DynamicResource BarcodeSelectionIcon}"/>
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="MaxWidth" Value="50"/>
+        <Setter Property="MaxHeight" Value="50"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <!-- Button for hidden navigation menu -->
+    <Style Selector="Button.Navigation">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch"/>
+        <Setter Property="VerticalAlignment"
+                Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left"/>
+        <Setter Property="VerticalContentAlignment"
+                Value="Center"/>
+        <Setter Property="Margin"
+                Value="5 5 5 0"/>
+        <Setter Property="BorderThickness"
+                Value="0"/>
+    </Style>
+
+    <!-- A thumbnail of the barcode -->
+    <Style Selector="RadioButton.BarcodeThumbnail">
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="MaxWidth" Value="150"/>
+        <Setter Property="GroupName" Value="BarcodeThumbnail"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <ToggleButton IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                  Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                  Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                  CommandParameter="{Binding CommandParameter, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</Styles>

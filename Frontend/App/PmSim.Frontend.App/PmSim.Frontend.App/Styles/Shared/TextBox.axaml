@@ -1,0 +1,66 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+
+    <Styles.Resources>
+        <SolidColorBrush x:Key="BorderedTextBoxBackground"
+                         Color="#00000000"/>
+        <SolidColorBrush x:Key="BorderedTextBoxBorderBrush"
+                         Color="#00000000"/>
+    </Styles.Resources>
+
+    <!-- Combo box for text border -->
+
+    <Style Selector="TextBox.Bordered">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBackground}"/>
+    </Style>
+
+    <Style Selector="TextBox.Bordered /template/ Border#border">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
+        <Setter Property="Background"
+                Value="{DynamicResource BorderedTextBoxBackground}"/>
+    </Style>
+
+    <Style Selector="TextBox.Bordered:pointerover /template/ Border#border">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
+        <Setter Property="Background"
+                Value="{DynamicResource BorderedTextBoxBackground}"/>
+    </Style>
+
+    <Style Selector="TextBox.Bordered /template/ Popup#PART_Popup">
+        <Setter Property="Border.BorderBrush"
+                Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
+    </Style>
+
+    <Style Selector="TextBox:pointerover /template/ Border#Background">
+        <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBackground}"/>
+    </Style>
+
+    <Style Selector="TextBox /template/ Border#PopupBorder">
+        <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBackground}"/>
+    </Style>
+
+    <Style Selector="TextBox.ThumbnailSignature">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+</Styles>

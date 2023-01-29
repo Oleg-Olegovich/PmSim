@@ -1,0 +1,64 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Spacing="20">
+            <!-- Add Controls for Previewer Here -->
+            <TextBlock Text="Text"
+                       Classes="Title"/>
+            <TextBlock Text="Text"
+                       Classes="Text"/>
+            <TextBlock Text="Text"
+                       Classes="Label"/>
+            <TextBlock Text="Text"
+                       Classes="Error"/>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+
+    <!-- Header label of a screen. -->
+    <Style Selector="TextBlock.Header">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+    
+    <!-- Plain text -->
+    <Style Selector="TextBlock.Text">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <!-- Border label -->
+    <Style Selector="TextBlock.Border">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="2 0 2 0"/>
+        <Setter Property="Margin" Value="35 0 0 -6"/>
+        <Setter Property="ZIndex" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style Selector="TextBlock.Panel">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="0 0 0 -6"/>
+        <Setter Property="ZIndex" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Padding" Value="2"/>
+    </Style>
+
+    <!-- DocId status labels -->
+    <Style Selector="TextBlock.Scanned">
+        <Setter Property="Background" Value="Green"/>
+    </Style>
+
+    <Style Selector="TextBlock.UnregisteredBarcode">
+        <Setter Property="Background" Value="Yellow"/>
+    </Style>
+
+    <Style Selector="TextBlock.Missed">
+        <Setter Property="Background" Value="Red"/>
+    </Style>
+</Styles>

@@ -1,0 +1,27 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+
+    <Style Selector="Border.TextStroke">
+        <Setter Property="BorderBrush" Value="#000000"/>
+    </Style>
+
+    <Style Selector="Border.DocumentViewerStroke">
+        <Setter Property="BorderBrush" Value="#000000"/>
+        <Setter Property="Background" Value="#CCE2EF"/>
+    </Style>
+
+    <Style Selector="Border.CommonBackdrop">
+        <Setter Property="Background" Value="#CCE2EF"/>
+    </Style>
+
+    <Style Selector="Border.ItemsControlGrid">
+        <Setter Property="BorderBrush" Value="#000000"/>
+    </Style>
+</Styles>

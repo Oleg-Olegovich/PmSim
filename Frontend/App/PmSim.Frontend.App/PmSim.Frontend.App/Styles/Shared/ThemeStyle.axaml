@@ -1,0 +1,18 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Custom elements -->
+    <StyleInclude Source="/Styles/Shared/ButtonStyles.axaml"/>
+    <StyleInclude Source="/Styles/Shared/TextBlockStyles.axaml"/>
+    <StyleInclude Source="/Styles/Shared/BorderStyles.axaml"/>
+    <StyleInclude Source="/Styles/Shared/ComboBoxStyles.axaml"/>
+    <StyleInclude Source="/Styles/Shared/NumericUpDown.axaml"/>
+    <StyleInclude Source="/Styles/Shared/TextBox.axaml"/>
+    <StyleInclude Source="/Styles/Shared/ToggleSwitchStyles.axaml"/>
+    <StyleInclude Source="/Styles/Shared/TabItem.axaml"/>
+</Styles>

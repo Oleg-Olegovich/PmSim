@@ -1,0 +1,57 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+
+    <Styles.Resources>
+        <SolidColorBrush x:Key="BorderedNumericUpDownBackground"
+                         Color="#00000000"/>
+        <SolidColorBrush x:Key="BorderedNumericUpDownBorderBrush"
+                         Color="#00000000"/>
+    </Styles.Resources>
+
+    <!-- Combo box for text border -->
+
+    <Style Selector="NumericUpDown.Bordered">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBackground}"/>
+    </Style>
+
+    <Style Selector="NumericUpDown.Bordered /template/ Border#border">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
+        <Setter Property="Background"
+                Value="{DynamicResource BorderedNumericUpDownBackground}"/>
+    </Style>
+
+    <Style Selector="NumericUpDown.Bordered:pointerover /template/ Border#border">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
+        <Setter Property="Background"
+                Value="{DynamicResource BorderedNumericUpDownBackground}"/>
+    </Style>
+
+    <Style Selector="NumericUpDown.Bordered /template/ Popup#PART_Popup">
+        <Setter Property="Border.BorderBrush"
+                Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
+    </Style>
+
+    <Style Selector="NumericUpDown:pointerover /template/ Border#Background">
+        <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBackground}"/>
+    </Style>
+
+    <Style Selector="NumericUpDown /template/ Border#PopupBorder">
+        <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBackground}"/>
+    </Style>
+</Styles>

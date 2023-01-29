@@ -1,0 +1,58 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+
+    <Styles.Resources>
+        <SolidColorBrush x:Key="BorderedComboBoxBackground"
+                         Color="#00000000"/>
+        <SolidColorBrush x:Key="BorderedComboBoxBorderBrush"
+                         Color="#00000000"/>
+    </Styles.Resources>
+
+    <!-- Combo box for text border -->
+
+    <Style Selector="ComboBox.Bordered">
+        <Setter Property="AutoScrollToSelectedItem" Value="True"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedComboBoxBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedComboBoxBackground}"/>
+    </Style>
+
+    <Style Selector="ComboBox.Bordered /template/ Border#border">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderedComboBoxBorderBrush}"/>
+        <Setter Property="Background"
+                Value="{DynamicResource BorderedComboBoxBackground}"/>
+    </Style>
+
+    <Style Selector="ComboBox.Bordered:pointerover /template/ Border#border">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderedComboBoxBorderBrush}"/>
+        <Setter Property="Background"
+                Value="{DynamicResource BorderedComboBoxBackground}"/>
+    </Style>
+
+    <Style Selector="ComboBox.Bordered /template/ Popup#PART_Popup">
+        <Setter Property="Border.BorderBrush"
+                Value="{DynamicResource BorderedComboBoxBorderBrush}"/>
+    </Style>
+
+    <Style Selector="ComboBox:pointerover /template/ Border#Background">
+        <Setter Property="Background" Value="{DynamicResource BorderedComboBoxBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedComboBoxBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedComboBoxBackground}"/>
+    </Style>
+
+    <Style Selector="ComboBox /template/ Border#PopupBorder">
+        <Setter Property="Background" Value="{DynamicResource BorderedComboBoxBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderedComboBoxBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BorderedComboBoxBackground}"/>
+    </Style>
+</Styles>

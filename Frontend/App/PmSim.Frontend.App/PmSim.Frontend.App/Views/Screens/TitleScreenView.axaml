@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d"
+             x:Class="PmSim.Frontend.App.Views.Screens.TitleScreenView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   Text="Scandoc Scan App"
+                   Classes="Header"/>
+        
+        <!-- Buttons -->
+
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationTitleScreen.ButtonSettings}"
+                Command="{Binding SettingsCommand}"
+                Classes="Stretch Menu"/>
+
+        <Button Grid.Row="1"
+                Grid.Column="2"
+                Content="{x:Static localizations:LocalizationTitleScreen.ButtonAppDescription}"
+                Command="{Binding AppDescriptionCommand}"
+                Classes="Stretch Menu"/>
+
+        <Button Grid.Row="2"
+                Grid.Column="2"
+                Content="{x:Static localizations:LocalizationTitleScreen.ButtonExit}"
+                Command="{Binding ExitCommand}"
+                HotKey="Back"
+                ToolTip.Tip="Back"
+                Classes="Stretch AttentionGrabbing"/>
+
+    </Grid>
+</UserControl>

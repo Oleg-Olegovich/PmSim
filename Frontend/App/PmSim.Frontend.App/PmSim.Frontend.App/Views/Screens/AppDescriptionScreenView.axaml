@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PmSim.Frontend.App.Views.Screens.AppDescriptionScreenView">
+    
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="{x:Static localizations:LocalizationAppDescriptionScreen.TextBlockHeader}"
+                   Classes="Header"/>
+
+        <!-- Description text -->
+        <TextBlock Grid.Row="1"
+                   Text="{x:Static localizations:LocalizationAppDescriptionScreen.TextBlockAppDescription}"
+                   Classes="Text"
+                   Margin="0 20 0 0"/>
+
+        <!-- Buttons -->
+
+        <Button Grid.Row="2"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                Command="{Binding BackCommand}"
+                HotKey="Back"
+                ToolTip.Tip="Back"
+                Classes="Stretch AttentionGrabbing"
+                Margin="0 20 0 0"/>
+    </Grid>
+</UserControl>

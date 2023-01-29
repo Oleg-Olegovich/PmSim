@@ -1,0 +1,15 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
+    <StyleInclude Source="avares://Citrus.Avalonia/Citrus.xaml"/>
+
+    <!-- Custom elements -->
+    <StyleInclude Source="/Styles/Shared/ThemeStyle.axaml"/>
+    <StyleInclude Source="/Styles/LightCitrusTheme/ButtonStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightCitrusTheme/TextBlockStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightCitrusTheme/BorderStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightCitrusTheme/CheckBoxStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightCitrusTheme/StackPanelStyles.axaml"/>
+</Styles>

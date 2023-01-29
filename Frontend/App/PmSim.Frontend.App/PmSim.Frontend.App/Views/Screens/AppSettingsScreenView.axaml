@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PmSim.Frontend.App.Views.Screens.AppSettingsScreenView">
+
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockHeader}"
+                   Classes="Header"/>
+
+        <!-- Settings combo boxes -->
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Vertical"
+                    Margin="0 20 0 0">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockLanguage}"/>
+            <Border Classes="TextStroke">
+                <ComboBox Classes="Bordered"
+                          Items="{Binding LocalizationNames}"
+                          SelectedIndex="{Binding CurrentLanguageIndex}"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Vertical"
+                    Margin="0 20 0 0">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockTheme}"/>
+            <Border Classes="TextStroke">
+                <ComboBox Classes="Bordered"
+                          Items="{Binding ThemeNames}"
+                          SelectedIndex="{Binding CurrentThemeIndex}"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3"
+                    Orientation="Vertical"
+                    Margin="0 20 0 0">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockWindowState}"/>
+            <Border Classes="TextStroke">
+                <ToggleSwitch Classes="Settings"
+                              OnContent="{x:Static localizations:LocalizationAppSettingsScreen.ToggleSwitchFullscreen}"
+                              OffContent="{x:Static localizations:LocalizationAppSettingsScreen.ToggleSwitchWindowed}"
+                              IsChecked="{Binding IsFullscreen}"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4"
+                    Orientation="Vertical"
+                    Margin="0 20 0 0">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockZoomSpeed}"/>
+            <Border Classes="TextStroke">
+                <NumericUpDown Classes="Bordered"
+                               Value="{Binding ZoomSpeed}"
+                               Minimum="1"
+                               Maximum="300"/>
+            </Border>
+        </StackPanel>
+
+        <!-- Buttons -->
+
+        <Button Grid.Row="5"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                Command="{Binding BackCommand}"
+                HotKey="Back"
+                ToolTip.Tip="Back"
+                Classes="Stretch AttentionGrabbing"
+                Margin="0 20 0 0"/>
+    </Grid>
+</UserControl>

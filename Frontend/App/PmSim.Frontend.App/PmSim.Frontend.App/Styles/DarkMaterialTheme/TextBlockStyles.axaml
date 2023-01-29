@@ -1,0 +1,34 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Spacing="20">
+            <!-- Add Controls for Previewer Here -->
+            <TextBlock Text="Text"
+                       Classes="Title"/>
+            <TextBlock Text="Text"
+                       Classes="Text"/>
+            <TextBlock Text="Text"
+                       Classes="Label"/>
+            <TextBlock Text="Text"
+                       Classes="Error"/>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    
+    <!-- Border label -->
+    <Style Selector="TextBlock.Border">
+        <Setter Property="Background" Value="#FFFFFFFF"/>
+        <Setter Property="Background" Value="#282828"/>
+    </Style>
+
+    <Style Selector="TextBlock.Panel">
+        <Setter Property="Foreground" Value="#FFFFFFFF"/>
+        <Setter Property="Background" Value="#05273A"/>
+    </Style>
+
+    <!-- Error -->
+    <Style Selector="TextBlock.Error">
+        <Setter Property="Foreground" Value="#E31E24"/>
+    </Style>
+</Styles>

@@ -1,0 +1,20 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:PmSim.Frontend.App.Views.Windows"
+        mc:Ignorable="d" 
+        x:Class="PmSim.Frontend.App.Views.Windows.MainWindowView"
+        Icon="/Assets/app-logo.ico"
+        Title="PmSim.Frontend.App"
+        Width="{Binding Width}"
+        Height="{Binding Height}"
+        WindowState="{Binding WindowState}"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        loc:BasicWindowView.ClosingHandler="{Binding ClosingHandler}">
+        
+    <ContentControl Content="{Binding Content}"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"/>
+</Window>

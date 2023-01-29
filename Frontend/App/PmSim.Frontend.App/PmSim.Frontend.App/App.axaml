@@ -7,6 +7,6 @@
     </Application.DataTemplates>
 
     <Application.Styles>
-        <FluentTheme Mode="Dark"/>
+        <StyleInclude Source="avares://PmSim.Frontend.App/Styles/LightFluentTheme/ThemeStyle.axaml"/>
     </Application.Styles>
 </Application>
