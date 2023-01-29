@@ -12,10 +12,13 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.0-preview4" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.0-preview4" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Citrus.Avalonia" Version="1.6.1" />
+        <PackageReference Include="Material.Avalonia" Version="3.0.0-avalonia11-preview2.142-nightly" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
         <PackageReference Include="Serilog" Version="3.0.0-dev-01812" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
@@ -82,6 +85,30 @@
       <EmbeddedResource Update="Properties\Localization\LocalizationBasicScreen.en.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>LocalizationBasicScreen.en.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationAppDescriptionScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationAppDescriptionScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationAppSettingsScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationAppSettingsScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationBasicScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationBasicScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationTitleScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationTitleScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
     </ItemGroup>
 </Project>

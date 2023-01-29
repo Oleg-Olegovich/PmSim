@@ -21,4 +21,10 @@
     <ItemGroup>
         <ProjectReference Include="..\PmSim.Frontend.App\PmSim.Frontend.App.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 </Project>

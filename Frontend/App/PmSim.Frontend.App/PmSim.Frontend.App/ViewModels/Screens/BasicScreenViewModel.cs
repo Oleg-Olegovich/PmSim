@@ -8,7 +8,7 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 /// The base class of the application screen.
 /// The screen is the content of the window.
 /// </summary>
-public abstract class BasicScreenViewModel : ReactiveObject
+public abstract class BasicScreenViewModel : ViewModelBase
 {
     private BasicScreenViewModel? _previousScreen;
     
@@ -28,7 +28,7 @@ public abstract class BasicScreenViewModel : ReactiveObject
     /// </summary>
     public BasicWindowViewModel BaseWindow { get; }
 
-    protected BasicScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previousScreen = null)
+    protected BasicScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel? previousScreen = null)
     {
         BaseWindow = baseWindow;
         BackCommand = ReactiveCommand.Create(ProcessBackClick);

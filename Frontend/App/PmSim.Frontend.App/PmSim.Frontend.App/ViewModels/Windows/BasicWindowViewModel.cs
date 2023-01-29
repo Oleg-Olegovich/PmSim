@@ -13,7 +13,7 @@ namespace PmSim.Frontend.App.ViewModels.Windows;
 /// <summary>
 /// Base class of application windows.
 /// </summary>
-public abstract class BasicWindowViewModel : ReactiveObject
+public abstract class BasicWindowViewModel : ViewModelBase
 {
     /// <summary>
     /// Handler for closing the application.

@@ -10,7 +10,7 @@ public class AppDescriptionScreenViewModel : BasicScreenViewModel
 {
     public override string Header => LocalizationAppDescriptionScreen.TextBlockHeader;
 
-    public AppDescriptionScreenViewModel(BasicWindowViewModel baseWindow) 
-        : base(baseWindow)
+    public AppDescriptionScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
+        : base(baseWindow, previous)
     { }
 }

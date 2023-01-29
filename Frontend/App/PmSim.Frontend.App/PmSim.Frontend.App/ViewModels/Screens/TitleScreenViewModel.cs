@@ -47,8 +47,8 @@ public class TitleScreenViewModel : BasicScreenViewModel
     }
 
     private void OpenSettingsScreen()
-        => BaseWindow.Content = new AppSettingsScreenViewModel(BaseWindow);
+        => BaseWindow.Content = new AppSettingsScreenViewModel(BaseWindow, this);
 
     private void OpenAppDescriptionScreen()
-        => BaseWindow.Content = new AppDescriptionScreenViewModel(BaseWindow);
+        => BaseWindow.Content = new AppDescriptionScreenViewModel(BaseWindow, this);
 }

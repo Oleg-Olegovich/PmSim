@@ -11,6 +11,8 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 /// </summary>
 public class AppSettingsScreenViewModel : BasicScreenViewModel
 {
+    private readonly BasicScreenViewModel _previous;
+    
     public override string Header => LocalizationAppSettingsScreen.TextBlockHeader;
 
     /// <summary>
@@ -22,7 +24,7 @@ public class AppSettingsScreenViewModel : BasicScreenViewModel
     /// The names of the color themes displayed in the view.
     /// </summary>
     public string[] ThemeNames => ThemesManager.ThemeNames;
-
+    
     private int _currentLanguageIndex;
 
     /// <summary>
@@ -42,7 +44,7 @@ public class AppSettingsScreenViewModel : BasicScreenViewModel
             LocalizationsProvider.Localization = language;
             BaseWindow.Settings.Language = language;
             this.RaiseAndSetIfChanged(ref _currentLanguageIndex, value);
-            BaseWindow.Content = new AppSettingsScreenViewModel(BaseWindow);
+            BaseWindow.Content = new AppSettingsScreenViewModel(BaseWindow, _previous);
         }
     }
 
@@ -98,9 +100,10 @@ public class AppSettingsScreenViewModel : BasicScreenViewModel
         }
     }
 
-    public AppSettingsScreenViewModel(BasicWindowViewModel baseWindow)
-        : base(baseWindow)
+    public AppSettingsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous)
+        : base(baseWindow, previous)
     {
+        _previous = previous;
         _currentLanguageIndex = (int)baseWindow.Settings.Language;
         _currentThemeIndex = (int)baseWindow.Settings.Theme;
         _isFullscreen = baseWindow.IsFullscreen;

@@ -22,7 +22,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LocalizationAppSettingsScreen {
+    public class LocalizationAppSettingsScreen {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationAppSettingsScreen", typeof(LocalizationAppSettingsScreen).Assembly);
@@ -51,7 +51,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Настройки приложения.
         /// </summary>
-        internal static string TextBlockHeader {
+        public static string TextBlockHeader {
             get {
                 return ResourceManager.GetString("TextBlockHeader", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Язык.
         /// </summary>
-        internal static string TextBlockLanguage {
+        public static string TextBlockLanguage {
             get {
                 return ResourceManager.GetString("TextBlockLanguage", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Тема.
         /// </summary>
-        internal static string TextBlockTheme {
+        public static string TextBlockTheme {
             get {
                 return ResourceManager.GetString("TextBlockTheme", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Режим окна.
         /// </summary>
-        internal static string TextBlockWindowState {
+        public static string TextBlockWindowState {
             get {
                 return ResourceManager.GetString("TextBlockWindowState", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Скорость зума.
         /// </summary>
-        internal static string TextBlockZoomSpeed {
+        public static string TextBlockZoomSpeed {
             get {
                 return ResourceManager.GetString("TextBlockZoomSpeed", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Полноэкранный.
         /// </summary>
-        internal static string ToggleSwitchFullscreen {
+        public static string ToggleSwitchFullscreen {
             get {
                 return ResourceManager.GetString("ToggleSwitchFullscreen", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Оконный.
         /// </summary>
-        internal static string ToggleSwitchWindowed {
+        public static string ToggleSwitchWindowed {
             get {
                 return ResourceManager.GetString("ToggleSwitchWindowed", resourceCulture);
             }
