@@ -12,11 +12,6 @@ public abstract class BasicScreenViewModel : ViewModelBase
 {
     private BasicScreenViewModel? _previousScreen;
     
-    /// <summary>
-    /// The title is displayed in the status bar.
-    /// </summary>
-    public abstract string Header { get; }
-    
     // <summary>
     /// Returns to the previous screen.
     /// </summary>

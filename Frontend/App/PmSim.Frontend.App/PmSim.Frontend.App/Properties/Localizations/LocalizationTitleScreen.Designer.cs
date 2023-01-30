@@ -79,6 +79,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Мультиплеер.
+        /// </summary>
+        public static string ButtonMultiplayerMode {
+            get {
+                return ResourceManager.GetString("ButtonMultiplayerMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Настройки.
         /// </summary>
         public static string ButtonSettings {
@@ -88,11 +97,11 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PM Sim.
+        ///   Looks up a localized string similar to Одиночная игра.
         /// </summary>
-        public static string TextBlockHeader {
+        public static string ButtonSingleplayerMode {
             get {
-                return ResourceManager.GetString("TextBlockHeader", resourceCulture);
+                return ResourceManager.GetString("ButtonSingleplayerMode", resourceCulture);
             }
         }
     }

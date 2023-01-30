@@ -27,7 +27,10 @@
     <data name="ButtonSettings" xml:space="preserve">
         <value>Options</value>
     </data>
-    <data name="TextBlockHeader" xml:space="preserve">
-        <value>PM Sim</value>
+    <data name="ButtonMultiplayerMode" xml:space="preserve">
+        <value>Multiplayer</value>
+    </data>
+    <data name="ButtonSingleplayerMode" xml:space="preserve">
+        <value>Singleplayer</value>
     </data>
 </root>

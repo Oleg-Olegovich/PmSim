@@ -13,8 +13,6 @@ public class AppSettingsScreenViewModel : BasicScreenViewModel
 {
     private readonly BasicScreenViewModel _previous;
     
-    public override string Header => LocalizationAppSettingsScreen.TextBlockHeader;
-
     /// <summary>
     /// The names of the language localizations are displayed in the view.
     /// </summary>
