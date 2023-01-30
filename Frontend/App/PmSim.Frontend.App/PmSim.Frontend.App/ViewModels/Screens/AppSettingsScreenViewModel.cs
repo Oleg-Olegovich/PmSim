@@ -83,21 +83,6 @@ public class AppSettingsScreenViewModel : BasicScreenViewModel
         }
     }
 
-    private int _zoomSpeed;
-
-    /// <summary>
-    /// Adjusts the zoom speed of the image viewer on the scan screen.
-    /// </summary>
-    public int ZoomSpeed
-    {
-        get => _zoomSpeed;
-        set
-        {
-            BaseWindow.Settings.ZoomSpeed = value;
-            this.RaiseAndSetIfChanged(ref _zoomSpeed, value);
-        }
-    }
-
     public AppSettingsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous)
         : base(baseWindow, previous)
     {
@@ -105,6 +90,5 @@ public class AppSettingsScreenViewModel : BasicScreenViewModel
         _currentLanguageIndex = (int)baseWindow.Settings.Language;
         _currentThemeIndex = (int)baseWindow.Settings.Theme;
         _isFullscreen = baseWindow.IsFullscreen;
-        _zoomSpeed = baseWindow.Settings.ZoomSpeed;
     }
 }

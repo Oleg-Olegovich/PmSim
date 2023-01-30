@@ -33,9 +33,4 @@ public class WindowSettings
     /// Size of the window, if WindowState is Normal.
     /// </summary>
     public Size Size { get; set; } = new();
-
-    /// <summary>
-    /// Determines the zoom speed of the image viewer on the scan screen.
-    /// </summary>
-    public int ZoomSpeed { get; set; }
 }

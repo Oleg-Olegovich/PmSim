@@ -14,7 +14,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
@@ -60,22 +59,9 @@
             </Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="4"
-                    Orientation="Vertical"
-                    Margin="0 20 0 0">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockZoomSpeed}"/>
-            <Border Classes="TextStroke">
-                <NumericUpDown Classes="Bordered"
-                               Value="{Binding ZoomSpeed}"
-                               Minimum="1"
-                               Maximum="300"/>
-            </Border>
-        </StackPanel>
-
         <!-- Buttons -->
 
-        <Button Grid.Row="5"
+        <Button Grid.Row="4"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
                 HotKey="Back"
