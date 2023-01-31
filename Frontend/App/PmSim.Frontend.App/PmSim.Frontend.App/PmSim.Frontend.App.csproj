@@ -125,5 +125,17 @@
       <UpToDateCheckInput Remove="Styles\LightCitrusTheme\StackPanelStyles.axaml" />
       <UpToDateCheckInput Remove="Styles\LightCitrusTheme\TextBlockStyles.axaml" />
       <UpToDateCheckInput Remove="Styles\LightCitrusTheme\ThemeStyle.axaml" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\DarkCitrus\delete.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\DarkCitrus\highlight_barcode.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\DarkCitrus\list.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\DarkCitrus\load_file.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\DarkCitrus\scan_document.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\DarkCitrus\settings.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\delete.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\highlight_barcode.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\list.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\load_file.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\scan_document.png" />
+      <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\settings.png" />
     </ItemGroup>
 </Project>
