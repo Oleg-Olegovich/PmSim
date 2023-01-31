@@ -112,4 +112,19 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
     </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Styles\SeaTheme\BorderStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\SeaTheme\ButtonStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\SeaTheme\CheckBoxStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\SeaTheme\StackPanelStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\SeaTheme\TextBlockStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\SeaTheme\ThemeStyle.axaml" />
+      <UpToDateCheckInput Remove="Styles\LightCitrusTheme\BorderStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\LightCitrusTheme\ButtonStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\LightCitrusTheme\CheckBoxStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\LightCitrusTheme\StackPanelStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\LightCitrusTheme\TextBlockStyles.axaml" />
+      <UpToDateCheckInput Remove="Styles\LightCitrusTheme\ThemeStyle.axaml" />
+    </ItemGroup>
 </Project>

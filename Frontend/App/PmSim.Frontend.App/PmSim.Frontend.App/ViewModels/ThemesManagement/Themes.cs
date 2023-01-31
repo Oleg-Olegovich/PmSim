@@ -9,10 +9,6 @@ public enum Themes
 {
     LightFluent,
     LightMaterial,
-    LightCitrus,
-    LightCandy,
     DarkFluent,
-    DarkMaterial,
-    DarkCitrus,
-    Sea
+    DarkMaterial
 }
