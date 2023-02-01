@@ -14,16 +14,13 @@
         ExtendClientAreaToDecorationsHint="True"
         loc:BasicWindowView.ClosingHandler="{Binding ClosingHandler}">
     
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        
-        <ContentControl Grid.Row="1"
-                        Content="{Binding Content}"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch"/>
+    <Grid RowDefinitions="20,*">
+
+        <ScrollViewer Grid.Row="1">
+            <ContentControl Content="{Binding Content}"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"/>
+        </ScrollViewer>
     
     </Grid>
 </Window>

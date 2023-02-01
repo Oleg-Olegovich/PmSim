@@ -1,6 +1,12 @@
-﻿namespace PmSim.Frontend.App.ViewModels.Screens;
+﻿using JetBrains.Annotations;
+using PmSim.Frontend.App.ViewModels.Windows;
 
-public class EmailConfirmationScreenViewModel
+namespace PmSim.Frontend.App.ViewModels.Screens;
+
+public class EmailConfirmationScreenViewModel : BasicScreenViewModel
 {
-    
+    public EmailConfirmationScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
+        : base(baseWindow, previous)
+    {
+    }
 }

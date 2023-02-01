@@ -18,7 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="TextBlockHeader" xml:space="preserve">
+    <data name="Header" xml:space="preserve">
     <value>Application Settings</value>
   </data>
     <data name="TextBlockLanguage" xml:space="preserve">
@@ -29,9 +29,6 @@
   </data>
     <data name="TextBlockWindowState" xml:space="preserve">
     <value>Window state</value>
-  </data>
-    <data name="TextBlockZoomSpeed" xml:space="preserve">
-    <value>Zoom speed</value>
   </data>
     <data name="ToggleSwitchFullscreen" xml:space="preserve">
     <value>Fullscreen</value>

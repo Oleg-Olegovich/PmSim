@@ -24,4 +24,10 @@
     <data name="ButtonNext" xml:space="preserve">
         <value>Далее</value>
     </data>
+    <data name="ToggleSwitchNo" xml:space="preserve">
+        <value>Нет</value>
+    </data>
+    <data name="ToggleSwitchYes" xml:space="preserve">
+        <value>Да</value>
+    </data>
 </root>

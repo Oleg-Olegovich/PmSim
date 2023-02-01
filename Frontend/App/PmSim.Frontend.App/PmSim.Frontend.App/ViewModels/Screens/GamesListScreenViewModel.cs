@@ -1,6 +1,11 @@
-﻿namespace PmSim.Frontend.App.ViewModels.Screens;
+﻿using PmSim.Frontend.App.ViewModels.Windows;
 
-public class GamesListScreenViewModel
+namespace PmSim.Frontend.App.ViewModels.Screens;
+
+public class GamesListScreenViewModel : BasicScreenViewModel
 {
-    
+    public GamesListScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
+        : base(baseWindow, previous)
+    {
+    }
 }

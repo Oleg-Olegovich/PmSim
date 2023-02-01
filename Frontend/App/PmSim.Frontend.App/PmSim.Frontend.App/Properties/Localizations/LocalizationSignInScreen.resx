@@ -11,16 +11,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="TextBlockInputName" xml:space="preserve">
-        <value>Введите имя</value>
+    <data name="TextBlockLogin" xml:space="preserve">
+        <value>Логин</value>
     </data>
-    <data name="TextBoxName" xml:space="preserve">
-        <value>Имя</value>
+    <data name="TextBlockPassword" xml:space="preserve">
+        <value>Пароль</value>
     </data>
-    <data name="ToggleSwitchRemember" xml:space="preserve">
-        <value>Запомнить</value>
+    <data name="Header" xml:space="preserve">
+        <value>Вход</value>
     </data>
-    <data name="ToggleSwitchDontRemember" xml:space="preserve">
-        <value>Не запоминать</value>
+    <data name="TextBlockRemember" xml:space="preserve">
+        <value>Запомнить?</value>
     </data>
 </root>

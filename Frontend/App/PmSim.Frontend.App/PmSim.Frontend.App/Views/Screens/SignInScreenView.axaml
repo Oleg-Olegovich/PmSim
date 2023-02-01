@@ -2,7 +2,72 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.SignInScreenView">
-    Welcome to Avalonia!
+    
+    <Grid RowDefinitions="*,*,*,*,*,*,*,*,*"
+          ColumnDefinitions="*,*,*">
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Text="{x:Static localizations:LocalizationSignInScreen.Header}"
+                   Classes="Header"/>
+        
+        <!-- Input form -->
+        
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Orientation="Vertical">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationSignInScreen.TextBlockLogin}"/>
+            <Border Classes="TextStroke">
+                <TextBox Text="{Binding Login}"/>
+            </Border>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1"
+                    Orientation="Vertical">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationSignInScreen.TextBlockPassword}"/>
+            <Border Classes="TextStroke">
+                <TextBox Text="{Binding Password}"/>
+            </Border>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="4"
+                    Grid.Column="1"
+                    Orientation="Vertical">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationSignInScreen.TextBlockRemember}"/>
+            <Border Classes="TextStroke">
+                <ToggleSwitch Classes="Settings"
+                              OnContent="{x:Static localizations:LocalizationBasicScreen.ToggleSwitchYes}"
+                              OffContent="{x:Static localizations:LocalizationBasicScreen.ToggleSwitchNo}"
+                              IsChecked="{Binding IsDataRemembered}"/>
+            </Border>
+        </StackPanel>
+        
+        <!-- Buttons -->
+        
+        <Button Grid.Row="5"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonNext}"
+                Command="{Binding NextCommand}"
+                Classes="Stretch Menu"/>
+        
+        <Button Grid.Row="6"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationSignUpScreen.Header}"
+                Command="{Binding SignUpCommand}"
+                Classes="Stretch Menu"/>
+        
+        <Button Grid.Row="7"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                Command="{Binding BackCommand}"
+                Classes="Stretch AttentionGrabbing"
+                Margin="0 20 0 0"/>
+    </Grid>
 </UserControl>

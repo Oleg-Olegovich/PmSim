@@ -18,16 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="ButtonBack" xml:space="preserve">
-        <value>Back</value>
+    <data name="TextBlockRepeatPassword" xml:space="preserve">
+        <value>Repeat password</value>
     </data>
-    <data name="ButtonNext" xml:space="preserve">
-        <value>Next</value>
-    </data>
-    <data name="ToggleSwitchNo" xml:space="preserve">
-        <value>No</value>
-    </data>
-    <data name="ToggleSwitchYes" xml:space="preserve">
-        <value>Yes</value>
+    <data name="Header" xml:space="preserve">
+        <value>Sign up</value>
     </data>
 </root>

@@ -18,25 +18,22 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="TextBlockHeader" xml:space="preserve">
-    <value>Настройки приложения</value>
-  </data>
+    <data name="Header" xml:space="preserve">
+        <value>Настройки приложения</value>
+    </data>
     <data name="TextBlockLanguage" xml:space="preserve">
-    <value>Язык</value>
-  </data>
+        <value>Язык</value>
+    </data>
     <data name="TextBlockTheme" xml:space="preserve">
-    <value>Тема</value>
-  </data>
+        <value>Тема</value>
+    </data>
     <data name="TextBlockWindowState" xml:space="preserve">
-    <value>Режим окна</value>
-  </data>
-    <data name="TextBlockZoomSpeed" xml:space="preserve">
-    <value>Скорость зума</value>
-  </data>
+        <value>Режим окна</value>
+    </data>
     <data name="ToggleSwitchFullscreen" xml:space="preserve">
-    <value>Полноэкранный</value>
-  </data>
+        <value>Полноэкранный</value>
+    </data>
     <data name="ToggleSwitchWindowed" xml:space="preserve">
-    <value>Оконный</value>
-  </data>
+        <value>Оконный</value>
+    </data>
 </root>

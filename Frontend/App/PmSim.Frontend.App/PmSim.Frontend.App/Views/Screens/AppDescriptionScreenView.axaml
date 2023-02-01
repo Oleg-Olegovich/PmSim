@@ -8,27 +8,25 @@
              d:DesignHeight="450"
              x:Class="PmSim.Frontend.App.Views.Screens.AppDescriptionScreenView">
     
-    <Grid HorizontalAlignment="Center"
-          VerticalAlignment="Top">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <Grid RowDefinitions="*,*,*,*,*"
+          ColumnDefinitions="*,*,*">
 
-        <TextBlock Grid.Row="0"
+        <!-- Header -->
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
                    Text="{x:Static localizations:LocalizationAppDescriptionScreen.TextBlockHeader}"
                    Classes="Header"/>
 
         <!-- Description text -->
-        <TextBlock Grid.Row="1"
+        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
                    Text="{x:Static localizations:LocalizationAppDescriptionScreen.TextBlockAppDescription}"
                    Classes="Text"
                    Margin="0 20 0 0"/>
 
-        <!-- Buttons -->
-
-        <Button Grid.Row="2"
+        <!-- Back button -->
+        <Button Grid.Row="3"
+                Grid.Column="1"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
                 HotKey="Back"

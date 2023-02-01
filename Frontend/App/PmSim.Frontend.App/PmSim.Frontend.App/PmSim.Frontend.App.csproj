@@ -110,10 +110,22 @@
       <EmbeddedResource Update="Properties\Localizations\LocalizationTitleScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localizations\LocalizationSingleSignInScreen.resx">
+      <EmbeddedResource Update="Properties\Localizations\LocalizationSignInScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localizations\LocalizationSingleSignInScreen.en.resx">
+      <EmbeddedResource Update="Properties\Localizations\LocalizationSignInScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationSignUpScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationSignUpScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGameSettingsScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGameSettingsScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
     </ItemGroup>

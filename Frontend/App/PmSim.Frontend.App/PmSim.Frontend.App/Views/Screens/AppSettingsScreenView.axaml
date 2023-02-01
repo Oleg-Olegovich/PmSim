@@ -6,34 +6,33 @@
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.AppSettingsScreenView">
 
-    <Grid HorizontalAlignment="Center"
-          VerticalAlignment="Top">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0"
-                   Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockHeader}"
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Text="{x:Static localizations:LocalizationAppSettingsScreen.Header}"
                    Classes="Header"/>
-
-        <!-- Back button -->
-        <Button Grid.Row="1"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                HotKey="Back"
-                ToolTip.Tip="Back"
-                Classes="Stretch AttentionGrabbing"
-                Margin="0 20 0 0"/>
         
         <!-- Settings -->
 
         <StackPanel Grid.Row="2"
-                    Orientation="Vertical"
-                    Margin="0 20 0 0">
+                    Grid.Column="1"
+                    Orientation="Vertical">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockLanguage}"/>
             <Border Classes="TextStroke">
@@ -44,8 +43,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3"
-                    Orientation="Vertical"
-                    Margin="0 20 0 0">
+                    Grid.Column="1"
+                    Orientation="Vertical">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockTheme}"/>
             <Border Classes="TextStroke">
@@ -56,8 +55,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4"
-                    Orientation="Vertical"
-                    Margin="0 20 0 0">
+                    Grid.Column="1"
+                    Orientation="Vertical">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockWindowState}"/>
             <Border Classes="TextStroke">
@@ -67,6 +66,15 @@
                               IsChecked="{Binding IsFullscreen}"/>
             </Border>
         </StackPanel>
+        
+        <!-- Back button -->
+        <Button Grid.Row="5"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                Command="{Binding BackCommand}"
+                HotKey="Back"
+                ToolTip.Tip="Back"
+                Classes="Stretch AttentionGrabbing"/>
         
     </Grid>
 </UserControl>

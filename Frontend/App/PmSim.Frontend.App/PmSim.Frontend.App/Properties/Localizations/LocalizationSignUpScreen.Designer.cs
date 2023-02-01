@@ -22,14 +22,14 @@ namespace PmSim.Frontend.App.Properties.Localizations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LocalizationBasicScreen {
+    public class LocalizationSignUpScreen {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LocalizationBasicScreen() {
+        internal LocalizationSignUpScreen() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationBasicScreen", typeof(LocalizationBasicScreen).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationSignUpScreen", typeof(LocalizationSignUpScreen).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,20 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Назад.
+        ///   Looks up a localized string similar to Регистрация.
         /// </summary>
-        public static string ButtonBack {
+        public static string Header {
             get {
-                return ResourceManager.GetString("ButtonBack", resourceCulture);
+                return ResourceManager.GetString("Header", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Далее.
+        ///   Looks up a localized string similar to Повторите пароль.
         /// </summary>
-        public static string ButtonNext {
+        public static string TextBlockRepeatPassword {
             get {
-                return ResourceManager.GetString("ButtonNext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Нет.
-        /// </summary>
-        public static string ToggleSwitchNo {
-            get {
-                return ResourceManager.GetString("ToggleSwitchNo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Да.
-        /// </summary>
-        public static string ToggleSwitchYes {
-            get {
-                return ResourceManager.GetString("ToggleSwitchYes", resourceCulture);
+                return ResourceManager.GetString("TextBlockRepeatPassword", resourceCulture);
             }
         }
     }
