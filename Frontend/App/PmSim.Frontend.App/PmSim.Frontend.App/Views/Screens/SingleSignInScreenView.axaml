@@ -2,7 +2,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.SingleSignInScreenView">
-    Welcome to Avalonia!
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Back button -->
+        <Button Grid.Row="1"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                Command="{Binding BackCommand}"
+                HotKey="Back"
+                ToolTip.Tip="Back"
+                Classes="Stretch AttentionGrabbing"
+                Margin="0 20 0 0"/>
+        
+        <!-- Input form -->
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    Margin="0 20 0 0">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockLanguage}"/>
+            <Border Classes="TextStroke">
+                <StackPanel Orientation="Vertical">
+                    <TextBox Text="{Binding Name}" 
+                             Watermark="{x:Static localizations:LocalizationSingleSignInScreen.TextBoxName}"/>
+                    
+                    <ToggleSwitch Classes="Settings"
+                                  OnContent="{x:Static localizations:LocalizationSingleSignInScreen.ToggleSwitchRemember}"
+                                  OffContent="{x:Static localizations:LocalizationSingleSignInScreen.ToggleSwitchDontRemember}"
+                                  IsChecked="{Binding IsNameRemembered}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        
+        <!-- Next button -->
+        <Button Grid.Row="4"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonNext}"
+                Command="{Binding NextCommand}"
+                Classes="Stretch Menu"/>
+    </Grid>
 </UserControl>

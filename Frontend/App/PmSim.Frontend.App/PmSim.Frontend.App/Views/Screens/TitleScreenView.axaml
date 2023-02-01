@@ -9,19 +9,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"
-                              MinWidth="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         
         <!-- Buttons -->
@@ -61,8 +61,9 @@
         <!-- Background image -->
         
         <Image Grid.Row="0"
-               Grid.RowSpan="7"
+               Grid.RowSpan="6"
                Grid.Column="2"
+               ZIndex="-10"
                Source="avares://PmSim.Frontend.App/Assets/Images/titlescreen_background.png"/>
 
     </Grid>

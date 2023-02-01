@@ -21,4 +21,7 @@
     <data name="ButtonBack" xml:space="preserve">
         <value>Back</value>
     </data>
+    <data name="ButtonNext" xml:space="preserve">
+        <value>Next</value>
+    </data>
 </root>

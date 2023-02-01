@@ -110,6 +110,12 @@
       <EmbeddedResource Update="Properties\Localizations\LocalizationTitleScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationSingleSignInScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationSingleSignInScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>

@@ -14,8 +14,11 @@ public abstract class BasicScreenViewModel : ViewModelBase
     
     // <summary>
     /// Returns to the previous screen.
+    /// If previous screen is null, returns to the title screen.
     /// </summary>
     public ReactiveCommand<Unit, Unit> BackCommand { get; }
+    
+    public ReactiveCommand<Unit, Unit> NextCommand { get; }
 
     /// <summary>
     /// Reference to the base window of the 
@@ -27,9 +30,13 @@ public abstract class BasicScreenViewModel : ViewModelBase
     {
         BaseWindow = baseWindow;
         BackCommand = ReactiveCommand.Create(ProcessBackClick);
+        NextCommand = ReactiveCommand.Create(ProcessNextClick);
         _previousScreen = previousScreen;
     }
 
-    protected virtual void ProcessBackClick()
-        => BaseWindow.Content = _previousScreen;
+    protected virtual void ProcessNextClick()
+        => BaseWindow.Content = null;
+    
+    private void ProcessBackClick()
+        => BaseWindow.Content = _previousScreen ?? new TitleScreenViewModel(BaseWindow);
 }

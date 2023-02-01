@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.AppSettingsScreenView">
 
     <Grid HorizontalAlignment="Center"
@@ -20,9 +20,18 @@
                    Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockHeader}"
                    Classes="Header"/>
 
-        <!-- Settings combo boxes -->
+        <!-- Back button -->
+        <Button Grid.Row="1"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                Command="{Binding BackCommand}"
+                HotKey="Back"
+                ToolTip.Tip="Back"
+                Classes="Stretch AttentionGrabbing"
+                Margin="0 20 0 0"/>
+        
+        <!-- Settings -->
 
-        <StackPanel Grid.Row="1"
+        <StackPanel Grid.Row="2"
                     Orientation="Vertical"
                     Margin="0 20 0 0">
             <TextBlock Classes="Border"
@@ -34,7 +43,7 @@
             </Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="2"
+        <StackPanel Grid.Row="3"
                     Orientation="Vertical"
                     Margin="0 20 0 0">
             <TextBlock Classes="Border"
@@ -46,7 +55,7 @@
             </Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="3"
+        <StackPanel Grid.Row="4"
                     Orientation="Vertical"
                     Margin="0 20 0 0">
             <TextBlock Classes="Border"
@@ -58,15 +67,6 @@
                               IsChecked="{Binding IsFullscreen}"/>
             </Border>
         </StackPanel>
-
-        <!-- Buttons -->
-
-        <Button Grid.Row="4"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                HotKey="Back"
-                ToolTip.Tip="Back"
-                Classes="Stretch AttentionGrabbing"
-                Margin="0 20 0 0"/>
+        
     </Grid>
 </UserControl>
