@@ -10,4 +10,5 @@
     <StyleInclude Source="/Styles/LightFluentTheme/BorderStyles.axaml"/>
     <StyleInclude Source="/Styles/LightFluentTheme/CheckBoxStyles.axaml"/>
     <StyleInclude Source="/Styles/LightFluentTheme/StackPanelStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightFluentTheme/ImageStyles.axaml"/>
 </Styles>

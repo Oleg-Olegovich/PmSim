@@ -19,15 +19,22 @@
             
             <Button Grid.Row="0"
                     Grid.Column="0"
-                    Content="{x:Static localizations:LocalizationGameMapScreen.ButtonGiveUp}"/>
+                    Content="{x:Static localizations:LocalizationGameMapScreen.ButtonGiveUp}"
+                    Classes="Stretch AttentionGrabbing"/>
             
-            <TextBlock Grid.Row="0"
-                       Grid.Column="1"
-                       Text="{Binding GameStage}"/>
-        
-            <TextBlock Grid.Row="0"
-                       Grid.Column="2"
-                       Text="{Binding Time}"/>
+            <StackPanel Grid.Row="0"
+                        Grid.Column="1"
+                        Orientation="Horizontal">
+                <TextBlock Text="{Binding GameStage}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0"
+                        Grid.Column="2"
+                        Orientation="Horizontal">
+                <Image Classes="TimeIcon"/>
+                
+                <TextBlock Text="{Binding Time}"/>
+            </StackPanel>
         
             <TextBlock Grid.Row="0"
                        Grid.Column="3"

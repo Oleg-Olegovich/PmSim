@@ -12,4 +12,5 @@
     <StyleInclude Source="/Styles/DarkMaterialTheme/BorderStyles.axaml"/>
     <StyleInclude Source="/Styles/DarkMaterialTheme/StackPanelStyles.axaml"/>
     <StyleInclude Source="/Styles/LightMaterialTheme/CheckBoxStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightFluentTheme/ImageStyles.axaml"/>
 </Styles>

@@ -1,0 +1,30 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Add Styles Here -->
+    
+    <Style Selector="Image.TimeIcon">
+        <Setter Property="Source" Value="avares://PmSim.Frontend.App/Assets/StyleIcons/LightMaterial/time.png"/>
+    </Style>
+    
+    <Style Selector="Image.ActionsIcon">
+        <Setter Property="Source" Value="avares://PmSim.Frontend.App/Assets/StyleIcons/LightMaterial/actions.png"/>
+    </Style>
+    
+    <Style Selector="Image.EmployeesIcon">
+        <Setter Property="Source" Value="avares://PmSim.Frontend.App/Assets/StyleIcons/LightMaterial/employees.png"/>
+    </Style>
+    
+    <Style Selector="Image.MoneyIcon">
+        <Setter Property="Source" Value="avares://PmSim.Frontend.App/Assets/StyleIcons/LightMaterial/money.png"/>
+    </Style>
+    
+    <Style Selector="Image.OfficesIcon">
+        <Setter Property="Source" Value="avares://PmSim.Frontend.App/Assets/StyleIcons/LightMaterial/offices.png"/>
+    </Style>
+    
+    <Style Selector="Image.ProjectsIcon">
+        <Setter Property="Source" Value="avares://PmSim.Frontend.App/Assets/StyleIcons/LightMaterial/projects.png"/>
+    </Style>
+
+</Styles>
