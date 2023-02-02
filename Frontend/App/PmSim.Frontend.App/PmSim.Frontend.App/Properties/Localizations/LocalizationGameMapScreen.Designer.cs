@@ -22,14 +22,14 @@ namespace PmSim.Frontend.App.Properties.Localizations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LocalizationAppDescriptionScreen {
+    public class LocalizationGameMapScreen {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LocalizationAppDescriptionScreen() {
+        internal LocalizationGameMapScreen() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationAppDescriptionScreen", typeof(LocalizationAppDescriptionScreen).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationGameMapScreen", typeof(LocalizationGameMapScreen).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,29 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Об игре.
+        ///   Looks up a localized string similar to Сдаться.
         /// </summary>
-        public static string Header {
+        public static string ButtonGiveUp {
             get {
-                return ResourceManager.GetString("Header", resourceCulture);
+                return ResourceManager.GetString("ButtonGiveUp", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PM Sim - игровой тренажёр для проектных менеджеров!.
+        ///   Looks up a localized string similar to Пропустить.
         /// </summary>
-        public static string TextBlockAppDescription {
+        public static string ButtonSkip {
             get {
-                return ResourceManager.GetString("TextBlockAppDescription", resourceCulture);
+                return ResourceManager.GetString("ButtonSkip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Игроки.
+        /// </summary>
+        public static string TextBlockPlayers {
+            get {
+                return ResourceManager.GetString("TextBlockPlayers", resourceCulture);
             }
         }
     }

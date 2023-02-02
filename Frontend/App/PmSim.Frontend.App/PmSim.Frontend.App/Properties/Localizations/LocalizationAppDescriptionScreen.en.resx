@@ -21,7 +21,7 @@
     <data name="TextBlockAppDescription" xml:space="preserve">
         <value>PM Sim is a game simulator for project managers!</value>
     </data>
-    <data name="TextBlockHeader" xml:space="preserve">
+    <data name="Header" xml:space="preserve">
         <value>About the game</value>
     </data>
 </root>

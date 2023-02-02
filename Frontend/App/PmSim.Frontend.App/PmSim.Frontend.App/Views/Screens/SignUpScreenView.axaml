@@ -68,7 +68,6 @@
                 Grid.Column="1"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"
-                Margin="0 20 0 0"/>
+                Classes="Stretch AttentionGrabbing"/>
     </Grid>
 </UserControl>

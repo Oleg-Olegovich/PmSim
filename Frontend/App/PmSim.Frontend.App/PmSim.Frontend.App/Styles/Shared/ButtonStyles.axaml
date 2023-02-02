@@ -9,12 +9,18 @@
                     Classes="Center"/>
         </StackPanel>
     </Design.PreviewWith>
-
+    
     <!-- Add Styles Here -->
+
     <Style Selector="Button.Menu">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Margin"
-                Value="5 10 5 10"/>
+                Value="5"/>
+    </Style>
+    
+    <Style Selector="Button.Menu /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="CornerRadius"
+                Value="1000"/>
     </Style>
 
     <Style Selector="Button.AttentionGrabbing">
@@ -22,6 +28,11 @@
         <Setter Property="Margin" Value="5"/>
     </Style>
 
+    <Style Selector="Button.AttentionGrabbing /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="CornerRadius"
+                Value="1000"/>
+    </Style>
+    
     <!-- Stretch button -->
     <Style Selector="Button.Stretch">
         <Setter Property="FontSize" Value="14"/>

@@ -75,11 +75,19 @@ public class GameSettingsScreenViewModel : BasicScreenViewModel
     public GameSettingsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
         : base(baseWindow, previous, new GameScreenViewModel(baseWindow, previous))
     {
+        ProcessDefaultClick();
         DefaultCommand = ReactiveCommand.Create(ProcessDefaultClick);
     }
 
     private void ProcessDefaultClick()
     {
-        
+        ConnectionRealTime = 60;
+        ChoosingBackgroundRealTime = 60;
+        SprintRealTime = 180;
+        DiplomacyRealTime = 180;
+        IncidentRealTime = 60;
+        AuctionRealTime = 10;
+        SprintActionsNumber = 2;
+        StartUpCapital = 10;
     }
 }

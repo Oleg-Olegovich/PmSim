@@ -18,10 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="TextBlockAppDescription" xml:space="preserve">
-        <value>PM Sim - игровой тренажёр для проектных менеджеров!</value>
+    <data name="ButtonGiveUp" xml:space="preserve">
+        <value>Сдаться</value>
     </data>
-    <data name="Header" xml:space="preserve">
-        <value>Об игре</value>
+    <data name="TextBlockPlayers" xml:space="preserve">
+        <value>Игроки</value>
+    </data>
+    <data name="ButtonSkip" xml:space="preserve">
+        <value>Пропустить</value>
     </data>
 </root>

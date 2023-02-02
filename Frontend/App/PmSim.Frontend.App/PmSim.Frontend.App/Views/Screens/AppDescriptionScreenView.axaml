@@ -14,7 +14,7 @@
         <!-- Header -->
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Text="{x:Static localizations:LocalizationAppDescriptionScreen.TextBlockHeader}"
+                   Text="{x:Static localizations:LocalizationAppDescriptionScreen.Header}"
                    Classes="Header"/>
 
         <!-- Description text -->
@@ -29,9 +29,6 @@
                 Grid.Column="1"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
-                HotKey="Back"
-                ToolTip.Tip="Back"
-                Classes="Stretch AttentionGrabbing"
-                Margin="0 20 0 0"/>
+                Classes="Stretch AttentionGrabbing"/>
     </Grid>
 </UserControl>

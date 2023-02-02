@@ -2,7 +2,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d" 
              x:Class="PmSim.Frontend.App.Views.Screens.GameScreenView">
-    Welcome to Avalonia!
+    
+    <Grid RowDefinitions="Auto, Auto, *, Auto, 10"
+          ColumnDefinitions="10, Auto, *, 10">
+        
+        <!-- Status bar -->
+        
+        <Grid Grid.Row="0"
+              Grid.Column="1"
+              Grid.ColumnSpan="2"
+              RowDefinitions="*"
+              ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, *">
+            
+            <Button Grid.Row="0"
+                    Grid.Column="0"
+                    Content="{x:Static localizations:LocalizationGameMapScreen.ButtonGiveUp}"/>
+            
+            <TextBlock Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding GameStage}"/>
+        
+            <TextBlock Grid.Row="0"
+                       Grid.Column="2"
+                       Text="{Binding Time}"/>
+        
+            <TextBlock Grid.Row="0"
+                       Grid.Column="3"
+                       Text="{Binding ActionsNumber}"/>
+        
+            <TextBlock Grid.Row="0"
+                       Grid.Column="4"
+                       Text="{Binding Money}"/>
+        
+            <TextBlock Grid.Row="0"
+                       Grid.Column="5"
+                       Text="{Binding OfficesNumber}"/>
+        
+            <TextBlock Grid.Row="0"
+                       Grid.Column="6"
+                       Text="{Binding ProjectsNumber}"/>
+        
+            <TextBlock Grid.Row="0"
+                       Grid.Column="7"
+                       Text="{Binding EmployeesNumber}"/>
+        </Grid>
+        
+        <!-- Players column -->
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Text="{x:Static localizations:LocalizationGameMapScreen.TextBlockPlayers}"/>
+        
+        <DataGrid Grid.Row="2"
+                  Grid.Column="1"/>
+        
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationGameMapScreen.ButtonSkip}"/>
+        
+        <!-- Main area (game map or action dialog) -->
+        
+        <ContentControl Grid.Row="1"
+                        Grid.RowSpan="3"
+                        Grid.Column="2"
+                        Content="{Binding Content}"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"/>
+    </Grid>
 </UserControl>

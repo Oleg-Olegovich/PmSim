@@ -7,11 +7,11 @@
              x:Class="PmSim.Frontend.App.Views.Screens.GameSettingsScreenView">
     
     <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*"
-          ColumnDefinitions="*,*,*,*">
+          ColumnDefinitions="*,*,10,*,*">
 
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="3"
                    Text="{x:Static localizations:LocalizationGameSettingsScreen.Header}"
                    Classes="Header"/>
         
@@ -23,12 +23,14 @@
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockConnectionRealTime}"/>
             <Border Classes="TextStroke">
-                <NumericUpDown Value="{Binding ConnectionRealTime}"/>
+                <NumericUpDown Minimum="1"
+                               Maximum="300"
+                               Value="{Binding ConnectionRealTime}"/>
             </Border>
         </StackPanel>
         
         <StackPanel Grid.Row="2"
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockChoosingBackgroundRealTime}"/>
@@ -52,7 +54,7 @@
         </StackPanel>
         
         <StackPanel Grid.Row="3"
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockDiplomacyRealTime}"/>
@@ -76,7 +78,7 @@
         </StackPanel>
         
         <StackPanel Grid.Row="4"
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockAuctionRealTime}"/>
@@ -100,7 +102,7 @@
         </StackPanel>
         
         <StackPanel Grid.Row="5"
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockStartUpCapital}"/>
@@ -115,24 +117,23 @@
         
         <Button Grid.Row="6"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Content="{x:Static localizations:LocalizationGameSettingsScreen.ButtonDefault}"
                 Command="{Binding DefaultCommand}"
                 Classes="Stretch Menu"/>
         
         <Button Grid.Row="7"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Content="{x:Static localizations:LocalizationGameSettingsScreen.ButtonStart}"
                 Command="{Binding NextCommand}"
                 Classes="Stretch Menu"/>
         
         <Button Grid.Row="8"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"
-                Margin="0 20 0 0"/>
+                Classes="Stretch AttentionGrabbing"/>
     </Grid>
 </UserControl>

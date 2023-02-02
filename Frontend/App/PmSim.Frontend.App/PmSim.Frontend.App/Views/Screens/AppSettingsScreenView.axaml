@@ -72,8 +72,6 @@
                 Grid.Column="1"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
-                HotKey="Back"
-                ToolTip.Tip="Back"
                 Classes="Stretch AttentionGrabbing"/>
         
     </Grid>

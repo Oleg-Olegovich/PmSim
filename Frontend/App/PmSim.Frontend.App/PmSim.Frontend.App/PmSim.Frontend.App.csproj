@@ -26,11 +26,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ViewModels\Frames" />
-      <Folder Include="Views\Frames" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Update="Properties\Localization\LocalizationAppDescriptionScreen.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -126,6 +121,12 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationGameSettingsScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGameMapScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGameMapScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
     </ItemGroup>
