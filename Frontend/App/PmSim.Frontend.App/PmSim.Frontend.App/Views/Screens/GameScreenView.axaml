@@ -6,7 +6,9 @@
              mc:Ignorable="d" 
              x:Class="PmSim.Frontend.App.Views.Screens.GameScreenView">
     
-    <Grid RowDefinitions="Auto, Auto, *, Auto, 10"
+    <!-- CHANGE 50 TO * -->
+    
+    <Grid RowDefinitions="50, *, 7*, *, 10"
           ColumnDefinitions="10, Auto, *, 10">
         
         <!-- Status bar -->
@@ -19,63 +21,84 @@
             
             <Button Grid.Row="0"
                     Grid.Column="0"
-                    Content="{x:Static localizations:LocalizationGameMapScreen.ButtonGiveUp}"
+                    Content="{x:Static localizations:LocalizationGameScreen.ButtonGiveUp}"
                     Classes="Stretch AttentionGrabbing"/>
             
             <StackPanel Grid.Row="0"
                         Grid.Column="1"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal"
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipGameStage}">
                 <TextBlock Text="{Binding GameStage}"/>
             </StackPanel>
             
             <StackPanel Grid.Row="0"
                         Grid.Column="2"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal"
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipTime}">
                 <Image Classes="TimeIcon"/>
-                
                 <TextBlock Text="{Binding Time}"/>
             </StackPanel>
-        
-            <TextBlock Grid.Row="0"
-                       Grid.Column="3"
-                       Text="{Binding ActionsNumber}"/>
-        
-            <TextBlock Grid.Row="0"
-                       Grid.Column="4"
-                       Text="{Binding Money}"/>
-        
-            <TextBlock Grid.Row="0"
-                       Grid.Column="5"
-                       Text="{Binding OfficesNumber}"/>
-        
-            <TextBlock Grid.Row="0"
-                       Grid.Column="6"
-                       Text="{Binding ProjectsNumber}"/>
-        
-            <TextBlock Grid.Row="0"
-                       Grid.Column="7"
-                       Text="{Binding EmployeesNumber}"/>
+            
+            <StackPanel Grid.Row="0"
+                        Grid.Column="3"
+                        Orientation="Horizontal"
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipActionsNumber}">
+                <Image Classes="ActionsIcon"/>
+                <TextBlock Text="{Binding ActionsNumber}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0"
+                        Grid.Column="4"
+                        Orientation="Horizontal"
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipMoney}">
+                <Image Classes="MoneyIcon"/>
+                <TextBlock Text="{Binding Money}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0"
+                        Grid.Column="5"
+                        Orientation="Horizontal"
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipOfficesNumber}">
+                <Image Classes="OfficesIcon"/>
+                <TextBlock Text="{Binding OfficesNumber}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0"
+                        Grid.Column="6"
+                        Orientation="Horizontal"
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipProjectsNumber}">
+                <Image Classes="ProjectsIcon"/>
+                <TextBlock Text="{Binding ProjectsNumber}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0"
+                        Grid.Column="7"
+                        Orientation="Horizontal"
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipEmployeesNumber}">
+                <Image Classes="EmployeesIcon"/>
+                <TextBlock Text="{Binding EmployeesNumber}"/>
+            </StackPanel>
         </Grid>
         
         <!-- Players column -->
         
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Text="{x:Static localizations:LocalizationGameMapScreen.TextBlockPlayers}"/>
+                   Text="{x:Static localizations:LocalizationGameScreen.TextBlockPlayers}"/>
         
         <DataGrid Grid.Row="2"
                   Grid.Column="1"/>
         
         <Button Grid.Row="3"
                 Grid.Column="1"
-                Content="{x:Static localizations:LocalizationGameMapScreen.ButtonSkip}"/>
+                Content="{x:Static localizations:LocalizationGameScreen.ButtonSkip}"/>
         
         <!-- Main area (game map or action dialog) -->
         
         <ContentControl Grid.Row="1"
                         Grid.RowSpan="3"
                         Grid.Column="2"
-                        Content="{Binding Content}"
+                        Content="{Binding MainAreaContent}"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"/>
     </Grid>

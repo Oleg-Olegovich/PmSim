@@ -47,6 +47,7 @@
                Grid.RowSpan="6"
                Grid.Column="2"
                ZIndex="-10"
+               Stretch="Uniform"
                Source="avares://PmSim.Frontend.App/Assets/Images/titlescreen_background.png"/>
 
     </Grid>

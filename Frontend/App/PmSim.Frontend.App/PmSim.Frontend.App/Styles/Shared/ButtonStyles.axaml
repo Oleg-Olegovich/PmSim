@@ -54,7 +54,34 @@
         <Setter Property="HorizontalContentAlignment"
                 Value="Center"/>
     </Style>
-
+    
+    <!-- Game map button -->
+    <Style Selector="Button.GameMapButton">
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+    
+    <Style Selector="Button.GameMapButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background"
+                Value="#00000000"/>
+        <Setter Property="BorderBrush"
+                Value="#00000000"/>
+        <Setter Property="Padding" 
+                Value="0"/>
+    </Style>
+    
+    <Style Selector="Button.GameMapButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="RenderTransform" 
+                Value="scale(1)" />
+        <Setter Property="Background"
+                Value="#00000000"/>
+        <Setter Property="BorderBrush"
+                Value="#00000000"/>
+        <Setter Property="Padding" 
+                Value="0"/>
+    </Style>
+    
     <!-- List icon button -->
     <Style Selector="Button.List">
         <Setter Property="Content" Value="{DynamicResource ListIcon}"/>

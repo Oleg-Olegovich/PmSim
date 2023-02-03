@@ -19,12 +19,33 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="ButtonGiveUp" xml:space="preserve">
-        <value>Сдаться</value>
+        <value>Give up</value>
     </data>
     <data name="TextBlockPlayers" xml:space="preserve">
-        <value>Игроки</value>
+        <value>Players</value>
     </data>
     <data name="ButtonSkip" xml:space="preserve">
-        <value>Пропустить</value>
+        <value>Skip</value>
+    </data>
+    <data name="ToolTipActionsNumber" xml:space="preserve">
+        <value>Actions left</value>
+    </data>
+    <data name="ToolTipEmployeesNumber" xml:space="preserve">
+        <value>Number of your employees</value>
+    </data>
+    <data name="ToolTipGameStage" xml:space="preserve">
+        <value>Game stage</value>
+    </data>
+    <data name="ToolTipMoney" xml:space="preserve">
+        <value>Money</value>
+    </data>
+    <data name="ToolTipOfficesNumber" xml:space="preserve">
+        <value>Number of your offices</value>
+    </data>
+    <data name="ToolTipProjectsNumber" xml:space="preserve">
+        <value>Number of your projects</value>
+    </data>
+    <data name="ToolTipTime" xml:space="preserve">
+        <value>Time to the end of the stage</value>
     </data>
 </root>

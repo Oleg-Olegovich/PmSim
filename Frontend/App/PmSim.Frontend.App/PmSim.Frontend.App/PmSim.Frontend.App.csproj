@@ -123,10 +123,10 @@
       <EmbeddedResource Update="Properties\Localizations\LocalizationGameSettingsScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localizations\LocalizationGameMapScreen.resx">
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGameScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localizations\LocalizationGameMapScreen.en.resx">
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGameScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
     </ItemGroup>

@@ -22,14 +22,14 @@ namespace PmSim.Frontend.App.Properties.Localizations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LocalizationGameMapScreen {
+    public class LocalizationGameScreen {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LocalizationGameMapScreen() {
+        internal LocalizationGameScreen() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationGameMapScreen", typeof(LocalizationGameMapScreen).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationGameScreen", typeof(LocalizationGameScreen).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -84,6 +84,69 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static string TextBlockPlayers {
             get {
                 return ResourceManager.GetString("TextBlockPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Осталось действий.
+        /// </summary>
+        public static string ToolTipActionsNumber {
+            get {
+                return ResourceManager.GetString("ToolTipActionsNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Кол-во ваших сотрудников.
+        /// </summary>
+        public static string ToolTipEmployeesNumber {
+            get {
+                return ResourceManager.GetString("ToolTipEmployeesNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Стадия игры.
+        /// </summary>
+        public static string ToolTipGameStage {
+            get {
+                return ResourceManager.GetString("ToolTipGameStage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Деньги.
+        /// </summary>
+        public static string ToolTipMoney {
+            get {
+                return ResourceManager.GetString("ToolTipMoney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Кол-во ваших офисов.
+        /// </summary>
+        public static string ToolTipOfficesNumber {
+            get {
+                return ResourceManager.GetString("ToolTipOfficesNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Кол-во ваших проектов.
+        /// </summary>
+        public static string ToolTipProjectsNumber {
+            get {
+                return ResourceManager.GetString("ToolTipProjectsNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Время до конца стадии.
+        /// </summary>
+        public static string ToolTipTime {
+            get {
+                return ResourceManager.GetString("ToolTipTime", resourceCulture);
             }
         }
     }

@@ -1,12 +1,11 @@
-﻿using Avalonia;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
 namespace PmSim.Frontend.App.Views.Frames;
 
-public partial class GameMapFrameView : UserControl
+public partial class GameMap0View : UserControl
 {
-    public GameMapFrameView()
+    public GameMap0View()
     {
         InitializeComponent();
     }
