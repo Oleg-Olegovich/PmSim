@@ -3,309 +3,301 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="PmSim.Frontend.App.Views.Frames.GameMap0View"
-             Bounds="{Binding CanvasBounds, Mode=OneWayToSource}">
-    
-    <Canvas VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            ClipToBounds="True">
-        
-        <Image Canvas.Left="0"
-               Canvas.Top="0"
-               ZIndex="1"
-               Stretch="Uniform"
-               HorizontalAlignment="Stretch"
-               VerticalAlignment="Stretch"
-               IsEnabled="False"
-               Width="{Binding MapImageWidth, Mode=OneWay}"
-               Height="{Binding MapImageHeight, Mode=OneWay}"
-               Source="avares://PmSim.Frontend.App/Assets/Images/Map0/map.png"/>
-        
-        <Button Canvas.Left="72"
-                Canvas.Top="124"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_normal.png"/>
+             x:Class="PmSim.Frontend.App.Views.Frames.GameMap0View">
+
+    <Viewbox Stretch="Uniform">
+
+        <Panel>
+
+            <Image ZIndex="1"
+                   IsEnabled="False"
+                   Source="avares://PmSim.Frontend.App/Assets/Images/Map0/map.png" />
+
+            <Button Margin="73 -210 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_normal.png" />
+
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_pointerover.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_pressed.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
+
+            <Button Margin="720 -285 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_normal.png" />
+
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_pointerover.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_pressed.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
+
+            <Button Margin="454 -435 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_1_normal.png" />
+
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_1_pointerover.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_1_pressed.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
+
+            <Button Margin="280 -238 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png" />
+
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pointerover.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pressed.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
+
+            <Button Margin="843 -178 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_1_normal.png" />
+
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_1_pointerover.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_1_pressed.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
+
+            <Button Margin="199 -27 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_normal.png"/>
             
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_pointerover.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
             
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="719"
-                Canvas.Top="88"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_normal.png"/>
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_pressed.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
             
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
+            <Button Margin="700 170 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_2_normal.png"/>
             
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="454"
-                Canvas.Top="12"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_1_normal.png"/>
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_2_pointerover.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
             
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_1_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_2_pressed.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
             
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_1_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="280"
-                Canvas.Top="120"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png"/>
+            <Button Margin="610 378 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_normal.png"/>
             
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_pointerover.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
             
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="843"
-                Canvas.Top="150"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_1_normal.png"/>
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_pressed.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
             
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_1_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
+            <Button Margin="325 284 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png"/>
             
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_1_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="200"
-                Canvas.Top="220"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_normal.png"/>
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pointerover.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
             
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pressed.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
             
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="700"
-                Canvas.Top="324"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_2_normal.png"/>
+            <Button Margin="45 272 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png"/>
             
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_2_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pointerover.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
             
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_2_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="610"
-                Canvas.Top="416"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_normal.png"/>
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pressed.png"/>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
             
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-            
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="325"
-                Canvas.Top="383"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png"/>
-            
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-            
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="45"
-                Canvas.Top="375"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png"/>
-            
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-            
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-        
-        <Button Canvas.Left="436"
-                Canvas.Top="168"
-                Classes="GameMapButton">
-            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/auctions_house_normal.png"/>
-            
-            <Button.Styles>
-                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/auctions_house_pointerover.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-            
-            <Button.Styles>
-                <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Content">
-                        <Template>
-                            <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/auctions_house_pressed.png"/>
-                        </Template>
-                    </Setter>
-                </Style>
-            </Button.Styles>
-        </Button>
-    </Canvas>
-    
+            <Button Margin="436 -89 0 0"
+                    Classes="GameMapButton">
+                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/auctions_house_normal.png" />
+
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/auctions_house_pointerover.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+
+                <Button.Styles>
+                    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Content">
+                            <Template>
+                                <Image
+                                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/auctions_house_pressed.png" />
+                            </Template>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
+        </Panel>
+    </Viewbox>
 </UserControl>
