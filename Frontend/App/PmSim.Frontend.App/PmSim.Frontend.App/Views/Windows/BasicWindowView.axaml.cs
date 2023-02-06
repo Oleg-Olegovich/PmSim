@@ -11,24 +11,24 @@ namespace PmSim.Frontend.App.Views.Windows;
 /// </summary>
 public abstract class BasicWindowView : Window
 {
-    public static readonly AttachedProperty<EventHandler<CancelEventArgs>?> ClosingHandlerProperty
+    public static readonly AttachedProperty<EventHandler<WindowClosingEventArgs>?> ClosingHandlerProperty
         = AvaloniaProperty
-            .RegisterAttached<BasicWindowView, Window, EventHandler<CancelEventArgs>?>("ClosingHandler");
+            .RegisterAttached<BasicWindowView, Window, EventHandler<WindowClosingEventArgs>?>("ClosingHandler");
 
     static BasicWindowView()
     {
         ClosingHandlerProperty.Changed.Subscribe(
             changedEvent => HandleClosingHandlerChanged(changedEvent.Sender, 
-                changedEvent.NewValue.GetValueOrDefault<EventHandler<CancelEventArgs>?>()));
+                changedEvent.NewValue.GetValueOrDefault<EventHandler<WindowClosingEventArgs>?>()));
     }
     
-    public static EventHandler<CancelEventArgs>? GetClosingHandler(Window window)
+    public static EventHandler<WindowClosingEventArgs>? GetClosingHandler(Window window)
         => window.GetValue(ClosingHandlerProperty);
 
-    public static void SetClosingHandler(Window window, EventHandler<CancelEventArgs>? handler)
+    public static void SetClosingHandler(Window window, EventHandler<WindowClosingEventArgs>? handler)
         => window.SetValue(ClosingHandlerProperty, handler);
 
-    private static void HandleClosingHandlerChanged(IAvaloniaObject element, EventHandler<CancelEventArgs>? handler)
+    private static void HandleClosingHandlerChanged(AvaloniaObject element, EventHandler<WindowClosingEventArgs>? handler)
     {
         if (element is Window window && handler != null)
         {

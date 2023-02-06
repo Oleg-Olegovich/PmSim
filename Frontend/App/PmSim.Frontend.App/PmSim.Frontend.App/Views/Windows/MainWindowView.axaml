@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:loc="clr-namespace:PmSim.Frontend.App.Views.Windows"
-        mc:Ignorable="d" 
+        mc:Ignorable="d"
         x:Class="PmSim.Frontend.App.Views.Windows.MainWindowView"
         Icon="/Assets/app-logo.ico"
         Title="PmSim.Frontend.App"
@@ -13,14 +13,14 @@
         WindowStartupLocation="CenterScreen"
         ExtendClientAreaToDecorationsHint="True"
         loc:BasicWindowView.ClosingHandler="{Binding ClosingHandler}">
-    
+
     <Grid RowDefinitions="20,*">
 
         <ScrollViewer Grid.Row="1">
             <ContentControl Content="{Binding Content}"
                             HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch"/>
+                            VerticalContentAlignment="Stretch" />
         </ScrollViewer>
-    
+
     </Grid>
 </Window>

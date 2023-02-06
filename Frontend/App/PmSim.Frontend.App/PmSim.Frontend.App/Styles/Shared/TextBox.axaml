@@ -44,13 +44,11 @@
     </Style>
 
     <Style Selector="TextBox:pointerover /template/ Border#Background">
-        <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBackground}"/>
     </Style>
 
     <Style Selector="TextBox /template/ Border#PopupBorder">
-        <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBackground}"/>
     </Style>

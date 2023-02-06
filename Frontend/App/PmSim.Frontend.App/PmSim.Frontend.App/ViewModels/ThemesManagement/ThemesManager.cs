@@ -2,6 +2,7 @@
 using System.Linq;
 using Avalonia;
 using Avalonia.Markup.Xaml.Styling;
+using Avalonia.Styling;
 
 namespace PmSim.Frontend.App.ViewModels.ThemesManagement;
 
@@ -39,15 +40,20 @@ public class ThemesManager
     /// </summary>
     public static Themes Theme
     {
-        get => _instance._theme;
         set
         {
             _instance._theme = value;
             var app = Application.Current;
-            if (app != null)
+            if (app == null)
             {
-                app.Styles[0] = _themes[(int)value];
+                return;
             }
+            
+            app.Styles[0] = _themes[(int)value];
+            // Avalonia developers are to blame for this crutch.
+            app.RequestedThemeVariant = value.ToString().StartsWith("Dark") 
+                ? ThemeVariant.Dark 
+                : ThemeVariant.Default;
         }
     }
 

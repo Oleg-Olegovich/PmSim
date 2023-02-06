@@ -44,13 +44,11 @@
     </Style>
 
     <Style Selector="NumericUpDown:pointerover /template/ Border#Background">
-        <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBackground}"/>
     </Style>
 
     <Style Selector="NumericUpDown /template/ Border#PopupBorder">
-        <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderedNumericUpDownBorderBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BorderedNumericUpDownBackground}"/>
     </Style>

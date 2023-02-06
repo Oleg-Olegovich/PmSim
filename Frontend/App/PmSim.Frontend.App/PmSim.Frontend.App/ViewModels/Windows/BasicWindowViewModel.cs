@@ -18,7 +18,7 @@ public abstract class BasicWindowViewModel : ViewModelBase
     /// <summary>
     /// Handler for closing the application.
     /// </summary>
-    public EventHandler<CancelEventArgs> ClosingHandler { get; }
+    public EventHandler<WindowClosingEventArgs> ClosingHandler { get; }
 
     private double _width;
 
@@ -131,7 +131,7 @@ public abstract class BasicWindowViewModel : ViewModelBase
         WindowState = Settings.WindowState;
     }
 
-    private void ProcessClosing(object? sender, CancelEventArgs args)
+    private void ProcessClosing(object? sender, WindowClosingEventArgs args)
     {
         try
         {

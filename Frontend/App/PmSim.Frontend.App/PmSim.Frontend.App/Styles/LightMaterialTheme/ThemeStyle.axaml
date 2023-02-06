@@ -1,9 +1,11 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:themes="clr-namespace:Material.Styles.Themes;assembly=Material.Styles">
     <SimpleTheme/>
-    <StyleInclude Source="avares://Avalonia.Themes.Simple/Accents/BaseLight.xaml"/>
     <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Simple.xaml"/>
-    <StyleInclude Source="avares://Material.Avalonia/Material.Avalonia.Templates.xaml"/>
+    <themes:MaterialTheme BaseTheme="Light" 
+                          PrimaryColor="Teal" 
+                          SecondaryColor="Amber"/>
 
     <!-- Custom elements -->
     <StyleInclude Source="/Styles/Shared/ThemeStyle.axaml"/>
@@ -12,5 +14,5 @@
     <StyleInclude Source="/Styles/LightMaterialTheme/BorderStyles.axaml"/>
     <StyleInclude Source="/Styles/LightMaterialTheme/CheckBoxStyles.axaml"/>
     <StyleInclude Source="/Styles/LightMaterialTheme/StackPanelStyles.axaml"/>
-    <StyleInclude Source="/Styles/LightFluentTheme/ImageStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightMaterialTheme/ImageStyles.axaml"/>
 </Styles>

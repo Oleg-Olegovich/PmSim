@@ -18,7 +18,7 @@
     
     <!-- Border label -->
     <Style Selector="TextBlock.Border">
-        <Setter Property="Background" Value="#FFFFFFFF"/>
+        <Setter Property="Foreground" Value="#FFFFFFFF"/>
         <Setter Property="Background" Value="#282828"/>
     </Style>
 

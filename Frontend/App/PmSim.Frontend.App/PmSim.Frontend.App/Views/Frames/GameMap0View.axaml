@@ -6,9 +6,8 @@
              x:Class="PmSim.Frontend.App.Views.Frames.GameMap0View">
 
     <Viewbox Stretch="Uniform">
-
         <Panel>
-
+            
             <Image ZIndex="1"
                    IsEnabled="False"
                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/map.png" />
@@ -298,6 +297,7 @@
                     </Style>
                 </Button.Styles>
             </Button>
+            
         </Panel>
     </Viewbox>
 </UserControl>
