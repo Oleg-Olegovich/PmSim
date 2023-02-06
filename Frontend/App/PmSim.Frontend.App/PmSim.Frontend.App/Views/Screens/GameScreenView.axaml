@@ -7,6 +7,7 @@
              x:Class="PmSim.Frontend.App.Views.Screens.GameScreenView">
     
     <!-- CHANGE 50 TO * -->
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
     
     <Grid RowDefinitions="50, *, 7*, *, 10"
           ColumnDefinitions="10, Auto, *, 10">
@@ -22,6 +23,7 @@
             <Button Grid.Row="0"
                     Grid.Column="0"
                     Content="{x:Static localizations:LocalizationGameScreen.ButtonGiveUp}"
+                    Command="{Binding GiveUpCommand}"
                     Classes="Stretch AttentionGrabbing"/>
             
             <StackPanel Grid.Row="0"

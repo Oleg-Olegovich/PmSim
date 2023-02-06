@@ -1,4 +1,5 @@
-﻿using PmSim.Frontend.App.ViewModels.Frames;
+﻿using System.Reactive;
+using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Windows;
 using ReactiveUI;
 
@@ -70,9 +71,15 @@ public class GameScreenViewModel : BasicScreenViewModel
         set => this.RaiseAndSetIfChanged(ref _mainAreaContent, value);
     }
     
+    public ReactiveCommand<Unit, Unit> GiveUpCommand { get; }
+
     public GameScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
         : base(baseWindow, previous)
     {
         MainAreaContent = new GameMap0ViewModel();
+        GiveUpCommand = ReactiveCommand.Create(ProcessGiveUpClick);
     }
+
+    private void ProcessGiveUpClick()
+        => BaseWindow.Content = new TitleScreenViewModel(BaseWindow);
 }
