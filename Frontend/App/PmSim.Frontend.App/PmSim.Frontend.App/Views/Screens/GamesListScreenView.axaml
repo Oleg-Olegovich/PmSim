@@ -2,7 +2,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.GamesListScreenView">
-    Welcome to Avalonia!
+    
+    <Grid RowDefinitions="Auto, *, Auto"
+          ColumnDefinitions="*, *, *">
+        
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="{x:Static localizations:LocalizationGamesListScreen.Header}"
+                   Classes="Header"/>
+        
+        <DataGrid Grid.Row="0"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  Items="{Binding Games}"/>
+        
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Content="{x:Static localizations:LocalizationGamesListScreen.ButtonNewGame}"
+                Command="{Binding SignUpCommand}"
+                Classes="Stretch Menu"/>
+        
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Content="{x:Static localizations:LocalizationGamesListScreen.ButtonConnect}"
+                Command="{Binding SignUpCommand}"
+                Classes="Stretch Menu"/>
+        
+        <Button Grid.Row="2"
+                Grid.Column="2"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                Command="{Binding BackCommand}"
+                Classes="Stretch AttentionGrabbing"/>
+    </Grid>
 </UserControl>

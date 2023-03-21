@@ -1,11 +1,14 @@
 ﻿using System.Reactive;
 using PmSim.Frontend.App.ViewModels.Windows;
+using PmSim.Frontend.Client;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class SignInScreenViewModel : BasicScreenViewModel
 {
+    private TitleScreenViewModel _titleScreen;
+    
     private string _login = "";
     
     public string Login
@@ -32,12 +35,23 @@ public class SignInScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> SignUpCommand { get; }
     
-    public SignInScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
-        : base(baseWindow, previous, new GamesListScreenViewModel(baseWindow, previous))
-    {
-        SignUpCommand = ReactiveCommand.Create(ProcessSignUpClick);
-    }
+    public ReactiveCommand<Unit, Unit> GamesListCommand { get; }
     
+    public SignInScreenViewModel(BasicWindowViewModel baseWindow, TitleScreenViewModel previous) 
+        : base(baseWindow, previous)
+    {
+        _titleScreen = previous;
+        SignUpCommand = ReactiveCommand.Create(ProcessSignUpClick);
+        GamesListCommand = ReactiveCommand.Create(OpenGamesList);
+    }
+
+    private void OpenGamesList()
+    {
+        var client = new PmSimClient();
+        var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
+        BaseWindow.Content = gamesListScreen;
+    }
+
     private void ProcessSignUpClick()
         => BaseWindow.Content = new SignUpScreenViewModel(BaseWindow, this);
 }

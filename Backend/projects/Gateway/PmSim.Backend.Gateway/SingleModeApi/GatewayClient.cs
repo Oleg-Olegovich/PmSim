@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using AutoMapper;
 using PmSim.Backend.GameEngine.Dto;
-using PmSim.Backend.GameEngine.Enums;
 using PmSim.Backend.GameEngine.GameLogic;
 using PmSim.Backend.GameEngine.GameLogic.Incidents;
 using PmSim.Backend.GameEngine.GameLogic.Opportunities;
@@ -10,6 +9,7 @@ using PmSim.Backend.Gateway.Api;
 using PmSim.Backend.Gateway.Contracts.Account;
 using PmSim.Backend.Gateway.Contracts.Actions;
 using PmSim.Backend.Gateway.Contracts.Credentials;
+using PmSim.Backend.Gateway.Contracts.Enums;
 using PmSim.Backend.Gateway.Contracts.Game;
 using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Employee;
 using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Features;

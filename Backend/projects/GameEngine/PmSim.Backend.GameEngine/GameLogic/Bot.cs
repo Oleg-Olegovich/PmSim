@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using PmSim.Backend.GameEngine.Enums;
 using PmSim.Backend.GameEngine.GameLogic.BotStrategies;
+using PmSim.Backend.Gateway.Contracts.Enums;
 
 namespace PmSim.Backend.GameEngine.GameLogic
 {

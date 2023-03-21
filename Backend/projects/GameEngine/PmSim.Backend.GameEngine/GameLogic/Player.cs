@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PmSim.Backend.GameEngine.Dto;
-using PmSim.Backend.GameEngine.Enums;
+using PmSim.Backend.Gateway.Contracts.Enums;
 
 namespace PmSim.Backend.GameEngine.GameLogic
 {

@@ -6,8 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\GameEngine\PmSim.Backend.GameEngine\PmSim.Backend.GameEngine.csproj" />
-    </ItemGroup>
-
 </Project>

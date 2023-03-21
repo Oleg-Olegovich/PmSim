@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Gateway\PmSim.Backend.Gateway.Contracts\PmSim.Backend.Gateway.Contracts.csproj" />
+    </ItemGroup>
+
 </Project>

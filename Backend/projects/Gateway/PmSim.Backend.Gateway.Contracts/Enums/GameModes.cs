@@ -1,4 +1,4 @@
-﻿namespace PmSim.Backend.GameEngine.Enums
+﻿namespace PmSim.Backend.Gateway.Contracts.Enums
 {
     public enum GameModes
     {

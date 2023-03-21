@@ -1,4 +1,4 @@
-﻿using PmSim.Backend.GameEngine.Enums;
+﻿using PmSim.Backend.Gateway.Contracts.Enums;
 
 namespace PmSim.Backend.Gateway.Contracts.Actions
 {

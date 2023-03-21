@@ -7,9 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Backend\projects\GameEngine\PmSim.Backend.GameEngine\PmSim.Backend.GameEngine.csproj" />
       <ProjectReference Include="..\..\..\Backend\projects\Gateway\PmSim.Backend.Gateway.Contracts\PmSim.Backend.Gateway.Contracts.csproj" />
       <ProjectReference Include="..\..\..\Backend\projects\Gateway\PmSim.Backend.Gateway\PmSim.Backend.Gateway.csproj" />
+      <ProjectReference Include="..\..\..\Backend\projects\Gateway\PmSim.Backend.Gateway\PmSim.Backend.Gateway.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>

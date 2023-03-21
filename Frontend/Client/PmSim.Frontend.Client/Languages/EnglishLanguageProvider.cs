@@ -1,6 +1,6 @@
-﻿using PmSim.Frontend.Domain.Interfaces;
+﻿using PmSim.Frontend.Client.Interfaces;
 
-namespace PmSim.Frontend.Domain.Languages.English
+namespace PmSim.Frontend.Client.Languages.English
 {
 
     public class EnglishLanguageProvider : ILanguageProvider

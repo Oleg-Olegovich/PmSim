@@ -1,7 +1,7 @@
-﻿using PmSim.Backend.GameEngine.Enums;
-using PmSim.Backend.Gateway.Contracts.Account;
+﻿using PmSim.Backend.Gateway.Contracts.Account;
 using PmSim.Backend.Gateway.Contracts.Actions;
 using PmSim.Backend.Gateway.Contracts.Credentials;
+using PmSim.Backend.Gateway.Contracts.Enums;
 using PmSim.Backend.Gateway.Contracts.Game;
 using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Others;
 

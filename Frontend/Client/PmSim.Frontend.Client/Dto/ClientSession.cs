@@ -1,4 +1,4 @@
-﻿namespace PmSim.Frontend.Domain
+﻿namespace PmSim.Frontend.Client.Dto
 {
     public class ClientSession
     {

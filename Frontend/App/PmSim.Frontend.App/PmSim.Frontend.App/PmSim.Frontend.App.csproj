@@ -18,11 +18,11 @@
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview5" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Include="Avalonia.Themes.Simple" Version="11.0.0-preview5" />
-        <PackageReference Include="Material.Avalonia" Version="3.0.0-avalonia11-preview3" />
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
-        <PackageReference Include="Serilog" Version="3.0.0-dev-01862" />
+        <PackageReference Include="Material.Avalonia" Version="3.0.0-avalonia11-preview3.147-nightly" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.2.23128.3" />
+        <PackageReference Include="Serilog" Version="3.0.0-dev-01926" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
-        <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
+        <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -45,6 +45,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>LocalizationBasicScreen.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\Localizations\LocalizationGamesListScreen.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationGamesListScreen.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 
@@ -86,48 +91,64 @@
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationAppDescriptionScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationAppDescriptionScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationAppSettingsScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationAppSettingsScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationAppSettingsScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationBasicScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationBasicScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationBasicScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationTitleScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationTitleScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationTitleScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationSignInScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationSignInScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationSignInScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationSignUpScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationSignUpScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationSignUpScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationGameSettingsScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationGameSettingsScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationGameSettingsScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationGameScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationGameScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationGameScreen.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGamesListScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationGamesListScreen.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGamesListScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationGamesListScreen.resx</DependentUpon>
       </EmbeddedResource>
     </ItemGroup>
 
@@ -156,5 +177,9 @@
       <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\load_file.png" />
       <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\scan_document.png" />
       <UpToDateCheckInput Remove="Assets\StyleIcons\LightCitrus\settings.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Client\PmSim.Frontend.Client\PmSim.Frontend.Client.csproj" />
     </ItemGroup>
 </Project>

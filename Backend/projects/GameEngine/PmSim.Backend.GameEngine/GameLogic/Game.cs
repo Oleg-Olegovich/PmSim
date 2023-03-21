@@ -4,11 +4,11 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using PmSim.Backend.GameEngine.Dto;
-using PmSim.Backend.GameEngine.Enums;
 using PmSim.Backend.GameEngine.Exceptions;
 using PmSim.Backend.GameEngine.GameLogic.GameMaps;
 using PmSim.Backend.GameEngine.GameLogic.Incidents;
 using PmSim.Backend.GameEngine.GameLogic.Opportunities;
+using PmSim.Backend.Gateway.Contracts.Enums;
 
 namespace PmSim.Backend.GameEngine.GameLogic
 {

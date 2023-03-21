@@ -1,14 +1,14 @@
 ﻿using Microsoft.Extensions.Options;
-using PmSim.Backend.GameEngine.Enums;
 using PmSim.Backend.Gateway.Api;
 using PmSim.Backend.Gateway.Contracts.Account;
 using PmSim.Backend.Gateway.Contracts.Actions;
 using PmSim.Backend.Gateway.Contracts.Credentials;
+using PmSim.Backend.Gateway.Contracts.Enums;
 using PmSim.Backend.Gateway.Contracts.Game;
 using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Others;
 using PmSim.Backend.Gateway.Contracts.Game.Status;
 using PmSim.Frontend.Client.Interfaces;
-using PmSim.Frontend.Domain;
+using PmSim.Frontend.Client.Dto;
 
 namespace PmSim.Frontend.Client;
 
@@ -272,5 +272,13 @@ public class PmSimClient : IPmSimClient
         }
 
         return _gameStatus.Actors.FirstOrDefault(x => x.Id == id);
+    }
+
+    public List<Game> GetActiveGames()
+    {
+        var games = new List<Game>();
+        games.Add(new Game(0, "Тест", "Survival", "The simple village", 0, 10));
+        games.Add(new Game(0, "Test", "TimerAndMoney", "The simple village", 0, 5));
+        return games;
     }
 }

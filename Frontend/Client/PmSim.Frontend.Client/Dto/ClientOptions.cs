@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PmSim.Frontend.Domain
+﻿namespace PmSim.Frontend.Client.Dto
 {
     public class ClientOptions
     {

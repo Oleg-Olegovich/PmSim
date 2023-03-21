@@ -1,4 +1,6 @@
 ﻿
+
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{0533A71F-EFD5-4EE3-B5B2-5E274AF72C9A}"
 EndProject
@@ -16,8 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{0B38BB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Backend.GameEngine", "Backend\projects\GameEngine\PmSim.Backend.GameEngine\PmSim.Backend.GameEngine.csproj", "{B116CFE4-1866-4717-9CA8-91C87ED9E66F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Backend.Gateway.Contracts", "Backend\projects\Gateway\PmSim.Backend.Gateway.Contracts\PmSim.Backend.Gateway.Contracts.csproj", "{DE82A3C1-81A6-46A1-A7B0-336997766C28}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{139C93E1-6FA5-409E-9F43-A10534912404}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Backend.Gateway", "Backend\projects\Gateway\PmSim.Backend.Gateway\PmSim.Backend.Gateway.csproj", "{CF3BEBF4-FF42-4076-B588-BE695BD8682F}"
@@ -27,6 +27,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Frontend.App", "Frontend\App\PmSim.Frontend.App\PmSim.Frontend.App\PmSim.Frontend.App.csproj", "{5D0A5674-EF7B-48A2-AA5F-617E0EECA902}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Frontend.App.Desktop", "Frontend\App\PmSim.Frontend.App\PmSim.Frontend.App.Desktop\PmSim.Frontend.App.Desktop.csproj", "{9FA8481D-B154-4003-B279-8FC47FC73968}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Backend.Gateway.Contracts", "Backend\projects\Gateway\PmSim.Backend.Gateway.Contracts\PmSim.Backend.Gateway.Contracts.csproj", "{9B067D49-CCBD-4AE4-9DCE-071940C929CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,22 +42,18 @@ Global
 		{18CBAAF7-43F4-487A-AF51-D3E67E96CE86} = {1D7FB5BE-5FAF-4FD5-AECB-7547BDED7C9A}
 		{0B38BB9E-B9A4-48F3-A70C-91B0F0488BC2} = {1D7FB5BE-5FAF-4FD5-AECB-7547BDED7C9A}
 		{B116CFE4-1866-4717-9CA8-91C87ED9E66F} = {A4DE8A72-B2ED-4139-A2DA-1BC6F78272BC}
-		{DE82A3C1-81A6-46A1-A7B0-336997766C28} = {5461CC4A-9F32-4492-912A-50D46EC6090E}
 		{139C93E1-6FA5-409E-9F43-A10534912404} = {0533A71F-EFD5-4EE3-B5B2-5E274AF72C9A}
 		{CF3BEBF4-FF42-4076-B588-BE695BD8682F} = {5461CC4A-9F32-4492-912A-50D46EC6090E}
 		{22CC13B9-8FF6-42F8-B9D3-30F1FA5C5341} = {0B38BB9E-B9A4-48F3-A70C-91B0F0488BC2}
 		{5D0A5674-EF7B-48A2-AA5F-617E0EECA902} = {18CBAAF7-43F4-487A-AF51-D3E67E96CE86}
 		{9FA8481D-B154-4003-B279-8FC47FC73968} = {18CBAAF7-43F4-487A-AF51-D3E67E96CE86}
+		{9B067D49-CCBD-4AE4-9DCE-071940C929CC} = {5461CC4A-9F32-4492-912A-50D46EC6090E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B116CFE4-1866-4717-9CA8-91C87ED9E66F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B116CFE4-1866-4717-9CA8-91C87ED9E66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B116CFE4-1866-4717-9CA8-91C87ED9E66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B116CFE4-1866-4717-9CA8-91C87ED9E66F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE82A3C1-81A6-46A1-A7B0-336997766C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE82A3C1-81A6-46A1-A7B0-336997766C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE82A3C1-81A6-46A1-A7B0-336997766C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE82A3C1-81A6-46A1-A7B0-336997766C28}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF3BEBF4-FF42-4076-B588-BE695BD8682F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF3BEBF4-FF42-4076-B588-BE695BD8682F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF3BEBF4-FF42-4076-B588-BE695BD8682F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,5 +70,9 @@ Global
 		{9FA8481D-B154-4003-B279-8FC47FC73968}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FA8481D-B154-4003-B279-8FC47FC73968}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FA8481D-B154-4003-B279-8FC47FC73968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B067D49-CCBD-4AE4-9DCE-071940C929CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B067D49-CCBD-4AE4-9DCE-071940C929CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B067D49-CCBD-4AE4-9DCE-071940C929CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B067D49-CCBD-4AE4-9DCE-071940C929CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

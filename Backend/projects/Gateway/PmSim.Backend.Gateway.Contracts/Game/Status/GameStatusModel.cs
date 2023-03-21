@@ -1,5 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using PmSim.Backend.GameEngine.Enums;
+using PmSim.Backend.Gateway.Contracts.Enums;
 using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Others;
 
 namespace PmSim.Backend.Gateway.Contracts.Game.Status

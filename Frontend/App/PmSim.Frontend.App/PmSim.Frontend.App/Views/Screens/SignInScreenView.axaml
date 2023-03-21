@@ -54,7 +54,7 @@
         <Button Grid.Row="5"
                 Grid.Column="1"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonNext}"
-                Command="{Binding NextCommand}"
+                Command="{Binding GamesListCommand}"
                 Classes="Stretch Menu"/>
         
         <Button Grid.Row="6"

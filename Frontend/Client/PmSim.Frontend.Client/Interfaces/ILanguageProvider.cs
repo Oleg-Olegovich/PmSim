@@ -1,4 +1,4 @@
-﻿namespace PmSim.Frontend.Domain.Interfaces
+﻿namespace PmSim.Frontend.Client.Interfaces
 {
 
     /// <summary>
