@@ -15,9 +15,10 @@
                    Text="{x:Static localizations:LocalizationGamesListScreen.Header}"
                    Classes="Header"/>
         
-        <DataGrid Grid.Row="0"
+        <DataGrid Grid.Row="1"
                   Grid.Column="0"
                   Grid.ColumnSpan="3"
+                  AutoGenerateColumns="True"
                   Items="{Binding Games}"/>
         
         <Button Grid.Row="2"
@@ -27,7 +28,7 @@
                 Classes="Stretch Menu"/>
         
         <Button Grid.Row="2"
-                Grid.Column="0"
+                Grid.Column="1"
                 Content="{x:Static localizations:LocalizationGamesListScreen.ButtonConnect}"
                 Command="{Binding SignUpCommand}"
                 Classes="Stretch Menu"/>

@@ -37,10 +37,10 @@ public class SignInScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> GamesListCommand { get; }
     
-    public SignInScreenViewModel(BasicWindowViewModel baseWindow, TitleScreenViewModel previous) 
-        : base(baseWindow, previous)
+    public SignInScreenViewModel(BasicWindowViewModel baseWindow, TitleScreenViewModel titleScreen) 
+        : base(baseWindow, titleScreen)
     {
-        _titleScreen = previous;
+        _titleScreen = titleScreen;
         SignUpCommand = ReactiveCommand.Create(ProcessSignUpClick);
         GamesListCommand = ReactiveCommand.Create(OpenGamesList);
     }
