@@ -15,4 +15,5 @@
     <StyleInclude Source="/Styles/DarkMaterialTheme/StackPanelStyles.axaml"/>
     <StyleInclude Source="/Styles/DarkMaterialTheme/CheckBoxStyles.axaml"/>
     <StyleInclude Source="/Styles/DarkMaterialTheme/ImageStyles.axaml"/>
+    <StyleInclude Source="/Styles/DarkMaterialTheme/DataGridStyles.axaml"/>
 </Styles>

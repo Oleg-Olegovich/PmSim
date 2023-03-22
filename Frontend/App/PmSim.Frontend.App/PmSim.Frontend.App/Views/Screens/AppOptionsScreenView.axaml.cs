@@ -1,12 +1,11 @@
-﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
 namespace PmSim.Frontend.App.Views.Screens;
 
-public partial class GameSettingsScreenView : UserControl
+public partial class AppOptionsScreenView : UserControl
 {
-    public GameSettingsScreenView()
+    public AppOptionsScreenView()
     {
         InitializeComponent();
     }

@@ -59,7 +59,7 @@ namespace PmSim.Backend.Gateway.MultiplayerModeApi
             }
 
             var settings = request.IsDefaultSettings
-                ? new GameSettings(request.Mode)
+                ? new GameOptions(request.Mode)
                 : ConvertSettings(request.Mode, request.Settings);
             var game = new Game(request.Founder, _games.Count, request.MaxPlayersNumber, request.BotsNumber, settings);
             _games.Add(game);
@@ -399,8 +399,8 @@ namespace PmSim.Backend.Gateway.MultiplayerModeApi
             return player.Key ?? "";
         }
 
-        private static GameSettings ConvertSettings(int mode, SettingsModel model)
-            => new GameSettings(mode, model.ConnectionRealTime, model.ChoosingBackgroundRealTime,
+        private static GameOptions ConvertSettings(int mode, SettingsModel model)
+            => new GameOptions(mode, model.ConnectionRealTime, model.ChoosingBackgroundRealTime,
                 model.SprintRealTime, model.DiplomacyRealTime, model.IncidentRealTime, model.AuctionRealTime,
                 model.SprintActionsNumbers, model.StartUpCapital, model.MapNumber);
 

@@ -110,7 +110,7 @@ namespace PmSim.Frontend.Client.Languages.Russian
 
         public string Back => "Назад";
 
-        public string GameSettings => "Настройки партии";
+        public string GameOptions => "Настройки партии";
 
         public string ConnectionRealTime => "Время подключения (сек.)";
 

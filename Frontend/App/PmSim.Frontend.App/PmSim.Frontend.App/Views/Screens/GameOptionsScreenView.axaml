@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="PmSim.Frontend.App.Views.Screens.GameSettingsScreenView">
+             x:Class="PmSim.Frontend.App.Views.Screens.GameOptionsScreenView">
     
     <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*"
           ColumnDefinitions="*,*,10,*,*">
@@ -12,16 +12,52 @@
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
-                   Text="{x:Static localizations:LocalizationGameSettingsScreen.Header}"
+                   Text="{x:Static localizations:LocalizationGameOptionsScreen.Header}"
                    Classes="Header"/>
         
         <!-- Game settings form -->
         
         <StackPanel Grid.Row="2"
                     Grid.Column="1"
+                    Grid.ColumnSpan="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockConnectionRealTime}"/>
+                       Text="{x:Static localizations:LocalizationGamesListScreen.Name}"/>
+            <Border Classes="TextStroke">
+                <TextBox Classes="Bordered"
+                         Text="{Binding Name}"/>
+            </Border>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1"
+                    Orientation="Vertical">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationGamesListScreen.Mode}"/>
+            <Border Classes="TextStroke">
+                <ComboBox Classes="Bordered"
+                          Items="{Binding Modes}"
+                          SelectedIndex="{Binding SelectedMode}"/>
+            </Border>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3"
+                    Grid.Column="3"
+                    Orientation="Vertical">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationGamesListScreen.Map}"/>
+            <Border Classes="TextStroke">
+                <ComboBox Classes="Bordered"
+                          Items="{Binding Maps}"
+                          SelectedIndex="{Binding SelectedMap}"/>
+            </Border>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="4"
+                    Grid.Column="1"
+                    Orientation="Vertical">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockConnectionRealTime}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
@@ -29,11 +65,11 @@
             </Border>
         </StackPanel>
         
-        <StackPanel Grid.Row="2"
+        <StackPanel Grid.Row="4"
                     Grid.Column="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockChoosingBackgroundRealTime}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockChoosingBackgroundRealTime}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
@@ -41,11 +77,11 @@
             </Border>
         </StackPanel>
         
-        <StackPanel Grid.Row="3"
+        <StackPanel Grid.Row="5"
                     Grid.Column="1"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockSprintRealTime}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockSprintRealTime}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
@@ -53,11 +89,11 @@
             </Border>
         </StackPanel>
         
-        <StackPanel Grid.Row="3"
+        <StackPanel Grid.Row="5"
                     Grid.Column="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockDiplomacyRealTime}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockDiplomacyRealTime}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
@@ -65,11 +101,11 @@
             </Border>
         </StackPanel>
         
-        <StackPanel Grid.Row="4"
+        <StackPanel Grid.Row="6"
                     Grid.Column="1"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockIncidentRealTime}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockIncidentRealTime}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
@@ -77,11 +113,11 @@
             </Border>
         </StackPanel>
         
-        <StackPanel Grid.Row="4"
+        <StackPanel Grid.Row="6"
                     Grid.Column="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockAuctionRealTime}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockAuctionRealTime}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
@@ -89,11 +125,11 @@
             </Border>
         </StackPanel>
         
-        <StackPanel Grid.Row="5"
+        <StackPanel Grid.Row="7"
                     Grid.Column="1"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockSprintActionsNumber}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockSprintActionsNumber}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
@@ -101,11 +137,11 @@
             </Border>
         </StackPanel>
         
-        <StackPanel Grid.Row="5"
+        <StackPanel Grid.Row="7"
                     Grid.Column="3"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameSettingsScreen.TextBlockStartUpCapital}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockStartUpCapital}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
@@ -115,25 +151,25 @@
         
         <!-- Buttons -->
         
-        <Button Grid.Row="6"
-                Grid.Column="1"
-                Grid.ColumnSpan="3"
-                Content="{x:Static localizations:LocalizationGameSettingsScreen.ButtonDefault}"
-                Command="{Binding DefaultCommand}"
-                Classes="Stretch Menu"/>
+        <Grid Grid.Row="8" 
+              Grid.Column="0"
+              Grid.ColumnSpan="5"
+              ColumnDefinitions="*, *, *">
+            
+            <Button Grid.Column="0"
+                    Content="{x:Static localizations:LocalizationGameOptionsScreen.ButtonDefault}"
+                    Command="{Binding DefaultCommand}"
+                    Classes="Stretch Menu"/>
         
-        <Button Grid.Row="7"
-                Grid.Column="1"
-                Grid.ColumnSpan="3"
-                Content="{x:Static localizations:LocalizationGameSettingsScreen.ButtonStart}"
-                Command="{Binding NextCommand}"
-                Classes="Stretch Menu"/>
+            <Button Grid.Column="1"
+                    Content="{x:Static localizations:LocalizationGameOptionsScreen.ButtonStart}"
+                    Command="{Binding NextCommand}"
+                    Classes="Stretch Menu"/>
         
-        <Button Grid.Row="8"
-                Grid.Column="1"
-                Grid.ColumnSpan="3"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"/>
+            <Button Grid.Column="2"
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                    Command="{Binding BackCommand}"
+                    Classes="Stretch AttentionGrabbing"/>
+        </Grid>
     </Grid>
 </UserControl>

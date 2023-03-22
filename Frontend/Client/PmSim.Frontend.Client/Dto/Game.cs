@@ -12,7 +12,7 @@ public class Game
     
     public int Players { get; }
     
-    public int MapPlayers { get; }
+    public int MaxPlayers { get; }
 
     public Game(int id, string name, string mode, string map, int players, int mapPlayers)
     {
@@ -21,6 +21,6 @@ public class Game
         Name = name;
         Map = map;
         Players = players;
-        MapPlayers = mapPlayers;
+        MaxPlayers = mapPlayers;
     }
 }

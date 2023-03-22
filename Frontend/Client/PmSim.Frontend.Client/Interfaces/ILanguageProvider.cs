@@ -24,7 +24,7 @@
         string Options { get; }
         string Exit { get; }
         string Back { get; }
-        string GameSettings { get; }
+        string GameOptions { get; }
         string ConnectionRealTime { get; }
         string ChoosingBackgroundRealTime { get; }
         string SprintRealTime { get; }

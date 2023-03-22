@@ -3,7 +3,7 @@
 namespace PmSim.Backend.GameEngine.Dto
 {
 
-    public class GameSettings
+    public class GameOptions
     {
         public int MapNumber { get; }
 
@@ -25,7 +25,7 @@ namespace PmSim.Backend.GameEngine.Dto
 
         public GameModes Mode { get; }
 
-        public GameSettings(int mode)
+        public GameOptions(int mode)
         {
             Mode = (GameModes)mode;
             MapNumber = 0;
@@ -39,7 +39,7 @@ namespace PmSim.Backend.GameEngine.Dto
             StartUpCapital = GameConstants.DefaultStartUpCapital;
         }
 
-        public GameSettings(int mode, int connection, int background, int sprint,
+        public GameOptions(int mode, int connection, int background, int sprint,
             int diplomacy, int incident, int auction, int sprintActions, int capital, int mapNumber)
         {
             Mode = (GameModes)mode;

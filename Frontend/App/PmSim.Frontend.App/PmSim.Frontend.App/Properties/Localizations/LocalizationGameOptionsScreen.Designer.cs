@@ -22,14 +22,14 @@ namespace PmSim.Frontend.App.Properties.Localizations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LocalizationAppSettingsScreen {
+    public class LocalizationGameOptionsScreen {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LocalizationAppSettingsScreen() {
+        internal LocalizationGameOptionsScreen() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationAppSettingsScreen", typeof(LocalizationAppSettingsScreen).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationGameOptionsScreen", typeof(LocalizationGameOptionsScreen).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,25 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Настройки приложения.
+        ///   Looks up a localized string similar to По умолчанию.
+        /// </summary>
+        public static string ButtonDefault {
+            get {
+                return ResourceManager.GetString("ButtonDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Начать!.
+        /// </summary>
+        public static string ButtonStart {
+            get {
+                return ResourceManager.GetString("ButtonStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Настройки партии.
         /// </summary>
         public static string Header {
             get {
@@ -70,47 +88,74 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Язык.
+        ///   Looks up a localized string similar to Аукцион (сек.).
         /// </summary>
-        public static string TextBlockLanguage {
+        public static string TextBlockAuctionRealTime {
             get {
-                return ResourceManager.GetString("TextBlockLanguage", resourceCulture);
+                return ResourceManager.GetString("TextBlockAuctionRealTime", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тема.
+        ///   Looks up a localized string similar to Выбор предыстории.
         /// </summary>
-        public static string TextBlockTheme {
+        public static string TextBlockChoosingBackgroundRealTime {
             get {
-                return ResourceManager.GetString("TextBlockTheme", resourceCulture);
+                return ResourceManager.GetString("TextBlockChoosingBackgroundRealTime", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Режим окна.
+        ///   Looks up a localized string similar to Подключение.
         /// </summary>
-        public static string TextBlockWindowState {
+        public static string TextBlockConnectionRealTime {
             get {
-                return ResourceManager.GetString("TextBlockWindowState", resourceCulture);
+                return ResourceManager.GetString("TextBlockConnectionRealTime", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Полноэкранный.
+        ///   Looks up a localized string similar to Дипломатия.
         /// </summary>
-        public static string ToggleSwitchFullscreen {
+        public static string TextBlockDiplomacyRealTime {
             get {
-                return ResourceManager.GetString("ToggleSwitchFullscreen", resourceCulture);
+                return ResourceManager.GetString("TextBlockDiplomacyRealTime", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оконный.
+        ///   Looks up a localized string similar to Происшествие.
         /// </summary>
-        public static string ToggleSwitchWindowed {
+        public static string TextBlockIncidentRealTime {
             get {
-                return ResourceManager.GetString("ToggleSwitchWindowed", resourceCulture);
+                return ResourceManager.GetString("TextBlockIncidentRealTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Действий спринта.
+        /// </summary>
+        public static string TextBlockSprintActionsNumber {
+            get {
+                return ResourceManager.GetString("TextBlockSprintActionsNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спринт.
+        /// </summary>
+        public static string TextBlockSprintRealTime {
+            get {
+                return ResourceManager.GetString("TextBlockSprintRealTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Стартовый капитал.
+        /// </summary>
+        public static string TextBlockStartUpCapital {
+            get {
+                return ResourceManager.GetString("TextBlockStartUpCapital", resourceCulture);
             }
         }
     }

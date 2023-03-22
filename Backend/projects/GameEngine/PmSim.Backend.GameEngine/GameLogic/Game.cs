@@ -22,7 +22,7 @@ namespace PmSim.Backend.GameEngine.GameLogic
         /// </summary>
         private int _playersCompleted;
 
-        private readonly GameSettings _settings;
+        private readonly GameOptions _settings;
         private readonly List<Player> _players = new List<Player>();
         private readonly List<Auction> _auctions = new List<Auction>();
         private Bot[] _bots;
@@ -62,7 +62,7 @@ namespace PmSim.Backend.GameEngine.GameLogic
 
         public int GameMap => _map.MapImageNumber;
 
-        public Game(string founder, int id, int players, int bots, GameSettings settings)
+        public Game(string founder, int id, int players, int bots, GameOptions settings)
         {
             _map = FindMap(settings.MapNumber);
             Founder = founder;

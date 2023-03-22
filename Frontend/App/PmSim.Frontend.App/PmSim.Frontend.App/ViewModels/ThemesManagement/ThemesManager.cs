@@ -53,7 +53,7 @@ public class ThemesManager
             // Avalonia developers are to blame for this crutch.
             app.RequestedThemeVariant = value.ToString().StartsWith("Dark") 
                 ? ThemeVariant.Dark 
-                : ThemeVariant.Default;
+                : ThemeVariant.Light;
         }
     }
 

@@ -11,4 +11,5 @@
     <StyleInclude Source="/Styles/LightFluentTheme/CheckBoxStyles.axaml"/>
     <StyleInclude Source="/Styles/LightFluentTheme/StackPanelStyles.axaml"/>
     <StyleInclude Source="/Styles/LightFluentTheme/ImageStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightFluentTheme/DataGridStyles.axaml"/>
 </Styles>

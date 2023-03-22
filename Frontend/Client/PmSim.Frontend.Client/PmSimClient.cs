@@ -274,11 +274,21 @@ public class PmSimClient : IPmSimClient
         return _gameStatus.Actors.FirstOrDefault(x => x.Id == id);
     }
 
-    public List<Game> GetActiveGames()
+    public Game[] GetActiveGames()
     {
-        var games = new List<Game>();
-        games.Add(new Game(0, "Тест", "Survival", "The simple village", 0, 10));
-        games.Add(new Game(0, "Test", "TimerAndMoney", "The simple village", 0, 5));
+        var games = new Game[]
+        {
+            new Game(0, "Тест", "Survival", "The simple village", 0, 10),
+            new Game(1, "Test", "TimerAndMoney", "The simple village", 0, 5)
+        };
         return games;
+    }
+
+    public string[] GetModes()
+        => Enum.GetNames(typeof(GameModes));
+
+    public string[] GetMaps()
+    {
+        return new string[] { "The simple village" };
     }
 }

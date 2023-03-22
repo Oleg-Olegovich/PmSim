@@ -1,4 +1,5 @@
 ﻿using PmSim.Frontend.App.ViewModels.Windows;
+using PmSim.Frontend.Client;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -22,8 +23,6 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
     }
     
     public SingleSignInScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
-        : base(baseWindow, previous, new GameSettingsScreenViewModel(baseWindow, previous))
-    {
-        
-    }
+        : base(baseWindow, previous, new GameOptionsScreenViewModel(baseWindow, previous, new PmSimClient()))
+    { }
 }

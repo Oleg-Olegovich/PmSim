@@ -112,7 +112,7 @@ namespace PmSim.Frontend.Client.Languages.English
         
         public string Back => "Back";
         
-        public string GameSettings => "Game settings";
+        public string GameOptions => "Game settings";
 
         public string ConnectionRealTime => "Connection real time (sec.)";
         

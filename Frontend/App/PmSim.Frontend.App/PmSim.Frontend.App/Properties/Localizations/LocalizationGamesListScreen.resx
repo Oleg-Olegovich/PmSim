@@ -27,4 +27,19 @@
     <data name="ButtonConnect" xml:space="preserve">
         <value>Подключиться</value>
     </data>
+    <data name="Name" xml:space="preserve">
+        <value>Название</value>
+    </data>
+    <data name="Mode" xml:space="preserve">
+        <value>Режим</value>
+    </data>
+    <data name="Map" xml:space="preserve">
+        <value>Карта</value>
+    </data>
+    <data name="Players" xml:space="preserve">
+        <value>Игроки</value>
+    </data>
+    <data name="MaxPlayers" xml:space="preserve">
+        <value>Макс. игроков</value>
+    </data>
 </root>

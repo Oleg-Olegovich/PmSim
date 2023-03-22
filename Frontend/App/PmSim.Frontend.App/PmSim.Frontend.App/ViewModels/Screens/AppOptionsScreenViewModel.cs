@@ -9,7 +9,7 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 /// <summary>
 /// Implements the logic of the application settings screen.
 /// </summary>
-public class AppSettingsScreenViewModel : BasicScreenViewModel
+public class AppOptionsScreenViewModel : BasicScreenViewModel
 {
     private readonly BasicScreenViewModel _previous;
     
@@ -42,7 +42,7 @@ public class AppSettingsScreenViewModel : BasicScreenViewModel
             LocalizationsProvider.Localization = language;
             BaseWindow.Settings.Language = language;
             this.RaiseAndSetIfChanged(ref _currentLanguageIndex, value);
-            BaseWindow.Content = new AppSettingsScreenViewModel(BaseWindow, _previous);
+            BaseWindow.Content = new AppOptionsScreenViewModel(BaseWindow, _previous);
         }
     }
 
@@ -83,7 +83,7 @@ public class AppSettingsScreenViewModel : BasicScreenViewModel
         }
     }
 
-    public AppSettingsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous)
+    public AppOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous)
         : base(baseWindow, previous)
     {
         _previous = previous;

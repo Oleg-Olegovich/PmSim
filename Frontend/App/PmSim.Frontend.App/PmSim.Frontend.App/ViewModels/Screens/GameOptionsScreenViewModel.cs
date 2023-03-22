@@ -1,11 +1,38 @@
 ﻿using System.Reactive;
 using PmSim.Frontend.App.ViewModels.Windows;
+using PmSim.Frontend.Client;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
 
-public class GameSettingsScreenViewModel : BasicScreenViewModel
+public class GameOptionsScreenViewModel : BasicScreenViewModel
 {
+    // Option fields.
+    
+    private string _name;
+    
+    public string Name
+    {
+        get => _name;
+        set => this.RaiseAndSetIfChanged(ref _name, value);
+    }
+    
+    private int _selectedMode;
+    
+    public int SelectedMode
+    {
+        get => _selectedMode;
+        set => this.RaiseAndSetIfChanged(ref _selectedMode, value);
+    }
+    
+    private int _selectedMap;
+    
+    public int SelectedMap
+    {
+        get => _selectedMap;
+        set => this.RaiseAndSetIfChanged(ref _selectedMap, value);
+    }
+    
     private int _connectionRealTime;
     
     public int ConnectionRealTime
@@ -70,17 +97,40 @@ public class GameSettingsScreenViewModel : BasicScreenViewModel
         set => this.RaiseAndSetIfChanged(ref _startUpCapital, value);
     }
     
+    // Other field.
+    
+    private string[] _modes;
+    
+    public string[] Modes
+    {
+        get => _modes;
+        set => this.RaiseAndSetIfChanged(ref _modes, value);
+    }
+    
+    private string[] _maps;
+    
+    public string[] Maps
+    {
+        get => _maps;
+        set => this.RaiseAndSetIfChanged(ref _maps, value);
+    }
+    
     public ReactiveCommand<Unit, Unit> DefaultCommand { get; }
 
-    public GameSettingsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
-        : base(baseWindow, previous, new GameScreenViewModel(baseWindow, previous))
+    public GameOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, PmSimClient client) 
+        : base(baseWindow, previous, new GameScreenViewModel(baseWindow, previous, client))
     {
+        Modes = client.GetModes();
+        Maps = client.GetMaps();
         ProcessDefaultClick();
         DefaultCommand = ReactiveCommand.Create(ProcessDefaultClick);
     }
 
     private void ProcessDefaultClick()
     {
+        Name = "Default";
+        SelectedMode = 0;
+        SelectedMap = 0;
         ConnectionRealTime = 60;
         ChoosingBackgroundRealTime = 60;
         SprintRealTime = 180;

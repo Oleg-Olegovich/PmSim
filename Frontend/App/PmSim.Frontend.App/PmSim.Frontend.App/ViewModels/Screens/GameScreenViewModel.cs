@@ -1,12 +1,15 @@
 ﻿using System.Reactive;
 using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Windows;
+using PmSim.Frontend.Client;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class GameScreenViewModel : BasicScreenViewModel
 {
+    private readonly PmSimClient _client;
+    
     private string _gameStage = "Game stage";
     
     public string GameStage
@@ -73,9 +76,10 @@ public class GameScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> GiveUpCommand { get; }
 
-    public GameScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
+    public GameScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, PmSimClient client) 
         : base(baseWindow, previous)
     {
+        _client = client;
         MainAreaContent = new GameMap0ViewModel();
         GiveUpCommand = ReactiveCommand.Create(ProcessGiveUpClick);
     }

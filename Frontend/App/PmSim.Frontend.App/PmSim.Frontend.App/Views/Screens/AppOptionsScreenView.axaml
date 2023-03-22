@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
-             x:Class="PmSim.Frontend.App.Views.Screens.AppSettingsScreenView">
+             x:Class="PmSim.Frontend.App.Views.Screens.AppOptionsScreenView">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +25,7 @@
 
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Text="{x:Static localizations:LocalizationAppSettingsScreen.Header}"
+                   Text="{x:Static localizations:LocalizationAppOptionsScreen.Header}"
                    Classes="Header"/>
         
         <!-- Settings -->
@@ -34,7 +34,7 @@
                     Grid.Column="1"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockLanguage}"/>
+                       Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockLanguage}"/>
             <Border Classes="TextStroke">
                 <ComboBox Classes="Bordered"
                           Items="{Binding LocalizationNames}"
@@ -46,7 +46,7 @@
                     Grid.Column="1"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockTheme}"/>
+                       Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockTheme}"/>
             <Border Classes="TextStroke">
                 <ComboBox Classes="Bordered"
                           Items="{Binding ThemeNames}"
@@ -58,11 +58,11 @@
                     Grid.Column="1"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationAppSettingsScreen.TextBlockWindowState}"/>
+                       Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockWindowState}"/>
             <Border Classes="TextStroke">
                 <ToggleSwitch Classes="Settings"
-                              OnContent="{x:Static localizations:LocalizationAppSettingsScreen.ToggleSwitchFullscreen}"
-                              OffContent="{x:Static localizations:LocalizationAppSettingsScreen.ToggleSwitchWindowed}"
+                              OnContent="{x:Static localizations:LocalizationAppOptionsScreen.ToggleSwitchFullscreen}"
+                              OffContent="{x:Static localizations:LocalizationAppOptionsScreen.ToggleSwitchWindowed}"
                               IsChecked="{Binding IsFullscreen}"/>
             </Border>
         </StackPanel>

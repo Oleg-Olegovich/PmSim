@@ -47,7 +47,7 @@ public class GatewayClient : IGatewayClient
         }
 
         var settings = request.IsDefaultSettings
-            ? new GameSettings(request.Mode)
+            ? new GameOptions(request.Mode)
             : ConvertSettings(request.Mode, request.Settings);
         _game = new Game(request.Founder, 0, request.MaxPlayersNumber, request.BotsNumber, settings);
         return new GameModel()
@@ -384,8 +384,8 @@ public class GatewayClient : IGatewayClient
         return _game.Founder;
     }
 
-    private static GameSettings ConvertSettings(int mode, SettingsModel model)
-        => new GameSettings(mode, model.ConnectionRealTime, model.ChoosingBackgroundRealTime,
+    private static GameOptions ConvertSettings(int mode, SettingsModel model)
+        => new GameOptions(mode, model.ConnectionRealTime, model.ChoosingBackgroundRealTime,
             model.SprintRealTime, model.DiplomacyRealTime, model.IncidentRealTime, model.AuctionRealTime,
             model.SprintActionsNumbers, model.StartUpCapital, model.MapNumber);
 

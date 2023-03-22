@@ -20,4 +20,19 @@
     <data name="ButtonNewGame" xml:space="preserve">
         <value>New game</value>
     </data>
+    <data name="Map" xml:space="preserve">
+        <value>Map</value>
+    </data>
+    <data name="MaxPlayers" xml:space="preserve">
+        <value>Max players</value>
+    </data>
+    <data name="Mode" xml:space="preserve">
+        <value>Mode</value>
+    </data>
+    <data name="Name" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="Players" xml:space="preserve">
+        <value>Players</value>
+    </data>
 </root>

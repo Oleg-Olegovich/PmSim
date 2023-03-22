@@ -36,10 +36,10 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>LocalizationTitleScreen.resx</DependentUpon>
       </Compile>
-      <Compile Update="Properties\Localization\LocalizationAppSettingsScreen.Designer.cs">
+      <Compile Update="Properties\Localization\LocalizationAppOptionsScreen.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>LocalizationAppSettingsScreen.resx</DependentUpon>
+        <DependentUpon>LocalizationAppOptionsScreen.resx</DependentUpon>
       </Compile>
       <Compile Update="Properties\Localization\LocalizationBasicScreen.Designer.cs">
         <DesignTime>True</DesignTime>
@@ -70,13 +70,13 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>LocalizationTitleScreen.en.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localization\LocalizationAppSettingsScreen.resx">
+      <EmbeddedResource Update="Properties\Localization\LocalizationAppOptionsScreen.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>LocalizationAppSettingsScreen.Designer.cs</LastGenOutput>
+        <LastGenOutput>LocalizationAppOptionsScreen.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localization\LocalizationAppSettingsScreen.en.resx">
+      <EmbeddedResource Update="Properties\Localization\LocalizationAppOptionsScreen.en.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>LocalizationAppSettingsScreen.en.Designer.cs</LastGenOutput>
+        <LastGenOutput>LocalizationAppOptionsScreen.en.Designer.cs</LastGenOutput>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localization\LocalizationBasicScreen.resx">
         <Generator>ResXFileCodeGenerator</Generator>
@@ -93,12 +93,12 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <DependentUpon>LocalizationAppDescriptionScreen.resx</DependentUpon>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localizations\LocalizationAppSettingsScreen.resx">
+      <EmbeddedResource Update="Properties\Localizations\LocalizationAppOptionsScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localizations\LocalizationAppSettingsScreen.en.resx">
+      <EmbeddedResource Update="Properties\Localizations\LocalizationAppOptionsScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
-        <DependentUpon>LocalizationAppSettingsScreen.resx</DependentUpon>
+        <DependentUpon>LocalizationAppOptionsScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationBasicScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
@@ -128,12 +128,12 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <DependentUpon>LocalizationSignUpScreen.resx</DependentUpon>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localizations\LocalizationGameSettingsScreen.resx">
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGameOptionsScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Localizations\LocalizationGameSettingsScreen.en.resx">
+      <EmbeddedResource Update="Properties\Localizations\LocalizationGameOptionsScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
-        <DependentUpon>LocalizationGameSettingsScreen.resx</DependentUpon>
+        <DependentUpon>LocalizationGameOptionsScreen.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationGameScreen.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>

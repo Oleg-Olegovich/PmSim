@@ -18,19 +18,34 @@
         <DataGrid Grid.Row="1"
                   Grid.Column="0"
                   Grid.ColumnSpan="3"
-                  AutoGenerateColumns="True"
-                  Items="{Binding Games}"/>
+                  Classes="Common"
+                  Items="{Binding Games}"
+                  SelectedItem="{Binding SelectedGame}">
+                <DataGrid.Columns>
+                        <DataGridTextColumn Header="№"  Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Name}" 
+                                            Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Mode}" 
+                                            Binding="{Binding Mode}" />
+                        <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Map}" 
+                                            Binding="{Binding Map}" />
+                        <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Players}" 
+                                            Binding="{Binding Players}" />
+                        <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.MaxPlayers}" 
+                                            Binding="{Binding MaxPlayers}" />
+                </DataGrid.Columns>
+        </DataGrid>
         
         <Button Grid.Row="2"
                 Grid.Column="0"
                 Content="{x:Static localizations:LocalizationGamesListScreen.ButtonNewGame}"
-                Command="{Binding SignUpCommand}"
+                Command="{Binding NewGameCommand}"
                 Classes="Stretch Menu"/>
         
         <Button Grid.Row="2"
                 Grid.Column="1"
                 Content="{x:Static localizations:LocalizationGamesListScreen.ButtonConnect}"
-                Command="{Binding SignUpCommand}"
+                Command="{Binding ConnectCommand}"
                 Classes="Stretch Menu"/>
         
         <Button Grid.Row="2"
