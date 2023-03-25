@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.GameOptionsScreenView">
     
     <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*"
@@ -152,8 +152,8 @@
         <!-- Buttons -->
         
         <Grid Grid.Row="8" 
-              Grid.Column="0"
-              Grid.ColumnSpan="5"
+              Grid.Column="1"
+              Grid.ColumnSpan="3"
               ColumnDefinitions="*, *, *">
             
             <Button Grid.Column="0"
@@ -163,7 +163,7 @@
         
             <Button Grid.Column="1"
                     Content="{x:Static localizations:LocalizationGameOptionsScreen.ButtonStart}"
-                    Command="{Binding NextCommand}"
+                    Command="{Binding StartCommand}"
                     Classes="Stretch Menu"/>
         
             <Button Grid.Column="2"

@@ -10,15 +10,13 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 /// </summary>
 public abstract class BasicScreenViewModel : ViewModelBase
 {
-    private readonly BasicScreenViewModel? _previousScreen, _nextScreen;
+    private readonly BasicScreenViewModel? _previousScreen;
 
     // <summary>
     /// Returns to the previous screen.
     /// If previous screen is null, returns to the title screen.
     /// </summary>
     public ReactiveCommand<Unit, Unit> BackCommand { get; }
-    
-    public ReactiveCommand<Unit, Unit> NextCommand { get; }
 
     /// <summary>
     /// Reference to the base window of the 
@@ -26,18 +24,12 @@ public abstract class BasicScreenViewModel : ViewModelBase
     /// </summary>
     public BasicWindowViewModel BaseWindow { get; }
 
-    protected BasicScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel? previous = null, 
-        BasicScreenViewModel? nextScreen = null)
+    protected BasicScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel? previous = null)
     {
         BaseWindow = baseWindow;
         _previousScreen = previous;
-        _nextScreen = nextScreen;
         BackCommand = ReactiveCommand.Create(ProcessBackClick);
-        NextCommand = ReactiveCommand.Create(ProcessNextClick);
     }
-    
-    private void ProcessNextClick()
-        => BaseWindow.Content = _nextScreen;
 
     private void ProcessBackClick()
         => BaseWindow.Content = _previousScreen ?? new TitleScreenViewModel(BaseWindow);

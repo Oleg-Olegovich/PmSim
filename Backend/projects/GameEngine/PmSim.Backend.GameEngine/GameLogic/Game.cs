@@ -8,7 +8,7 @@ using PmSim.Backend.GameEngine.Exceptions;
 using PmSim.Backend.GameEngine.GameLogic.GameMaps;
 using PmSim.Backend.GameEngine.GameLogic.Incidents;
 using PmSim.Backend.GameEngine.GameLogic.Opportunities;
-using PmSim.Backend.Gateway.Contracts.Enums;
+using PmSim.Shared.Contracts.Enums;
 
 namespace PmSim.Backend.GameEngine.GameLogic
 {

@@ -6,17 +6,17 @@
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.GamesListScreenView">
     
-    <Grid RowDefinitions="Auto, *, Auto"
-          ColumnDefinitions="*, *, *">
+    <Grid RowDefinitions="10, Auto, *, Auto, 10"
+          ColumnDefinitions="*, 2*, 2*, 2*, *">
         
-        <TextBlock Grid.Row="0"
-                   Grid.Column="0"
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
                    Grid.ColumnSpan="3"
                    Text="{x:Static localizations:LocalizationGamesListScreen.Header}"
                    Classes="Header"/>
         
-        <DataGrid Grid.Row="1"
-                  Grid.Column="0"
+        <DataGrid Grid.Row="2"
+                  Grid.Column="1"
                   Grid.ColumnSpan="3"
                   Classes="Common"
                   Items="{Binding Games}"
@@ -36,20 +36,20 @@
                 </DataGrid.Columns>
         </DataGrid>
         
-        <Button Grid.Row="2"
-                Grid.Column="0"
+        <Button Grid.Row="3"
+                Grid.Column="1"
                 Content="{x:Static localizations:LocalizationGamesListScreen.ButtonNewGame}"
                 Command="{Binding NewGameCommand}"
                 Classes="Stretch Menu"/>
         
-        <Button Grid.Row="2"
-                Grid.Column="1"
+        <Button Grid.Row="3"
+                Grid.Column="2"
                 Content="{x:Static localizations:LocalizationGamesListScreen.ButtonConnect}"
                 Command="{Binding ConnectCommand}"
                 Classes="Stretch Menu"/>
         
-        <Button Grid.Row="2"
-                Grid.Column="2"
+        <Button Grid.Row="3"
+                Grid.Column="3"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
                 Classes="Stretch AttentionGrabbing"/>

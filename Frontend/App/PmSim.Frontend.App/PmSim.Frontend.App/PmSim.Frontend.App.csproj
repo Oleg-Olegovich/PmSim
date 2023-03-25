@@ -51,6 +51,16 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>LocalizationGamesListScreen.resx</DependentUpon>
       </Compile>
+      <Compile Update="Properties\Localizations\LocalizationErrorScreen.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationErrorScreen.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\Localizations\LocalizationEmailConfirmationScreen.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationEmailConfirmationScreen.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -149,6 +159,18 @@
       <EmbeddedResource Update="Properties\Localizations\LocalizationGamesListScreen.en.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <DependentUpon>LocalizationGamesListScreen.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationErrorScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationErrorScreen.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationErrorScreen.en.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>LocalizationErrorScreen.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationEmailConfirmationScreen.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationEmailConfirmationScreen.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 

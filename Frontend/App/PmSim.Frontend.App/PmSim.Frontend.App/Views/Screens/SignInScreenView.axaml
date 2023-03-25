@@ -53,8 +53,9 @@
         
         <Button Grid.Row="5"
                 Grid.Column="1"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonNext}"
-                Command="{Binding GamesListCommand}"
+                Content="{x:Static localizations:LocalizationSignInScreen.Header}"
+                Command="{Binding SignInCommand}"
+                IsEnabled="{Binding IsSignInAvailable}"
                 Classes="Stretch Menu"/>
         
         <Button Grid.Row="6"

@@ -40,7 +40,7 @@ public class AppOptionsScreenViewModel : BasicScreenViewModel
 
             var language = (Languages)value;
             LocalizationsProvider.Localization = language;
-            BaseWindow.Settings.Language = language;
+            BaseWindow.Options.Language = language;
             this.RaiseAndSetIfChanged(ref _currentLanguageIndex, value);
             BaseWindow.Content = new AppOptionsScreenViewModel(BaseWindow, _previous);
         }
@@ -62,7 +62,7 @@ public class AppOptionsScreenViewModel : BasicScreenViewModel
             }
 
             var theme = (Themes)value;
-            BaseWindow.Settings.Theme = theme;
+            BaseWindow.Options.Theme = theme;
             ThemesManager.Theme = theme;
             this.RaiseAndSetIfChanged(ref _currentThemeIndex, value);
         }
@@ -87,8 +87,8 @@ public class AppOptionsScreenViewModel : BasicScreenViewModel
         : base(baseWindow, previous)
     {
         _previous = previous;
-        _currentLanguageIndex = (int)baseWindow.Settings.Language;
-        _currentThemeIndex = (int)baseWindow.Settings.Theme;
+        _currentLanguageIndex = (int)baseWindow.Options.Language;
+        _currentThemeIndex = (int)baseWindow.Options.Theme;
         _isFullscreen = baseWindow.IsFullscreen;
     }
 }

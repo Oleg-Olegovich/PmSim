@@ -17,4 +17,19 @@
     <data name="Header" xml:space="preserve">
         <value>Регистрация</value>
     </data>
+    <data name="IncorrectEmail" xml:space="preserve">
+        <value>Некорректный email!</value>
+    </data>
+    <data name="IncorrectLogin" xml:space="preserve">
+        <value>Некорректный логин!</value>
+    </data>
+    <data name="IncorrectPassword" xml:space="preserve">
+        <value>Некорректный пароль!</value>
+    </data>
+    <data name="IncorrectRepeatedPassword" xml:space="preserve">
+        <value>Пароли не совпадают!</value>
+    </data>
+    <data name="LoginIsOccupied" xml:space="preserve">
+        <value>Логин уже занят!</value>
+    </data>
 </root>

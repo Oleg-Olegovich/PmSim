@@ -70,6 +70,51 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Некорректный email!.
+        /// </summary>
+        public static string IncorrectEmail {
+            get {
+                return ResourceManager.GetString("IncorrectEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Некорректный логин!.
+        /// </summary>
+        public static string IncorrectLogin {
+            get {
+                return ResourceManager.GetString("IncorrectLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Некорректный пароль!.
+        /// </summary>
+        public static string IncorrectPassword {
+            get {
+                return ResourceManager.GetString("IncorrectPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароли не совпадают!.
+        /// </summary>
+        public static string IncorrectRepeatedPassword {
+            get {
+                return ResourceManager.GetString("IncorrectRepeatedPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Логин уже занят!.
+        /// </summary>
+        public static string LoginIsOccupied {
+            get {
+                return ResourceManager.GetString("LoginIsOccupied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Повторите пароль.
         /// </summary>
         public static string TextBlockRepeatPassword {

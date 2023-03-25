@@ -2,16 +2,29 @@
 {
     public class ClientOptions
     {
+        /// <summary>
+        /// The main part of the requests link.
+        /// </summary>
         public Uri BaseUri { get; }
-
-        public string ClientKey { get; }
-
-        public ClientOptions() { }
-
-        public ClientOptions(Uri uri, string key)
+        
+        /// <summary>
+        /// JWT is obtained during authorization.
+        /// </summary>
+        public string? AccessToken { get; set; }
+        
+        /// <summary>
+        /// Id is obtained during authorization.
+        /// </summary>
+        public int ClientId { get; set; }
+        
+        /// <summary>
+        /// Id is obtained during connection to a game.
+        /// </summary>
+        public int GameId { get; set; }
+        
+        public ClientOptions(Uri uri)
         {
             BaseUri = uri;
-            ClientKey = key;
         }
     }
 }

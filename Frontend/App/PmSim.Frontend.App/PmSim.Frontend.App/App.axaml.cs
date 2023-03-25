@@ -6,9 +6,10 @@ using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PmSim.Frontend.App.ViewModels.FileManagement;
+using PmSim.Frontend.App.Models;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.App.Views.Windows;
+using PmSim.Frontend.Client.FileManagement;
 using Serilog;
 using Size = PmSim.Frontend.App.ViewModels.Windows.Size;
 
@@ -56,24 +57,28 @@ public class App : Application
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
                 config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                config.AddJsonFile(FileManager.GetConfigurationFileName(typeof(WindowSettings)),
+                config.AddJsonFile(FileManager.GetConfigurationFileName(typeof(AppOptions)),
                     optional: true, reloadOnChange: true);
             })
             .ConfigureServices((context, services) =>
             {
-                WindowSettings.Default = context.Configuration
+                AppOptions.Default = context.Configuration
                     .GetSection("Defaults")
-                    .GetSection(nameof(WindowSettings))
-                    .Get<WindowSettings>();
+                    .GetSection(nameof(AppOptions))
+                    .Get<AppOptions>();
                 Size.Default = context.Configuration
                     .GetSection("Defaults")
                     .GetSection(nameof(Size))
                     .Get<Size>();
-                var windowSettings = context.Configuration.GetSection(nameof(WindowSettings))
-                    .Get<WindowSettings>() 
-                                     ?? WindowSettings.Default 
-                                     ?? throw new NullReferenceException("Default window settings is null!");
-                services.AddSingleton(windowSettings);
+                AutofillUserData.Default = context.Configuration
+                    .GetSection("Defaults")
+                    .GetSection(nameof(AutofillUserData))
+                    .Get<AutofillUserData>();
+                var appOptions = context.Configuration.GetSection(nameof(AppOptions))
+                    .Get<AppOptions>() 
+                                     ?? AppOptions.Default 
+                                     ?? throw new NullReferenceException("Default app settings is null!");
+                services.AddSingleton(appOptions);
                 services.AddSingleton<MainWindowViewModel>();
                 var log = new LoggerConfiguration()
                     .WriteTo.File(Constants.LogFileFullName, rollingInterval: RollingInterval.Day)

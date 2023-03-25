@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PmSim.Backend.GameEngine.GameLogic;
-using PmSim.Backend.Gateway.Contracts.Enums;
+using PmSim.Shared.Contracts.Enums;
 
 namespace PmSim.Backend.GameEngine.Dto
 {

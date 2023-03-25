@@ -52,13 +52,4 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BorderedTextBoxBorderBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BorderedTextBoxBackground}"/>
     </Style>
-
-    <Style Selector="TextBox.ThumbnailSignature">
-        <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="BorderThickness" Value="0"/>
-    </Style>
 </Styles>

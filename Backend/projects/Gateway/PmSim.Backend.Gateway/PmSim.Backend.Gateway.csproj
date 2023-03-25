@@ -13,7 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\GameEngine\PmSim.Backend.GameEngine\PmSim.Backend.GameEngine.csproj" />
-      <ProjectReference Include="..\PmSim.Backend.Gateway.Contracts\PmSim.Backend.Gateway.Contracts.csproj" />
+      <ProjectReference Include="..\PmSim.Shared.Contracts\PmSim.Shared.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

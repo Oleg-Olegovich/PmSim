@@ -8,8 +8,8 @@ namespace PmSim.Frontend.App.ViewModels.Windows;
 /// </summary>
 public class MainWindowViewModel : BasicWindowViewModel
 {
-    public MainWindowViewModel(WindowSettings settings, Logger logger) 
-        : base(settings, logger)
+    public MainWindowViewModel(AppOptions options, Logger logger) 
+        : base(options, logger)
     {
         Content = new TitleScreenViewModel(this);
     }

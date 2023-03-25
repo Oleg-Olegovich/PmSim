@@ -28,7 +28,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Frontend.App", "Front
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Frontend.App.Desktop", "Frontend\App\PmSim.Frontend.App\PmSim.Frontend.App.Desktop\PmSim.Frontend.App.Desktop.csproj", "{9FA8481D-B154-4003-B279-8FC47FC73968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Backend.Gateway.Contracts", "Backend\projects\Gateway\PmSim.Backend.Gateway.Contracts\PmSim.Backend.Gateway.Contracts.csproj", "{9B067D49-CCBD-4AE4-9DCE-071940C929CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Shared.Contracts", "Backend\projects\Gateway\PmSim.Shared.Contracts\PmSim.Shared.Contracts.csproj", "{9B067D49-CCBD-4AE4-9DCE-071940C929CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{02FFE301-E25B-4B43-A629-358FCD07611F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,7 +49,7 @@ Global
 		{22CC13B9-8FF6-42F8-B9D3-30F1FA5C5341} = {0B38BB9E-B9A4-48F3-A70C-91B0F0488BC2}
 		{5D0A5674-EF7B-48A2-AA5F-617E0EECA902} = {18CBAAF7-43F4-487A-AF51-D3E67E96CE86}
 		{9FA8481D-B154-4003-B279-8FC47FC73968} = {18CBAAF7-43F4-487A-AF51-D3E67E96CE86}
-		{9B067D49-CCBD-4AE4-9DCE-071940C929CC} = {5461CC4A-9F32-4492-912A-50D46EC6090E}
+		{9B067D49-CCBD-4AE4-9DCE-071940C929CC} = {02FFE301-E25B-4B43-A629-358FCD07611F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B116CFE4-1866-4717-9CA8-91C87ED9E66F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

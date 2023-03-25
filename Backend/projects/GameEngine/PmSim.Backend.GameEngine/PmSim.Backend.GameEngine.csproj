@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Gateway\PmSim.Backend.Gateway.Contracts\PmSim.Backend.Gateway.Contracts.csproj" />
+      <ProjectReference Include="..\..\Gateway\PmSim.Shared.Contracts\PmSim.Shared.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

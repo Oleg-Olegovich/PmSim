@@ -1,10 +1,10 @@
 using System;
 using System.ComponentModel;
 using Avalonia.Controls;
-using PmSim.Frontend.App.ViewModels.FileManagement;
 using PmSim.Frontend.App.ViewModels.LanguagesManager;
 using PmSim.Frontend.App.ViewModels.Screens;
 using PmSim.Frontend.App.ViewModels.ThemesManagement;
+using PmSim.Frontend.Client.FileManagement;
 using ReactiveUI;
 using Serilog.Core;
 
@@ -76,12 +76,12 @@ public abstract class BasicWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _content, value);
     }
 
-    private WindowSettings _settings;
+    private AppOptions _options;
     
-    public WindowSettings Settings
+    public AppOptions Options
     {
-        get => _settings;
-        set => this.RaiseAndSetIfChanged(ref _settings, value);
+        get => _options;
+        set => this.RaiseAndSetIfChanged(ref _options, value);
     }
 
     /// <summary>
@@ -95,14 +95,14 @@ public abstract class BasicWindowViewModel : ViewModelBase
         {
             if (value)
             {
-                Settings.WindowState = WindowState = WindowState.FullScreen;
+                Options.WindowState = WindowState = WindowState.FullScreen;
             }
             else
             {
-                Settings.WindowState = WindowState = _previousWindowState;
-                Settings.Size = Size.Default ?? throw new NullReferenceException("Default size is null!");
-                Width = Settings.Size.Width;
-                Height = Settings.Size.Height;
+                Options.WindowState = WindowState = _previousWindowState;
+                Options.Size = Size.Default ?? throw new NullReferenceException("Default size is null!");
+                Width = Options.Size.Width;
+                Height = Options.Size.Height;
             }
         }
     }
@@ -113,9 +113,9 @@ public abstract class BasicWindowViewModel : ViewModelBase
     /// </summary>
     public Logger Logger { get; }
 
-    protected BasicWindowViewModel(WindowSettings settings, Logger logger)
+    protected BasicWindowViewModel(AppOptions options, Logger logger)
     {
-        _settings = settings;
+        _options = options;
         Logger = logger;
         Logger.Information("A window has been created");
         ClosingHandler = ProcessClosing;
@@ -124,11 +124,11 @@ public abstract class BasicWindowViewModel : ViewModelBase
 
     private void InitializeWindowSettings()
     {
-        LocalizationsProvider.Localization = Settings.Language;
-        ThemesManager.Theme = Settings.Theme;
-        Width = Settings.Size.Width;
-        Height = Settings.Size.Height;
-        WindowState = Settings.WindowState;
+        LocalizationsProvider.Localization = Options.Language;
+        ThemesManager.Theme = Options.Theme;
+        Width = Options.Size.Width;
+        Height = Options.Size.Height;
+        WindowState = Options.WindowState;
     }
 
     private void ProcessClosing(object? sender, WindowClosingEventArgs args)
@@ -140,10 +140,10 @@ public abstract class BasicWindowViewModel : ViewModelBase
                 throw new ArgumentException("Closing event sender is not window!");
             }
 
-            Settings.Size.Width = window.Width;
-            Settings.Size.Height = window.Height;
-            Settings.WindowState = window.WindowState;
-            FileManager.SaveConfiguration(Settings);
+            Options.Size.Width = window.Width;
+            Options.Size.Height = window.Height;
+            Options.WindowState = window.WindowState;
+            FileManager.SaveConfiguration(Options);
             Logger.Information("The window is successfully closed");
         }
         catch (Exception exception)

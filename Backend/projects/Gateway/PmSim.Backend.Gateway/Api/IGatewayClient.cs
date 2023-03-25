@@ -1,8 +1,8 @@
-﻿using PmSim.Backend.Gateway.Contracts.Account;
-using PmSim.Backend.Gateway.Contracts.Actions;
-using PmSim.Backend.Gateway.Contracts.Credentials;
-using PmSim.Backend.Gateway.Contracts.Game;
-using PmSim.Backend.Gateway.Contracts.Game.Status;
+﻿using PmSim.Shared.Contracts.Account;
+using PmSim.Shared.Contracts.Actions;
+using PmSim.Shared.Contracts.Credentials;
+using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.Status;
 
 namespace PmSim.Backend.Gateway.Api;
 

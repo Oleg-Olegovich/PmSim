@@ -1,15 +1,19 @@
 ﻿using System.Reactive;
+using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
+using PmSim.Frontend.Client.Dto;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class GameOptionsScreenViewModel : BasicScreenViewModel
 {
+    private readonly PmSimClient _client;
+    
     // Option fields.
     
-    private string _name;
+    private string _name = "";
     
     public string Name
     {
@@ -31,6 +35,22 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     {
         get => _selectedMap;
         set => this.RaiseAndSetIfChanged(ref _selectedMap, value);
+    }
+    
+    private int _playersNumber;
+    
+    public int PlayersNumber
+    {
+        get => _playersNumber;
+        set => this.RaiseAndSetIfChanged(ref _playersNumber, value);
+    }
+    
+    private int _botsNumber;
+    
+    public int BotsNumber
+    {
+        get => _botsNumber;
+        set => this.RaiseAndSetIfChanged(ref _botsNumber, value);
     }
     
     private int _connectionRealTime;
@@ -99,45 +119,49 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     
     // Other field.
     
-    private string[] _modes;
+    public string[] Modes { get; }
     
-    public string[] Modes
-    {
-        get => _modes;
-        set => this.RaiseAndSetIfChanged(ref _modes, value);
-    }
-    
-    private string[] _maps;
-    
-    public string[] Maps
-    {
-        get => _maps;
-        set => this.RaiseAndSetIfChanged(ref _maps, value);
-    }
+    public string[] Maps { get; }
     
     public ReactiveCommand<Unit, Unit> DefaultCommand { get; }
+    
+    public ReactiveCommand<Unit, Unit> StartCommand { get; }
 
     public GameOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, PmSimClient client) 
-        : base(baseWindow, previous, new GameScreenViewModel(baseWindow, previous, client))
+        : base(baseWindow, previous)
     {
+        _client = client;
         Modes = client.GetModes();
         Maps = client.GetMaps();
         ProcessDefaultClick();
         DefaultCommand = ReactiveCommand.Create(ProcessDefaultClick);
+        StartCommand = ReactiveCommand.CreateFromTask(StartGame);
     }
 
+    private async Task StartGame()
+    {
+        var settings = new GameSettings(Name, PlayersNumber, BotsNumber, SelectedMode, SelectedMap, ConnectionRealTime, 
+            ChoosingBackgroundRealTime, SprintRealTime, DiplomacyRealTime, IncidentRealTime, SprintActionsNumber, 
+            AuctionRealTime, StartUpCapital);
+        var gameId = await _client.CreateNewGameAsync(settings);
+        BaseWindow.Content = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
+    }
+    
     private void ProcessDefaultClick()
     {
-        Name = "Default";
-        SelectedMode = 0;
-        SelectedMap = 0;
-        ConnectionRealTime = 60;
-        ChoosingBackgroundRealTime = 60;
-        SprintRealTime = 180;
-        DiplomacyRealTime = 180;
-        IncidentRealTime = 60;
-        AuctionRealTime = 10;
-        SprintActionsNumber = 2;
-        StartUpCapital = 10;
+        var defaultSettings = GameSettings.Default;
+        Name = defaultSettings.GameName;
+        PlayersNumber = defaultSettings.MaxPlayersNumber;
+        BotsNumber = defaultSettings.BotsNumber;
+        SelectedMode = defaultSettings.Mode;
+        SelectedMap = defaultSettings.MapNumber;
+        ConnectionRealTime = defaultSettings.ConnectionRealTime;
+        ChoosingBackgroundRealTime = defaultSettings.ChoosingBackgroundRealTime;
+        SprintRealTime = defaultSettings.SprintRealTime;
+        DiplomacyRealTime = defaultSettings.DiplomacyRealTime;
+        IncidentRealTime = defaultSettings.IncidentRealTime;
+        AuctionRealTime = defaultSettings.AuctionRealTime;
+        SprintActionsNumber = defaultSettings.SprintRealTime;
+        StartUpCapital = defaultSettings.StartUpCapital;
     }
 }

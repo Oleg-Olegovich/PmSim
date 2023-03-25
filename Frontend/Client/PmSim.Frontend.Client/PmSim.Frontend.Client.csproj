@@ -7,13 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Backend\projects\Gateway\PmSim.Backend.Gateway.Contracts\PmSim.Backend.Gateway.Contracts.csproj" />
+      <ProjectReference Include="..\..\..\Backend\projects\Gateway\PmSim.Shared.Contracts\PmSim.Shared.Contracts.csproj" />
       <ProjectReference Include="..\..\..\Backend\projects\Gateway\PmSim.Backend.Gateway\PmSim.Backend.Gateway.csproj" />
-      <ProjectReference Include="..\..\..\Backend\projects\Gateway\PmSim.Backend.Gateway\PmSim.Backend.Gateway.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+      <EmbeddedResource Include="clientconfig.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.2.23128.3" />
     </ItemGroup>
 
 </Project>

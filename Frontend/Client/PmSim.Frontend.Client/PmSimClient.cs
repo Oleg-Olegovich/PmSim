@@ -1,90 +1,70 @@
-﻿using Microsoft.Extensions.Options;
-using PmSim.Backend.Gateway.Api;
-using PmSim.Backend.Gateway.Contracts.Account;
-using PmSim.Backend.Gateway.Contracts.Actions;
-using PmSim.Backend.Gateway.Contracts.Credentials;
-using PmSim.Backend.Gateway.Contracts.Enums;
-using PmSim.Backend.Gateway.Contracts.Game;
-using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Others;
-using PmSim.Backend.Gateway.Contracts.Game.Status;
-using PmSim.Frontend.Client.Interfaces;
+﻿using PmSim.Shared.Contracts.Account;
+using PmSim.Shared.Contracts.Credentials;
+using PmSim.Shared.Contracts.Enums;
 using PmSim.Frontend.Client.Dto;
 
 namespace PmSim.Frontend.Client;
 
-public class PmSimClient : IPmSimClient
+public class PmSimClient
 {
-    private readonly IGatewayClient _gateway;
-    private int _gameId, _playerId = 0;
-    private string _playerToken = "";
-    private GameStatusModel _gameStatus;
-
-    public string PlayerName { get; set; }
-
-    public GameStages GameStage => _gameStatus.Stage;
-
-    public int GameStageLabel => (int)_gameStatus.Stage;
-
-    public int Time => _gameStatus.Time < 0 ? 0 : _gameStatus.Time;
-
-    public PlayerModel PlayerActor => _gameStatus.Player;
-
-    public ActorModel[] Actors => _gameStatus.Actors;
-
-    public int Offices => _gameStatus.Offices.Count(x => x.OwnerId == _playerId);
-
-    public int Employees
-        => _gameStatus.Offices.Where(office => office.OwnerId == _playerId).Sum(office => office.Capacity);
-
+    //private readonly IGatewayClient _gateway;
+    
     /// <summary>
     /// For single mode.
     /// </summary>
-    public PmSimClient()
+    public PmSimClient(string playerName)
     {
-        _gateway = new Backend.Gateway.SingleModeApi.GatewayClient();
+        //PlayerName = playerName;
+        //_gateway = new Backend.Gateway.SingleModeApi.GatewayClient();
     }
 
     /// <summary>
     /// For multiplayer mode.
     /// </summary>
-    public PmSimClient(IOptions<ClientOptions> options)
+    private PmSimClient()
     {
+        /*
+        PlayerName = playerName;
         var gatewayClientOptions = new OptionsWrapper<GatewayClientOptions>(
             new GatewayClientOptions
             {
                 BaseUri = options.Value.BaseUri
             });
         _gateway = new Backend.Gateway.MultiplayerModeApi.GatewayClient(gatewayClientOptions);
+        */
     }
 
-    public async Task<IsOkResponse> CreateAccountAsync(CreateAccountRequest request)
+    public static async Task<bool> ReserveLogin(string login)
     {
-        return await _gateway.CreateAccountAsync(request);
+        // Проверяет, не занят ли логин. Если нет - возвращает true и резервирует, чтобы никто другой не занял.
+        return true;
+    }
+    
+    public static async Task<string> SendCodeToEmailAsync(string email)
+    {
+        var code = new Random().Next(100000, 999999);
+        // Отправляет Email с кодом. Возращает код, который был отправлен на почту.
+        return code.ToString();
     }
 
-    public async Task<TokenResponse> SignInAsync(AuthorizationRequest request)
+    public static async Task<PmSimClient> SignUpAsync(User user)
     {
-        return await _gateway.GetAccountAsync(request);
+        var request = new CreateAccountRequest();
+        //var response = await _gateway.CreateAccountAsync(request);
+        return new PmSimClient();
     }
 
-    public async Task<int> CreateNewGameAsync(int maxPlayersNumber, int botsNumber, int mode)
+    public static async Task<PmSimClient> SignInAsync(string login, string password)
     {
-        var request = new CreateGameRequest()
-        {
-            Founder = PlayerName,
-            MaxPlayersNumber = maxPlayersNumber,
-            BotsNumber = botsNumber,
-            Mode = mode,
-            IsDefaultSettings = true
-        };
-        var gameModel = await _gateway.CreateNewGameAsync(request);
-        _gameId = gameModel.Id;
-        return _gameId;
+        var request = new AuthorizationRequest();
+        //var response = await _gateway.GetAccountAsync(request);
+        return new PmSimClient();
     }
 
-    public async Task<int> CreateNewGameAsync(int maxPlayersNumber, int botsNumber, int mode,
-        SettingsModel settings)
+    public async Task<int> CreateNewGameAsync(GameSettings gameSettings)
     {
+        return 0;
+        /*
         var request = new CreateGameRequest()
         {
             Founder = PlayerName,
@@ -97,181 +77,113 @@ public class PmSimClient : IPmSimClient
         var gameModel = await _gateway.CreateNewGameAsync(request);
         _gameId = gameModel.Id;
         return _gameId;
+        //*/
     }
 
     public async Task ConnectToGame(int gameId)
     {
-        var request = new ActionRequest()
-        {
-            GameId = _gameId,
-            PlayerId = _playerId,
-            PlayerToken = _playerToken
-        };
-        var response = await _gateway.ConnectToGame(request);
-        if (!response.IsOk)
-        {
-            throw new Exception("Unsuccessful connection.");
-        }
+        
     }
 
-    public async Task<IsOkResponse> SetBackgroundAsync(SetBackgroundRequest request)
+    public async Task SetBackgroundAsync()
     {
-        return await _gateway.SetBackgroundAsync(request);
+        
     }
 
-    public async Task<IsOkResponse> CancelOfficeLeaseAsync(OfficeActionRequest request)
+    public async Task CancelOfficeLeaseAsync()
     {
-        return await _gateway.CancelOfficeLeaseAsync(request);
     }
 
-    public async Task<IsOkResponse> DismissAllEmployeesAsync(OfficeActionRequest request)
+    public async Task DismissAllEmployeesAsync()
     {
-        return await _gateway.DismissAllEmployeesAsync(request);
     }
 
-    public async Task<EmployeeInfoResponse> ConductInterviewAsync(OfficeActionRequest request)
+    public async Task ConductInterviewAsync()
     {
-        return await _gateway.ConductInterviewAsync(request);
     }
 
-    public async Task<IsOkResponse> ProcessInterviewAsync(InterviewActionRequest request)
+    public async Task ProcessInterviewAsync()
     {
-        return await _gateway.ProcessInterviewAsync(request);
     }
 
-    public async Task<IsOkResponse> HireTechSupportOfficerAsync(OfficeActionRequest request)
+    public async Task HireTechSupportOfficerAsync()
     {
-        return await _gateway.HireTechSupportOfficerAsync(request);
     }
 
-    public async Task<IsOkResponse> DismissTechSupportOfficerAsync(OfficeActionRequest request)
+    public async Task DismissTechSupportOfficerAsync()
     {
-        return await _gateway.DismissTechSupportOfficerAsync(request);
     }
 
-    public async Task<IsOkResponse> UseOpportunityAsync(OpportunityActionRequest request)
+    public async Task UseOpportunityAsync()
     {
-        return await _gateway.UseOpportunityAsync(request);
     }
 
-    public async Task<IsOkResponse> AssignToWorkAsync(DevelopmentActionRequest request)
+    public async Task AssignToWorkAsync()
     {
-        return await _gateway.AssignToWorkAsync(request);
     }
 
-    public async Task<IsOkResponse> AssignToInventProjectAsync(ExecutorActionRequest request)
+    public async Task AssignToInventProjectAsync()
     {
-        return await _gateway.AssignToInventProjectAsync(request);
     }
 
-    public async Task<IsOkResponse> AssignToMakeBackupAsync(FeaturesActionRequest request)
+    public async Task AssignToMakeBackupAsync()
     {
-        return await _gateway.AssignToMakeBackupAsync(request);
     }
 
-    public async Task<IsOkResponse> CancelTaskAsync(ExecutorActionRequest request)
+    public async Task CancelTaskAsync()
     {
-        return await _gateway.CancelTaskAsync(request);
     }
 
-    public async Task<IsOkResponse> PutProjectUpForAuctionAsync(ProjectAuctionActionRequest request)
+    public async Task PutProjectUpForAuctionAsync()
     {
-        return await _gateway.PutProjectUpForAuctionAsync(request);
     }
 
-    public async Task<IsOkResponse> ProposeProjectAsync(ProposeProjectActionRequest request)
+    public async Task ProposeProjectAsync()
     {
-        return await _gateway.ProposeProjectAsync(request);
     }
 
-    public async Task<IsOkResponse> PutExecutorUpForAuctionAsync(ExecutorAuctionActionRequest request)
+    public async Task PutExecutorUpForAuctionAsync()
     {
-        return await _gateway.PutExecutorUpForAuctionAsync(request);
     }
 
-    public async Task<IsOkResponse> ProposeExecutorAsync(ProposeExecutorActionRequest request)
+    public async Task ProposeExecutorAsync()
     {
-        return await _gateway.ProposeExecutorAsync(request);
     }
 
-    public async Task<IsOkResponse> PutOpportunityUpForAuctionAsync(OpportunityAuctionActionRequest request)
+    public async Task PutOpportunityUpForAuctionAsync()
     {
-        return await _gateway.PutOpportunityUpForAuctionAsync(request);
     }
 
-    public async Task<IsOkResponse> ProposeOpportunityAsync(ProposeOpportunityActionRequest request)
+    public async Task ProposeOpportunityAsync()
     {
-        return await _gateway.ProposeOpportunityAsync(request);
     }
 
-    public async Task<IsOkResponse> SendMessageAsync(SendMessageActionRequest request)
+    public async Task SendMessageAsync()
     {
-        return await _gateway.SendMessageAsync(request);
     }
 
-    public async Task<IsOkResponse> SendMessageToEveryoneAsync(SendMessageToEveryoneActionRequest request)
+    public async Task SendMessageToEveryoneAsync()
     {
-        return await _gateway.SendMessageToEveryoneAsync(request);
     }
 
-    public async Task<IsOkResponse> ParticipateInAuctionAsync(AuctionActionRequest request)
+    public async Task ParticipateInAuctionAsync()
     {
-        return await _gateway.ParticipateInAuctionAsync(request);
     }
 
-    public async Task<IsOkResponse> SetIncidentActionAsync(IncidentActionRequest request)
+    public async Task SetIncidentActionAsync()
     {
-        return await _gateway.SetIncidentActionAsync(request);
     }
 
-    public async Task<IsOkResponse> SkipMove(ActionRequest request)
+    public async Task SkipMove()
     {
-        return await _gateway.SkipMove(request);
     }
 
-    public async Task<IsOkResponse> ExitGame(ActionRequest request)
+    public async Task ExitGame()
     {
-        return await _gateway.ExitGame(request);
     }
 
-    public async Task UpdateStatusAsync()
+    public async Task RentOfficeAsync(int officeNumber)
     {
-        var request = new ActionRequest()
-        {
-            GameId = _gameId,
-            PlayerToken = _playerToken
-        };
-        _gameStatus = await _gateway.GetGameStatusAsync(request);
-    }
-
-    public OfficeModel GetOffice(int number)
-    {
-        if (number < 0 || number >= _gameStatus.Offices.Length)
-        {
-            throw new ArgumentException("Invalid office number.");
-        }
-
-        return _gameStatus.Offices[number];
-    }
-
-    public bool IsOfficeMine(int number) => GetOffice(number).OwnerId == _playerId;
-
-    public async Task<bool> RentOfficeAsync(int officeNumber)
-    {
-        return (await _gateway.RentOfficeAsync(new OfficeActionRequest()
-        {
-            OfficeNumber = officeNumber
-        })).IsOk;
-    }
-
-    public ActorModel GetPlayer(int id)
-    {
-        if (id < 0 || id >= _gameStatus.Offices.Length)
-        {
-            throw new ArgumentException("Invalid player id.");
-        }
-
-        return _gameStatus.Actors.FirstOrDefault(x => x.Id == id);
     }
 
     public Game[] GetActiveGames()

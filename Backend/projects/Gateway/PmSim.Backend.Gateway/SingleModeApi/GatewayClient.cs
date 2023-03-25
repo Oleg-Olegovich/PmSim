@@ -6,15 +6,15 @@ using PmSim.Backend.GameEngine.GameLogic.Incidents;
 using PmSim.Backend.GameEngine.GameLogic.Opportunities;
 using PmSim.Backend.GameEngine.Interfaces;
 using PmSim.Backend.Gateway.Api;
-using PmSim.Backend.Gateway.Contracts.Account;
-using PmSim.Backend.Gateway.Contracts.Actions;
-using PmSim.Backend.Gateway.Contracts.Credentials;
-using PmSim.Backend.Gateway.Contracts.Enums;
-using PmSim.Backend.Gateway.Contracts.Game;
-using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Employee;
-using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Features;
-using PmSim.Backend.Gateway.Contracts.Game.GameObjects.Others;
-using PmSim.Backend.Gateway.Contracts.Game.Status;
+using PmSim.Shared.Contracts.Account;
+using PmSim.Shared.Contracts.Actions;
+using PmSim.Shared.Contracts.Credentials;
+using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.GameObjects.Employee;
+using PmSim.Shared.Contracts.Game.GameObjects.Features;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.Status;
 
 namespace PmSim.Backend.Gateway.SingleModeApi;
 
