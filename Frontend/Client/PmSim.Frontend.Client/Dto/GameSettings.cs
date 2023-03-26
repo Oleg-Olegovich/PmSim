@@ -29,7 +29,7 @@ public class GameSettings
     public int StartUpCapital { get; set; }
 
     public static GameSettings Default
-        => new GameSettings("Default", 1, 4, 0, 0, 
+        => new GameSettings("Default", 2, 3, 0, 0, 
             60, 60, 180, 180, 
             60, 10, 2, 10);
 

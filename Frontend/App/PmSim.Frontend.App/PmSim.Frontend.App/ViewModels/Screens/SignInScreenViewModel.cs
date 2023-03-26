@@ -19,6 +19,7 @@ public class SignInScreenViewModel : BasicScreenViewModel
         set
         {
             this.RaiseAndSetIfChanged(ref _login, value);
+            CheckIsSignInAvailable();
             if (IsDataRemembered)
             {
                 BaseWindow.Options.AutofillUserData.Login = value;
@@ -34,6 +35,7 @@ public class SignInScreenViewModel : BasicScreenViewModel
         set
         {
             this.RaiseAndSetIfChanged(ref _password, value);
+            CheckIsSignInAvailable();
             if (IsDataRemembered)
             {
                 BaseWindow.Options.AutofillUserData.Password = value;
@@ -41,7 +43,7 @@ public class SignInScreenViewModel : BasicScreenViewModel
         }
     }
 
-    private bool _isDataRemembered = true;
+    private bool _isDataRemembered;
     
     public bool IsDataRemembered
     {
@@ -78,7 +80,8 @@ public class SignInScreenViewModel : BasicScreenViewModel
         _titleScreen = titleScreen;
         SignUpCommand = ReactiveCommand.Create(OpenSignUpScreen);
         SignInCommand = ReactiveCommand.CreateFromTask(SignIn);
-        if (!baseWindow.Options.AutofillUserData.IsMultiplayerDataRemembered)
+        _isDataRemembered = baseWindow.Options.AutofillUserData.IsMultiplayerDataRemembered;
+        if (!_isDataRemembered)
         {
             return;
         }
@@ -86,6 +89,9 @@ public class SignInScreenViewModel : BasicScreenViewModel
         Password = baseWindow.Options.AutofillUserData.Password ?? "";
     }
 
+    private void CheckIsSignInAvailable()
+        => IsSignInAvailable = Login != "" && Password != "";
+    
     private async Task SignIn()
     {
         try

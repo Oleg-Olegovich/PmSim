@@ -97,7 +97,16 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Выбор предыстории.
+        ///   Looks up a localized string similar to Ботов.
+        /// </summary>
+        public static string TextBlockBots {
+            get {
+                return ResourceManager.GetString("TextBlockBots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выбор предыстории (сек.).
         /// </summary>
         public static string TextBlockChoosingBackgroundRealTime {
             get {
@@ -106,7 +115,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Подключение.
+        ///   Looks up a localized string similar to Подключение (сек.).
         /// </summary>
         public static string TextBlockConnectionRealTime {
             get {
@@ -115,7 +124,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дипломатия.
+        ///   Looks up a localized string similar to Дипломатия (сек.).
         /// </summary>
         public static string TextBlockDiplomacyRealTime {
             get {
@@ -124,11 +133,20 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Происшествие.
+        ///   Looks up a localized string similar to Происшествие (сек.).
         /// </summary>
         public static string TextBlockIncidentRealTime {
             get {
                 return ResourceManager.GetString("TextBlockIncidentRealTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Игроков.
+        /// </summary>
+        public static string TextBlockPlayers {
+            get {
+                return ResourceManager.GetString("TextBlockPlayers", resourceCulture);
             }
         }
         
@@ -142,7 +160,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Спринт.
+        ///   Looks up a localized string similar to Спринт (сек.).
         /// </summary>
         public static string TextBlockSprintRealTime {
             get {

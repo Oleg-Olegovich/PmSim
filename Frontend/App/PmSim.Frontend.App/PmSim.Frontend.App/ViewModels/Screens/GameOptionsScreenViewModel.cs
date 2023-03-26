@@ -119,6 +119,8 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     
     // Other field.
     
+    public bool IsMultiplayer { get; }
+    
     public string[] Modes { get; }
     
     public string[] Maps { get; }
@@ -127,10 +129,15 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> StartCommand { get; }
 
-    public GameOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, PmSimClient client) 
-        : base(baseWindow, previous)
+    public GameOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, 
+        PmSimClient client, bool isMultiplayer) : base(baseWindow, previous)
     {
         _client = client;
+        IsMultiplayer = isMultiplayer;
+        if (!isMultiplayer)
+        {
+            PlayersNumber = 1;
+        }
         Modes = client.GetModes();
         Maps = client.GetMaps();
         ProcessDefaultClick();

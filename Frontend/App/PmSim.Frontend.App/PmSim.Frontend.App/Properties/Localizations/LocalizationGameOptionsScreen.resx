@@ -12,22 +12,22 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="TextBlockConnectionRealTime" xml:space="preserve">
-        <value>Подключение</value>
+        <value>Подключение (сек.)</value>
     </data>
     <data name="TextBlockChoosingBackgroundRealTime" xml:space="preserve">
-        <value>Выбор предыстории</value>
+        <value>Выбор предыстории (сек.)</value>
     </data>
     <data name="Header" xml:space="preserve">
         <value>Настройки партии</value>
     </data>
     <data name="TextBlockSprintRealTime" xml:space="preserve">
-        <value>Спринт</value>
+        <value>Спринт (сек.)</value>
     </data>
     <data name="TextBlockDiplomacyRealTime" xml:space="preserve">
-        <value>Дипломатия</value>
+        <value>Дипломатия (сек.)</value>
     </data>
     <data name="TextBlockIncidentRealTime" xml:space="preserve">
-        <value>Происшествие</value>
+        <value>Происшествие (сек.)</value>
     </data>
     <data name="TextBlockSprintActionsNumber" xml:space="preserve">
         <value>Действий спринта</value>
@@ -43,5 +43,11 @@
     </data>
     <data name="ButtonStart" xml:space="preserve">
         <value>Начать!</value>
+    </data>
+    <data name="TextBlockPlayers" xml:space="preserve">
+        <value>Игроков</value>
+    </data>
+    <data name="TextBlockBots" xml:space="preserve">
+        <value>Ботов</value>
     </data>
 </root>

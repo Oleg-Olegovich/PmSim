@@ -46,7 +46,8 @@
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationSignInScreen.TextBlockPassword}"/>
             <Border Classes="TextStroke">
-                <TextBox Text="{Binding Password}"/>
+                <TextBox Text="{Binding Password}"
+                         PasswordChar="*"/>
             </Border>
         </StackPanel>
         
@@ -57,7 +58,8 @@
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationSignUpScreen.TextBlockRepeatPassword}"/>
             <Border Classes="TextStroke">
-                <TextBox Text="{Binding RepeatedPassword}"/>
+                <TextBox Text="{Binding RepeatedPassword}"
+                         PasswordChar="*"/>
             </Border>
         </StackPanel>
         

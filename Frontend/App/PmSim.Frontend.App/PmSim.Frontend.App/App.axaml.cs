@@ -56,9 +56,8 @@ public class App : Application
             .ConfigureAppConfiguration(config =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                config.AddJsonFile(FileManager.GetConfigurationFileName(typeof(AppOptions)),
-                    optional: true, reloadOnChange: true);
+                config.AddJsonFile("appsettings.json", false, true);
+                config.AddJsonFile(FileManager.GetConfigurationFileName(typeof(AppOptions)), true, true);
             })
             .ConfigureServices((context, services) =>
             {
@@ -70,14 +69,9 @@ public class App : Application
                     .GetSection("Defaults")
                     .GetSection(nameof(Size))
                     .Get<Size>();
-                AutofillUserData.Default = context.Configuration
-                    .GetSection("Defaults")
-                    .GetSection(nameof(AutofillUserData))
-                    .Get<AutofillUserData>();
-                var appOptions = context.Configuration.GetSection(nameof(AppOptions))
-                    .Get<AppOptions>() 
-                                     ?? AppOptions.Default 
-                                     ?? throw new NullReferenceException("Default app settings is null!");
+                var appOptions = context.Configuration.GetSection(nameof(AppOptions)).Get<AppOptions>() 
+                                 ?? AppOptions.Default 
+                                 ?? throw new NullReferenceException("Default app settings is null!");
                 services.AddSingleton(appOptions);
                 services.AddSingleton<MainWindowViewModel>();
                 var log = new LoggerConfiguration()

@@ -22,7 +22,7 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
         }
     }
 
-    private bool _isDataRemembered = true;
+    private bool _isDataRemembered;
     
     public bool IsDataRemembered
     {
@@ -34,7 +34,10 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
             if (value)
             {
                 BaseWindow.Options.AutofillUserData.SingleLogin = Login;
+                return;
             }
+
+            BaseWindow.Options.AutofillUserData.SingleLogin = null;
         }
     }
 
@@ -44,7 +47,8 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
         : base(baseWindow, previous)
     {
         NextCommand = ReactiveCommand.Create(OpenGameOptionsScreen);
-        if (!baseWindow.Options.AutofillUserData.IsSingleDataRemembered)
+        _isDataRemembered = baseWindow.Options.AutofillUserData.IsSingleDataRemembered;
+        if (_isDataRemembered)
         {
             Login = baseWindow.Options.AutofillUserData.SingleLogin ?? "";
         }
@@ -53,6 +57,6 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
     private void OpenGameOptionsScreen()
     {
         var client = new PmSimClient(Login);
-        BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, client);
+        BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, client, false);
     }
 }

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Reactive;
+﻿using System.Reactive;
 using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Dto;
+using PmSim.Frontend.Client.Exceptions;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -35,19 +35,28 @@ public class GamesListScreenViewModel : BasicScreenViewModel
         : base(baseWindow, previous)
     {
         NewGameCommand = ReactiveCommand.Create(ProcessNewGameCommand);
-        ConnectCommand = ReactiveCommand.Create(ProcessConnectCommand);
+        ConnectCommand = ReactiveCommand.CreateFromTask(ProcessConnectCommand);
         _client = client;
         Task.Run(UpdateGamesList);
     }
 
     private void ProcessNewGameCommand()
-    {
-        
-    }
+        => BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, _client, true);
     
-    private void ProcessConnectCommand()
+    private async Task ProcessConnectCommand()
     {
-        
+        if (SelectedGame is not null)
+        {
+            try
+            {
+                await _client.ConnectToGame(SelectedGame.Id);
+                BaseWindow.Content = new GameScreenViewModel(BaseWindow, this, _client);
+            }
+            catch (PmSimClientException exception)
+            {
+                BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+            }
+        }
     }
     
     private async Task UpdateGamesList()

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
@@ -33,7 +34,7 @@ public class FileManager
         {
             var file = CreateFile(filename);
             var json = Serialize(configuration);
-            File.WriteAllText(file.FullName, json);
+            File.WriteAllText(file.FullName, json, Encoding.Unicode);
         }
         catch (Exception exception)
         {
@@ -62,7 +63,7 @@ public class FileManager
     /// </summary>
     public static T LoadConfiguration<T>(string filename, string deserializationExceptionMessage = "")
     {
-        var data = File.ReadAllText(filename);
+        var data = File.ReadAllText(filename, Encoding.Unicode);
         try
         {
             return Deserialize<T>(data);

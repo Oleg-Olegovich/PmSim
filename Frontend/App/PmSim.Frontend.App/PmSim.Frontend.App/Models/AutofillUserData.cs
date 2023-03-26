@@ -5,11 +5,6 @@
 /// </summary>
 public class AutofillUserData
 {
-    /// <summary>
-    /// The default data is loaded from the application configuration.
-    /// </summary>
-    public static AutofillUserData? Default { get; set; }
-    
     public string? SingleLogin { get; set; }
     
     public string? Login { get; set; }

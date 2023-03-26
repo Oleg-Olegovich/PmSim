@@ -32,7 +32,8 @@
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationSignInScreen.TextBlockPassword}"/>
             <Border Classes="TextStroke">
-                <TextBox Text="{Binding Password}"/>
+                <TextBox Text="{Binding Password}"
+                         PasswordChar="*"/>
             </Border>
         </StackPanel>
         

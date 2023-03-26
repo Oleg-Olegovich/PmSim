@@ -51,4 +51,10 @@
     <data name="ButtonStart" xml:space="preserve">
         <value>Start!</value>
     </data>
+    <data name="TextBlockPlayers" xml:space="preserve">
+        <value>Players</value>
+    </data>
+    <data name="TextBlockBots" xml:space="preserve">
+        <value>Bots</value>
+    </data>
 </root>
