@@ -8,12 +8,14 @@ namespace PmSim.Frontend.Client;
 public class PmSimClient
 {
     //private readonly IGatewayClient _gateway;
+    private readonly ClientOptions _clientOptions;
     
     /// <summary>
     /// For single mode.
     /// </summary>
     public PmSimClient(string playerName)
     {
+        _clientOptions = new ClientOptions();
         //PlayerName = playerName;
         //_gateway = new Backend.Gateway.SingleModeApi.GatewayClient();
     }
@@ -23,6 +25,7 @@ public class PmSimClient
     /// </summary>
     private PmSimClient()
     {
+        _clientOptions = ConfigurationManager.ClientOptions;
         /*
         PlayerName = playerName;
         var gatewayClientOptions = new OptionsWrapper<GatewayClientOptions>(
@@ -61,9 +64,9 @@ public class PmSimClient
         return new PmSimClient();
     }
 
-    public async Task<int> CreateNewGameAsync(GameSettings gameSettings)
+    public async Task CreateNewGameAsync(GameSettings gameSettings)
     {
-        return 0;
+        _clientOptions.GameId = 0;
         /*
         var request = new CreateGameRequest()
         {

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Dto;
+using PmSim.Frontend.Client.Exceptions;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -150,8 +151,15 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         var settings = new GameSettings(Name, PlayersNumber, BotsNumber, SelectedMode, SelectedMap, ConnectionRealTime, 
             ChoosingBackgroundRealTime, SprintRealTime, DiplomacyRealTime, IncidentRealTime, SprintActionsNumber, 
             AuctionRealTime, StartUpCapital);
-        var gameId = await _client.CreateNewGameAsync(settings);
-        BaseWindow.Content = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
+        try
+        {
+            await _client.CreateNewGameAsync(settings);
+            BaseWindow.Content = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
+        }
+        catch (PmSimClientException exception)
+        {
+            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+        }
     }
     
     private void ProcessDefaultClick()

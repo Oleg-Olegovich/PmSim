@@ -5,7 +5,7 @@
         /// <summary>
         /// The main part of the requests link.
         /// </summary>
-        public Uri BaseUri { get; }
+        public Uri? BaseUri { get; }
         
         /// <summary>
         /// JWT is obtained during authorization.
@@ -21,6 +21,9 @@
         /// Id is obtained during connection to a game.
         /// </summary>
         public int GameId { get; set; }
+
+        public ClientOptions()
+        { }
         
         public ClientOptions(Uri uri)
         {
