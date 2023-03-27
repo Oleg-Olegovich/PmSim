@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Include="clientconfig.json">
+      <EmbeddedResource Include="client_config.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
     </ItemGroup>

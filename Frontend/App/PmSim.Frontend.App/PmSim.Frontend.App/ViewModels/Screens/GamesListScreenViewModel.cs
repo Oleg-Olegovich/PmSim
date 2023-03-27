@@ -41,7 +41,7 @@ public class GamesListScreenViewModel : BasicScreenViewModel
     }
 
     private void ProcessNewGameCommand()
-        => BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, _client, true);
+        => BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, _client, false);
     
     private async Task ProcessConnectCommand()
     {

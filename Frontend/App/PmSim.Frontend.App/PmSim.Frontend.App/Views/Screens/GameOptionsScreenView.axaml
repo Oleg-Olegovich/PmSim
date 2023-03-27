@@ -31,15 +31,30 @@
         
         <StackPanel Grid.Row="3"
                     Grid.Column="1"
-                    Orientation="Vertical">
+                    Orientation="Vertical"
+                    IsVisible="{Binding !IsSingleplayer}">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockPlayers}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="2"
                                Maximum="5"
-                               Value="{Binding PlayersNumber}"
-                               IsEnabled="{Binding IsMultiplayer}"
-                               ParsingNumberStyle="Integer"/>
+                               Classes="Bordered BasicInteger"
+                               Value="{Binding PlayersNumber}"/>
+            </Border>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    IsVisible="{Binding IsSingleplayer}">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockPlayers}"/>
+            <Border Classes="TextStroke">
+                <NumericUpDown Minimum="1"
+                               Maximum="1"
+                               Classes="Bordered BasicInteger"
+                               Value="1"
+                               IsReadOnly="True"/>
             </Border>
         </StackPanel>
         
@@ -51,6 +66,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="0"
                                Maximum="5"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding BotsNumber}"/>
             </Border>
         </StackPanel>
@@ -87,6 +103,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding ConnectionRealTime}"/>
             </Border>
         </StackPanel>
@@ -99,6 +116,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding ChoosingBackgroundRealTime}"/>
             </Border>
         </StackPanel>
@@ -111,6 +129,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding SprintRealTime}"/>
             </Border>
         </StackPanel>
@@ -123,6 +142,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding DiplomacyRealTime}"/>
             </Border>
         </StackPanel>
@@ -135,6 +155,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding IncidentRealTime}"/>
             </Border>
         </StackPanel>
@@ -147,6 +168,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding AuctionRealTime}"/>
             </Border>
         </StackPanel>
@@ -159,6 +181,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding SprintActionsNumber}"/>
             </Border>
         </StackPanel>
@@ -171,6 +194,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
+                               Classes="Bordered BasicInteger"
                                Value="{Binding StartUpCapital}"/>
             </Border>
         </StackPanel>

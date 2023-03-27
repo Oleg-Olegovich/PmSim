@@ -57,6 +57,6 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
     private void OpenGameOptionsScreen()
     {
         var client = new PmSimClient(Login);
-        BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, client, false);
+        BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, client, true);
     }
 }

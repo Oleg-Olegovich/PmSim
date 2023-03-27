@@ -17,10 +17,10 @@
     <data name="Header" xml:space="preserve">
         <value>Email confirmation</value>
     </data>
-    <data name="IncorrectCode" xml:space="preserve">
-        <value>Wrong code!</value>
-    </data>
     <data name="ConfirmationCode" xml:space="preserve">
         <value>Confirmation code</value>
+    </data>
+    <data name="WrongCode" xml:space="preserve">
+        <value>Wrong code!</value>
     </data>
 </root>

@@ -23,7 +23,8 @@ public static class ConfigurationManager
         => new HostBuilder()
             .ConfigureAppConfiguration(config =>
             {
-                config.AddJsonFile(FileManager.GetConfigurationFileName("client_config.json"),true, true);
+                config.SetBasePath(Directory.GetCurrentDirectory());
+                config.AddJsonFile("client_config.json", false, true);
             })
             .ConfigureServices((context, services) =>
             {

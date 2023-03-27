@@ -43,55 +43,96 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     public int PlayersNumber
     {
         get => _playersNumber;
-        set => this.RaiseAndSetIfChanged(ref _playersNumber, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _playersNumber, value);
+            }
+        }
     }
-    
+
     private int _botsNumber;
     
     public int BotsNumber
     {
         get => _botsNumber;
-        set => this.RaiseAndSetIfChanged(ref _botsNumber, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _botsNumber, value);
+            }
+        }
     }
-    
+
     private int _connectionRealTime;
     
     public int ConnectionRealTime
     {
         get => _connectionRealTime;
-        set => this.RaiseAndSetIfChanged(ref _connectionRealTime, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _connectionRealTime, value);
+            }
+        }
     }
-    
+
     private int _choosingBackgroundRealTime;
     
     public int ChoosingBackgroundRealTime
     {
         get => _choosingBackgroundRealTime;
-        set => this.RaiseAndSetIfChanged(ref _choosingBackgroundRealTime, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _choosingBackgroundRealTime, value);
+            }
+        }
     }
-    
+
     private int _sprintRealTime;
     
     public int SprintRealTime
     {
         get => _sprintRealTime;
-        set => this.RaiseAndSetIfChanged(ref _sprintRealTime, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _sprintRealTime, value);
+            }
+        }
     }
-    
+
     private int _diplomacyRealTime;
     
     public int DiplomacyRealTime
     {
         get => _diplomacyRealTime;
-        set => this.RaiseAndSetIfChanged(ref _diplomacyRealTime, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _diplomacyRealTime, value);
+            }
+        }
     }
-    
+
     private int _incidentRealTime;
     
     public int IncidentRealTime
     {
         get => _incidentRealTime;
-        set => this.RaiseAndSetIfChanged(ref _incidentRealTime, value);
+        set {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _incidentRealTime, value);
+            }
+        }
     }
 
     private int _auctionRealTime;
@@ -99,28 +140,46 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     public int AuctionRealTime
     {
         get => _auctionRealTime;
-        set => this.RaiseAndSetIfChanged(ref _auctionRealTime, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _auctionRealTime, value);
+            }
+        }
     }
-    
+
     private int _sprintActionsNumber;
     
     public int SprintActionsNumber
     {
         get => _sprintActionsNumber;
-        set => this.RaiseAndSetIfChanged(ref _sprintActionsNumber, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _sprintActionsNumber, value);
+            }
+        }
     }
-    
+
     private int _startUpCapital;
     
     public int StartUpCapital
     {
         get => _startUpCapital;
-        set => this.RaiseAndSetIfChanged(ref _startUpCapital, value);
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _startUpCapital, value);
+            }
+        }
     }
-    
+
     // Other field.
     
-    public bool IsMultiplayer { get; }
+    public bool IsSingleplayer { get; }
     
     public string[] Modes { get; }
     
@@ -131,11 +190,11 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     public ReactiveCommand<Unit, Unit> StartCommand { get; }
 
     public GameOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, 
-        PmSimClient client, bool isMultiplayer) : base(baseWindow, previous)
+        PmSimClient client, bool isSingleplayer) : base(baseWindow, previous)
     {
         _client = client;
-        IsMultiplayer = isMultiplayer;
-        if (!isMultiplayer)
+        IsSingleplayer = isSingleplayer;
+        if (isSingleplayer)
         {
             PlayersNumber = 1;
         }

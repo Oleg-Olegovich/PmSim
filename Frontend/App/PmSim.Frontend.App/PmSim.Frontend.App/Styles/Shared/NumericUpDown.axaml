@@ -10,9 +10,10 @@
                          Color="#00000000"/>
     </Styles.Resources>
 
-    <Style Selector="NumericUpDown">
+    <Style Selector="NumericUpDown.BasicInteger">
         <Setter Property="AllowSpin" Value="True"/>
         <Setter Property="ShowButtonSpinner" Value="True"/>
+        <Setter Property="FormatString" Value="N0"/>
     </Style>
     
     <!-- Combo box for text border -->

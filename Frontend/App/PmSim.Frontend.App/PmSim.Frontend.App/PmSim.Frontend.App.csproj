@@ -172,6 +172,9 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>LocalizationEmailConfirmationScreen.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationEmailConfirmationScreen.en.resx">
+        <DependentUpon>LocalizationEmailConfirmationScreen.resx</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>

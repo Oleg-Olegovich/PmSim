@@ -39,7 +39,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationEmailConfirmationScreen", typeof(LocalizationErrorScreen).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationErrorScreen", typeof(LocalizationErrorScreen).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,7 +70,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Подтверждение Email.
+        ///   Looks up a localized string similar to Error screen header.
         /// </summary>
         public static string Header {
             get {
