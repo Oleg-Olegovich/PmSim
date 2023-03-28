@@ -1,4 +1,7 @@
-﻿namespace PmSim.Frontend.Client.FileManagement;
+﻿using System;
+using System.IO;
+
+namespace PmSim.Frontend.Client.FileManagement;
 
 /// <summary>
 /// Contains immutable values used when working with files.

@@ -1,4 +1,6 @@
-﻿namespace PmSim.Frontend.Client.Exceptions;
+﻿using System;
+
+namespace PmSim.Frontend.Client.Exceptions;
 
 public class PmSimClientException : Exception
 {

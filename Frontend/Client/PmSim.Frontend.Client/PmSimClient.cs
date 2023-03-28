@@ -1,7 +1,10 @@
-﻿using PmSim.Shared.Contracts.Account;
+﻿using System;
+using System.Threading.Tasks;
+using PmSim.Shared.Contracts.Account;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Frontend.Client.Dto;
+using PmSim.Shared.Contracts.Game;
 
 namespace PmSim.Frontend.Client;
 
@@ -64,7 +67,7 @@ public class PmSimClient
         return new PmSimClient();
     }
 
-    public async Task CreateNewGameAsync(GameSettings gameSettings)
+    public async Task CreateNewGameAsync(Options gameOptions)
     {
         _clientOptions.GameId = 0;
         /*

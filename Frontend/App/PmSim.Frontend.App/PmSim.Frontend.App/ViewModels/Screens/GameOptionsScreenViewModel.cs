@@ -4,6 +4,8 @@ using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Exceptions;
+using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Game;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -207,13 +209,14 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
 
     private async Task StartGame()
     {
-        var settings = new GameSettings(Name, PlayersNumber, BotsNumber, SelectedMode, SelectedMap, ConnectionRealTime, 
-            ChoosingBackgroundRealTime, SprintRealTime, DiplomacyRealTime, IncidentRealTime, SprintActionsNumber, 
-            AuctionRealTime, StartUpCapital);
+        var settings = new Options(Name, PlayersNumber, BotsNumber, (GameModes)SelectedMode, SelectedMap, 
+            ConnectionRealTime, ChoosingBackgroundRealTime, SprintRealTime, DiplomacyRealTime, IncidentRealTime, 
+            SprintActionsNumber, AuctionRealTime, StartUpCapital);
         try
         {
             await _client.CreateNewGameAsync(settings);
-            BaseWindow.Content = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
+            BaseWindow.Content 
+                = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
         }
         catch (PmSimClientException exception)
         {
@@ -223,11 +226,11 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     
     private void ProcessDefaultClick()
     {
-        var defaultSettings = GameSettings.Default;
+        var defaultSettings = Options.Default;
         Name = defaultSettings.GameName;
         PlayersNumber = defaultSettings.MaxPlayersNumber;
         BotsNumber = defaultSettings.BotsNumber;
-        SelectedMode = defaultSettings.Mode;
+        SelectedMode = (int)defaultSettings.Mode;
         SelectedMap = defaultSettings.MapNumber;
         ConnectionRealTime = defaultSettings.ConnectionRealTime;
         ChoosingBackgroundRealTime = defaultSettings.ChoosingBackgroundRealTime;
