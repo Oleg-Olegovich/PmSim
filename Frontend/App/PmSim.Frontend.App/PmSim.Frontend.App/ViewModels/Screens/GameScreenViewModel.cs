@@ -1,12 +1,13 @@
 ﻿using System.Reactive;
 using PmSim.Frontend.App.ViewModels.Frames;
+using PmSim.Frontend.App.ViewModels.Interfaces;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
 
-public class GameScreenViewModel : BasicScreenViewModel
+public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 {
     private readonly PmSimClient _client;
     

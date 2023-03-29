@@ -61,16 +61,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Подтвердить.
-        /// </summary>
-        public static string ButtonConfirm {
-            get {
-                return ResourceManager.GetString("ButtonConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Error screen header.
+        ///   Looks up a localized string similar to Ошибка!.
         /// </summary>
         public static string Header {
             get {

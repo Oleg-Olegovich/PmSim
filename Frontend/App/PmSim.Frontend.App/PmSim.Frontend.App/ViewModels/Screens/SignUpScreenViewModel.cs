@@ -97,13 +97,13 @@ public class SignUpScreenViewModel : BasicScreenViewModel
             IsSignUpAvailable = false;
             return;
         }
-        if (!Validator.IsEmailCorrect(Login))
+        if (!Validator.IsLoginCorrect(Login))
         {
             ErrorMessage = LocalizationSignUpScreen.IncorrectLogin;
             IsSignUpAvailable = false;
             return;
         }
-        if (!Validator.IsEmailCorrect(Password))
+        if (!Validator.IsPasswordCorrect(Password))
         {
             ErrorMessage = LocalizationSignUpScreen.IncorrectPassword;
             IsSignUpAvailable = false;

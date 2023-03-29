@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Shared.Contracts", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmSim.Shared.GameEngine", "Shared\projects\GameEngine\PmSim.Shared.GameEngine\PmSim.Shared.GameEngine.csproj", "{3D57ED28-8046-4C39-805A-7821AD3B125A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tTest", "tTest", "{736A4A21-6657-4C4C-A486-895EB2DD964E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,7 @@ Global
 		{A5D8BBE2-7900-4059-91C2-3DDA0466D82F} = {5461CC4A-9F32-4492-912A-50D46EC6090E}
 		{96663EEB-6633-4764-808B-935FBEFCFB92} = {02CCCE65-CA44-4FDB-8C0C-D8179EA5FBE1}
 		{3D57ED28-8046-4C39-805A-7821AD3B125A} = {A4DE8A72-B2ED-4139-A2DA-1BC6F78272BC}
+		{736A4A21-6657-4C4C-A486-895EB2DD964E} = {1D7FB5BE-5FAF-4FD5-AECB-7547BDED7C9A}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{22CC13B9-8FF6-42F8-B9D3-30F1FA5C5341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
