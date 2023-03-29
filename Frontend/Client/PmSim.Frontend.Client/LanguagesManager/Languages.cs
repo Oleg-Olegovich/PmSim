@@ -1,4 +1,4 @@
-namespace PmSim.Frontend.App.ViewModels.LanguagesManager;
+namespace PmSim.Frontend.Client.LanguagesManager;
 
 /// <summary>
 /// List of localization languages.

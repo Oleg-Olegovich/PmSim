@@ -1,10 +1,10 @@
 using System;
 using System.ComponentModel;
 using Avalonia.Controls;
-using PmSim.Frontend.App.ViewModels.LanguagesManager;
 using PmSim.Frontend.App.ViewModels.Screens;
 using PmSim.Frontend.App.ViewModels.ThemesManagement;
 using PmSim.Frontend.Client.FileManagement;
+using PmSim.Frontend.Client.LanguagesManager;
 using ReactiveUI;
 using Serilog.Core;
 

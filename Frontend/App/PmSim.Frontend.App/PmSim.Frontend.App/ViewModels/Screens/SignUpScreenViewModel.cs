@@ -4,8 +4,10 @@ using PmSim.Frontend.App.Models;
 using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
+using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Exceptions;
+using PmSim.Frontend.Client.Utils;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -124,14 +126,14 @@ public class SignUpScreenViewModel : BasicScreenViewModel
     {
         try
         {
-            if (!await PmSimClient.ReserveLogin(Login))
+            if (!await MultiplayerClient.ReserveLogin(Login))
             {
                 ErrorMessage = LocalizationSignUpScreen.LoginIsOccupied;
                 return;
             }
 
             ErrorMessage = "";
-            var code = await PmSimClient.SendCodeToEmailAsync(Email);
+            var code = await MultiplayerClient.SendCodeToEmailAsync(Email);
             var user = new User(Email, Login, Password);
             BaseWindow.Content = new EmailConfirmationScreenViewModel(
                 BaseWindow, this, _titleScreen, user, code);

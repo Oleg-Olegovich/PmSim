@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
+using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Exceptions;
 using ReactiveUI;
@@ -10,7 +11,7 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class GamesListScreenViewModel : BasicScreenViewModel
 {
-    private readonly PmSimClient _client;
+    private readonly MultiplayerClient _client;
 
     private Game[]? _games;
     public Game[]? Games
@@ -31,7 +32,7 @@ public class GamesListScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> ConnectCommand { get; }
 
-    public GamesListScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, PmSimClient client) 
+    public GamesListScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, MultiplayerClient client) 
         : base(baseWindow, previous)
     {
         NewGameCommand = ReactiveCommand.Create(ProcessNewGameCommand);

@@ -2,9 +2,9 @@
 
 namespace PmSim.Shared.Contracts.Game;
 
-public class Options
+public class GameOptions
 {
-    public static Options Default
+    public static GameOptions Default
         => new("Default", Constants.DefaultMaxPlayersNumber, Constants.DefaultMaxBotsNumber, 
             Constants.DefaultMode, Constants.DefaultMapNumber, Constants.DefaultConnectionRealTime, 
             Constants.DefaultChoosingBackground, Constants.DefaultSprintRealTime, 
@@ -37,7 +37,7 @@ public class Options
 
     public int StartUpCapital { get; set; }
 
-    public Options(string gameName, int maxPlayersNumber, int botsNumber, GameModes mode, int mapNumber, 
+    public GameOptions(string gameName, int maxPlayersNumber, int botsNumber, GameModes mode, int mapNumber, 
         int connectionRealTime, int choosingBackgroundRealTime, int sprintRealTime, int diplomacyRealTime, 
         int incidentRealTime, int sprintActionsNumbers, int auctionRealTime, int startUpCapital)
     {

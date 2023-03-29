@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
+using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Exceptions;
 using PmSim.Shared.Contracts.Enums;
@@ -12,7 +13,7 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class GameOptionsScreenViewModel : BasicScreenViewModel
 {
-    private readonly PmSimClient _client;
+    private readonly IPmSimClient _client;
     
     // Option fields.
     
@@ -192,7 +193,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     public ReactiveCommand<Unit, Unit> StartCommand { get; }
 
     public GameOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, 
-        PmSimClient client, bool isSingleplayer) : base(baseWindow, previous)
+        IPmSimClient client, bool isSingleplayer) : base(baseWindow, previous)
     {
         _client = client;
         IsSingleplayer = isSingleplayer;
@@ -200,8 +201,8 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         {
             PlayersNumber = 1;
         }
-        Modes = client.GetModes();
-        Maps = client.GetMaps();
+        Modes = client.GetModes(BaseWindow.Options.Language);
+        Maps = client.GetMaps(BaseWindow.Options.Language);
         ProcessDefaultClick();
         DefaultCommand = ReactiveCommand.Create(ProcessDefaultClick);
         StartCommand = ReactiveCommand.CreateFromTask(StartGame);
@@ -209,7 +210,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
 
     private async Task StartGame()
     {
-        var settings = new Options(Name, PlayersNumber, BotsNumber, (GameModes)SelectedMode, SelectedMap, 
+        var settings = new GameOptions(Name, PlayersNumber, BotsNumber, (GameModes)SelectedMode, SelectedMap, 
             ConnectionRealTime, ChoosingBackgroundRealTime, SprintRealTime, DiplomacyRealTime, IncidentRealTime, 
             SprintActionsNumber, AuctionRealTime, StartUpCapital);
         try
@@ -226,7 +227,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     
     private void ProcessDefaultClick()
     {
-        var defaultSettings = Options.Default;
+        var defaultSettings = GameOptions.Default;
         Name = defaultSettings.GameName;
         PlayersNumber = defaultSettings.MaxPlayersNumber;
         BotsNumber = defaultSettings.BotsNumber;

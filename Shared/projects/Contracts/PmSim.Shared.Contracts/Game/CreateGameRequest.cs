@@ -22,6 +22,6 @@ namespace PmSim.Shared.Contracts.Game
         public int Mode { get; set; }
 
         [JsonPropertyName("settings")]
-        public Options Settings { get; set; }
+        public GameOptions Settings { get; set; }
     }
 }

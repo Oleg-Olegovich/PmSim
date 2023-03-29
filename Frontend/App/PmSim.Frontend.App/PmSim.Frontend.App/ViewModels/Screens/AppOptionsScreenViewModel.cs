@@ -1,7 +1,8 @@
 ﻿using PmSim.Frontend.App.Properties.Localizations;
-using PmSim.Frontend.App.ViewModels.LanguagesManager;
 using PmSim.Frontend.App.ViewModels.ThemesManagement;
 using PmSim.Frontend.App.ViewModels.Windows;
+using PmSim.Frontend.Client.LanguagesManager;
+using PmSim.Shared.Contracts.Enums;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;

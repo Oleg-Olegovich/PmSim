@@ -1,6 +1,7 @@
 ﻿using System.Reactive;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
+using PmSim.Frontend.Client.Api;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -56,7 +57,7 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
 
     private void OpenGameOptionsScreen()
     {
-        var client = new PmSimClient(Login);
+        var client = new SingleplayerClient(Login);
         BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, client, true);
     }
 }

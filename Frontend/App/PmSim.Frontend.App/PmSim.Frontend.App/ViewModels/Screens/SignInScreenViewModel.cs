@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
+using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Exceptions;
 using ReactiveUI;
 
@@ -96,7 +97,7 @@ public class SignInScreenViewModel : BasicScreenViewModel
     {
         try
         {
-            var client = await PmSimClient.SignInAsync(Login, Password);
+            var client = await MultiplayerClient.SignInAsync(Login, Password);
             var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
             BaseWindow.Content = gamesListScreen;
         }

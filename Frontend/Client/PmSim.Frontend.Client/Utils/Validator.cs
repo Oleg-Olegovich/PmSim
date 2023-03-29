@@ -1,6 +1,4 @@
-﻿using PmSim.Frontend.Client.Dto;
-
-namespace PmSim.Frontend.Client;
+﻿namespace PmSim.Frontend.Client.Utils;
 
 public static class Validator
 {

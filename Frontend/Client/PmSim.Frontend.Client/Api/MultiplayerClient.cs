@@ -1,32 +1,18 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using PmSim.Frontend.Client.Dto;
+using PmSim.Frontend.Client.Utils;
 using PmSim.Shared.Contracts.Account;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
-using PmSim.Frontend.Client.Dto;
 using PmSim.Shared.Contracts.Game;
 
-namespace PmSim.Frontend.Client;
+namespace PmSim.Frontend.Client.Api;
 
-public class PmSimClient
+public class MultiplayerClient : IPmSimClient
 {
     //private readonly IGatewayClient _gateway;
     private readonly ClientOptions _clientOptions;
-    
-    /// <summary>
-    /// For single mode.
-    /// </summary>
-    public PmSimClient(string playerName)
-    {
-        _clientOptions = new ClientOptions();
-        //PlayerName = playerName;
-        //_gateway = new Backend.Gateway.SingleModeApi.GatewayClient();
-    }
 
-    /// <summary>
-    /// For multiplayer mode.
-    /// </summary>
-    private PmSimClient()
+    private MultiplayerClient()
     {
         _clientOptions = ConfigurationManager.ClientOptions;
         /*
@@ -53,21 +39,21 @@ public class PmSimClient
         return code.ToString();
     }
 
-    public static async Task<PmSimClient> SignUpAsync(User user)
+    public static async Task<MultiplayerClient> SignUpAsync(User user)
     {
         var request = new CreateAccountRequest();
         //var response = await _gateway.CreateAccountAsync(request);
-        return new PmSimClient();
+        return new MultiplayerClient();
     }
 
-    public static async Task<PmSimClient> SignInAsync(string login, string password)
+    public static async Task<MultiplayerClient> SignInAsync(string login, string password)
     {
         var request = new AuthorizationRequest();
         //var response = await _gateway.GetAccountAsync(request);
-        return new PmSimClient();
+        return new MultiplayerClient();
     }
 
-    public async Task CreateNewGameAsync(Options gameOptions)
+    public async Task CreateNewGameAsync(GameOptions gameOptions)
     {
         _clientOptions.GameId = 0;
         /*
@@ -200,13 +186,5 @@ public class PmSimClient
             new Game(1, "Test", "TimerAndMoney", "The simple village", 0, 5)
         };
         return games;
-    }
-
-    public string[] GetModes()
-        => Enum.GetNames(typeof(GameModes));
-
-    public string[] GetMaps()
-    {
-        return new string[] { "The simple village" };
     }
 }

@@ -1,10 +1,10 @@
-﻿using PmSim.Frontend.Client.Dto;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Exceptions;
 
-namespace PmSim.Frontend.Client;
+namespace PmSim.Frontend.Client.Utils;
 
 public static class ConfigurationManager
 {

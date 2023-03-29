@@ -1,8 +1,6 @@
-﻿using System;
-using System.Globalization;
-using System.Threading;
+﻿using System.Globalization;
 
-namespace PmSim.Frontend.App.ViewModels.LanguagesManager;
+namespace PmSim.Frontend.Client.LanguagesManager;
 
 /// <summary>
 /// Changing the namespace of this class will result in RE.

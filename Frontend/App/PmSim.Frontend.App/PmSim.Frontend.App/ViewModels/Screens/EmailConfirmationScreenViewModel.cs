@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
+using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Exceptions;
 using ReactiveUI;
@@ -66,7 +67,7 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
 
         try
         {
-            var client = await PmSimClient.SignUpAsync(_user);
+            var client = await MultiplayerClient.SignUpAsync(_user);
             var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
             BaseWindow.Content = gamesListScreen;
         }

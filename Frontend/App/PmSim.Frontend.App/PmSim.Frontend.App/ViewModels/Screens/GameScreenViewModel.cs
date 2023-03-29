@@ -3,13 +3,14 @@ using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Interfaces;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
+using PmSim.Frontend.Client.Api;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 {
-    private readonly PmSimClient _client;
+    private readonly IPmSimClient _client;
     
     private string _gameStage = "Game stage";
     
@@ -77,7 +78,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     
     public ReactiveCommand<Unit, Unit> GiveUpCommand { get; }
 
-    public GameScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, PmSimClient client) 
+    public GameScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, IPmSimClient client) 
         : base(baseWindow, previous)
     {
         _client = client;
