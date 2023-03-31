@@ -5,11 +5,11 @@ namespace PmSim.Shared.Contracts.Game;
 public class GameOptions
 {
     public static GameOptions Default
-        => new("Default", Constants.DefaultMaxPlayersNumber, Constants.DefaultMaxBotsNumber, 
-            Constants.DefaultMode, Constants.DefaultMapNumber, Constants.DefaultConnectionRealTime, 
-            Constants.DefaultChoosingBackground, Constants.DefaultSprintRealTime, 
-            Constants.DefaultDiplomacyRealTime, Constants.DefaultIncidentRealTime, 
-            Constants.DefaultSprintActionsNumbers, Constants.DefaultAuctionRealTime, Constants.DefaultStartUpCapital);
+        => new("Default", GameConstants.DefaultMaxPlayersNumber, GameConstants.DefaultMaxBotsNumber, 
+            GameConstants.DefaultMode, GameConstants.DefaultMapNumber, GameConstants.DefaultConnectionRealTime, 
+            GameConstants.DefaultChoosingBackground, GameConstants.DefaultSprintRealTime, 
+            GameConstants.DefaultDiplomacyRealTime, GameConstants.DefaultIncidentRealTime, 
+            GameConstants.DefaultSprintActionsNumbers, GameConstants.DefaultAuctionRealTime, GameConstants.DefaultStartUpCapital);
     
     public string GameName { get; set; }
     

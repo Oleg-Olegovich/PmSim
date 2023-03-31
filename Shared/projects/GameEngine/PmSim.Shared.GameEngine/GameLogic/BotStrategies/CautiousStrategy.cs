@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 using PmSim.Shared.GameEngine.Dto;
-using PmSim.Shared.GameEngine.Interfaces;
+using GameConstants = PmSim.Shared.Contracts.Game.GameConstants;
 
 namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
 {
@@ -36,7 +37,7 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
                 return;
             }
 
-            Bot.Money += Constants.WorkForHireSalary;
+            Bot.Money += GameConstants.WorkForHireSalary;
         }
 
         internal override async Task MakeSprintMove()

@@ -4,8 +4,8 @@ using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
-using PmSim.Frontend.Client.Exceptions;
 using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game;
 using ReactiveUI;
 
@@ -201,8 +201,8 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         {
             PlayersNumber = 1;
         }
-        Modes = client.GetModes(BaseWindow.Options.Language);
-        Maps = client.GetMaps(BaseWindow.Options.Language);
+        Modes = IPmSimClient.GetModes(BaseWindow.Options.Language);
+        Maps = IPmSimClient.GetMaps(BaseWindow.Options.Language);
         ProcessDefaultClick();
         DefaultCommand = ReactiveCommand.Create(ProcessDefaultClick);
         StartCommand = ReactiveCommand.CreateFromTask(StartGame);
@@ -219,7 +219,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
             BaseWindow.Content 
                 = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
         }
-        catch (PmSimClientException exception)
+        catch (PmSimException exception)
         {
             BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
         }

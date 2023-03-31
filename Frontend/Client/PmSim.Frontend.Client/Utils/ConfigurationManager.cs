@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PmSim.Frontend.Client.Dto;
-using PmSim.Frontend.Client.Exceptions;
+using PmSim.Shared.Contracts.Exceptions;
 
 namespace PmSim.Frontend.Client.Utils;
 
@@ -14,7 +14,7 @@ public static class ConfigurationManager
         {
             var host = InitializeHost();
             var clientOptions = host.Services.GetRequiredService<ClientOptions>();
-            return clientOptions ?? throw new PmSimClientException("Client options is null!");
+            return clientOptions ?? throw new PmSimException("Client options is null!");
         }
     }
     
@@ -30,7 +30,7 @@ public static class ConfigurationManager
                 var baseUriLink = context.Configuration.GetSection("BaseUri").Get<string>();
                 if (baseUriLink is null)
                 {
-                    throw new PmSimClientException("Base uri is null!");
+                    throw new PmSimException("Base uri is null!");
                 }
                 var baseUri = new Uri(baseUriLink);
                 var clientOptions = new ClientOptions(baseUri);

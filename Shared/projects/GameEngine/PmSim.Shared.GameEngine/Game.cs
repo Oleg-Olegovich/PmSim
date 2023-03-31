@@ -1,12 +1,16 @@
 ﻿using System.Reflection;
-using PmSim.Shared.GameEngine.Dto;
-using PmSim.Shared.GameEngine.Exceptions;
 using PmSim.Shared.GameEngine.GameLogic;
-using PmSim.Shared.GameEngine.GameLogic.GameMaps;
 using PmSim.Shared.GameEngine.GameLogic.Incidents;
 using PmSim.Shared.GameEngine.GameLogic.Opportunities;
 using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.GameObjects.Diplomacy;
+using PmSim.Shared.Contracts.Game.GameObjects.Employees;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.GameObjects.Projects;
+using PmSim.Shared.Contracts.Interfaces;
+using GameConstants = PmSim.Shared.Contracts.Game.GameConstants;
 
 namespace PmSim.Shared.GameEngine;
 
@@ -84,12 +88,12 @@ public class Game
     {
         if (Stage != GameStages.Connection && Stage != GameStages.NotStarted)
         {
-            throw new WrongGameStageException("Now is not the connection.");
+            throw new PmSimException("Now is not the connection.");
         }
 
         if (_players.Count == _playersQuantity)
         {
-            throw new InvalidActionException("The limit on the quantity of players has been reached.");
+            throw new PmSimException("The limit on the quantity of players has been reached.");
         }
 
         _players.Add(new Player(id, playerName, _settings.StartUpCapital));
@@ -100,7 +104,7 @@ public class Game
         var player = Actors.FirstOrDefault(x => x.Id == playerId);
         if (player == null)
         {
-            throw new InvalidActionException("There is no such player.");
+            throw new PmSimException("There is no such player.");
         }
 
         return player;
@@ -111,12 +115,12 @@ public class Game
         var player = FindPlayerById(playerId);
         if (player.IsBackgroundChosen)
         {
-            throw new InvalidActionException("The background has already been chosen.");
+            throw new PmSimException("The background has already been chosen.");
         }
 
         ++_playersCompleted;
         player.IsBackgroundChosen = true;
-        player.SetSkillsByProfession(profession);
+        PlayerLogic.SetSkillsByProfession(player, profession);
     }
 
     private async Task RentOfficeAsync(int playerId, int officeNumber)
@@ -125,7 +129,7 @@ public class Game
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
             || Offices[officeNumber].OwnerId != -1 || player.Money < Offices[officeNumber].RentalPrice)
         {
-            throw new InvalidActionException("It is impossible to rent the office.");
+            throw new PmSimException("It is impossible to rent the office.");
         }
 
         Offices[officeNumber].OwnerId = playerId;
@@ -143,7 +147,7 @@ public class Game
         if (player.IsOut || Offices.Count(x => x.OwnerId == playerId) < 2 || officeNumber < 0
             || officeNumber >= Offices.Length || Offices[officeNumber].OwnerId != playerId)
         {
-            throw new InvalidActionException("It is impossible to cancel the office lease.");
+            throw new PmSimException("It is impossible to cancel the office lease.");
         }
 
         Offices[officeNumber].Employees.Clear();
@@ -156,7 +160,7 @@ public class Game
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
             || Offices[officeNumber].OwnerId != playerId)
         {
-            throw new InvalidActionException("It is impossible to dismiss all employees.");
+            throw new PmSimException("It is impossible to dismiss all employees.");
         }
 
         Offices[officeNumber].Employees.Clear();
@@ -169,12 +173,12 @@ public class Game
             || Offices[officeNumber].OwnerId != playerId
             || Offices[officeNumber].Employees.Count == Offices[officeNumber].Capacity)
         {
-            throw new InvalidActionException("It is impossible to conduct the interview.");
+            throw new PmSimException("It is impossible to conduct the interview.");
         }
 
         if (player.ActionsNumber == 0)
         {
-            throw new InvalidActionException("The limit of actions has been reached.");
+            throw new PmSimException("The limit of actions has been reached.");
         }
 
         --player.ActionsNumber;
@@ -190,7 +194,7 @@ public class Game
             || officeNumber >= Offices.Length || Offices[officeNumber].OwnerId != playerId
             || Offices[officeNumber].Employees.Count == Offices[officeNumber].Capacity)
         {
-            throw new InvalidActionException("It is impossible to process the interview.");
+            throw new PmSimException("It is impossible to process the interview.");
         }
 
         var interview = FindInterviewById(playerId);
@@ -210,7 +214,7 @@ public class Game
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
             || Offices[officeNumber].OwnerId != playerId || Offices[officeNumber].DoesHaveTechSupport)
         {
-            throw new InvalidActionException("It is impossible to hire the tech support officer.");
+            throw new PmSimException("It is impossible to hire the tech support officer.");
         }
 
         Offices[officeNumber].DoesHaveTechSupport = true;
@@ -222,7 +226,7 @@ public class Game
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
             || Offices[officeNumber].OwnerId != playerId || !Offices[officeNumber].DoesHaveTechSupport)
         {
-            throw new InvalidActionException("It is impossible to dismiss the tech support officer.");
+            throw new PmSimException("It is impossible to dismiss the tech support officer.");
         }
 
         Offices[officeNumber].DoesHaveTechSupport = false;
@@ -235,12 +239,12 @@ public class Game
         if (player.IsOut || target.IsOut || opportunityNumber < 0 || opportunityNumber >= _opportunities.Length
             || !player.Opportunities.Contains(opportunityNumber))
         {
-            throw new InvalidActionException("It is impossible to use the opportunity.");
+            throw new PmSimException("It is impossible to use the opportunity.");
         }
 
         if (player.ActionsNumber == 0)
         {
-            throw new InvalidActionException("The limit of actions has been reached.");
+            throw new PmSimException("The limit of actions has been reached.");
         }
 
         --player.ActionsNumber;
@@ -253,13 +257,13 @@ public class Game
     {
         if (progressPointNumber < 0 || progressPointNumber > 3)
         {
-            throw new InvalidActionException("There is no such progress point.");
+            throw new PmSimException("There is no such progress point.");
         }
 
         var player = FindPlayerById(playerId);
         if (featureNumber < 0 || featureNumber >= player.Projects.Count)
         {
-            throw new InvalidActionException("There is no such feature.");
+            throw new PmSimException("There is no such feature.");
         }
 
         await AssignToTaskAsync(playerId, officeNumber, executorNumber, new EmployeeWorkTask(player,
@@ -276,7 +280,7 @@ public class Game
         var player = FindPlayerById(playerId);
         if (projectNumber < 0 || projectNumber >= player.Projects.Count)
         {
-            throw new InvalidActionException("There is no such feature.");
+            throw new PmSimException("There is no such feature.");
         }
 
         await AssignToTaskAsync(playerId, officeNumber, executorNumber,
@@ -290,7 +294,7 @@ public class Game
             || Offices[officeNumber].OwnerId != playerId || executorNumber < 0
             || executorNumber >= Offices[officeNumber].Employees.Count)
         {
-            throw new InvalidActionException("It is impossible to cancel the task.");
+            throw new PmSimException("It is impossible to cancel the task.");
         }
 
         Offices[officeNumber].Employees[executorNumber].CurrentTask = null;
@@ -303,7 +307,7 @@ public class Game
             || projectNumber >= _opportunities.Length
             || _auctions.Count(x => x.Lot == seller.Projects[projectNumber]) > 0)
         {
-            throw new InvalidActionException("It is impossible to put the project up for auction.");
+            throw new PmSimException("It is impossible to put the project up for auction.");
         }
 
         _auctions.Add(new Auction(_auctions.Count, seller.Projects[projectNumber], sellerId, startPrice, buyerId));
@@ -321,7 +325,7 @@ public class Game
             || executorNumber >= Offices[officeNumber].Employees.Count
             || _auctions.Count(x => x.Lot == Offices[officeNumber].Employees[executorNumber]) > 0)
         {
-            throw new InvalidActionException("It is impossible to put the executor up for auction.");
+            throw new PmSimException("It is impossible to put the executor up for auction.");
         }
 
         _auctions.Add(new Auction(_auctions.Count, Offices[officeNumber].Employees[executorNumber], sellerId,
@@ -338,7 +342,7 @@ public class Game
         if (seller.IsOut || opportunityNumber < 0 || opportunityNumber >= _opportunities.Length
             || !seller.Opportunities.Contains(opportunityNumber))
         {
-            throw new InvalidActionException("It is impossible to put the opportunity up for auction.");
+            throw new PmSimException("It is impossible to put the opportunity up for auction.");
         }
 
         _auctions.Add(
@@ -366,7 +370,7 @@ public class Game
             _auctions[auctionNumber].LastPrice >= offerSum
             || buyer.Money < offerSum)
         {
-            throw new InvalidActionException("It is impossible to participate in the auction.");
+            throw new PmSimException("It is impossible to participate in the auction.");
         }
 
         if (_auctions[auctionNumber].LastBuyerId != -1)
@@ -395,7 +399,7 @@ public class Game
     {
         if (FindPlayerById(playerId).IsOut || Stage != GameStages.Diplomacy)
         {
-            throw new InvalidActionException("It is impossible to request incoming offers.");
+            throw new PmSimException("It is impossible to request incoming offers.");
         }
 
         return _auctions.Where(x => x.IsPublic || x.SellerId == playerId || x.LastBuyerId == playerId).ToArray();
@@ -406,7 +410,7 @@ public class Game
         var player = FindPlayerById(playerId);
         if (player.IsOut || player.Money < donation)
         {
-            throw new InvalidActionException("It is impossible to make decision on the incident.");
+            throw new PmSimException("It is impossible to make decision on the incident.");
         }
 
         CurrentIncident.DonationsSum += donation;
@@ -418,7 +422,7 @@ public class Game
         var player = FindPlayerById(playerId);
         if (player.IsOut)
         {
-            throw new InvalidActionException("It is impossible to skip move.");
+            throw new PmSimException("It is impossible to skip move.");
         }
 
         player.ActionsNumber = 0;
@@ -458,7 +462,7 @@ public class Game
             || Offices[officeNumber].OwnerId != playerId || executorNumber < 0
             || executorNumber >= Offices[officeNumber].Employees.Count)
         {
-            throw new InvalidActionException("It is impossible to assign to work.");
+            throw new PmSimException("It is impossible to assign to work.");
         }
 
         Offices[officeNumber].Employees[executorNumber].CurrentTask = task;
@@ -479,7 +483,7 @@ public class Game
         }
         catch
         {
-            throw new GameLogicException("Failed to initialize game objects.");
+            throw new PmSimException("Failed to initialize game objects.");
         }
     }
 
@@ -491,7 +495,7 @@ public class Game
         }
 
         if ((playersQuantity + botsQuantity < 2) ||
-            (playersQuantity + botsQuantity > Constants.MaxActorsNumber))
+            (playersQuantity + botsQuantity > GameConstants.MaxActorsNumber))
         {
             throw new ArgumentException("Incorrect number of bots or players.");
         }
@@ -566,7 +570,7 @@ public class Game
             var owner = FindPlayerById(office.OwnerId);
             if (office.DoesHaveTechSupport)
             {
-                owner.Money -= Constants.TechSupportSalary;
+                owner.Money -= GameConstants.TechSupportSalary;
             }
 
             foreach (var employee in office.Employees)
@@ -604,7 +608,7 @@ public class Game
                     // This feature will be added in the release or multiplayer version.
                     break;
                 default:
-                    throw new GameLogicException("Invalid auction lot!");
+                    throw new PmSimException("Invalid auction lot!");
             }
         }
     }
@@ -620,7 +624,7 @@ public class Game
 
             foreach (var employee in office.Employees)
             {
-                employee.Work();
+                EmployeeLogic.Work(employee);
             }
         }
     }
@@ -633,10 +637,9 @@ public class Game
         await SummingUpAuctions();
         await SummingUpEmployeesTasks();
 
-        var tasks = Actors.Select(player => player.SummingUp()).ToList();
-        foreach (var task in tasks)
+        foreach (var player in Actors)
         {
-            await task;
+            PlayerLogic.SummingUp(player);
         }
     }
 
@@ -687,7 +690,7 @@ public class Game
         Winner = _bots.FirstOrDefault(condition);
         if (Winner == null)
         {
-            throw new GameLogicException("There is no winner.");
+            throw new PmSimException("There is no winner.");
         }
     }
 
@@ -740,7 +743,7 @@ public class Game
         var interview = _interviews.FirstOrDefault(x => x.PlayerId == playerId);
         if (interview == null)
         {
-            throw new InvalidActionException("There is no such player.");
+            throw new PmSimException("There is no such player.");
         }
 
         return interview;
@@ -756,7 +759,7 @@ public class Game
         }
         catch
         {
-            throw new InvalidMapNumberException("Invalid map number!");
+            throw new PmSimException("Invalid map number!");
         }
     }
 

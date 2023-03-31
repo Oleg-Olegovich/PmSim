@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using PmSim.Shared.GameEngine.GameLogic.BotStrategies;
+﻿using PmSim.Shared.GameEngine.GameLogic.BotStrategies;
 using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
 
 namespace PmSim.Shared.GameEngine.GameLogic
 {
     internal class Bot : Player
     {
-        private static readonly Random Random = new Random();
+        private static readonly Random Random = new();
         
         private readonly BotStrategy[] _strategies;
         
         private StrategyTypes _strategyType;
 
-        internal List<int> OfficeIndexes { get; } = new List<int>();
+        internal List<int> OfficeIndexes { get; } = new();
 
         internal Bot(int id, string name, int capital, Game game)
             : base(id, name, ChooseProfession(), capital)

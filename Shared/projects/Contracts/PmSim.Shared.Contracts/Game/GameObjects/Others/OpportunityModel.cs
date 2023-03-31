@@ -1,9 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Others
+namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
+
+public class OpportunityModel
 {
-    public class OpportunityModel : ILotModel
-    {
-        [JsonPropertyName("descriptionNumber")] public int DescriptionNumber { get; set; }
-    }
+    [JsonPropertyName("descriptionNumber")] 
+    public int DescriptionNumber { get; set; }
 }

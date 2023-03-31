@@ -1,5 +1,5 @@
-﻿using System;
-using PmSim.Shared.GameEngine.Interfaces;
+﻿using PmSim.Shared.Contracts.Game.GameObjects.Employees;
+using PmSim.Shared.Contracts.Interfaces;
 
 namespace PmSim.Shared.GameEngine.GameLogic
 {
@@ -8,7 +8,7 @@ namespace PmSim.Shared.GameEngine.GameLogic
     {
         internal int PlayerId { get; }
 
-        internal Employee Employee { get; } = Employee.Generate();
+        internal Employee Employee { get; } = EmployeeLogic.Generate();
         
         internal Interview(int playerId)
         {

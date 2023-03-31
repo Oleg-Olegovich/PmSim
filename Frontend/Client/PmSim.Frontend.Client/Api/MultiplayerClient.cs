@@ -166,11 +166,11 @@ public class MultiplayerClient : IPmSimClient
     {
     }
 
-    public async Task SkipMove()
+    public async Task SkipMoveAsync()
     {
     }
 
-    public async Task ExitGame()
+    public async Task ExitGameAsync()
     {
     }
 

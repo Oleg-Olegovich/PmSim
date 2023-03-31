@@ -1,4 +1,5 @@
 ﻿using System.Reactive;
+using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Interfaces;
 using PmSim.Frontend.App.ViewModels.Windows;
@@ -83,9 +84,12 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     {
         _client = client;
         MainAreaContent = new GameMap0ViewModel();
-        GiveUpCommand = ReactiveCommand.Create(ProcessGiveUpClick);
+        GiveUpCommand = ReactiveCommand.CreateFromTask(ProcessGiveUpClick);
     }
 
-    private void ProcessGiveUpClick()
-        => BaseWindow.Content = new TitleScreenViewModel(BaseWindow);
+    private async Task ProcessGiveUpClick()
+    {
+        await _client.ExitGameAsync();
+        BaseWindow.Content = new TitleScreenViewModel(BaseWindow);
+    }
 }

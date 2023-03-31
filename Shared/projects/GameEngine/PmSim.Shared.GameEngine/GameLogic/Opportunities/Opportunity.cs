@@ -1,4 +1,5 @@
-﻿using PmSim.Shared.GameEngine.Interfaces;
+﻿using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Interfaces;
 
 namespace PmSim.Shared.GameEngine.GameLogic.Opportunities
 {

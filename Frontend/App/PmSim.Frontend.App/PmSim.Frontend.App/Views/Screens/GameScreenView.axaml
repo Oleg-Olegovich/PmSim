@@ -9,7 +9,7 @@
     <!-- CHANGE 50 TO * -->
     <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
     
-    <Grid RowDefinitions="50, *, 7*, *, 10"
+    <Grid RowDefinitions="50, 8*, *, 10"
           ColumnDefinitions="10, Auto, *, 10">
         
         <!-- Status bar -->
@@ -84,21 +84,25 @@
         
         <!-- Players column -->
         
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Text="{x:Static localizations:LocalizationGameScreen.TextBlockPlayers}"/>
-        
-        <DataGrid Grid.Row="2"
-                  Grid.Column="1"/>
-        
-        <Button Grid.Row="3"
+        <DataGrid Grid.Row="1"
+                  Grid.Column="1"
+                  Classes="Common"
+                  Items="{Binding Players}"
+                  SelectedItem="{Binding SelectedPlayer}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static localizations:LocalizationGameScreen.TextBlockPlayers}"
+                                    Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2"
                 Grid.Column="1"
                 Content="{x:Static localizations:LocalizationGameScreen.ButtonSkip}"/>
         
         <!-- Main area (game map or action dialog) -->
         
         <ContentControl Grid.Row="1"
-                        Grid.RowSpan="3"
+                        Grid.RowSpan="2"
                         Grid.Column="2"
                         Content="{Binding MainAreaContent}"
                         HorizontalContentAlignment="Stretch"

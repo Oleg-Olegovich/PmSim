@@ -1,4 +1,6 @@
 ﻿using System;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.GameObjects.Projects;
 using PmSim.Shared.GameEngine.Dto;
 
 namespace PmSim.Shared.GameEngine.GameLogic.Incidents

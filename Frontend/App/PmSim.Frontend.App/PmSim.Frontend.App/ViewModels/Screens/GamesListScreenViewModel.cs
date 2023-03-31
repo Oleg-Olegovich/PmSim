@@ -4,7 +4,7 @@ using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
-using PmSim.Frontend.Client.Exceptions;
+using PmSim.Shared.Contracts.Exceptions;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -53,7 +53,7 @@ public class GamesListScreenViewModel : BasicScreenViewModel
                 await _client.ConnectToGame(SelectedGame.Id);
                 BaseWindow.Content = new GameScreenViewModel(BaseWindow, this, _client);
             }
-            catch (PmSimClientException exception)
+            catch (PmSimException exception)
             {
                 BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
             }

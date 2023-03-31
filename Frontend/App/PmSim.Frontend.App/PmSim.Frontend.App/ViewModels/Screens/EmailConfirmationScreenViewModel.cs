@@ -5,7 +5,7 @@ using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
-using PmSim.Frontend.Client.Exceptions;
+using PmSim.Shared.Contracts.Exceptions;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -71,7 +71,7 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
             var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
             BaseWindow.Content = gamesListScreen;
         }
-        catch (PmSimClientException exception)
+        catch (PmSimException exception)
         {
             BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
         }
