@@ -11,4 +11,5 @@
     <StyleInclude Source="/Styles/Shared/ToggleSwitchStyles.axaml"/>
     <StyleInclude Source="/Styles/Shared/TabItem.axaml"/>
     <StyleInclude Source="/Styles/Shared/DataGridStyles.axaml"/>
+    <StyleInclude Source="/Styles/Shared/ImageStyles.axaml"/>
 </Styles>

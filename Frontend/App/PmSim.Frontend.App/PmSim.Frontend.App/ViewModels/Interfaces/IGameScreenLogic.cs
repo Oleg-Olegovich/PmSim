@@ -1,4 +1,7 @@
-﻿namespace PmSim.Frontend.App.ViewModels.Interfaces;
+﻿using System.Collections.ObjectModel;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
+
+namespace PmSim.Frontend.App.ViewModels.Interfaces;
 
 /// <summary>
 /// The interface provides external control over the state
@@ -29,4 +32,6 @@ public interface IGameScreenLogic
     public int ProjectsNumber { get; set; }
     
     public int EmployeesNumber { get; set; }
+    
+    public ObservableCollection<PlayerStatus> Players { get; set; }
 }

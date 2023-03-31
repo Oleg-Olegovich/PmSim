@@ -3,87 +3,106 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.GameScreenView">
-    
+
     <!-- CHANGE 50 TO * -->
     <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-    
-    <Grid RowDefinitions="50, 8*, *, 10"
-          ColumnDefinitions="10, Auto, *, 10">
-        
+
+    <Grid RowDefinitions="*, 8*, *, 10"
+          ColumnDefinitions="10, *, 8*, 10">
+
         <!-- Status bar -->
-        
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipGameStage}">
+            <TextBlock Text="{Binding GameStage}"
+                       VerticalAlignment="Center" />
+        </StackPanel>
+
         <Grid Grid.Row="0"
-              Grid.Column="1"
-              Grid.ColumnSpan="2"
-              RowDefinitions="*"
-              ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, *">
-            
-            <Button Grid.Row="0"
-                    Grid.Column="0"
-                    Content="{x:Static localizations:LocalizationGameScreen.ButtonGiveUp}"
-                    Command="{Binding GiveUpCommand}"
-                    Classes="Stretch AttentionGrabbing"/>
-            
+              Grid.Column="2"
+              MaxHeight="50"
+              ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, *, Auto">
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipTime}">
+                <Viewbox Stretch="Uniform">
+                    <Image Classes="TimeIcon Icon" />
+                </Viewbox>
+                <TextBlock Text="{Binding Time}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+
             <StackPanel Grid.Row="0"
                         Grid.Column="1"
                         Orientation="Horizontal"
-                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipGameStage}">
-                <TextBlock Text="{Binding GameStage}"/>
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipActionsNumber}">
+                <Viewbox Stretch="Uniform">
+                    <Image Classes="ActionsIcon Icon" />
+                </Viewbox>
+                <TextBlock Text="{Binding ActionsNumber}"
+                           VerticalAlignment="Center"/>
             </StackPanel>
-            
+
             <StackPanel Grid.Row="0"
                         Grid.Column="2"
                         Orientation="Horizontal"
-                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipTime}">
-                <Image Classes="TimeIcon"/>
-                <TextBlock Text="{Binding Time}"/>
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipMoney}">
+                <Viewbox Stretch="Uniform">
+                    <Image Classes="MoneyIcon Icon"/>
+                </Viewbox>
+                <TextBlock Text="{Binding Money}"
+                           VerticalAlignment="Center"/>
             </StackPanel>
-            
+
             <StackPanel Grid.Row="0"
                         Grid.Column="3"
                         Orientation="Horizontal"
-                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipActionsNumber}">
-                <Image Classes="ActionsIcon"/>
-                <TextBlock Text="{Binding ActionsNumber}"/>
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipOfficesNumber}">
+                <Viewbox Stretch="Uniform">
+                    <Image Classes="OfficesIcon Icon" />
+                </Viewbox>
+                <TextBlock Text="{Binding OfficesNumber}"
+                           VerticalAlignment="Center"/>
             </StackPanel>
-            
+
             <StackPanel Grid.Row="0"
                         Grid.Column="4"
                         Orientation="Horizontal"
-                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipMoney}">
-                <Image Classes="MoneyIcon"/>
-                <TextBlock Text="{Binding Money}"/>
+                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipProjectsNumber}">
+                <Viewbox Stretch="Uniform">
+                    <Image Classes="ProjectsIcon Icon" />
+                </Viewbox>
+                <TextBlock Text="{Binding ProjectsNumber}"
+                           VerticalAlignment="Center"/>
             </StackPanel>
-            
+
             <StackPanel Grid.Row="0"
                         Grid.Column="5"
                         Orientation="Horizontal"
-                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipOfficesNumber}">
-                <Image Classes="OfficesIcon"/>
-                <TextBlock Text="{Binding OfficesNumber}"/>
-            </StackPanel>
-            
-            <StackPanel Grid.Row="0"
-                        Grid.Column="6"
-                        Orientation="Horizontal"
-                        ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipProjectsNumber}">
-                <Image Classes="ProjectsIcon"/>
-                <TextBlock Text="{Binding ProjectsNumber}"/>
-            </StackPanel>
-            
-            <StackPanel Grid.Row="0"
-                        Grid.Column="7"
-                        Orientation="Horizontal"
                         ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipEmployeesNumber}">
-                <Image Classes="EmployeesIcon"/>
-                <TextBlock Text="{Binding EmployeesNumber}"/>
+                <Viewbox Stretch="Uniform">
+                    <Image Classes="EmployeesIcon Icon" />
+                </Viewbox>
+                <TextBlock Text="{Binding EmployeesNumber}"
+                           VerticalAlignment="Center"/>
             </StackPanel>
+
+            <Button Grid.Row="0"
+                    Grid.Column="7"
+                    Content="{x:Static localizations:LocalizationGameScreen.ButtonGiveUp}"
+                    Command="{Binding GiveUpCommand}"
+                    Classes="Stretch AttentionGrabbing" />
         </Grid>
-        
+
         <!-- Players column -->
-        
+
         <DataGrid Grid.Row="1"
                   Grid.Column="1"
                   Classes="Common"
@@ -91,21 +110,21 @@
                   SelectedItem="{Binding SelectedPlayer}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static localizations:LocalizationGameScreen.TextBlockPlayers}"
-                                    Binding="{Binding Name}"/>
+                                    Binding="{Binding Name}" />
             </DataGrid.Columns>
         </DataGrid>
 
         <Button Grid.Row="2"
                 Grid.Column="1"
-                Content="{x:Static localizations:LocalizationGameScreen.ButtonSkip}"/>
-        
+                Content="{x:Static localizations:LocalizationGameScreen.ButtonSkip}" />
+
         <!-- Main area (game map or action dialog) -->
-        
+
         <ContentControl Grid.Row="1"
                         Grid.RowSpan="2"
                         Grid.Column="2"
                         Content="{Binding MainAreaContent}"
                         HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch"/>
+                        VerticalContentAlignment="Stretch" />
     </Grid>
 </UserControl>

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 using PmSim.Shared.GameEngine.Dto;
-using GameConstants = PmSim.Shared.Contracts.Game.GameConstants;
+
 
 namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
 {
@@ -15,9 +15,9 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
         {
         }
 
-        internal override async Task WorkForHire()
+        internal override void WorkForHire()
         {
-            var tryRent = _random.Next(100) < 50;
+            var tryRent = Random.Next(100) < 50;
             if (tryRent)
             {
                 for (var i = 0; i < Game.Offices.Length; ++i)
@@ -40,38 +40,38 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
             Bot.Money += GameConstants.WorkForHireSalary;
         }
 
-        internal override async Task MakeSprintMove()
+        internal override void MakeSprintMove()
         {
-            await ConductInterviews();
-            await AssignToWork();
+            ConductInterviews();
+            AssignToWork();
         }
 
-        internal override async Task MakeDiplomaticMove()
+        internal override void MakeDiplomaticMove()
         {
-            var auctions = await Game.RequestIncomingOffersAsync(Bot.Id);
+            var auctions = Game.RequestIncomingOffers(Bot.Id);
             foreach (var auction in auctions)
             {
-                if (_random.Next(100) < 50 || !auction.IsPublic || auction.LastBuyerId == Bot.Id 
+                if (Random.Next(100) < 50 || !auction.IsPublic || auction.LastBuyerId == Bot.Id 
                     || auction.LastPrice >= Bot.Money)
                 {
                     continue;
                 }
 
-                await Game.ParticipateInAuctionAsync(Bot.Id, auction.Id, auction.LastPrice + 1);
+                Game.ParticipateInAuction(Bot.Id, auction.Id, auction.LastPrice + 1);
             }
         }
 
-        internal override async Task MakeIncidentDecision()
+        internal override void MakeIncidentDecision()
         {
             if (Bot.Money == 0)
             {
                 return;
             }
 
-            await Game.MakeDecisionOnIncidentAsync(Bot.Id, 1);
+            Game.MakeDecisionOnIncident(Bot.Id, 1);
         }
 
-        private async Task ConductInterviews()
+        private void ConductInterviews()
         {
             var money = Bot.Money;
             foreach (var index in Bot.OfficeIndexes)
@@ -94,12 +94,12 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
             }
         }
 
-        private async Task AssignToWork()
+        private void AssignToWork()
         {
             foreach (var employee in Bot.OfficeIndexes.SelectMany(index => Game.Offices[index].Employees))
             {
-                employee.CurrentTask = new EmployeeWorkTask(Bot, Bot.Projects[_random.Next(Bot.Projects.Count)],
-                    _random.Next(4));
+                employee.CurrentTask = new EmployeeWorkTask(Bot, Bot.Projects[Random.Next(Bot.Projects.Count)],
+                    Random.Next(4));
             }
         }
     }

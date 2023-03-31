@@ -26,7 +26,7 @@ namespace PmSim.Shared.GameEngine.GameLogic
             };
         }
 
-        internal async Task MakeSprintActions()
+        internal void MakeSprintActions()
         {
             if (IsOut)
             {
@@ -34,28 +34,28 @@ namespace PmSim.Shared.GameEngine.GameLogic
             }
             if (IsStartupOpen)
             { 
-                await _strategies[(int)_strategyType].MakeSprintMove();
+                _strategies[(int)_strategyType].MakeSprintMove();
                 return;
             }
-            await _strategies[(int)_strategyType].WorkForHire();
+            _strategies[(int)_strategyType].WorkForHire();
         }
 
-        internal async Task MakeDiplomaticActions()
+        internal void MakeDiplomaticActions()
         {
             if (IsOut)
             {
                 return;
             }
-            await _strategies[(int)_strategyType].MakeDiplomaticMove();
+            _strategies[(int)_strategyType].MakeDiplomaticMove();
         }
         
-        internal async Task MakeIncidentDecision()
+        internal void MakeIncidentDecision()
         {
             if (IsOut)
             {
                 return;
             }
-            await _strategies[(int)_strategyType].MakeIncidentDecision();
+            _strategies[(int)_strategyType].MakeIncidentDecision();
         }
 
         private void ChooseStrategy()

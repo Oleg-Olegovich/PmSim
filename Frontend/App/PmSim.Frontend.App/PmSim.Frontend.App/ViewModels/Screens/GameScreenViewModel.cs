@@ -1,10 +1,11 @@
-﻿using System.Reactive;
+﻿using System.Collections.ObjectModel;
+using System.Reactive;
 using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Interfaces;
 using PmSim.Frontend.App.ViewModels.Windows;
-using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -29,7 +30,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         set => this.RaiseAndSetIfChanged(ref _time, value);
     }
     
-    private int _actionsNumber = 0;
+    private int _actionsNumber;
     
     public int ActionsNumber
     {
@@ -67,6 +68,16 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     {
         get => _employeesNumber;
         set => this.RaiseAndSetIfChanged(ref _employeesNumber, value);
+    }
+
+    public ObservableCollection<PlayerStatus> Players { get; set; } = new();
+    
+    private PlayerStatus? _selectedPlayer;
+    
+    public PlayerStatus? SelectedPlayer
+    {
+        get => _selectedPlayer;
+        set => this.RaiseAndSetIfChanged(ref _selectedPlayer, value);
     }
 
     private ViewModelBase? _mainAreaContent;

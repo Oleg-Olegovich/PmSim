@@ -10,14 +10,13 @@ using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Game.GameObjects.Projects;
 using PmSim.Shared.Contracts.Interfaces;
-using GameConstants = PmSim.Shared.Contracts.Game.GameConstants;
 
 namespace PmSim.Shared.GameEngine;
 
 public class Game
 {
     private readonly Task _mainProcess;
-    
+
     private int _playersQuantity;
 
     /// <summary>
@@ -62,7 +61,7 @@ public class Game
         }
     }
 
-    private Player Winner { get; set; }
+    private Player? Winner { get; set; }
 
     private int GameMap => _map.MapImageNumber;
 
@@ -84,7 +83,7 @@ public class Game
     public async Task StopGame()
         => await _mainProcess;
 
-    public async Task ConnectAsync(int id, string playerName)
+    public void Connect(int id, string playerName)
     {
         if (Stage != GameStages.Connection && Stage != GameStages.NotStarted)
         {
@@ -110,7 +109,7 @@ public class Game
         return player;
     }
 
-    public async Task ChooseBackgroundAsync(int playerId, Professions profession)
+    public void ChooseBackground(int playerId, Professions profession)
     {
         var player = FindPlayerById(playerId);
         if (player.IsBackgroundChosen)
@@ -123,7 +122,7 @@ public class Game
         PlayerLogic.SetSkillsByProfession(player, profession);
     }
 
-    private async Task RentOfficeAsync(int playerId, int officeNumber)
+    private void RentOffice(int playerId, int officeNumber)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
@@ -141,7 +140,7 @@ public class Game
         }
     }
 
-    private async Task CancelOfficeLeaseAsync(int playerId, int officeNumber)
+    private void CancelOfficeLease(int playerId, int officeNumber)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || Offices.Count(x => x.OwnerId == playerId) < 2 || officeNumber < 0
@@ -154,7 +153,7 @@ public class Game
         Offices[officeNumber].OwnerId = -1;
     }
 
-    private async Task DismissAllEmployeesAsync(int playerId, int officeNumber)
+    private void DismissAllEmployees(int playerId, int officeNumber)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
@@ -166,7 +165,7 @@ public class Game
         Offices[officeNumber].Employees.Clear();
     }
 
-    private async Task<Employee> ConductInterviewAsync(int playerId, int officeNumber)
+    private Employee ConductInterview(int playerId, int officeNumber)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
@@ -187,7 +186,7 @@ public class Game
         return interview.Employee;
     }
 
-    private async Task<bool> ProcessInterviewAsync(int playerId, int officeNumber, int proposedSalary)
+    private bool ProcessInterview(int playerId, int officeNumber, int proposedSalary)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || player.Money < proposedSalary || proposedSalary < 1 || officeNumber < 0
@@ -208,7 +207,7 @@ public class Game
         return result;
     }
 
-    private async Task HireTechSupportOfficerAsync(int playerId, int officeNumber)
+    private void HireTechSupportOfficer(int playerId, int officeNumber)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
@@ -220,7 +219,7 @@ public class Game
         Offices[officeNumber].DoesHaveTechSupport = true;
     }
 
-    private async Task DismissTechSupportOfficerAsync(int playerId, int officeNumber)
+    private void DismissTechSupportOfficer(int playerId, int officeNumber)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
@@ -232,7 +231,7 @@ public class Game
         Offices[officeNumber].DoesHaveTechSupport = false;
     }
 
-    private async Task UseOpportunityAsync(int playerId, int opportunityNumber, int targetPlayer)
+    private void UseOpportunity(int playerId, int opportunityNumber, int targetPlayer)
     {
         var player = FindPlayerById(playerId);
         var target = FindPlayerById(targetPlayer);
@@ -252,7 +251,7 @@ public class Game
         player.Opportunities.Remove(opportunityNumber);
     }
 
-    private async Task AssignToWorkAsync(int playerId, int officeNumber, int executorNumber,
+    private void AssignToWork(int playerId, int officeNumber, int executorNumber,
         int featureNumber, int progressPointNumber)
     {
         if (progressPointNumber < 0 || progressPointNumber > 3)
@@ -266,16 +265,14 @@ public class Game
             throw new PmSimException("There is no such feature.");
         }
 
-        await AssignToTaskAsync(playerId, officeNumber, executorNumber, new EmployeeWorkTask(player,
+        AssignToTask(playerId, officeNumber, executorNumber, new EmployeeWorkTask(player,
             player.Projects[featureNumber], progressPointNumber));
     }
 
-    private async Task AssignToInventProjectAsync(int playerId, int officeNumber, int executorNumber)
-    {
-        await AssignToTaskAsync(playerId, officeNumber, executorNumber, new EmployeeTask(FindPlayerById(playerId)));
-    }
+    private void AssignToInventProject(int playerId, int officeNumber, int executorNumber)
+        => AssignToTask(playerId, officeNumber, executorNumber, new EmployeeTask(FindPlayerById(playerId)));
 
-    private async Task AssignToMakeBackupAsync(int playerId, int officeNumber, int executorNumber, int projectNumber)
+    private void AssignToMakeBackup(int playerId, int officeNumber, int executorNumber, int projectNumber)
     {
         var player = FindPlayerById(playerId);
         if (projectNumber < 0 || projectNumber >= player.Projects.Count)
@@ -283,12 +280,11 @@ public class Game
             throw new PmSimException("There is no such feature.");
         }
 
-        await AssignToTaskAsync(playerId, officeNumber, executorNumber,
-            new EmployeeBackUpTask(player, player.Projects[projectNumber],
-                officeNumber));
+        AssignToTask(playerId, officeNumber, executorNumber,
+            new EmployeeBackUpTask(player, player.Projects[projectNumber], officeNumber));
     }
 
-    private async Task CancelTaskAsync(int playerId, int officeNumber, int executorNumber)
+    private void CancelTask(int playerId, int officeNumber, int executorNumber)
     {
         if (FindPlayerById(playerId).IsOut || officeNumber < 0 || officeNumber >= Offices.Length
             || Offices[officeNumber].OwnerId != playerId || executorNumber < 0
@@ -300,7 +296,7 @@ public class Game
         Offices[officeNumber].Employees[executorNumber].CurrentTask = null;
     }
 
-    private async Task ProposeProjectAsync(int sellerId, int projectNumber, int startPrice, int buyerId)
+    private void ProposeProject(int sellerId, int projectNumber, int startPrice, int buyerId)
     {
         var seller = FindPlayerById(sellerId);
         if (seller.IsOut || buyerId != -1 && FindPlayerById(buyerId).IsOut || projectNumber < 0
@@ -313,10 +309,10 @@ public class Game
         _auctions.Add(new Auction(_auctions.Count, seller.Projects[projectNumber], sellerId, startPrice, buyerId));
     }
 
-    private async Task PutProjectUpForAuctionAsync(int playerId, int projectNumber, int startPrice)
-        => await ProposeProjectAsync(playerId, projectNumber, startPrice, -1);
+    private void PutProjectUpForAuction(int playerId, int projectNumber, int startPrice)
+        => ProposeProject(playerId, projectNumber, startPrice, -1);
 
-    private async Task ProposeExecutorAsync(int sellerId, int officeNumber, int executorNumber, int startPrice,
+    private void ProposeExecutor(int sellerId, int officeNumber, int executorNumber, int startPrice,
         int buyerId)
     {
         if (FindPlayerById(sellerId).IsOut || buyerId != -1 && FindPlayerById(buyerId).IsOut || officeNumber < 0 ||
@@ -332,11 +328,11 @@ public class Game
             startPrice, buyerId));
     }
 
-    private async Task PutExecutorUpForAuctionAsync(int playerId, int officeNumber, int executorNumber,
+    private void PutExecutorUpForAuction(int playerId, int officeNumber, int executorNumber,
         int startPrice)
-        => await ProposeExecutorAsync(playerId, officeNumber, executorNumber, startPrice, -1);
+        => ProposeExecutor(playerId, officeNumber, executorNumber, startPrice, -1);
 
-    private async Task ProposeOpportunityAsync(int sellerId, int opportunityNumber, int startPrice, int buyerId)
+    private void ProposeOpportunity(int sellerId, int opportunityNumber, int startPrice, int buyerId)
     {
         var seller = FindPlayerById(sellerId);
         if (seller.IsOut || opportunityNumber < 0 || opportunityNumber >= _opportunities.Length
@@ -349,15 +345,15 @@ public class Game
             new Auction(_auctions.Count, _opportunities[opportunityNumber], sellerId, startPrice, buyerId));
     }
 
-    private async Task PutOpportunityUpForAuctionAsync(int playerId, int opportunityNumber, int startPrice)
-        => await ProposeOpportunityAsync(playerId, opportunityNumber, startPrice, -1);
+    private void PutOpportunityUpForAuction(int playerId, int opportunityNumber, int startPrice)
+        => ProposeOpportunity(playerId, opportunityNumber, startPrice, -1);
 
     /// <summary>
     /// The universal method for private and personal auctions.
     /// If the auction is private, then the seller does not participate, the bid can only increase.
     /// Otherwise, the seller can participate and raise the bid, the buyer can lower it.
     /// </summary>
-    internal async Task ParticipateInAuctionAsync(int buyerId, int auctionNumber, int offerSum)
+    internal void ParticipateInAuction(int buyerId, int auctionNumber, int offerSum)
     {
         var buyer = FindPlayerById(buyerId);
         if (buyer.IsOut || auctionNumber < 0 || auctionNumber >= _auctions.Count
@@ -395,7 +391,7 @@ public class Game
     /// <summary>
     /// Returns a list of private auctions, personal offers for this player and offers made by this player.
     /// </summary>
-    internal async Task<Auction[]> RequestIncomingOffersAsync(int playerId)
+    internal Auction[] RequestIncomingOffers(int playerId)
     {
         if (FindPlayerById(playerId).IsOut || Stage != GameStages.Diplomacy)
         {
@@ -405,7 +401,7 @@ public class Game
         return _auctions.Where(x => x.IsPublic || x.SellerId == playerId || x.LastBuyerId == playerId).ToArray();
     }
 
-    internal async Task MakeDecisionOnIncidentAsync(int playerId, int donation)
+    internal void MakeDecisionOnIncident(int playerId, int donation)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || player.Money < donation)
@@ -417,7 +413,7 @@ public class Game
         player.Money -= donation;
     }
 
-    private async Task SkipMoveAsync(int playerId)
+    private void SkipMove(int playerId)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut)
@@ -428,7 +424,7 @@ public class Game
         player.ActionsNumber = 0;
     }
 
-    private async Task GiveUpAsync(int playerId)
+    private void GiveUp(int playerId)
     {
         var player = FindPlayerById(playerId);
         player.IsOut = true;
@@ -438,7 +434,7 @@ public class Game
     /// This feature will be added in the release or multiplayer version.
     /// It may be worth moving the method to Gateway.
     /// </summary>
-    private async Task SendMessageAsync(int playerId, int otherPlayerId, string message)
+    private void SendMessage(int playerId, int otherPlayerId, string message)
     {
         var player = FindPlayerById(playerId);
     }
@@ -447,7 +443,7 @@ public class Game
     /// This feature will be added in the release or multiplayer version.
     /// It may be worth moving the method to Gateway.
     /// </summary>
-    private async Task SendMessageToEveryoneAsync(int playerId, string message)
+    private void SendMessageToEveryoneAsync(int playerId, string message)
     {
         var player = FindPlayerById(playerId);
     }
@@ -455,7 +451,7 @@ public class Game
     internal static Project GetProjectRandomly()
         => (Project) GameConstants.Projects[(new Random()).Next(GameConstants.Projects.Length)].Clone();
 
-    private async Task AssignToTaskAsync(int playerId, int officeNumber, int executorNumber, EmployeeTask task)
+    private void AssignToTask(int playerId, int officeNumber, int executorNumber, EmployeeTask task)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
@@ -467,7 +463,7 @@ public class Game
 
         Offices[officeNumber].Employees[executorNumber].CurrentTask = task;
     }
-        
+
     private void InitializeIncidents()
         => _incidents = GetInheritsInstances<Incident>();
 
@@ -547,10 +543,9 @@ public class Game
         Time = _settings.DiplomacyRealTime;
         while (Time > 0 && _playersCompleted < _playersQuantity)
         {
-            var tasks = _bots.Select(bot => bot.MakeDiplomaticActions()).ToList();
-            foreach (var task in tasks)
+            foreach (var bot in _bots)
             {
-                await task;
+                bot.MakeDiplomaticActions();
             }
 
             await Task.Delay(1000);
@@ -558,7 +553,7 @@ public class Game
         }
     }
 
-    private async Task SummingUpExpenses()
+    private void SummingUpExpenses()
     {
         foreach (var office in Offices)
         {
@@ -580,7 +575,7 @@ public class Game
         }
     }
 
-    private async Task SummingUpAuctions()
+    private void SummingUpAuctions()
     {
         foreach (var auction in _auctions)
         {
@@ -613,7 +608,7 @@ public class Game
         }
     }
 
-    private async Task SummingUpEmployeesTasks()
+    private void SummingUpEmployeesTasks()
     {
         foreach (var office in Offices)
         {
@@ -629,13 +624,13 @@ public class Game
         }
     }
 
-    private async Task ProcessSummingUpAsync()
+    private void ProcessSummingUpAsync()
     {
         Stage = GameStages.SummingUpResults;
 
-        await SummingUpExpenses();
-        await SummingUpAuctions();
-        await SummingUpEmployeesTasks();
+        SummingUpExpenses();
+        SummingUpAuctions();
+        SummingUpEmployeesTasks();
 
         foreach (var player in Actors)
         {
@@ -647,10 +642,9 @@ public class Game
     {
         CurrentIncident = _incidents[_random.Next(_incidents.Length)];
         await ProcessGameStageAsync(GameStages.IncidentDiscussion, _settings.IncidentRealTime);
-        var tasks = _bots.Select(bot => bot.MakeIncidentDecision()).ToList();
-        foreach (var task in tasks)
+        foreach (var bot in _bots)
         {
-            await task;
+            bot.MakeIncidentDecision();
         }
 
         Stage = GameStages.IncidentResolution;
@@ -668,18 +662,18 @@ public class Game
         }
     }
 
-    private async Task MakeBotSprintMovesAsync()
+    private void MakeBotSprintMoves()
     {
-        var tasks = (from bot in _bots
-            where bot.ActionsNumber > 0
-            select bot.MakeSprintActions()).ToArray();
-        foreach (var task in tasks)
+        foreach (var bot in _bots)
         {
-            await task;
+            if (bot.ActionsNumber > 0)
+            {
+                bot.MakeSprintActions();
+            }
         }
     }
 
-    private async Task ApproveWinnerAsync(Func<Player, bool> condition)
+    private void ApproveWinner(Func<Player, bool> condition)
     {
         Winner = _players.FirstOrDefault(condition);
         if (Winner != null)
@@ -694,22 +688,22 @@ public class Game
         }
     }
 
-    private async Task ApproveWinnerAsync()
+    private void ApproveWinner()
     {
         switch (_settings.Mode)
         {
             case GameModes.Survival:
-                await ApproveWinnerAsync((player => !player.IsOut));
+                ApproveWinner((player => !player.IsOut));
                 break;
             case GameModes.TimerAndMoney:
                 var max = Math.Max(_players.Max(player => player.Money),
                     _bots.Max(bot => bot.Money));
-                await ApproveWinnerAsync((player => player.Money == max));
+                ApproveWinner((player => player.Money == max));
                 break;
             case GameModes.TimerAndProjects:
                 var projects = Math.Max(_players.Max(player => player.CompletedProjects),
                     _bots.Max(bot => bot.CompletedProjects));
-                await ApproveWinnerAsync((player => player.CompletedProjects == projects));
+                ApproveWinner((player => player.CompletedProjects == projects));
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -729,15 +723,15 @@ public class Game
             }
 
             await ProcessSprintAsync();
-            await MakeBotSprintMovesAsync();
+            MakeBotSprintMoves();
             await ProcessDiplomacyAsync();
-            await ProcessSummingUpAsync();
+            ProcessSummingUpAsync();
             await ProcessIncidentAsync();
         }
 
-        await ApproveWinnerAsync();
+        ApproveWinner();
     }
-    
+
     private Interview FindInterviewById(int playerId)
     {
         var interview = _interviews.FirstOrDefault(x => x.PlayerId == playerId);
@@ -767,7 +761,7 @@ public class Game
     {
         var parent = typeof(T);
         var inherits = Assembly.GetAssembly(parent).GetTypes()
-            .Where(type => type.IsSubclassOf(parent) 
+            .Where(type => type.IsSubclassOf(parent)
                            && (forbidden == null || !type.IsSubclassOf(forbidden) && type != forbidden))
             .ToArray();
         var instances = new T[inherits.Count()];

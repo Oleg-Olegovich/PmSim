@@ -1,7 +1,7 @@
-﻿using PmSim.Shared.Contracts.Game.GameObjects.Employees;
+﻿using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 using PmSim.Shared.Contracts.Game.GameObjects.Projects;
 using PmSim.Shared.GameEngine.Dto;
-using GameConstants = PmSim.Shared.Contracts.Game.GameConstants;
 
 namespace PmSim.Shared.GameEngine.GameLogic;
 
