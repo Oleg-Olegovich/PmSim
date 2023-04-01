@@ -8,6 +8,7 @@ using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Utils;
 using PmSim.Shared.Contracts.Exceptions;
+using PmSim.Shared.Contracts.User;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -88,7 +89,7 @@ public class SignUpScreenViewModel : BasicScreenViewModel
         : base(baseWindow, previous)
     {
         _titleScreen = titleScreen;
-        SignUpCommand = ReactiveCommand.CreateFromTask(SignUp);
+        SignUpCommand = ReactiveCommand.Create(SignUp);
     }
 
     private void CheckIsSignUpAvailable()
@@ -122,18 +123,18 @@ public class SignUpScreenViewModel : BasicScreenViewModel
         IsSignUpAvailable = true;
     }
 
-    private async Task SignUp()
+    private void SignUp()
     {
         try
         {
-            if (!await MultiplayerClient.ReserveLogin(Login))
+            if (!MultiplayerClient.ReserveLogin(Login))
             {
                 ErrorMessage = LocalizationSignUpScreen.LoginIsOccupied;
                 return;
             }
 
             ErrorMessage = "";
-            var code = await MultiplayerClient.SendCodeToEmailAsync(Email);
+            var code = MultiplayerClient.SendCodeToEmailAsync(Email);
             var user = new User(Email, Login, Password);
             BaseWindow.Content = new EmailConfirmationScreenViewModel(
                 BaseWindow, this, _titleScreen, user, code);

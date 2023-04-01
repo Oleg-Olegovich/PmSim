@@ -29,7 +29,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public LocalizationGameScreen() {
+        internal LocalizationGameScreen() {
         }
         
         /// <summary>
@@ -61,6 +61,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Подтвердить.
+        /// </summary>
+        public static string ButtonConfirm {
+            get {
+                return ResourceManager.GetString("ButtonConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Сдаться.
         /// </summary>
         public static string ButtonGiveUp {
@@ -81,9 +90,18 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Игроки.
         /// </summary>
-        public static string TextBlockPlayers {
+        public static string Players {
             get {
-                return ResourceManager.GetString("TextBlockPlayers", resourceCulture);
+                return ResourceManager.GetString("Players", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выберите предысторию.
+        /// </summary>
+        public static string TextBlockChooseBackground {
+            get {
+                return ResourceManager.GetString("TextBlockChooseBackground", resourceCulture);
             }
         }
         

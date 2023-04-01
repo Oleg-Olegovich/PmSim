@@ -35,4 +35,7 @@
     <data name="Players" xml:space="preserve">
         <value>Players</value>
     </data>
+    <data name="Founder" xml:space="preserve">
+        <value>Founder</value>
+    </data>
 </root>

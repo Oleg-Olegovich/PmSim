@@ -18,11 +18,11 @@ internal class PlayerLogic
     internal static void SetSkillsByProfession(Player player, Professions profession)
     {
         var skills = GameConstants.GetSkillsByProfession(profession);
-        player.Skills.Programming = skills.Programming;
-        player.Skills.Music = skills.Music;
-        player.Skills.Design = skills.Design;
-        player.Skills.Management = skills.Management;
-        player.Skills.Creativity = skills.Creativity;
+        player.StatusChangeNotifier.Programming = player.Skills.Programming = skills.Programming;
+        player.StatusChangeNotifier.Music = player.Skills.Music = skills.Music;
+        player.StatusChangeNotifier.Design = player.Skills.Design = skills.Design;
+        player.StatusChangeNotifier.Management = player.Skills.Management = skills.Management;
+        player.StatusChangeNotifier.Creativity = player.Skills.Creativity = skills.Creativity;
         if (profession == Professions.Major)
         {
             player.Money *= 2;

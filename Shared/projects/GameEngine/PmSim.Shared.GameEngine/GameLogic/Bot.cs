@@ -15,7 +15,7 @@ namespace PmSim.Shared.GameEngine.GameLogic
         internal List<int> OfficeIndexes { get; } = new();
 
         internal Bot(int id, string name, int capital, Game game)
-            : base(id, name, ChooseProfession(), capital)
+            : base(id, name, ChooseProfession(), capital, new StatusChangeNotifier())
         {
             ChooseStrategy();
             _strategies = new BotStrategy[]{

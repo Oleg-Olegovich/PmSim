@@ -8,7 +8,7 @@
 public enum Themes
 {
     LightFluent,
-    LightMaterial,
-    DarkFluent,
-    DarkMaterial
+    //LightMaterial,
+    DarkFluent
+    //DarkMaterial
 }

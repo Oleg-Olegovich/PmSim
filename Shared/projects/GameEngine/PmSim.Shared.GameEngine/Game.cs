@@ -7,6 +7,7 @@ using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.GameObjects.Diplomacy;
 using PmSim.Shared.Contracts.Game.GameObjects.Employees;
+using PmSim.Shared.Contracts.Game.GameObjects.Maps;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Game.GameObjects.Projects;
 using PmSim.Shared.Contracts.Interfaces;
@@ -65,14 +66,14 @@ public class Game
 
     private int GameMap => _map.MapImageNumber;
 
-    public Game(string founder, int id, int players, int bots, GameOptions settings)
+    public Game(string founder, int id, GameOptions settings)
     {
         _map = FindMap(settings.MapNumber);
         Founder = founder;
         Id = id;
         _settings = settings;
         InitializeGameObjects();
-        CreateActors(players, bots);
+        CreateActors(settings.MaxPlayersNumber, settings.BotsNumber);
         _mainProcess = Task.Run(ProcessAsync);
     }
 
@@ -83,7 +84,7 @@ public class Game
     public async Task StopGame()
         => await _mainProcess;
 
-    public void Connect(int id, string playerName)
+    public void Connect(int playerId, string playerName, IStatusChangeNotifier statusChangeNotifier)
     {
         if (Stage != GameStages.Connection && Stage != GameStages.NotStarted)
         {
@@ -95,21 +96,10 @@ public class Game
             throw new PmSimException("The limit on the quantity of players has been reached.");
         }
 
-        _players.Add(new Player(id, playerName, _settings.StartUpCapital));
+        _players.Add(new Player(playerId, playerName, _settings.StartUpCapital, statusChangeNotifier));
     }
 
-    private Player FindPlayerById(int playerId)
-    {
-        var player = Actors.FirstOrDefault(x => x.Id == playerId);
-        if (player == null)
-        {
-            throw new PmSimException("There is no such player.");
-        }
-
-        return player;
-    }
-
-    public void ChooseBackground(int playerId, Professions profession)
+    public void SetBackground(int playerId, Professions profession)
     {
         var player = FindPlayerById(playerId);
         if (player.IsBackgroundChosen)
@@ -487,13 +477,13 @@ public class Game
     {
         if (playersQuantity < 0)
         {
-            throw new ArgumentException("Incorrect number of players.");
+            throw new PmSimException("Incorrect number of players.");
         }
 
         if ((playersQuantity + botsQuantity < 2) ||
             (playersQuantity + botsQuantity > GameConstants.MaxActorsNumber))
         {
-            throw new ArgumentException("Incorrect number of bots or players.");
+            throw new PmSimException("Incorrect number of bots or players.");
         }
 
         _playersQuantity = playersQuantity;
@@ -516,6 +506,14 @@ public class Game
         }
 
         _playersQuantity = _players.Count;
+        var actors = Actors;
+        foreach (var actor in actors)
+        {
+            foreach (var player in _players)
+            {
+                player.StatusChangeNotifier.AnotherPlayerStatus = PlayerLogic.GetPlayerStatus(actor);
+            }
+        }
     }
 
     private async Task ProcessGameStageAsync(GameStages stage, int time)
@@ -534,7 +532,7 @@ public class Game
         => await ProcessGameStageAsync(GameStages.ChoosingBackground, _settings.ChoosingBackgroundRealTime);
 
     private async Task ProcessSprintAsync()
-        => await ProcessGameStageAsync(GameStages.Sprint, _settings.SprintRealTime);
+        => await ProcessGameStageAsync(GameStages.Management, _settings.SprintRealTime);
 
     private async Task ProcessDiplomacyAsync()
     {
@@ -706,7 +704,7 @@ public class Game
                 ApproveWinner((player => player.CompletedProjects == projects));
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                throw new PmSimException("Game mode is out of range.");
         }
     }
 
@@ -744,18 +742,10 @@ public class Game
     }
 
     private static IGameMap FindMap(int number)
-    {
-        try
+        => number switch
         {
-            var handler = Activator.CreateInstance(null,
-                "PmSim.Shared.GameEngine.GameLogic.GameMaps.Map" + number);
-            return (IGameMap) handler.Unwrap();
-        }
-        catch
-        {
-            throw new PmSimException("Invalid map number!");
-        }
-    }
+            _ => new Map0()
+        };
 
     private static T[] GetInheritsInstances<T>(Type forbidden = null)
     {
@@ -771,5 +761,16 @@ public class Game
         }
 
         return instances;
+    }
+    
+    private Player FindPlayerById(int playerId)
+    {
+        var player = Actors.FirstOrDefault(x => x.Id == playerId);
+        if (player == null)
+        {
+            throw new PmSimException("There is no such player.");
+        }
+
+        return player;
     }
 }

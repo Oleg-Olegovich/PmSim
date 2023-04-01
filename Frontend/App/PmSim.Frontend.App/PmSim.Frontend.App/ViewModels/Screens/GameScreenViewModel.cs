@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Reactive;
-using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Frames;
-using PmSim.Frontend.App.ViewModels.Interfaces;
 using PmSim.Frontend.App.ViewModels.Windows;
+using PmSim.Frontend.App.Views.Frames;
 using PmSim.Frontend.Client.Api;
+using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Interfaces;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -89,18 +90,30 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     }
     
     public ReactiveCommand<Unit, Unit> GiveUpCommand { get; }
+    
+    public ReactiveCommand<Unit, Unit> SkipCommand { get; }
 
     public GameScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, IPmSimClient client) 
         : base(baseWindow, previous)
     {
         _client = client;
-        MainAreaContent = new GameMap0ViewModel();
-        GiveUpCommand = ReactiveCommand.CreateFromTask(ProcessGiveUpClick);
+        MainAreaContent = new ChoosingBackgroundDialogViewModel(this);
+        GiveUpCommand = ReactiveCommand.Create(GiveUp);
+        SkipCommand = ReactiveCommand.Create(SkipMove);
     }
 
-    private async Task ProcessGiveUpClick()
+    public void ChooseBackground(Professions selectedBackground)
     {
-        await _client.ExitGameAsync();
+        _client.SetBackground(selectedBackground);
+        MainAreaContent = new GameMap0ViewModel(this);
+    }
+    
+    private void GiveUp()
+    {
+        _client.ExitGame();
         BaseWindow.Content = new TitleScreenViewModel(BaseWindow);
     }
+
+    private void SkipMove()
+        => _client.SkipMove();
 }

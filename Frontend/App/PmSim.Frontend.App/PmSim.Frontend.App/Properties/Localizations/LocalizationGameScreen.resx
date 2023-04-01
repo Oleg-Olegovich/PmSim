@@ -21,7 +21,7 @@
     <data name="ButtonGiveUp" xml:space="preserve">
         <value>Сдаться</value>
     </data>
-    <data name="TextBlockPlayers" xml:space="preserve">
+    <data name="Players" xml:space="preserve">
         <value>Игроки</value>
     </data>
     <data name="ButtonSkip" xml:space="preserve">
@@ -47,5 +47,11 @@
     </data>
     <data name="ToolTipEmployeesNumber" xml:space="preserve">
         <value>Кол-во ваших сотрудников</value>
+    </data>
+    <data name="TextBlockChooseBackground" xml:space="preserve">
+        <value>Выберите предысторию</value>
+    </data>
+    <data name="ButtonConfirm" xml:space="preserve">
+        <value>Подтвердить</value>
     </data>
 </root>

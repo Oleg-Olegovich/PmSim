@@ -1,9 +1,9 @@
 ﻿using PmSim.Frontend.Client.Dto;
-using PmSim.Frontend.Client.Utils;
-using PmSim.Shared.Contracts.Account;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Interfaces;
+using PmSim.Shared.Contracts.User;
 
 namespace PmSim.Frontend.Client.Api;
 
@@ -14,7 +14,7 @@ public class MultiplayerClient : IPmSimClient
 
     private MultiplayerClient()
     {
-        _clientOptions = ConfigurationManager.ClientOptions;
+        _clientOptions = new ClientOptions();
         /*
         PlayerName = playerName;
         var gatewayClientOptions = new OptionsWrapper<GatewayClientOptions>(
@@ -26,34 +26,33 @@ public class MultiplayerClient : IPmSimClient
         */
     }
 
-    public static async Task<bool> ReserveLogin(string login)
+    public static bool ReserveLogin(string login)
     {
         // Проверяет, не занят ли логин. Если нет - возвращает true и резервирует, чтобы никто другой не занял.
         return true;
     }
     
-    public static async Task<string> SendCodeToEmailAsync(string email)
+    public static string SendCodeToEmailAsync(string email)
     {
         var code = new Random().Next(100000, 999999);
         // Отправляет Email с кодом. Возращает код, который был отправлен на почту.
         return code.ToString();
     }
 
-    public static async Task<MultiplayerClient> SignUpAsync(User user)
+    public static MultiplayerClient SignUp(User user)
     {
-        var request = new CreateAccountRequest();
         //var response = await _gateway.CreateAccountAsync(request);
         return new MultiplayerClient();
     }
 
-    public static async Task<MultiplayerClient> SignInAsync(string login, string password)
+    public static MultiplayerClient SignInAsync(string login, string password)
     {
         var request = new AuthorizationRequest();
         //var response = await _gateway.GetAccountAsync(request);
         return new MultiplayerClient();
     }
 
-    public async Task CreateNewGameAsync(GameOptions gameOptions)
+    public void CreateNewGame(GameOptions gameOptions, IGameScreenLogic gameScreenLogic)
     {
         _clientOptions.GameId = 0;
         /*
@@ -72,118 +71,118 @@ public class MultiplayerClient : IPmSimClient
         //*/
     }
 
-    public async Task ConnectToGame(int gameId)
+    public void ConnectToGame(int gameId)
     {
         
     }
 
-    public async Task SetBackgroundAsync()
+    public void SetBackground(Professions profession)
     {
         
     }
 
-    public async Task CancelOfficeLeaseAsync()
+    public void CancelOfficeLease()
     {
     }
 
-    public async Task DismissAllEmployeesAsync()
+    public void DismissAllEmployees()
     {
     }
 
-    public async Task ConductInterviewAsync()
+    public void ConductInterview()
     {
     }
 
-    public async Task ProcessInterviewAsync()
+    public void ProcessInterview()
     {
     }
 
-    public async Task HireTechSupportOfficerAsync()
+    public void HireTechSupportOfficer()
     {
     }
 
-    public async Task DismissTechSupportOfficerAsync()
+    public void DismissTechSupportOfficer()
     {
     }
 
-    public async Task UseOpportunityAsync()
+    public void UseOpportunity()
     {
     }
 
-    public async Task AssignToWorkAsync()
+    public void AssignToWork()
     {
     }
 
-    public async Task AssignToInventProjectAsync()
+    public void AssignToInventProject()
     {
     }
 
-    public async Task AssignToMakeBackupAsync()
+    public void AssignToMakeBackup()
     {
     }
 
-    public async Task CancelTaskAsync()
+    public void CancelTask()
     {
     }
 
-    public async Task PutProjectUpForAuctionAsync()
+    public void PutProjectUpForAuction()
     {
     }
 
-    public async Task ProposeProjectAsync()
+    public void ProposeProject()
     {
     }
 
-    public async Task PutExecutorUpForAuctionAsync()
+    public void PutExecutorUpForAuction()
     {
     }
 
-    public async Task ProposeExecutorAsync()
+    public void ProposeExecutor()
     {
     }
 
-    public async Task PutOpportunityUpForAuctionAsync()
+    public void PutOpportunityUpForAuction()
     {
     }
 
-    public async Task ProposeOpportunityAsync()
+    public void ProposeOpportunity()
     {
     }
 
-    public async Task SendMessageAsync()
+    public void SendMessage()
     {
     }
 
-    public async Task SendMessageToEveryoneAsync()
+    public void SendMessageToEveryone()
     {
     }
 
-    public async Task ParticipateInAuctionAsync()
+    public void ParticipateInAuction()
     {
     }
 
-    public async Task SetIncidentActionAsync()
+    public void SetIncidentAction()
     {
     }
 
-    public async Task SkipMoveAsync()
+    public void SkipMove()
     {
     }
 
-    public async Task ExitGameAsync()
+    public void ExitGame()
     {
     }
 
-    public async Task RentOfficeAsync(int officeNumber)
+    public void RentOfficeAsync(int officeNumber)
     {
     }
 
-    public Game[] GetActiveGames()
+    public GameModel[] GetActiveGames()
     {
-        var games = new Game[]
+        var games = new GameModel[]
         {
-            new Game(0, "Тест", "Survival", "The simple village", 0, 10),
-            new Game(1, "Test", "TimerAndMoney", "The simple village", 0, 5)
+            new(0, "Вася", "Тест", "Survival", "The simple village", 0, 10),
+            new(1, "Петя", "Test", "TimerAndMoney", "The simple village", 0, 5)
         };
         return games;
     }

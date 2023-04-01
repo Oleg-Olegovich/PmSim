@@ -201,8 +201,8 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         {
             PlayersNumber = 1;
         }
-        Modes = IPmSimClient.GetModes(BaseWindow.Options.Language);
-        Maps = IPmSimClient.GetMaps(BaseWindow.Options.Language);
+        Modes = IPmSimClient.GetModes();
+        Maps = IPmSimClient.GetMaps();
         ProcessDefaultClick();
         DefaultCommand = ReactiveCommand.Create(ProcessDefaultClick);
         StartCommand = ReactiveCommand.CreateFromTask(StartGame);
@@ -215,9 +215,9 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
             SprintActionsNumber, AuctionRealTime, StartUpCapital);
         try
         {
-            await _client.CreateNewGameAsync(settings);
-            BaseWindow.Content 
-                = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
+            var gameScreen = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
+            _client.CreateNewGame(settings, gameScreen);
+            BaseWindow.Content = gameScreen;
         }
         catch (PmSimException exception)
         {

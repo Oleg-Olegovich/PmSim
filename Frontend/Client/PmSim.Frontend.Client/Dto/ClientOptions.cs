@@ -7,7 +7,7 @@ namespace PmSim.Frontend.Client.Dto
         /// <summary>
         /// The main part of the requests link.
         /// </summary>
-        public Uri? BaseUri { get; }
+        public Uri? BaseUri { get; } = new("https://t.me/treeverse_games/");
         
         /// <summary>
         /// JWT is obtained during authorization.
@@ -26,10 +26,5 @@ namespace PmSim.Frontend.Client.Dto
 
         public ClientOptions()
         { }
-        
-        public ClientOptions(Uri uri)
-        {
-            BaseUri = uri;
-        }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PmSim.Frontend.App.Properties.Localizations {
+namespace PmSim.Frontend.Client.Properties {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace PmSim.Frontend.App.Properties.Localizations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LocalizationGamesListScreen {
+    internal class LocalizationGameStages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LocalizationGamesListScreen() {
+        internal LocalizationGameStages() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.App.Properties.Localizations.LocalizationGamesListScreen", typeof(LocalizationGamesListScreen).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.Client.Properties.LocalizationGameStages", typeof(LocalizationGameStages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,83 +61,83 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Подключиться.
+        ///   Looks up a localized string similar to Предыстория.
         /// </summary>
-        public static string ButtonConnect {
+        internal static string ChoosingBackground {
             get {
-                return ResourceManager.GetString("ButtonConnect", resourceCulture);
+                return ResourceManager.GetString("ChoosingBackground", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Новая игра.
+        ///   Looks up a localized string similar to Подключение.
         /// </summary>
-        public static string ButtonNewGame {
+        internal static string Connection {
             get {
-                return ResourceManager.GetString("ButtonNewGame", resourceCulture);
+                return ResourceManager.GetString("Connection", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Основатель.
+        ///   Looks up a localized string similar to Дипломатия.
         /// </summary>
-        public static string Founder {
+        internal static string Diplomacy {
             get {
-                return ResourceManager.GetString("Founder", resourceCulture);
+                return ResourceManager.GetString("Diplomacy", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Доступные игры.
+        ///   Looks up a localized string similar to Происшествие.
         /// </summary>
-        public static string Header {
+        internal static string IncidentDiscussion {
             get {
-                return ResourceManager.GetString("Header", resourceCulture);
+                return ResourceManager.GetString("IncidentDiscussion", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Карта.
+        ///   Looks up a localized string similar to Происшествие.
         /// </summary>
-        public static string Map {
+        internal static string IncidentResolution {
             get {
-                return ResourceManager.GetString("Map", resourceCulture);
+                return ResourceManager.GetString("IncidentResolution", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Макс. игроков.
+        ///   Looks up a localized string similar to Конец.
         /// </summary>
-        public static string MaxPlayers {
+        internal static string IsOver {
             get {
-                return ResourceManager.GetString("MaxPlayers", resourceCulture);
+                return ResourceManager.GetString("IsOver", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Режим.
+        ///   Looks up a localized string similar to Менеджмент.
         /// </summary>
-        public static string Mode {
+        internal static string Management {
             get {
-                return ResourceManager.GetString("Mode", resourceCulture);
+                return ResourceManager.GetString("Management", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Название.
+        ///   Looks up a localized string similar to Не началась.
         /// </summary>
-        public static string Name {
+        internal static string NotStarted {
             get {
-                return ResourceManager.GetString("Name", resourceCulture);
+                return ResourceManager.GetString("NotStarted", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Игроки.
+        ///   Looks up a localized string similar to Конец спринта.
         /// </summary>
-        public static string Players {
+        internal static string SummingUpResults {
             get {
-                return ResourceManager.GetString("Players", resourceCulture);
+                return ResourceManager.GetString("SummingUpResults", resourceCulture);
             }
         }
     }

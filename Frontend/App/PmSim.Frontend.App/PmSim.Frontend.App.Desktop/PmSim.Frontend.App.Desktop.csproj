@@ -24,8 +24,5 @@
 
     <ItemGroup>
       <None Remove="appsettings.json" />
-      <EmbeddedResource Include="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
     </ItemGroup>
 </Project>

@@ -1,10 +1,9 @@
 ﻿using System.Reactive;
 using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Windows;
-using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
-using PmSim.Frontend.Client.Dto;
 using PmSim.Shared.Contracts.Exceptions;
+using PmSim.Shared.Contracts.Game;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -13,16 +12,16 @@ public class GamesListScreenViewModel : BasicScreenViewModel
 {
     private readonly MultiplayerClient _client;
 
-    private Game[]? _games;
-    public Game[]? Games
+    private GameModel[]? _games;
+    public GameModel[]? Games
     {
         get => _games;
         set => this.RaiseAndSetIfChanged(ref _games, value);
     }
 
-    private Game? _selectedGame;
+    private GameModel? _selectedGame;
 
-    public Game? SelectedGame
+    public GameModel? SelectedGame
     {
         get => _selectedGame;
         set => this.RaiseAndSetIfChanged(ref _selectedGame, value);
@@ -36,7 +35,7 @@ public class GamesListScreenViewModel : BasicScreenViewModel
         : base(baseWindow, previous)
     {
         NewGameCommand = ReactiveCommand.Create(ProcessNewGameCommand);
-        ConnectCommand = ReactiveCommand.CreateFromTask(ProcessConnectCommand);
+        ConnectCommand = ReactiveCommand.Create(ProcessConnectCommand);
         _client = client;
         Task.Run(UpdateGamesList);
     }
@@ -44,13 +43,13 @@ public class GamesListScreenViewModel : BasicScreenViewModel
     private void ProcessNewGameCommand()
         => BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, _client, false);
     
-    private async Task ProcessConnectCommand()
+    private void ProcessConnectCommand()
     {
         if (SelectedGame is not null)
         {
             try
             {
-                await _client.ConnectToGame(SelectedGame.Id);
+                _client.ConnectToGame(SelectedGame.Id);
                 BaseWindow.Content = new GameScreenViewModel(BaseWindow, this, _client);
             }
             catch (PmSimException exception)

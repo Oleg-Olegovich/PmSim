@@ -1,0 +1,48 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d"
+             x:Class="PmSim.Frontend.App.Views.Frames.ChoosingBackgroundDialogView">
+    
+    <Grid RowDefinitions="*, Auto, Auto, Auto, *"
+          ColumnDefinitions="*, *, *">
+        
+        <Viewbox Grid.Row="0"
+                 Grid.Column="0"
+                 Grid.RowSpan="5"
+                 Grid.ColumnSpan="3"
+                 Stretch="Uniform">
+            <Panel>
+                <Image ZIndex="1"
+                       IsEnabled="False"
+                       Source="avares://PmSim.Frontend.App/Assets/Images/Map0/background_map.png" />
+            </Panel>
+        </Viewbox>
+        
+        <Border Grid.Row="1"
+               Grid.Column="1"
+               Grid.RowSpan="3"
+               Classes="CommonBackdrop"/>
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Classes="Header"
+                   Text="{x:Static localizations:LocalizationGameScreen.TextBlockChooseBackground}"/>
+        
+        <Border Grid.Row="2"
+                Grid.Column="1"
+                Classes="TextStroke">
+            <ComboBox Classes="Bordered"
+                      Items="{Binding Backgrounds}"
+                      SelectedIndex="{Binding SelectedBackground}"/>
+        </Border>
+        
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                Classes="Stretch Menu"
+                Content="{x:Static localizations:LocalizationGameScreen.ButtonConfirm}"
+                Command="{Binding ConfirmationCommand}"/>
+    </Grid>
+</UserControl>

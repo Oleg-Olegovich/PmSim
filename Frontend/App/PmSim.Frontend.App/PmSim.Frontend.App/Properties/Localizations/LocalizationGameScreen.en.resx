@@ -21,7 +21,7 @@
     <data name="ButtonGiveUp" xml:space="preserve">
         <value>Give up</value>
     </data>
-    <data name="TextBlockPlayers" xml:space="preserve">
+    <data name="Players" xml:space="preserve">
         <value>Players</value>
     </data>
     <data name="ButtonSkip" xml:space="preserve">
@@ -47,5 +47,11 @@
     </data>
     <data name="ToolTipTime" xml:space="preserve">
         <value>Time to the end of the stage</value>
+    </data>
+    <data name="TextBlockChooseBackground" xml:space="preserve">
+        <value>Choose background</value>
+    </data>
+    <data name="ButtonConfirm" xml:space="preserve">
+        <value>Confirm</value>
     </data>
 </root>

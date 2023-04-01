@@ -1,4 +1,4 @@
-﻿namespace PmSim.Frontend.Client.Dto;
+﻿namespace PmSim.Shared.Contracts.User;
 
 public class User
 {

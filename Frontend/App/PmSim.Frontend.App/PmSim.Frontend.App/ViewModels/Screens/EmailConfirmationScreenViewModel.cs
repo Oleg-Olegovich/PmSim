@@ -6,6 +6,7 @@ using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
 using PmSim.Frontend.Client.Dto;
 using PmSim.Shared.Contracts.Exceptions;
+using PmSim.Shared.Contracts.User;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -54,10 +55,10 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
         _user = user;
         _titleScreen = titleScreen;
         _code = code;
-        ConfirmCommand = ReactiveCommand.CreateFromTask(ProcessEmailConfirmation);
+        ConfirmCommand = ReactiveCommand.Create(ProcessEmailConfirmation);
     }
 
-    private async Task ProcessEmailConfirmation()
+    private void ProcessEmailConfirmation()
     {
         if (_code != InputCode)
         {
@@ -67,7 +68,7 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
 
         try
         {
-            var client = await MultiplayerClient.SignUpAsync(_user);
+            var client = MultiplayerClient.SignUp(_user);
             var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
             BaseWindow.Content = gamesListScreen;
         }

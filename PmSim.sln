@@ -1,7 +1,4 @@
-﻿
-
-
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{0533A71F-EFD5-4EE3-B5B2-5E274AF72C9A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{1D7FB5BE-5FAF-4FD5-AECB-7547BDED7C9A}"

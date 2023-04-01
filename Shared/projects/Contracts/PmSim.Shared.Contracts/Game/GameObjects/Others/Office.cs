@@ -1,4 +1,5 @@
 ﻿using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 
 namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
@@ -32,7 +33,7 @@ public class Office
                 RentalPrice = GameConstants.BigOfficeRentPrice;
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                throw new PmSimException("Office type is out of range.");
         }
     }
 

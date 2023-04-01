@@ -1,119 +1,314 @@
-﻿using PmSim.Shared.Contracts.Game;
+﻿using PmSim.Frontend.Client.Properties;
+using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Interfaces;
+using PmSim.Shared.GameEngine;
 
 namespace PmSim.Frontend.Client.Api;
 
-public class SingleplayerClient : IPmSimClient
+public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
 {
     private readonly string _playerName;
-    
-    public SingleplayerClient(string playerName)
+
+    private Game? _game;
+
+    private IGameScreenLogic? _gameScreenLogic;
+
+    private int _time;
+
+    private Task? _timer;
+
+    public int ActionsNumber
     {
-        _playerName = playerName;
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.ActionsNumber = value;
+        }
     }
 
-    public async Task CreateNewGameAsync(GameOptions gameOptions)
+    public int Money
     {
-        
-    }
-    
-    public async Task SetBackgroundAsync()
-    {
-        
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.Money = value;
+        }
     }
 
-    public async Task CancelOfficeLeaseAsync()
+    public int OfficesNumber
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.OfficesNumber = value;
+        }
+    }
+
+    public int ProjectsNumber
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.ProjectsNumber = value;
+        }
+    }
+
+    public int EmployeesNumber
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.EmployeesNumber = value;
+        }
+    }
+
+    public int Programming
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+            
+            
+        }
+    }
+
+    public int Music
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+
+        }
+    }
+
+    public int Design
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+
+        }
+    }
+
+    public int Management
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+
+        }
+    }
+
+    public int Creativity
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+
+        }
+    }
+
+    public PlayerStatus AnotherPlayerStatus
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            for (var i = 0; i < _gameScreenLogic.Players.Count; ++i)
+            {
+                if (_gameScreenLogic.Players[i].Id != value.Id)
+                {
+                    continue;
+                }
+
+                _gameScreenLogic.Players[i] = value;
+                return;
+            }
+        }
+    }
+
+    public SingleplayerClient(string playerName) 
+        => _playerName = playerName;
+
+    public async Task ChangeCurrentStageAsync(GameStages stage, int time)
+    {
+        var stageName = LocalizationGameStages.ResourceManager.GetString(stage.ToString());
+        if (_gameScreenLogic is null || stageName is null)
+        {
+            return;
+        }
+
+        if (_timer is not null)
+        {
+            _time = -1;
+            await _timer;
+        }
+
+        _gameScreenLogic.GameStage = stageName;
+        _timer = Task.Run(ProcessTimerAsync);
+    }
+
+    public void CreateNewGame(GameOptions gameOptions, IGameScreenLogic gameScreenLogic)
+    {
+        _gameScreenLogic = gameScreenLogic;
+        _game = new Game(_playerName, 0, gameOptions);
+        _game.Connect(0, _playerName, this);
+    }
+
+    public void SetBackground(Professions profession) 
+        => _game?.SetBackground(0, profession);
+
+    public void CancelOfficeLease()
     {
     }
 
-    public async Task DismissAllEmployeesAsync()
+    public void DismissAllEmployees()
     {
     }
 
-    public async Task ConductInterviewAsync()
+    public void ConductInterview()
     {
     }
 
-    public async Task ProcessInterviewAsync()
+    public void ProcessInterview()
     {
     }
 
-    public async Task HireTechSupportOfficerAsync()
+    public void HireTechSupportOfficer()
     {
     }
 
-    public async Task DismissTechSupportOfficerAsync()
+    public void DismissTechSupportOfficer()
     {
     }
 
-    public async Task UseOpportunityAsync()
+    public void UseOpportunity()
     {
     }
 
-    public async Task AssignToWorkAsync()
+    public void AssignToWork()
     {
     }
 
-    public async Task AssignToInventProjectAsync()
+    public void AssignToInventProject()
     {
     }
 
-    public async Task AssignToMakeBackupAsync()
+    public void AssignToMakeBackup()
     {
     }
 
-    public async Task CancelTaskAsync()
+    public void CancelTask()
     {
     }
 
-    public async Task PutProjectUpForAuctionAsync()
+    public void PutProjectUpForAuction()
     {
     }
 
-    public async Task ProposeProjectAsync()
+    public void ProposeProject()
     {
     }
 
-    public async Task PutExecutorUpForAuctionAsync()
+    public void PutExecutorUpForAuction()
     {
     }
 
-    public async Task ProposeExecutorAsync()
+    public void ProposeExecutor()
     {
     }
 
-    public async Task PutOpportunityUpForAuctionAsync()
+    public void PutOpportunityUpForAuction()
     {
     }
 
-    public async Task ProposeOpportunityAsync()
+    public void ProposeOpportunity()
     {
     }
 
-    public async Task SendMessageAsync()
+    public void SendMessage()
     {
     }
 
-    public async Task SendMessageToEveryoneAsync()
+    public void SendMessageToEveryone()
     {
     }
 
-    public async Task ParticipateInAuctionAsync()
+    public void ParticipateInAuction()
     {
     }
 
-    public async Task SetIncidentActionAsync()
+    public void SetIncidentAction()
     {
     }
 
-    public async Task SkipMoveAsync()
+    public void SkipMove()
     {
     }
 
-    public async Task ExitGameAsync()
+    public void ExitGame()
     {
     }
 
-    public async Task RentOfficeAsync(int officeNumber)
+    public void RentOfficeAsync(int officeNumber)
     {
+    }
+
+    private async Task ProcessTimerAsync()
+    {
+        for (; _time > -1; --_time)
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.Time = $"{_time / 60:D2}:{_time % 60:D2}";
+            await Task.Delay(1000);
+        }
     }
 }

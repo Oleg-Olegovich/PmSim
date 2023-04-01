@@ -42,4 +42,7 @@
     <data name="MaxPlayers" xml:space="preserve">
         <value>Макс. игроков</value>
     </data>
+    <data name="Founder" xml:space="preserve">
+        <value>Основатель</value>
+    </data>
 </root>

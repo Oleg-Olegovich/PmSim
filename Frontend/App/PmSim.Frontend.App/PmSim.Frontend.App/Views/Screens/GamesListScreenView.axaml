@@ -24,6 +24,8 @@
                 <DataGrid.Columns>
                         <DataGridTextColumn Header="№" 
                                             Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Founder}" 
+                                            Binding="{Binding Founder}"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Name}" 
                                             Binding="{Binding Name}"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Mode}" 

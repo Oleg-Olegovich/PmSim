@@ -1,10 +1,12 @@
-﻿namespace PmSim.Frontend.Client.Dto;
+﻿namespace PmSim.Shared.Contracts.Game;
 
-public class Game
+public class GameModel
 {
     public int Id { get; }
     
     public string Name { get; }
+    
+    public string Founder { get; }
     
     public string Mode { get; }
 
@@ -14,9 +16,10 @@ public class Game
     
     public int MaxPlayers { get; }
 
-    public Game(int id, string name, string mode, string map, int players, int mapPlayers)
+    public GameModel(int id, string founder, string name, string mode, string map, int players, int mapPlayers)
     {
         Id = id;
+        Founder = founder;
         Mode = mode;
         Name = name;
         Map = map;

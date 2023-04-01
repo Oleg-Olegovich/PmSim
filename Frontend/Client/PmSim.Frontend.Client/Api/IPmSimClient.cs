@@ -1,75 +1,85 @@
-﻿using PmSim.Frontend.Client.LanguagesManager;
-using PmSim.Frontend.Client.Properties;
+﻿using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Interfaces;
 
 namespace PmSim.Frontend.Client.Api;
 
 public interface IPmSimClient
 {
-    public static string[] GetModes(Languages language)
+    public static string[] GetModes()
         => new[]
         {
             LocalizationGameModes.ResourceManager.GetString(GameModes.Survival.ToString())!,
             LocalizationGameModes.ResourceManager.GetString(GameModes.TimerAndMoney.ToString())!,
             LocalizationGameModes.ResourceManager.GetString(GameModes.TimerAndProjects.ToString())!
         };
+    
+    public static string[] GetBackgrounds()
+        => new[]
+        {
+            LocalizationProfessions.ResourceManager.GetString(Professions.Major.ToString())!,
+            LocalizationProfessions.ResourceManager.GetString(Professions.Programmer.ToString())!,
+            LocalizationProfessions.ResourceManager.GetString(Professions.Designer.ToString())!,
+            LocalizationProfessions.ResourceManager.GetString(Professions.Musician.ToString())!,
+            LocalizationProfessions.ResourceManager.GetString(Professions.Manager.ToString())!
+        };
 
-    public static string[] GetMaps(Languages language)
+    public static string[] GetMaps()
         => new[]
         {
             LocalizationGameMaps.Map0
         };
 
-    public Task CreateNewGameAsync(GameOptions gameOptions);
+    public void CreateNewGame(GameOptions gameOptions, IGameScreenLogic gameScreenLogic);
 
-    public Task SetBackgroundAsync();
+    public void SetBackground(Professions profession);
 
-    public Task CancelOfficeLeaseAsync();
+    public void CancelOfficeLease();
 
-    public Task DismissAllEmployeesAsync();
+    public void DismissAllEmployees();
 
-    public Task ConductInterviewAsync();
+    public void ConductInterview();
 
-    public Task ProcessInterviewAsync();
+    public void ProcessInterview();
 
-    public Task HireTechSupportOfficerAsync();
+    public void HireTechSupportOfficer();
 
-    public Task DismissTechSupportOfficerAsync();
+    public void DismissTechSupportOfficer();
 
-    public Task UseOpportunityAsync();
+    public void UseOpportunity();
 
-    public Task AssignToWorkAsync();
+    public void AssignToWork();
 
-    public Task AssignToInventProjectAsync();
+    public void AssignToInventProject();
 
-    public Task AssignToMakeBackupAsync();
+    public void AssignToMakeBackup();
 
-    public Task CancelTaskAsync();
+    public void CancelTask();
 
-    public Task PutProjectUpForAuctionAsync();
+    public void PutProjectUpForAuction();
 
-    public Task ProposeProjectAsync();
+    public void ProposeProject();
 
-    public Task PutExecutorUpForAuctionAsync();
+    public void PutExecutorUpForAuction();
 
-    public Task ProposeExecutorAsync();
+    public void ProposeExecutor();
 
-    public Task PutOpportunityUpForAuctionAsync();
+    public void PutOpportunityUpForAuction();
 
-    public Task ProposeOpportunityAsync();
+    public void ProposeOpportunity();
 
-    public Task SendMessageAsync();
+    public void SendMessage();
 
-    public Task SendMessageToEveryoneAsync();
+    public void SendMessageToEveryone();
 
-    public Task ParticipateInAuctionAsync();
+    public void ParticipateInAuction();
 
-    public Task SetIncidentActionAsync();
+    public void SetIncidentAction();
 
-    public Task SkipMoveAsync();
+    public void SkipMove();
 
-    public Task ExitGameAsync();
+    public void ExitGame();
 
-    public Task RentOfficeAsync(int officeNumber);
+    public void RentOfficeAsync(int officeNumber);
 }

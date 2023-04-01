@@ -80,7 +80,7 @@ public class SignInScreenViewModel : BasicScreenViewModel
     {
         _titleScreen = titleScreen;
         SignUpCommand = ReactiveCommand.Create(OpenSignUpScreen);
-        SignInCommand = ReactiveCommand.CreateFromTask(SignIn);
+        SignInCommand = ReactiveCommand.Create(SignIn);
         _isDataRemembered = baseWindow.Options.AutofillUserData.IsMultiplayerDataRemembered;
         if (!_isDataRemembered)
         {
@@ -93,11 +93,11 @@ public class SignInScreenViewModel : BasicScreenViewModel
     private void CheckIsSignInAvailable()
         => IsSignInAvailable = Login != "" && Password != "";
     
-    private async Task SignIn()
+    private void SignIn()
     {
         try
         {
-            var client = await MultiplayerClient.SignInAsync(Login, Password);
+            var client = MultiplayerClient.SignInAsync(Login, Password);
             var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
             BaseWindow.Content = gamesListScreen;
         }

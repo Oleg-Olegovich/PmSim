@@ -5,7 +5,7 @@
         NotStarted,
         Connection,
         ChoosingBackground,
-        Sprint,
+        Management,
         Diplomacy,
         SummingUpResults,
         IncidentDiscussion,

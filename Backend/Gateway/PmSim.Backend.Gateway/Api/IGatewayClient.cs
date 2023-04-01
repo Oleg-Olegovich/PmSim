@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
-using PmSim.Shared.Contracts.Account;
 using PmSim.Shared.Contracts.Actions;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.Status;
+using PmSim.Shared.Contracts.User;
 
 namespace PmSim.Backend.Gateway.Api;
 
 public interface IGatewayClient
 {
-    Task<IsOkResponse> CreateAccountAsync(CreateAccountRequest request);
+    Task<IsOkResponse> CreateAccountAsync();
         
     Task<TokenResponse> GetAccountAsync(AuthorizationRequest request);
 

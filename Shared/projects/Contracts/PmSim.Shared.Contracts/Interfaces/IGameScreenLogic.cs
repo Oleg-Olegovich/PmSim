@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 
-namespace PmSim.Frontend.App.ViewModels.Interfaces;
+namespace PmSim.Shared.Contracts.Interfaces;
 
 /// <summary>
 /// The interface provides external control over the state

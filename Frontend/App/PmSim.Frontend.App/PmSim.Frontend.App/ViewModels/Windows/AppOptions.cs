@@ -14,7 +14,13 @@ public class AppOptions
     /// <summary>
     /// The default settings are loaded from the application configuration.
     /// </summary>
-    public static AppOptions? Default { get; set; }
+    public static AppOptions Default => new()
+    {
+        Language = Languages.English,
+        Theme = Themes.LightFluent,
+        WindowState = WindowState.Normal,
+        Size = Size.Default
+    };
 
     /// <summary>
     /// Current language.

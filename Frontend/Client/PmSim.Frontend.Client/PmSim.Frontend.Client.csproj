@@ -12,9 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Include="client_config.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
       <EmbeddedResource Update="Properties\LocalizationGameMaps.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>LocalizationGameMaps.Designer.cs</LastGenOutput>
@@ -23,10 +20,20 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>LocalizationGameModes.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.2.23128.3" />
+      <EmbeddedResource Update="Properties\LocalizationGameMaps.en.resx">
+        <DependentUpon>LocalizationGameMaps.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationGameModes.en.resx">
+        <DependentUpon>LocalizationGameModes.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationGameStages.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationGameStages.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationProfessions.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationProfessions.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -39,6 +46,16 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>LocalizationGameModes.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationGameStages.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationGameStages.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationProfessions.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationProfessions.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

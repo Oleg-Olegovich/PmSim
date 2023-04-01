@@ -53,25 +53,13 @@ public class App : Application
     
     private void InitializeHost()
         => _host = new HostBuilder()
-            .ConfigureAppConfiguration(config =>
-            {
-                config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddJsonFile("appsettings.json", false, true);
-                config.AddJsonFile(FileManager.GetConfigurationFileName(typeof(AppOptions)), true, true);
-            })
+            .ConfigureAppConfiguration(config 
+                => config.AddJsonFile(FileManager.GetConfigurationFileName(typeof(AppOptions)), 
+                    true, true))
             .ConfigureServices((context, services) =>
             {
-                AppOptions.Default = context.Configuration
-                    .GetSection("Defaults")
-                    .GetSection(nameof(AppOptions))
-                    .Get<AppOptions>();
-                Size.Default = context.Configuration
-                    .GetSection("Defaults")
-                    .GetSection(nameof(Size))
-                    .Get<Size>();
                 var appOptions = context.Configuration.GetSection(nameof(AppOptions)).Get<AppOptions>() 
-                                 ?? AppOptions.Default 
-                                 ?? throw new NullReferenceException("Default app settings is null!");
+                                 ?? AppOptions.Default;
                 services.AddSingleton(appOptions);
                 services.AddSingleton<MainWindowViewModel>();
                 var log = new LoggerConfiguration()
