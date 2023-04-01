@@ -28,18 +28,6 @@
 
         <SolidColorBrush x:Key="WhiteForeground"
                          Color="#FFFFFFFF"/>
-
-        <SolidColorBrush x:Key="NavigationButtonBackground"
-                         Color="#413E3E"/>
-
-        <SolidColorBrush x:Key="NavigationButtonBackgroundDisabled"
-                         Color="#545353"/>
-
-        <SolidColorBrush x:Key="NavigationButtonBackgroundPointOver"
-                         Color="#7A7979"/>
-
-        <SolidColorBrush x:Key="NavigationButtonBackgroundPressed"
-                         Color="#000000"/>
     </Styles.Resources>
 
     <!-- Menu button -->
@@ -93,51 +81,11 @@
         </Style.Resources>
     </Style>
 
-    <!-- Load file icon button -->
-    <!-- Only the link to the icon for this topic is defined here. The rest of the properties are in Shared. -->
-    <Style Selector="Button.LoadFile">
-        <Style.Resources>
-            <Image x:Key="LoadFileIcon" Source="avares://PmSim.Frontend.App/Assets/StyleIcons/DarkMaterial/load_file.png"/>
-        </Style.Resources>
-    </Style>
-
     <!-- Settings icon button -->
     <!-- Only the link to the icon for this topic is defined here. The rest of the properties are in Shared. -->
     <Style Selector="Button.Settings">
         <Style.Resources>
             <Image x:Key="SettingsIcon" Source="avares://PmSim.Frontend.App/Assets/StyleIcons/DarkMaterial/settings.png"/>
         </Style.Resources>
-    </Style>
-
-    <!-- Highlight barcode icon button -->
-    <!-- Only the link to the icon for this topic is defined here. The rest of the properties are in Shared. -->
-    <Style Selector="ToggleButton.BarcodeSelection">
-        <Style.Resources>
-            <Image x:Key="BarcodeSelectionIcon" Source="avares://PmSim.Frontend.App/Assets/StyleIcons/DarkMaterial/highlight_barcode.png"/>
-        </Style.Resources>
-    </Style>
-
-    <!-- Button for hidden navigation menu -->
-    <Style Selector="Button.Navigation">
-    </Style>
-
-    <Style Selector="Button.Navigation /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background"
-                Value="{DynamicResource NavigationButtonBackground}"/>
-    </Style>
-
-    <Style Selector="Button.Navigation:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background"
-                Value="{DynamicResource NavigationButtonBackgroundPointOver}"/>
-    </Style>
-
-    <Style Selector="Button.Navigation:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background"
-                Value="{DynamicResource NavigationButtonBackgroundPressed}"/>
-    </Style>
-
-    <Style Selector="Button.Navigation:disabled /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background"
-                Value="{DynamicResource NavigationButtonBackgroundDisabled}"/>
     </Style>
 </Styles>

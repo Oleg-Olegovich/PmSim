@@ -15,7 +15,7 @@
                          Color="#00000000"/>
     </Styles.Resources>
 
-    <!-- Combo box for text border -->
+    <!-- Text box for text border -->
 
     <Style Selector="TextBox.Bordered">
         <Setter Property="FontSize" Value="14"/>

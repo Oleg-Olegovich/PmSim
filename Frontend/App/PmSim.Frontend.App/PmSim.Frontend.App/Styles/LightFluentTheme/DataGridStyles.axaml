@@ -5,7 +5,6 @@
 
     <Style Selector="DataGrid.Common">
         <Setter Property="Foreground" Value="#000000"/>
-        <Setter Property="Background" Value="#FFFFFFFF"/>
         <Setter Property="RowBackground" Value="#FFFFFFFF"/>
         <Setter Property="BorderBrush" Value="#000000"/>
         <Setter Property="HorizontalGridLinesBrush" Value="#000000"/>

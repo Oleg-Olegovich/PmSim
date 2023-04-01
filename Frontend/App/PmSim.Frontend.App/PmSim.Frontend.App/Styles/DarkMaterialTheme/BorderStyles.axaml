@@ -12,16 +12,7 @@
         <Setter Property="BorderBrush" Value="#FFFFFFFF"/>
     </Style>
 
-    <Style Selector="Border.DocumentViewerStroke">
-        <Setter Property="BorderBrush" Value="#000000"/>
-        <Setter Property="Background" Value="#013654"/>
-    </Style>
-
     <Style Selector="Border.CommonBackdrop">
         <Setter Property="Background" Value="#013654"/>
-    </Style>
-
-    <Style Selector="Border.ItemsControlGrid">
-        <Setter Property="BorderBrush" Value="#FFFFFFFF"/>
     </Style>
 </Styles>

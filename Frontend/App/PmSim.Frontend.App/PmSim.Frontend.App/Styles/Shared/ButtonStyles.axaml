@@ -100,29 +100,9 @@
         <Setter Property="Padding" Value="0"/>
     </Style>
 
-    <!-- Load file icon button -->
-    <Style Selector="Button.LoadFile">
-        <Setter Property="Content" Value="{DynamicResource LoadFileIcon}"/>
-        <Setter Property="BorderBrush" Value="#00000000"/>
-        <Setter Property="Background" Value="#00000000"/>
-        <Setter Property="MaxWidth" Value="50"/>
-        <Setter Property="MaxHeight" Value="50"/>
-        <Setter Property="Padding" Value="0"/>
-    </Style>
-
     <!-- Settings icon button -->
     <Style Selector="Button.Settings">
         <Setter Property="Content" Value="{DynamicResource SettingsIcon}"/>
-        <Setter Property="BorderBrush" Value="#00000000"/>
-        <Setter Property="Background" Value="#00000000"/>
-        <Setter Property="MaxWidth" Value="50"/>
-        <Setter Property="MaxHeight" Value="50"/>
-        <Setter Property="Padding" Value="0"/>
-    </Style>
-
-    <!-- Highlight barcode icon button -->
-    <Style Selector="ToggleButton.BarcodeSelection">
-        <Setter Property="Content" Value="{DynamicResource BarcodeSelectionIcon}"/>
         <Setter Property="BorderBrush" Value="#00000000"/>
         <Setter Property="Background" Value="#00000000"/>
         <Setter Property="MaxWidth" Value="50"/>

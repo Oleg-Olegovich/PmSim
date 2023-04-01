@@ -12,12 +12,4 @@
     <Style Selector="ToggleSwitch.Settings">
         <Setter Property="Margin" Value="5 0 0 0"/>
     </Style>
-
-    <Style Selector="ToggleSwitch.PageDeleted">
-        <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-    </Style>
 </Styles>

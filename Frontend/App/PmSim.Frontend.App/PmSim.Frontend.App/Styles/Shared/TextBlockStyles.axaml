@@ -48,17 +48,4 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="2"/>
     </Style>
-
-    <!-- DocId status labels -->
-    <Style Selector="TextBlock.Scanned">
-        <Setter Property="Background" Value="Green"/>
-    </Style>
-
-    <Style Selector="TextBlock.UnregisteredBarcode">
-        <Setter Property="Background" Value="Yellow"/>
-    </Style>
-
-    <Style Selector="TextBlock.Missed">
-        <Setter Property="Background" Value="Red"/>
-    </Style>
 </Styles>
