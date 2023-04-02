@@ -21,4 +21,8 @@
     <ItemGroup>
         <ProjectReference Include="..\PmSim.Frontend.App\PmSim.Frontend.App.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia.Android" Version="11.0.0-preview5" />
+    </ItemGroup>
 </Project>
