@@ -13,6 +13,7 @@ nupkg/
 
 # Rider
 .idea
+global.json
 
 # User-specific files
 *.suo
