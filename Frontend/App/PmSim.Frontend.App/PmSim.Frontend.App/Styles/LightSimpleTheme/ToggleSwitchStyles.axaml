@@ -1,0 +1,30 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+
+    <Styles.Resources>
+        <SolidColorBrush x:Key="ToggleSwitchContentForeground" Color="#000033" />
+        
+        <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#CA4444" />
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="#CA4444" />
+        
+        <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="#FF6666" />
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOnPointerOver" Color="#FF6666" />
+        
+        <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="#CC3333" />
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="#CC3333" />
+    </Styles.Resources>
+
+
+    <Style Selector="ToggleSwitch.Settings">
+        <Setter Property="Background" Value="#ff6666" />
+        <Setter Property="Foreground" Value="#000033" />
+    </Style>
+</Styles>

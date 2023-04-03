@@ -1,0 +1,18 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FluentTheme/>
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+
+    <!-- Custom elements -->
+    <StyleInclude Source="/Styles/Shared/ThemeStyle.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/ButtonStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/TextBlockStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/BorderStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/CheckBoxStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/StackPanelStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/ImageStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/DataGridStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/ToggleSwitchStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/NumericUpDownStyles.axaml"/>
+    <StyleInclude Source="/Styles/LightSimpleTheme/ComboBoxStyles.axaml"/>
+</Styles>

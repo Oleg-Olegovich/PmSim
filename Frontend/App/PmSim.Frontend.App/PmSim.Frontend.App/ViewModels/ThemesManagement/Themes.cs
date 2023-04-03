@@ -7,8 +7,8 @@
 /// </summary>
 public enum Themes
 {
+    LightSimple,
     LightFluent,
-    //LightMaterial,
+    DarkSimple,
     DarkFluent
-    //DarkMaterial
 }

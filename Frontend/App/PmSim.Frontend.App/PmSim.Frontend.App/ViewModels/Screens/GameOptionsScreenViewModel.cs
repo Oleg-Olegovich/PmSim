@@ -205,10 +205,10 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         Maps = IPmSimClient.GetMaps();
         ProcessDefaultClick();
         DefaultCommand = ReactiveCommand.Create(ProcessDefaultClick);
-        StartCommand = ReactiveCommand.CreateFromTask(StartGame);
+        StartCommand = ReactiveCommand.Create(StartGame);
     }
 
-    private async Task StartGame()
+    private void StartGame()
     {
         var settings = new GameOptions(Name, PlayersNumber, BotsNumber, (GameModes)SelectedMode, SelectedMap, 
             ConnectionRealTime, ChoosingBackgroundRealTime, SprintRealTime, DiplomacyRealTime, IncidentRealTime, 

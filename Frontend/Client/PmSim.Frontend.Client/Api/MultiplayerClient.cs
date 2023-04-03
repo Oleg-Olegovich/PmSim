@@ -1,4 +1,5 @@
 ﻿using PmSim.Frontend.Client.Dto;
+using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
@@ -181,8 +182,8 @@ public class MultiplayerClient : IPmSimClient
     {
         var games = new GameModel[]
         {
-            new(0, "Вася", "Тест", "Survival", "The simple village", 0, 10),
-            new(1, "Петя", "Test", "TimerAndMoney", "The simple village", 0, 5)
+            new(0, "Вася", "Тест", LocalizationGameModes.Survival, LocalizationGameMaps.Map0, 0, 10),
+            new(1, "Петя", "Test", LocalizationGameModes.TimerAndMoney, LocalizationGameMaps.Map0, 0, 5)
         };
         return games;
     }

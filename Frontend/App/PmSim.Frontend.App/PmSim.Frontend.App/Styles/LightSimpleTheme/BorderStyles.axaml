@@ -9,10 +9,10 @@
     <!-- Add Styles Here -->
 
     <Style Selector="Border.TextStroke">
-        <Setter Property="BorderBrush" Value="#000000"/>
+        <Setter Property="BorderBrush" Value="#000033"/>
     </Style>
 
     <Style Selector="Border.CommonBackdrop">
-        <Setter Property="Background" Value="#CCE2EF"/>
+        <Setter Property="Background" Value="#C1BACA"/>
     </Style>
 </Styles>
