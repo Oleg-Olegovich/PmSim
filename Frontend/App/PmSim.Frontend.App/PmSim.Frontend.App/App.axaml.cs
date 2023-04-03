@@ -22,7 +22,7 @@ public class App : Application
         InitializeHost();
     }
 
-    public override async void OnFrameworkInitializationCompleted()
+    public override void OnFrameworkInitializationCompleted()
     {
         if (_host is null)
         {
@@ -44,8 +44,7 @@ public class App : Application
                 };
                 break;
         }
-
-        await _host.StopAsync();
+        
         base.OnFrameworkInitializationCompleted();
     }
     
