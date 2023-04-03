@@ -25,7 +25,7 @@ public class App : Application
         InitializeHost();
     }
 
-    public override void OnFrameworkInitializationCompleted()
+    public override async void OnFrameworkInitializationCompleted()
     {
         if (_host is null)
         {
@@ -48,6 +48,7 @@ public class App : Application
                 break;
         }
 
+        await _host.StopAsync();
         base.OnFrameworkInitializationCompleted();
     }
     
@@ -61,11 +62,11 @@ public class App : Application
                 var appOptions = context.Configuration.GetSection(nameof(AppOptions)).Get<AppOptions>() 
                                  ?? AppOptions.Default;
                 services.AddSingleton(appOptions);
-                services.AddSingleton<MainWindowViewModel>();
                 var log = new LoggerConfiguration()
                     .WriteTo.File(Constants.LogFileFullName, rollingInterval: RollingInterval.Day)
                     .CreateLogger();
                 services.AddSingleton(log);
+                services.AddSingleton<MainWindowViewModel>();
             })
             .Build();
 }
