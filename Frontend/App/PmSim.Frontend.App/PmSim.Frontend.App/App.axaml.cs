@@ -1,17 +1,14 @@
 using System;
-using System.IO;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PmSim.Frontend.App.Models;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.App.Views.Windows;
 using PmSim.Frontend.Client.FileManagement;
 using Serilog;
-using Size = PmSim.Frontend.App.ViewModels.Windows.Size;
 
 namespace PmSim.Frontend.App;
 
