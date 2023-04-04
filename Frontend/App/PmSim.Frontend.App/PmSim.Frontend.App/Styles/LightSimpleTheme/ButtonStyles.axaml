@@ -39,6 +39,13 @@
         <Setter Property="TextBlock.Foreground"
                 Value="{DynamicResource WhiteForeground}"/>
     </Style>
+    
+    <Style Selector="Button.Menu:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background"
+                Value="#336363"/>
+        <Setter Property="TextBlock.Foreground"
+                Value="{DynamicResource WhiteForeground}"/>
+    </Style>
 
     <!-- Attention-grabbing button -->
     <Style Selector="Button.AttentionGrabbing /template/ ContentPresenter#PART_ContentPresenter">

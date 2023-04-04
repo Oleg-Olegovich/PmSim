@@ -21,9 +21,6 @@
     <data name="Header" xml:space="preserve">
         <value>Подтверждение Email</value>
     </data>
-    <data name="ButtonConfirm" xml:space="preserve">
-        <value>Подтвердить</value>
-    </data>
     <data name="WrongCode" xml:space="preserve">
         <value>Не тот код!</value>
     </data>

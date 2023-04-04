@@ -59,6 +59,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>LocalizationEmailConfirmationScreen.resx</DependentUpon>
       </Compile>
+      <Compile Update="Properties\Localizations\LocalizationSubscriptionPurchaseScreen.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationSubscriptionPurchaseScreen.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -172,6 +177,10 @@
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Localizations\LocalizationEmailConfirmationScreen.en.resx">
         <DependentUpon>LocalizationEmailConfirmationScreen.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Localizations\LocalizationSubscriptionPurchaseScreen.resx">
+        <Generator>publicResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationSubscriptionPurchaseScreen.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 

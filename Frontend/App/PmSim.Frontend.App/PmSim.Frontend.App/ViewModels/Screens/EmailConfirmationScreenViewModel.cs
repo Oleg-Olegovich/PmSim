@@ -1,10 +1,7 @@
 ﻿using System.Reactive;
-using System.Threading.Tasks;
 using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Windows;
-using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
-using PmSim.Frontend.Client.Dto;
 using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.User;
 using ReactiveUI;

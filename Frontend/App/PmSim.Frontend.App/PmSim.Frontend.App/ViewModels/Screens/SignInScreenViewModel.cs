@@ -1,7 +1,5 @@
 ﻿using System.Reactive;
-using System.Threading.Tasks;
 using PmSim.Frontend.App.ViewModels.Windows;
-using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
 using PmSim.Shared.Contracts.Exceptions;
 using ReactiveUI;
@@ -75,12 +73,15 @@ public class SignInScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> SignInCommand { get; }
     
+    public ReactiveCommand<Unit, Unit> SubscriptionPurchaseCommand { get; }
+    
     public SignInScreenViewModel(BasicWindowViewModel baseWindow, TitleScreenViewModel titleScreen) 
         : base(baseWindow, titleScreen)
     {
         _titleScreen = titleScreen;
         SignUpCommand = ReactiveCommand.Create(OpenSignUpScreen);
         SignInCommand = ReactiveCommand.Create(SignIn);
+        SubscriptionPurchaseCommand = ReactiveCommand.Create(ProcessSubscriptionPurchase);
         _isDataRemembered = baseWindow.Options.AutofillUserData.IsMultiplayerDataRemembered;
         if (!_isDataRemembered)
         {
@@ -109,4 +110,7 @@ public class SignInScreenViewModel : BasicScreenViewModel
 
     private void OpenSignUpScreen()
         => BaseWindow.Content = new SignUpScreenViewModel(BaseWindow, this, _titleScreen);
+
+    private void ProcessSubscriptionPurchase()
+        => BaseWindow.Content = new SubscriptionPurchaseScreenViewModel(BaseWindow, this);
 }
