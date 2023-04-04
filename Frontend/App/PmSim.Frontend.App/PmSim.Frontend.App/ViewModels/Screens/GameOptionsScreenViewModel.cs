@@ -197,10 +197,6 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     {
         _client = client;
         IsSingleplayer = isSingleplayer;
-        if (isSingleplayer)
-        {
-            PlayersNumber = 1;
-        }
         Modes = IPmSimClient.GetModes();
         Maps = IPmSimClient.GetMaps();
         ProcessDefaultClick();
@@ -229,7 +225,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     {
         var defaultSettings = GameOptions.Default;
         Name = defaultSettings.GameName;
-        PlayersNumber = defaultSettings.MaxPlayersNumber;
+        PlayersNumber = IsSingleplayer ? 1 : defaultSettings.MaxPlayersNumber;
         BotsNumber = defaultSettings.BotsNumber;
         SelectedMode = (int)defaultSettings.Mode;
         SelectedMap = defaultSettings.MapNumber;

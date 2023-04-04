@@ -5,28 +5,32 @@
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.AppDescriptionScreenView">
-    
+
     <Grid RowDefinitions="*,*,*,*,*"
-          ColumnDefinitions="*,*,*">
+          ColumnDefinitions="*,2*,*">
 
         <!-- Header -->
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
                    Text="{x:Static localizations:LocalizationAppDescriptionScreen.Header}"
-                   Classes="Header"/>
+                   Classes="Header" />
 
         <!-- Description text -->
-        <TextBlock Grid.Row="2"
-                   Grid.Column="1"
-                   Text="{x:Static localizations:LocalizationAppDescriptionScreen.TextBlockAppDescription}"
-                   Classes="Text"
-                   Margin="0 20 0 0"/>
+        <ScrollViewer Grid.Row="2"
+                      Grid.Column="1"
+                      VerticalScrollBarVisibility="Auto">
+            <TextBlock Text="{x:Static localizations:LocalizationAppDescriptionScreen.TextBlockAppDescription}"
+                       Classes="Text"
+                       FontWeight="Normal"
+                       TextWrapping="Wrap"
+                       Margin="0 20 0 0"/>
+        </ScrollViewer>
 
         <!-- Back button -->
         <Button Grid.Row="3"
                 Grid.Column="1"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"/>
+                Classes="Stretch AttentionGrabbing" />
     </Grid>
 </UserControl>
