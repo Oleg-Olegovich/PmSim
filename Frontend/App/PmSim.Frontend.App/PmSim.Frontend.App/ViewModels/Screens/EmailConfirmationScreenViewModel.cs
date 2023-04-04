@@ -49,6 +49,7 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
     public EmailConfirmationScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous,
         TitleScreenViewModel titleScreen, User user, string code) : base(baseWindow, previous)
     {
+        BaseWindow.Logger.Information("Send code to Email: {Code}", code);
         _user = user;
         _titleScreen = titleScreen;
         _code = code;
@@ -67,7 +68,9 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
         {
             var client = MultiplayerClient.SignUp(_user);
             var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
-            BaseWindow.Content = gamesListScreen;
+            var subscriptionPurchaseScreen 
+                = new SubscriptionPurchaseScreenViewModel(BaseWindow, _titleScreen, gamesListScreen, true);
+            BaseWindow.Content = subscriptionPurchaseScreen;
         }
         catch (PmSimException exception)
         {

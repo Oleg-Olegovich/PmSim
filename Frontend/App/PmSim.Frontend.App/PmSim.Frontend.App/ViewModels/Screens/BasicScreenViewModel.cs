@@ -31,6 +31,6 @@ public abstract class BasicScreenViewModel : ViewModelBase
         BackCommand = ReactiveCommand.Create(ProcessBackClick);
     }
 
-    protected void ProcessBackClick()
+    private void ProcessBackClick()
         => BaseWindow.Content = _previousScreen ?? new TitleScreenViewModel(BaseWindow);
 }

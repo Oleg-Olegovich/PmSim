@@ -1,4 +1,5 @@
 ﻿using System.Reactive;
+using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Windows;
 using ReactiveUI;
 
@@ -6,6 +7,8 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class SubscriptionPurchaseScreenViewModel : BasicScreenViewModel
 {
+    private readonly GamesListScreenViewModel _gamesListScreen;
+    
     private int _moneyAmount;
     
     public int MoneyAmount
@@ -36,12 +39,20 @@ public class SubscriptionPurchaseScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> PurchaseCommand { get; }
     
-    public SubscriptionPurchaseScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel? previous) 
+    public SubscriptionPurchaseScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel? previous,
+        GamesListScreenViewModel gamesListScreen, bool showError = false) 
         : base(baseWindow, previous)
-        => PurchaseCommand = ReactiveCommand.Create(ProcessSubscriptionPurchase);
+    {
+        PurchaseCommand = ReactiveCommand.Create(ProcessSubscriptionPurchase);
+        _gamesListScreen = gamesListScreen;
+        if (showError)
+        {
+            ErrorMessage = LocalizationSubscriptionPurchaseScreen.NeedToPay;
+        }
+    }
 
     private void ProcessSubscriptionPurchase()
     {
-        ProcessBackClick();
+        BaseWindow.Content = _gamesListScreen;
     }
 }

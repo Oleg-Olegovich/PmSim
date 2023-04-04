@@ -6,8 +6,8 @@
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.GamesListScreenView">
     
-    <Grid RowDefinitions="10, Auto, *, Auto, 10"
-          ColumnDefinitions="*, 2*, 2*, 2*, *">
+    <Grid RowDefinitions="10, Auto, *, Auto, Auto, 10"
+          ColumnDefinitions="*, 3*, 3*, *">
         
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
@@ -17,7 +17,7 @@
         
         <DataGrid Grid.Row="2"
                   Grid.Column="1"
-                  Grid.ColumnSpan="3"
+                  Grid.ColumnSpan="2"
                   Classes="Common"
                   Items="{Binding Games}"
                   SelectedItem="{Binding SelectedGame}">
@@ -51,8 +51,14 @@
                 Command="{Binding ConnectCommand}"
                 Classes="Stretch Menu"/>
         
-        <Button Grid.Row="3"
-                Grid.Column="3"
+        <Button Grid.Row="4"
+                Grid.Column="1"
+                Content="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.Header}"
+                Command="{Binding SubscriptionPurchaseCommand}"
+                Classes="Stretch Menu"/>
+        
+        <Button Grid.Row="4"
+                Grid.Column="2"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
                 Command="{Binding BackCommand}"
                 Classes="Stretch AttentionGrabbing"/>

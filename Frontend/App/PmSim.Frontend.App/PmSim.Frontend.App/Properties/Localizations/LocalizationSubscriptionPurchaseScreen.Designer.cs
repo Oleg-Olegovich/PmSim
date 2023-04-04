@@ -28,7 +28,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public LocalizationSubscriptionPurchaseScreen() {
+        internal LocalizationSubscriptionPurchaseScreen() {
         }
         
         /// <summary>
@@ -84,6 +84,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static string MoneyAmount {
             get {
                 return ResourceManager.GetString("MoneyAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вам необходимо оплатить подписку, чтобы продолжить..
+        /// </summary>
+        public static string NeedToPay {
+            get {
+                return ResourceManager.GetString("NeedToPay", resourceCulture);
             }
         }
     }

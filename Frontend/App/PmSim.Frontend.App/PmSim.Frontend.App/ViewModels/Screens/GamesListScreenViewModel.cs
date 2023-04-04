@@ -30,12 +30,15 @@ public class GamesListScreenViewModel : BasicScreenViewModel
     public ReactiveCommand<Unit, Unit> NewGameCommand { get; }
     
     public ReactiveCommand<Unit, Unit> ConnectCommand { get; }
+    
+    public ReactiveCommand<Unit, Unit> SubscriptionPurchaseCommand { get; }
 
     public GamesListScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, MultiplayerClient client) 
         : base(baseWindow, previous)
     {
         NewGameCommand = ReactiveCommand.Create(ProcessNewGameCommand);
         ConnectCommand = ReactiveCommand.Create(ProcessConnectCommand);
+        SubscriptionPurchaseCommand = ReactiveCommand.Create(ProcessSubscriptionPurchase);
         _client = client;
         Task.Run(UpdateGamesList);
     }
@@ -58,6 +61,9 @@ public class GamesListScreenViewModel : BasicScreenViewModel
             }
         }
     }
+    
+    private void ProcessSubscriptionPurchase()
+        => BaseWindow.Content = new SubscriptionPurchaseScreenViewModel(BaseWindow, this, this);
     
     private async Task UpdateGamesList()
     {

@@ -20,4 +20,7 @@
     <data name="MoneyAmount" xml:space="preserve">
         <value>Amount</value>
     </data>
+    <data name="NeedToPay" xml:space="preserve">
+        <value>You need to pay for a subscription to continue.</value>
+    </data>
 </root>

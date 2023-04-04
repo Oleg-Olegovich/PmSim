@@ -13,6 +13,9 @@ public class MultiplayerClient : IPmSimClient
     //private readonly IGatewayClient _gateway;
     private readonly ClientOptions _clientOptions;
 
+    public bool IsSubscriptionPaid
+        => true;
+    
     private MultiplayerClient()
     {
         _clientOptions = new ClientOptions();

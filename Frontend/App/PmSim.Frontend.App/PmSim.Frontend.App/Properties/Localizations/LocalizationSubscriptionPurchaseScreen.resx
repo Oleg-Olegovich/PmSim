@@ -27,4 +27,7 @@
     <data name="MoneyAmount" xml:space="preserve">
         <value>Сумма</value>
     </data>
+    <data name="NeedToPay" xml:space="preserve">
+        <value>Вам необходимо оплатить подписку, чтобы продолжить.</value>
+    </data>
 </root>

@@ -72,16 +72,13 @@ public class SignInScreenViewModel : BasicScreenViewModel
     public ReactiveCommand<Unit, Unit> SignUpCommand { get; }
     
     public ReactiveCommand<Unit, Unit> SignInCommand { get; }
-    
-    public ReactiveCommand<Unit, Unit> SubscriptionPurchaseCommand { get; }
-    
+
     public SignInScreenViewModel(BasicWindowViewModel baseWindow, TitleScreenViewModel titleScreen) 
         : base(baseWindow, titleScreen)
     {
         _titleScreen = titleScreen;
         SignUpCommand = ReactiveCommand.Create(OpenSignUpScreen);
         SignInCommand = ReactiveCommand.Create(SignIn);
-        SubscriptionPurchaseCommand = ReactiveCommand.Create(ProcessSubscriptionPurchase);
         _isDataRemembered = baseWindow.Options.AutofillUserData.IsMultiplayerDataRemembered;
         if (!_isDataRemembered)
         {
@@ -99,8 +96,14 @@ public class SignInScreenViewModel : BasicScreenViewModel
         try
         {
             var client = MultiplayerClient.SignInAsync(Login, Password);
+            if (client.IsSubscriptionPaid)
+            {
+                
+            }
             var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
-            BaseWindow.Content = gamesListScreen;
+            BaseWindow.Content = client.IsSubscriptionPaid 
+                ? gamesListScreen 
+                : new SubscriptionPurchaseScreenViewModel(BaseWindow, this, gamesListScreen, true);
         }
         catch (PmSimException exception)
         {
@@ -110,7 +113,4 @@ public class SignInScreenViewModel : BasicScreenViewModel
 
     private void OpenSignUpScreen()
         => BaseWindow.Content = new SignUpScreenViewModel(BaseWindow, this, _titleScreen);
-
-    private void ProcessSubscriptionPurchase()
-        => BaseWindow.Content = new SubscriptionPurchaseScreenViewModel(BaseWindow, this);
 }
