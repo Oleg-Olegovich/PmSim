@@ -55,7 +55,7 @@
         <value>Wait for the other players to connect.</value>
     </data>
     <data name="OfficeRentInfo" xml:space="preserve">
-        <value>This office is vacant.
+        <value>This office is unoccupied.
             Rental price: {0}
             Capacity: {1}
             
@@ -67,5 +67,8 @@
     </data>
     <data name="NotEnoughMoney" xml:space="preserve">
         <value>Not enough money!</value>
+    </data>
+    <data name="OfficeIsOccupiedByAnother" xml:space="preserve">
+        <value>The office is occupied by another player!</value>
     </data>
 </root>

@@ -55,7 +55,7 @@
         <value>Подождите, пока остальные игроки подключатся.</value>
     </data>
     <data name="OfficeRentInfo" xml:space="preserve">
-        <value>Этот офис свободен.
+        <value>Этот офис незанят.
             Стоимость аренды: {0}
             Вместимость: {1}
             
@@ -67,5 +67,8 @@
     </data>
     <data name="NotEnoughMoney" xml:space="preserve">
         <value>Недостаточно денег!</value>
+    </data>
+    <data name="OfficeIsOccupiedByAnother" xml:space="preserve">
+        <value>Офис занят другим игроком!</value>
     </data>
 </root>

@@ -87,7 +87,16 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Этот офис свободен.
+        ///   Looks up a localized string similar to Офис занят другим игроком!.
+        /// </summary>
+        public static string OfficeIsOccupiedByAnother {
+            get {
+                return ResourceManager.GetString("OfficeIsOccupiedByAnother", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Этот офис незанят.
         ///            Стоимость аренды: {0}
         ///            Вместимость: {1}
         ///            

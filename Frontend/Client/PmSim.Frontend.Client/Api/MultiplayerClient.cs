@@ -158,20 +158,20 @@ public class MultiplayerClient : IPmSimClient
     {
     }
 
-    public Office? GetOffice(int officeNumber)
+    public Office? GetOffice(int officeId)
     {
         return null;
     }
 
-    public bool IsOfficeMine(int officeNumber) 
-        => GetOffice(officeNumber)?.OwnerId == 0;
+    public OfficeStates GetOfficeState(int officeId)
+        => OfficeStates.Unoccupied;
 
-    public void RentOffice(int officeNumber)
+    public void RentOffice(int officeId)
     {
         
     }
     
-    public void CancelOfficeLease(int officeNumber)
+    public void CancelOfficeLease(int officeId)
     {
     }
     

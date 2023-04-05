@@ -89,6 +89,10 @@
                 </Viewbox>
                 <TextBlock Text="{Binding EmployeesNumber}"
                            VerticalAlignment="Center" />
+                <TextBlock Text="/"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="{Binding MaxEmployeesNumber}"
+                           VerticalAlignment="Center" />
             </StackPanel>
 
             <Button Grid.Row="0"

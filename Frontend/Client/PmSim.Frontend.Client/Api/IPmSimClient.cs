@@ -75,13 +75,13 @@ public interface IPmSimClient
 
     public void MakeIncidentDecision(int donation);
 
-    public Office? GetOffice(int officeNumber);
+    public Office? GetOffice(int officeId);
     
-    public bool IsOfficeMine(int officeNumber);
+    public OfficeStates GetOfficeState(int officeId);
     
-    public void RentOffice(int officeNumber);
+    public void RentOffice(int officeId);
     
-    public void CancelOfficeLease(int officeNumber);
+    public void CancelOfficeLease(int officeId);
     
     public void SkipMove();
 

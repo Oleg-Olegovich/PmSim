@@ -2,6 +2,6 @@
 {
     public class OfficeActionRequest : ActionRequest
     {
-        public int OfficeNumber { get; set; }
+        public int OfficeId { get; set; }
     }
 }

@@ -20,6 +20,8 @@ public interface IStatusChangeNotifier
     
     public int EmployeesNumber { set; }
     
+    public int MaxEmployeesNumber { set; }
+    
     public int Programming { set; }
     
     public int Music { set; }
@@ -30,9 +32,11 @@ public interface IStatusChangeNotifier
     
     public int Creativity { set; }
 
-    public PlayerStatus AnotherPlayerStatus { set; }
-    
     public IEnumerable<PlayerStatus> Players { set; }
+    
+    public PlayerStatus AnotherPlayerStatus { set; }
 
     public Task ChangeCurrentStageAsync(GameStages stage, int time);
+
+    public void ChangeOfficeState(int officeId, OfficeStates officeState);
 }

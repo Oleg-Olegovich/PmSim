@@ -153,7 +153,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> RentOfficeAsync(OfficeActionRequest request)
     {
-        await _game.RentOfficeAsync(request.PlayerId, request.OfficeNumber);
+        await _game.RentOfficeAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -162,7 +162,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> CancelOfficeLeaseAsync(OfficeActionRequest request)
     {
-        await _game.CancelOfficeLeaseAsync(request.PlayerId, request.OfficeNumber);
+        await _game.CancelOfficeLeaseAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -171,7 +171,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> DismissAllEmployeesAsync(OfficeActionRequest request)
     {
-        await _game.DismissAllEmployeesAsync(request.PlayerId, request.OfficeNumber);
+        await _game.DismissAllEmployeesAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -180,7 +180,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<EmployeeInfoResponse> ConductInterviewAsync(OfficeActionRequest request)
     {
-        var employee = await _game.ConductInterviewAsync(request.PlayerId, request.OfficeNumber);
+        var employee = await _game.ConductInterviewAsync(request.PlayerId, request.OfficeId);
         return new EmployeeInfoResponse()
         {
             NameNumbers = employee.NameNumbers,
@@ -197,13 +197,13 @@ public class GatewayClient //: IGatewayClient
     {
         return new IsOkResponse()
         {
-            IsOk = await _game.ProcessInterviewAsync(request.PlayerId, request.OfficeNumber, request.ProposedSalary)
+            IsOk = await _game.ProcessInterviewAsync(request.PlayerId, request.OfficeId, request.ProposedSalary)
         };
     }
 
     public async Task<IsOkResponse> HireTechSupportOfficerAsync(OfficeActionRequest request)
     {
-        await _game.HireTechSupportOfficerAsync(request.PlayerId, request.OfficeNumber);
+        await _game.HireTechSupportOfficerAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -212,7 +212,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> DismissTechSupportOfficerAsync(OfficeActionRequest request)
     {
-        await _game.DismissTechSupportOfficerAsync(request.PlayerId, request.OfficeNumber);
+        await _game.DismissTechSupportOfficerAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -230,7 +230,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToWorkAsync(DevelopmentActionRequest request)
     {
-        await _game.AssignToWorkAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber,
+        await _game.AssignToWorkAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
             request.FeatureNumber,
             request.ProgressPointNumber);
         return new IsOkResponse()
@@ -241,7 +241,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToInventProjectAsync(ExecutorActionRequest request)
     {
-        await _game.AssignToInventProjectAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber);
+        await _game.AssignToInventProjectAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber);
         return new IsOkResponse()
         {
             IsOk = true
@@ -250,7 +250,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToMakeBackupAsync(FeaturesActionRequest request)
     {
-        await _game.AssignToMakeBackupAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber,
+        await _game.AssignToMakeBackupAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
             request.FeatureNumber);
         return new IsOkResponse()
         {
@@ -260,7 +260,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> CancelTaskAsync(ExecutorActionRequest request)
     {
-        await _game.CancelTaskAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber);
+        await _game.CancelTaskAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber);
         return new IsOkResponse()
         {
             IsOk = true
@@ -288,7 +288,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> PutExecutorUpForAuctionAsync(ExecutorAuctionActionRequest request)
     {
-        await _game.PutExecutorUpForAuctionAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber,
+        await _game.PutExecutorUpForAuctionAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
             request.StartPrice);
         return new IsOkResponse()
         {
@@ -298,7 +298,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> ProposeExecutorAsync(ProposeExecutorActionRequest request)
     {
-        await _game.ProposeExecutorAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber,
+        await _game.ProposeExecutorAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
             request.StartPrice, request.BuyerId);
         return new IsOkResponse()
         {
@@ -442,7 +442,7 @@ public class GatewayClient //: IGatewayClient
             {
                 case EmployeeBackUpTask backUpTask:
                     employee.TaskShortDescription.Type = EmployeeTaskModelTypes.BackUpMaking;
-                    employee.TaskShortDescription.TaskObject = backUpTask.OfficeNumber;
+                    employee.TaskShortDescription.TaskObject = backUpTask.OfficeId;
                     continue;
                 case EmployeeWorkTask workTask:
                 {

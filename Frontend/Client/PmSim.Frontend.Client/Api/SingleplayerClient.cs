@@ -1,6 +1,5 @@
 ﻿using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
-using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Interfaces;
@@ -10,6 +9,7 @@ namespace PmSim.Frontend.Client.Api;
 
 public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
 {
+    private readonly int _playerId = 0;
     private readonly string _playerName;
 
     private Game? _game;
@@ -43,7 +43,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             }
 
             _gameScreenLogic.Money = value;
-            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == 0);
+            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
             if (status != null)
             {
                 status.Money = value;
@@ -74,7 +74,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             }
 
             _gameScreenLogic.ProjectsNumber = value;
-            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == 0);
+            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
             if (status != null)
             {
                 status.CompletedProjects = value;
@@ -92,6 +92,19 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             }
 
             _gameScreenLogic.EmployeesNumber = value;
+        }
+    }
+    
+    public int MaxEmployeesNumber
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.MaxEmployeesNumber = value;
         }
     }
 
@@ -160,6 +173,22 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
+    public IEnumerable<PlayerStatus> Players
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            foreach (var status in value)
+            {
+                _gameScreenLogic.Players.Add(status);
+            }
+        }
+    }
+    
     public PlayerStatus AnotherPlayerStatus
     {
         set
@@ -178,22 +207,6 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
 
                 _gameScreenLogic.Players[i] = value;
                 return;
-            }
-        }
-    }
-
-    public IEnumerable<PlayerStatus> Players
-    {
-        set
-        {
-            if (_gameScreenLogic is null)
-            {
-                return;
-            }
-
-            foreach (var status in value)
-            {
-                _gameScreenLogic.Players.Add(status);
             }
         }
     }
@@ -221,15 +234,25 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         _timer = Task.Run(ProcessTimerAsync);
     }
 
+    public void ChangeOfficeState(int officeId, OfficeStates officeState)
+    {
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+        
+        _gameScreenLogic.SetOfficeState(officeId, officeState);
+    }
+
     public void CreateNewGame(GameOptions gameOptions, IGameScreenLogic gameScreenLogic)
     {
         _gameScreenLogic = gameScreenLogic;
-        _game = new Game(_playerName, 0, gameOptions);
-        _game.Connect(0, _playerName, this);
+        _game = new Game(_playerName, _playerId, gameOptions);
+        _game.Connect(_playerId, _playerName, this);
     }
 
     public void SetBackground(Professions profession) 
-        => _game?.SetBackground(0, profession);
+        => _game?.SetBackground(_playerId, profession);
 
     public void DismissAllEmployees()
     {
@@ -303,32 +326,31 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     {
     }
 
-    public Office? GetOffice(int officeNumber)
+    public Office? GetOffice(int officeId)
     {
-        if (_game is null || officeNumber < -1 || officeNumber >= _game.Offices.Length)
+        if (_game is null || officeId < -1 || officeId >= _game.Offices.Length)
         {
             return null;
         }
 
-        return _game.Offices[officeNumber];
+        return _game.Offices[officeId];
     }
 
-    public bool IsOfficeMine(int officeNumber) 
-        => GetOffice(officeNumber)?.OwnerId == 0;
-
-    public void RentOffice(int officeNumber)
+    public OfficeStates GetOfficeState(int officeId)
     {
-        var office = GetOffice(officeNumber);
-        if (office is null)
+        var office = GetOffice(officeId);
+        if (office is null || office.OwnerId != -1 && office.OwnerId != _playerId)
         {
-            throw new PmSimException("Invalid office number!");
+            return OfficeStates.NotMine;
         }
-        
-        office.OwnerId = 0;
-        Money -= office.RentalPrice;
+
+        return office.OwnerId == _playerId ? OfficeStates.Mine : OfficeStates.Unoccupied;
     }
-    
-    public void CancelOfficeLease(int officeNumber)
+
+    public void RentOffice(int officeId) 
+        => _game?.RentOffice(_playerId, officeId);
+
+    public void CancelOfficeLease(int officeId)
     {
     }
     

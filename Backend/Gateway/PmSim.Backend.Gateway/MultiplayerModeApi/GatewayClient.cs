@@ -166,7 +166,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> RentOfficeAsync(OfficeActionRequest request)
     {
-        await _games[request.GameId].RentOfficeAsync(request.PlayerId, request.OfficeNumber);
+        await _games[request.GameId].RentOfficeAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -175,7 +175,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> CancelOfficeLeaseAsync(OfficeActionRequest request)
     {
-        await _games[request.GameId].CancelOfficeLeaseAsync(request.PlayerId, request.OfficeNumber);
+        await _games[request.GameId].CancelOfficeLeaseAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -184,7 +184,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> DismissAllEmployeesAsync(OfficeActionRequest request)
     {
-        await _games[request.GameId].DismissAllEmployeesAsync(request.PlayerId, request.OfficeNumber);
+        await _games[request.GameId].DismissAllEmployeesAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -193,7 +193,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<EmployeeInfoResponse> ConductInterviewAsync(OfficeActionRequest request)
     {
-        var employee = await _games[request.GameId].ConductInterviewAsync(request.PlayerId, request.OfficeNumber);
+        var employee = await _games[request.GameId].ConductInterviewAsync(request.PlayerId, request.OfficeId);
         return new EmployeeInfoResponse()
         {
             NameNumbers = employee.NameNumbers,
@@ -210,13 +210,13 @@ public class GatewayClient //: IGatewayClient
     {
         return new IsOkResponse()
         {
-            IsOk = await _games[request.GameId].ProcessInterviewAsync(request.PlayerId, request.OfficeNumber, request.ProposedSalary)
+            IsOk = await _games[request.GameId].ProcessInterviewAsync(request.PlayerId, request.OfficeId, request.ProposedSalary)
         };
     }
 
     public async Task<IsOkResponse> HireTechSupportOfficerAsync(OfficeActionRequest request)
     {
-        await _games[request.GameId].HireTechSupportOfficerAsync(request.PlayerId, request.OfficeNumber);
+        await _games[request.GameId].HireTechSupportOfficerAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -225,7 +225,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> DismissTechSupportOfficerAsync(OfficeActionRequest request)
     {
-        await _games[request.GameId].DismissTechSupportOfficerAsync(request.PlayerId, request.OfficeNumber);
+        await _games[request.GameId].DismissTechSupportOfficerAsync(request.PlayerId, request.OfficeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -243,7 +243,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToWorkAsync(DevelopmentActionRequest request)
     {
-        await _games[request.GameId].AssignToWorkAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber,
+        await _games[request.GameId].AssignToWorkAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
             request.FeatureNumber,
             request.ProgressPointNumber);
         return new IsOkResponse()
@@ -254,7 +254,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToInventProjectAsync(ExecutorActionRequest request)
     {
-        await _games[request.GameId].AssignToInventProjectAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber);
+        await _games[request.GameId].AssignToInventProjectAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber);
         return new IsOkResponse()
         {
             IsOk = true
@@ -263,7 +263,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToMakeBackupAsync(FeaturesActionRequest request)
     {
-        await _games[request.GameId].AssignToMakeBackupAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber,
+        await _games[request.GameId].AssignToMakeBackupAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
             request.FeatureNumber);
         return new IsOkResponse()
         {
@@ -273,7 +273,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> CancelTaskAsync(ExecutorActionRequest request)
     {
-        await _games[request.GameId].CancelTaskAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber);
+        await _games[request.GameId].CancelTaskAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber);
         return new IsOkResponse()
         {
             IsOk = true
@@ -301,7 +301,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> PutExecutorUpForAuctionAsync(ExecutorAuctionActionRequest request)
     {
-        await _games[request.GameId].PutExecutorUpForAuctionAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber,
+        await _games[request.GameId].PutExecutorUpForAuctionAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
             request.StartPrice);
         return new IsOkResponse()
         {
@@ -311,7 +311,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> ProposeExecutorAsync(ProposeExecutorActionRequest request)
     {
-        await _games[request.GameId].ProposeExecutorAsync(request.PlayerId, request.OfficeNumber, request.ExecutorNumber,
+        await _games[request.GameId].ProposeExecutorAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
             request.StartPrice, request.BuyerId);
         return new IsOkResponse()
         {
@@ -456,7 +456,7 @@ public class GatewayClient //: IGatewayClient
             {
                 case EmployeeBackUpTask backUpTask:
                     employee.TaskShortDescription.Type = EmployeeTaskModelTypes.BackUpMaking;
-                    employee.TaskShortDescription.TaskObject = backUpTask.OfficeNumber;
+                    employee.TaskShortDescription.TaskObject = backUpTask.OfficeId;
                     continue;
                 case EmployeeWorkTask workTask:
                 {

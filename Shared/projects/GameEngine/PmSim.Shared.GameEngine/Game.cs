@@ -112,55 +112,58 @@ public class Game
         PlayerLogic.SetSkillsByProfession(player, profession);
     }
 
-    private void RentOffice(int playerId, int officeNumber)
+    public void RentOffice(int playerId, int officeId)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
-            || Offices[officeNumber].OwnerId != -1 || player.Money < Offices[officeNumber].RentalPrice)
+        if (player.IsOut || officeId < 0 || officeId >= Offices.Length
+            || Offices[officeId].OwnerId != -1 || player.Money < Offices[officeId].RentalPrice)
         {
             throw new PmSimException("It is impossible to rent the office.");
         }
 
-        Offices[officeNumber].OwnerId = playerId;
-        player.Money -= Offices[officeNumber].RentalPrice;
-        if (!player.IsStartupOpen)
+        Offices[officeId].OwnerId = playerId;
+        
+        player.Money -= Offices[officeId].RentalPrice;
+        if (player.IsStartupOpen)
         {
-            player.IsStartupOpen = true;
-            Offices[officeNumber].AddEmployee(player);
+            return;
         }
+        
+        player.IsStartupOpen = true;
+        Offices[officeId].AddEmployee(player);
     }
 
-    private void CancelOfficeLease(int playerId, int officeNumber)
+    public void CancelOfficeLease(int playerId, int officeId)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || Offices.Count(x => x.OwnerId == playerId) < 2 || officeNumber < 0
-            || officeNumber >= Offices.Length || Offices[officeNumber].OwnerId != playerId)
+        if (player.IsOut || Offices.Count(x => x.OwnerId == playerId) < 2 || officeId < 0
+            || officeId >= Offices.Length || Offices[officeId].OwnerId != playerId)
         {
             throw new PmSimException("It is impossible to cancel the office lease.");
         }
 
-        Offices[officeNumber].Employees.Clear();
-        Offices[officeNumber].OwnerId = -1;
+        Offices[officeId].Employees.Clear();
+        Offices[officeId].OwnerId = -1;
     }
 
-    private void DismissAllEmployees(int playerId, int officeNumber)
+    private void DismissAllEmployees(int playerId, int officeId)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
-            || Offices[officeNumber].OwnerId != playerId)
+        if (player.IsOut || officeId < 0 || officeId >= Offices.Length
+            || Offices[officeId].OwnerId != playerId)
         {
             throw new PmSimException("It is impossible to dismiss all employees.");
         }
 
-        Offices[officeNumber].Employees.Clear();
+        Offices[officeId].Employees.Clear();
     }
 
-    private Employee ConductInterview(int playerId, int officeNumber)
+    private Employee ConductInterview(int playerId, int officeId)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
-            || Offices[officeNumber].OwnerId != playerId
-            || Offices[officeNumber].Employees.Count == Offices[officeNumber].Capacity)
+        if (player.IsOut || officeId < 0 || officeId >= Offices.Length
+            || Offices[officeId].OwnerId != playerId
+            || Offices[officeId].Employees.Count == Offices[officeId].Capacity)
         {
             throw new PmSimException("It is impossible to conduct the interview.");
         }
@@ -176,12 +179,12 @@ public class Game
         return interview.Employee;
     }
 
-    private bool ProcessInterview(int playerId, int officeNumber, int proposedSalary)
+    private bool ProcessInterview(int playerId, int officeId, int proposedSalary)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || player.Money < proposedSalary || proposedSalary < 1 || officeNumber < 0
-            || officeNumber >= Offices.Length || Offices[officeNumber].OwnerId != playerId
-            || Offices[officeNumber].Employees.Count == Offices[officeNumber].Capacity)
+        if (player.IsOut || player.Money < proposedSalary || proposedSalary < 1 || officeId < 0
+            || officeId >= Offices.Length || Offices[officeId].OwnerId != playerId
+            || Offices[officeId].Employees.Count == Offices[officeId].Capacity)
         {
             throw new PmSimException("It is impossible to process the interview.");
         }
@@ -190,35 +193,35 @@ public class Game
         var result = interview.Process(proposedSalary);
         if (result)
         {
-            Offices[officeNumber].AddEmployee(interview.Employee);
+            Offices[officeId].AddEmployee(interview.Employee);
         }
 
         _interviews.Remove(interview);
         return result;
     }
 
-    private void HireTechSupportOfficer(int playerId, int officeNumber)
+    private void HireTechSupportOfficer(int playerId, int officeId)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
-            || Offices[officeNumber].OwnerId != playerId || Offices[officeNumber].DoesHaveTechSupport)
+        if (player.IsOut || officeId < 0 || officeId >= Offices.Length
+            || Offices[officeId].OwnerId != playerId || Offices[officeId].DoesHaveTechSupport)
         {
             throw new PmSimException("It is impossible to hire the tech support officer.");
         }
 
-        Offices[officeNumber].DoesHaveTechSupport = true;
+        Offices[officeId].DoesHaveTechSupport = true;
     }
 
-    private void DismissTechSupportOfficer(int playerId, int officeNumber)
+    private void DismissTechSupportOfficer(int playerId, int officeId)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
-            || Offices[officeNumber].OwnerId != playerId || !Offices[officeNumber].DoesHaveTechSupport)
+        if (player.IsOut || officeId < 0 || officeId >= Offices.Length
+            || Offices[officeId].OwnerId != playerId || !Offices[officeId].DoesHaveTechSupport)
         {
             throw new PmSimException("It is impossible to dismiss the tech support officer.");
         }
 
-        Offices[officeNumber].DoesHaveTechSupport = false;
+        Offices[officeId].DoesHaveTechSupport = false;
     }
 
     private void UseOpportunity(int playerId, int opportunityNumber, int targetPlayer)
@@ -241,7 +244,7 @@ public class Game
         player.Opportunities.Remove(opportunityNumber);
     }
 
-    private void AssignToWork(int playerId, int officeNumber, int executorNumber,
+    private void AssignToWork(int playerId, int officeId, int executorNumber,
         int featureNumber, int progressPointNumber)
     {
         if (progressPointNumber < 0 || progressPointNumber > 3)
@@ -255,14 +258,14 @@ public class Game
             throw new PmSimException("There is no such feature.");
         }
 
-        AssignToTask(playerId, officeNumber, executorNumber, new EmployeeWorkTask(player,
+        AssignToTask(playerId, officeId, executorNumber, new EmployeeWorkTask(player,
             player.Projects[featureNumber], progressPointNumber));
     }
 
-    private void AssignToInventProject(int playerId, int officeNumber, int executorNumber)
-        => AssignToTask(playerId, officeNumber, executorNumber, new EmployeeTask(FindPlayerById(playerId)));
+    private void AssignToInventProject(int playerId, int officeId, int executorNumber)
+        => AssignToTask(playerId, officeId, executorNumber, new EmployeeTask(FindPlayerById(playerId)));
 
-    private void AssignToMakeBackup(int playerId, int officeNumber, int executorNumber, int projectNumber)
+    private void AssignToMakeBackup(int playerId, int officeId, int executorNumber, int projectNumber)
     {
         var player = FindPlayerById(playerId);
         if (projectNumber < 0 || projectNumber >= player.Projects.Count)
@@ -270,20 +273,20 @@ public class Game
             throw new PmSimException("There is no such feature.");
         }
 
-        AssignToTask(playerId, officeNumber, executorNumber,
-            new EmployeeBackUpTask(player, player.Projects[projectNumber], officeNumber));
+        AssignToTask(playerId, officeId, executorNumber,
+            new EmployeeBackUpTask(player, player.Projects[projectNumber], officeId));
     }
 
-    private void CancelTask(int playerId, int officeNumber, int executorNumber)
+    private void CancelTask(int playerId, int officeId, int executorNumber)
     {
-        if (FindPlayerById(playerId).IsOut || officeNumber < 0 || officeNumber >= Offices.Length
-            || Offices[officeNumber].OwnerId != playerId || executorNumber < 0
-            || executorNumber >= Offices[officeNumber].Employees.Count)
+        if (FindPlayerById(playerId).IsOut || officeId < 0 || officeId >= Offices.Length
+            || Offices[officeId].OwnerId != playerId || executorNumber < 0
+            || executorNumber >= Offices[officeId].Employees.Count)
         {
             throw new PmSimException("It is impossible to cancel the task.");
         }
 
-        Offices[officeNumber].Employees[executorNumber].CurrentTask = null;
+        Offices[officeId].Employees[executorNumber].CurrentTask = null;
     }
 
     private void ProposeProject(int sellerId, int projectNumber, int startPrice, int buyerId)
@@ -302,25 +305,25 @@ public class Game
     private void PutProjectUpForAuction(int playerId, int projectNumber, int startPrice)
         => ProposeProject(playerId, projectNumber, startPrice, -1);
 
-    private void ProposeExecutor(int sellerId, int officeNumber, int executorNumber, int startPrice,
+    private void ProposeExecutor(int sellerId, int officeId, int executorNumber, int startPrice,
         int buyerId)
     {
-        if (FindPlayerById(sellerId).IsOut || buyerId != -1 && FindPlayerById(buyerId).IsOut || officeNumber < 0 ||
-            officeNumber >= Offices.Length
-            || Offices[officeNumber].OwnerId != sellerId || executorNumber < 0
-            || executorNumber >= Offices[officeNumber].Employees.Count
-            || _auctions.Count(x => x.Lot == Offices[officeNumber].Employees[executorNumber]) > 0)
+        if (FindPlayerById(sellerId).IsOut || buyerId != -1 && FindPlayerById(buyerId).IsOut || officeId < 0 ||
+            officeId >= Offices.Length
+            || Offices[officeId].OwnerId != sellerId || executorNumber < 0
+            || executorNumber >= Offices[officeId].Employees.Count
+            || _auctions.Count(x => x.Lot == Offices[officeId].Employees[executorNumber]) > 0)
         {
             throw new PmSimException("It is impossible to put the executor up for auction.");
         }
 
-        _auctions.Add(new Auction(_auctions.Count, Offices[officeNumber].Employees[executorNumber], sellerId,
+        _auctions.Add(new Auction(_auctions.Count, Offices[officeId].Employees[executorNumber], sellerId,
             startPrice, buyerId));
     }
 
-    private void PutExecutorUpForAuction(int playerId, int officeNumber, int executorNumber,
+    private void PutExecutorUpForAuction(int playerId, int officeId, int executorNumber,
         int startPrice)
-        => ProposeExecutor(playerId, officeNumber, executorNumber, startPrice, -1);
+        => ProposeExecutor(playerId, officeId, executorNumber, startPrice, -1);
 
     private void ProposeOpportunity(int sellerId, int opportunityNumber, int startPrice, int buyerId)
     {
@@ -423,17 +426,17 @@ public class Game
     internal static Project GetProjectRandomly()
         => (Project) GameConstants.Projects[(new Random()).Next(GameConstants.Projects.Length)].Clone();
 
-    private void AssignToTask(int playerId, int officeNumber, int executorNumber, EmployeeTask task)
+    private void AssignToTask(int playerId, int officeId, int executorNumber, EmployeeTask task)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || officeNumber < 0 || officeNumber >= Offices.Length
-            || Offices[officeNumber].OwnerId != playerId || executorNumber < 0
-            || executorNumber >= Offices[officeNumber].Employees.Count)
+        if (player.IsOut || officeId < 0 || officeId >= Offices.Length
+            || Offices[officeId].OwnerId != playerId || executorNumber < 0
+            || executorNumber >= Offices[officeId].Employees.Count)
         {
             throw new PmSimException("It is impossible to assign to work.");
         }
 
-        Offices[officeNumber].Employees[executorNumber].CurrentTask = task;
+        Offices[officeId].Employees[executorNumber].CurrentTask = task;
     }
 
     private void InitializeIncidents()
@@ -503,6 +506,14 @@ public class Game
         foreach (var player in _players)
         {
             player.StatusChangeNotifier.Players = statuses;
+        }
+    }
+
+    private void SendOfficeStateToEachPlayer(int officeId, OfficeStates officeState)
+    {
+        foreach (var player in _players)
+        {
+            player.StatusChangeNotifier.ChangeOfficeState(officeId, officeState);
         }
     }
 

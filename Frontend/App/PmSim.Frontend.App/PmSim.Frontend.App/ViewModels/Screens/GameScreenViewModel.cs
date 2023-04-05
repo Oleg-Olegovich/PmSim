@@ -88,6 +88,14 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         get => _employeesNumber;
         set => this.RaiseAndSetIfChanged(ref _employeesNumber, value);
     }
+    
+    private int _maxEmployeesNumber;
+    
+    public int MaxEmployeesNumber
+    {
+        get => _maxEmployeesNumber;
+        set => this.RaiseAndSetIfChanged(ref _maxEmployeesNumber, value);
+    }
 
     public ObservableCollection<PlayerStatus> Players { get; } = new();
     
@@ -136,13 +144,17 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     private void SkipMove()
         => _client.SkipMove();
 
-    public void ShowOffice(int officeNumber) =>
-        MainAreaContent = _client.IsOfficeMine(officeNumber)
-            ? new OfficeMenuViewModel(this)
-            : new RentOfficeDialogViewModel(this, 
-                _client.GetOffice(officeNumber)!, officeNumber);
+    public void ShowOffice(int officeId) 
+        => MainAreaContent = _client.GetOfficeState(officeId) switch
+        {
+            OfficeStates.Unoccupied => new RentOfficeDialogViewModel(this, 
+                _client.GetOffice(officeId)!, officeId),
+            OfficeStates.Mine => new OfficeMenuViewModel(this),
+            _ => new InformationDialogViewModel(this, 
+                LocalizationGameScreen.OfficeIsOccupiedByAnother)
+        };
 
-    public void RentOffice(int officeNumber, int rentalPrice)
+    public void RentOffice(int officeId, int rentalPrice)
     {
         if (Money < rentalPrice)
         {
@@ -152,7 +164,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         
         try
         {
-            _client.RentOffice(officeNumber);
+            _client.RentOffice(officeId);
         }
         catch (PmSimException exception)
         {
@@ -172,4 +184,9 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 
     public void ShowMapMenu()
         => MainAreaContent = _gameMap;
+
+    public void SetOfficeState(int officeId, OfficeStates officeState)
+    {
+        
+    }
 }
