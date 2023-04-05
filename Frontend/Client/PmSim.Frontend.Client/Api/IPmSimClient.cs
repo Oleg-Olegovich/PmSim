@@ -1,6 +1,7 @@
 ﻿using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Interfaces;
 
 namespace PmSim.Frontend.Client.Api;
@@ -35,51 +36,54 @@ public interface IPmSimClient
 
     public void SetBackground(Professions profession);
 
-    public void CancelOfficeLease();
-
     public void DismissAllEmployees();
 
     public void ConductInterview();
 
     public void ProcessInterview();
 
+    /// <summary>
+    /// The maximum number of tech support staff is the number of player offices.
+    /// </summary>
     public void HireTechSupportOfficer();
 
     public void DismissTechSupportOfficer();
 
-    public void UseOpportunity();
+    public void AssignToWork(int employeeNumber, int projectNumber, Professions profession);
 
-    public void AssignToWork();
+    public void AssignToInventProject(int employeeNumber);
 
-    public void AssignToInventProject();
+    public void AssignToMakeBackup(int employeeNumber);
 
-    public void AssignToMakeBackup();
+    public void CancelTask(int employeeNumber);
 
-    public void CancelTask();
+    public void PutProjectUpForAuction(int projectNumber);
 
-    public void PutProjectUpForAuction();
+    public void ProposeProject(int projectNumber);
 
-    public void ProposeProject();
+    public void PutEmployeeUpForAuction(int employeeNumber);
 
-    public void PutExecutorUpForAuction();
+    public void ProposeEmployee(int employeeNumber);
 
-    public void ProposeExecutor();
+    public void UseOpportunity(int opportunityNumber);
+    
+    public void PutOpportunityUpForAuction(int opportunityNumber);
 
-    public void PutOpportunityUpForAuction();
+    public void ProposeOpportunity(int opportunityNumber);
 
-    public void ProposeOpportunity();
+    public void ParticipateInAuction(int auctionNumber, int money);
 
-    public void SendMessage();
+    public void MakeIncidentDecision(int donation);
 
-    public void SendMessageToEveryone();
-
-    public void ParticipateInAuction();
-
-    public void SetIncidentAction();
-
+    public Office? GetOffice(int officeNumber);
+    
+    public bool IsOfficeMine(int officeNumber);
+    
+    public void RentOffice(int officeNumber);
+    
+    public void CancelOfficeLease(int officeNumber);
+    
     public void SkipMove();
 
     public void ExitGame();
-
-    public void RentOfficeAsync(int officeNumber);
 }

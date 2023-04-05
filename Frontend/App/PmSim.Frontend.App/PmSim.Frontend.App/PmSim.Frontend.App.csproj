@@ -64,6 +64,10 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>LocalizationSubscriptionPurchaseScreen.resx</DependentUpon>
       </Compile>
+      <Compile Update="Views\Frames\InformationDialogView.axaml.cs">
+        <DependentUpon>InformationDialogView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

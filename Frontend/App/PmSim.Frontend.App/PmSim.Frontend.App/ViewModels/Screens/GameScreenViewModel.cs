@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Reactive;
+using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Windows;
-using PmSim.Frontend.App.Views.Frames;
 using PmSim.Frontend.Client.Api;
 using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Interfaces;
 using ReactiveUI;
@@ -15,12 +16,29 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 {
     private readonly IPmSimClient _client;
     
-    private string _gameStage = "Game stage";
-    
-    public string GameStage
+    private readonly BasicGameMapViewModel _gameMap;
+
+    private GameStages _gameStage;
+
+    public GameStages GameStage
     {
         get => _gameStage;
-        set => this.RaiseAndSetIfChanged(ref _gameStage, value);
+        set
+        {
+            _gameStage = value;
+            if (_gameStage == GameStages.ChoosingBackground)
+            {
+                MainAreaContent = new ChoosingBackgroundDialogViewModel(this);
+            }
+        }
+    }
+
+    private string _gameStageName = "Not started";
+    
+    public string GameStageName
+    {
+        get => _gameStageName;
+        set => this.RaiseAndSetIfChanged(ref _gameStageName, value);
     }
     
     private string _time = "00:00";
@@ -71,7 +89,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         set => this.RaiseAndSetIfChanged(ref _employeesNumber, value);
     }
 
-    public ObservableCollection<PlayerStatus> Players { get; set; } = new();
+    public ObservableCollection<PlayerStatus> Players { get; } = new();
     
     private PlayerStatus? _selectedPlayer;
     
@@ -97,7 +115,8 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         : base(baseWindow, previous)
     {
         _client = client;
-        MainAreaContent = new ChoosingBackgroundDialogViewModel(this);
+        _gameMap = new GameMap0ViewModel(this);
+        MainAreaContent = new ConnectionDialogViewModel();
         GiveUpCommand = ReactiveCommand.Create(GiveUp);
         SkipCommand = ReactiveCommand.Create(SkipMove);
     }
@@ -105,7 +124,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     public void ChooseBackground(Professions selectedBackground)
     {
         _client.SetBackground(selectedBackground);
-        MainAreaContent = new GameMap0ViewModel(this);
+        ShowMapMenu();
     }
     
     private void GiveUp()
@@ -116,4 +135,41 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 
     private void SkipMove()
         => _client.SkipMove();
+
+    public void ShowOffice(int officeNumber) =>
+        MainAreaContent = _client.IsOfficeMine(officeNumber)
+            ? new OfficeMenuViewModel(this)
+            : new RentOfficeDialogViewModel(this, 
+                _client.GetOffice(officeNumber)!, officeNumber);
+
+    public void RentOffice(int officeNumber, int rentalPrice)
+    {
+        if (Money < rentalPrice)
+        {
+            MainAreaContent = new InformationDialogViewModel(this, LocalizationGameScreen.NotEnoughMoney);
+            return;
+        }
+        
+        try
+        {
+            _client.RentOffice(officeNumber);
+        }
+        catch (PmSimException exception)
+        {
+            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+        }
+    }
+
+    public void ShowAuctionHouseMenu()
+    {
+        if (GameStage != GameStages.Diplomacy)
+        {
+            return;
+        }
+        
+        throw new System.NotImplementedException();
+    }
+
+    public void ShowMapMenu()
+        => MainAreaContent = _gameMap;
 }

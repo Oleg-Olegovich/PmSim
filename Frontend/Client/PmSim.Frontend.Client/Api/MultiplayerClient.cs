@@ -3,6 +3,7 @@ using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Interfaces;
 using PmSim.Shared.Contracts.User;
 
@@ -85,10 +86,6 @@ public class MultiplayerClient : IPmSimClient
         
     }
 
-    public void CancelOfficeLease()
-    {
-    }
-
     public void DismissAllEmployees()
     {
     }
@@ -109,75 +106,80 @@ public class MultiplayerClient : IPmSimClient
     {
     }
 
-    public void UseOpportunity()
+    public void UseOpportunity(int opportunityNumber)
     {
     }
 
-    public void AssignToWork()
+    public void AssignToWork(int employeeNumber, int projectNumber, Professions profession)
     {
     }
 
-    public void AssignToInventProject()
+    public void AssignToInventProject(int employeeNumber)
     {
     }
 
-    public void AssignToMakeBackup()
+    public void AssignToMakeBackup(int employeeNumber)
     {
     }
 
-    public void CancelTask()
+    public void CancelTask(int employeeNumber)
     {
     }
 
-    public void PutProjectUpForAuction()
+    public void PutProjectUpForAuction(int projectNumber)
     {
     }
 
-    public void ProposeProject()
+    public void ProposeProject(int projectNumber)
     {
     }
 
-    public void PutExecutorUpForAuction()
+    public void PutEmployeeUpForAuction(int employeeNumber)
     {
     }
 
-    public void ProposeExecutor()
+    public void ProposeEmployee(int employeeNumber)
     {
     }
 
-    public void PutOpportunityUpForAuction()
+    public void PutOpportunityUpForAuction(int opportunityNumber)
     {
     }
 
-    public void ProposeOpportunity()
+    public void ProposeOpportunity(int opportunityNumber)
+    {
+    }
+    
+    public void ParticipateInAuction(int auctionNumber, int money)
     {
     }
 
-    public void SendMessage()
+    public void MakeIncidentDecision(int donation)
     {
     }
 
-    public void SendMessageToEveryone()
+    public Office? GetOffice(int officeNumber)
     {
+        return null;
     }
 
-    public void ParticipateInAuction()
+    public bool IsOfficeMine(int officeNumber) 
+        => GetOffice(officeNumber)?.OwnerId == 0;
+
+    public void RentOffice(int officeNumber)
+    {
+        
+    }
+    
+    public void CancelOfficeLease(int officeNumber)
     {
     }
-
-    public void SetIncidentAction()
-    {
-    }
-
+    
     public void SkipMove()
     {
     }
 
     public void ExitGame()
-    {
-    }
-
-    public void RentOfficeAsync(int officeNumber)
     {
     }
 

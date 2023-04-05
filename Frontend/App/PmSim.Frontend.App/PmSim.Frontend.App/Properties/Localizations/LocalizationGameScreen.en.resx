@@ -51,7 +51,21 @@
     <data name="TextBlockChooseBackground" xml:space="preserve">
         <value>Choose background</value>
     </data>
-    <data name="ButtonConfirm" xml:space="preserve">
-        <value>Confirm</value>
+    <data name="TextBlockWaitConnection" xml:space="preserve">
+        <value>Wait for the other players to connect.</value>
+    </data>
+    <data name="OfficeRentInfo" xml:space="preserve">
+        <value>This office is vacant.
+            Rental price: {0}
+            Capacity: {1}
+            
+            Rent?
+        </value>
+    </data>
+    <data name="TextBlockOfficeRent" xml:space="preserve">
+        <value>Office rent</value>
+    </data>
+    <data name="NotEnoughMoney" xml:space="preserve">
+        <value>Not enough money!</value>
     </data>
 </root>

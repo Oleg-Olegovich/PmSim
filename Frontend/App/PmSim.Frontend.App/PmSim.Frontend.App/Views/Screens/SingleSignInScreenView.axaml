@@ -33,8 +33,8 @@
                        Text="{x:Static localizations:LocalizationSignInScreen.TextBlockRemember}"/>
             <Border Classes="TextStroke">
                 <ToggleSwitch Classes="Settings"
-                              OnContent="{x:Static localizations:LocalizationBasicScreen.ToggleSwitchYes}"
-                              OffContent="{x:Static localizations:LocalizationBasicScreen.ToggleSwitchNo}"
+                              OnContent="{x:Static localizations:LocalizationBasicScreen.Yes}"
+                              OffContent="{x:Static localizations:LocalizationBasicScreen.No}"
                               IsChecked="{Binding IsDataRemembered}"/>
             </Border>
         </StackPanel>

@@ -24,10 +24,10 @@
     <data name="ButtonNext" xml:space="preserve">
         <value>Next</value>
     </data>
-    <data name="ToggleSwitchNo" xml:space="preserve">
+    <data name="No" xml:space="preserve">
         <value>No</value>
     </data>
-    <data name="ToggleSwitchYes" xml:space="preserve">
+    <data name="Yes" xml:space="preserve">
         <value>Yes</value>
     </data>
     <data name="ButtonConfirm" xml:space="preserve">

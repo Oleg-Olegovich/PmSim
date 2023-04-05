@@ -51,7 +51,21 @@
     <data name="TextBlockChooseBackground" xml:space="preserve">
         <value>Выберите предысторию</value>
     </data>
-    <data name="ButtonConfirm" xml:space="preserve">
-        <value>Подтвердить</value>
+    <data name="TextBlockWaitConnection" xml:space="preserve">
+        <value>Подождите, пока остальные игроки подключатся.</value>
+    </data>
+    <data name="OfficeRentInfo" xml:space="preserve">
+        <value>Этот офис свободен.
+            Стоимость аренды: {0}
+            Вместимость: {1}
+            
+            Арендовать?
+        </value>
+    </data>
+    <data name="TextBlockOfficeRent" xml:space="preserve">
+        <value>Аренда офиса</value>
+    </data>
+    <data name="NotEnoughMoney" xml:space="preserve">
+        <value>Недостаточно денег!</value>
     </data>
 </root>

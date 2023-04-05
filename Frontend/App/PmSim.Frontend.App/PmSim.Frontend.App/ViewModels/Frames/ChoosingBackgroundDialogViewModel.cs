@@ -28,5 +28,5 @@ public class ChoosingBackgroundDialogViewModel : BasicFrame
     }
 
     private void Confirm()
-        => _gameScreen.ChooseBackground((Professions)SelectedBackground);
+        => GameScreen.ChooseBackground((Professions)SelectedBackground);
 }

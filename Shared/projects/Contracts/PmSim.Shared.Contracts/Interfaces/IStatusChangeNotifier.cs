@@ -32,5 +32,7 @@ public interface IStatusChangeNotifier
 
     public PlayerStatus AnotherPlayerStatus { set; }
     
+    public IEnumerable<PlayerStatus> Players { set; }
+
     public Task ChangeCurrentStageAsync(GameStages stage, int time);
 }

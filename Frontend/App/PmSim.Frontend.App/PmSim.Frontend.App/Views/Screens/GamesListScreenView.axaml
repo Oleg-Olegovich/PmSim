@@ -23,19 +23,26 @@
                   SelectedItem="{Binding SelectedGame}">
                 <DataGrid.Columns>
                         <DataGridTextColumn Header="№" 
-                                            Binding="{Binding Id}"/>
+                                            Binding="{Binding Id}"
+                                            IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Founder}" 
-                                            Binding="{Binding Founder}"/>
+                                            Binding="{Binding Founder}"
+                                            IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Name}" 
-                                            Binding="{Binding Name}"/>
+                                            Binding="{Binding Name}"
+                                            IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Mode}" 
-                                            Binding="{Binding Mode}" />
+                                            Binding="{Binding Mode}"
+                                            IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Map}" 
-                                            Binding="{Binding Map}" />
+                                            Binding="{Binding Map}"
+                                            IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Players}" 
-                                            Binding="{Binding Players}" />
+                                            Binding="{Binding Players}"
+                                            IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.MaxPlayers}" 
-                                            Binding="{Binding MaxPlayers}" />
+                                            Binding="{Binding MaxPlayers}"
+                                            IsReadOnly="True"/>
                 </DataGrid.Columns>
         </DataGrid>
         

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 
 namespace PmSim.Shared.Contracts.Interfaces;
@@ -11,9 +12,14 @@ namespace PmSim.Shared.Contracts.Interfaces;
 public interface IGameScreenLogic
 {
     /// <summary>
+    /// Current game stage.
+    /// </summary>
+    public GameStages GameStage { get; set; }
+    
+    /// <summary>
     /// Localized name of the game stage.
     /// </summary>
-    public string GameStage { get; set; }
+    public string GameStageName { get; set; }
     
     /// <summary>
     /// Time to the end of the stage in the format MM:SS.
@@ -33,5 +39,5 @@ public interface IGameScreenLogic
     
     public int EmployeesNumber { get; set; }
     
-    public ObservableCollection<PlayerStatus> Players { get; set; }
+    public ObservableCollection<PlayerStatus> Players { get; }
 }

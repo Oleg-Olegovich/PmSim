@@ -40,7 +40,7 @@ namespace PmSim.Shared.GameEngine.GameLogic
             _strategies[(int)_strategyType].WorkForHire();
         }
 
-        internal void MakeDiplomaticActions()
+        internal void MakeDiplomaticAction()
         {
             if (IsOut)
             {

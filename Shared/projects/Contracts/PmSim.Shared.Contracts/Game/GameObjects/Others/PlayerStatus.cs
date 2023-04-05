@@ -1,21 +1,59 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
 
 /// <summary>
 /// Players or bots status (property, money).
 /// </summary>
-public class PlayerStatus
+public class PlayerStatus : INotifyPropertyChanged
 {
+
     [JsonPropertyName("id")] 
     public int Id { get; set; }
 
     [JsonPropertyName("name")] 
-    public string Name { get; set; }
+    public string? Name { get; set; }
+    
+    private int _money;
 
-    [JsonPropertyName("money")] 
-    public int Money { get; set; }
+    [JsonPropertyName("money")]
+    public int Money
+    {
+        get => _money;
+        set
+        {
+            if (value == _money)
+            {
+                return;
+            }
+            
+            _money = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    private int _completedProjects;
+    
+    [JsonPropertyName("completedProjects")]
+    public int CompletedProjects
+    {
+        get => _completedProjects;
+        set
+        {
+            if (value == _completedProjects)
+            {
+                return;
+            }
+            
+            _completedProjects = value;
+            OnPropertyChanged();
+        }
+    }
 
-    [JsonPropertyName("completedProjects")] 
-    public int CompletedProjects { get; set; }
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) 
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

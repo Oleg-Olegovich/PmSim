@@ -2,11 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:localizations1="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
-             x:Class="PmSim.Frontend.App.Views.Frames.ConnectionDialogView">
+             x:Class="PmSim.Frontend.App.Views.Frames.InformationDialogView">
     
-    <Grid RowDefinitions="*, Auto, *"
+    <Grid RowDefinitions="*, Auto, Auto, *"
           ColumnDefinitions="*, *, *">
         
         <Border Grid.Row="1"
@@ -16,6 +16,13 @@
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
                    Classes="Header"
-                   Text="{x:Static localizations1:LocalizationGameScreen.TextBlockWaitConnection}"/>
+                   Text="{Binding Info}"/>
+        
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                Classes="Stretch AttentionGrabbing"
+                Command="{Binding CancelCommand}"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"/>
+
     </Grid>
 </UserControl>

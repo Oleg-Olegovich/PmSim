@@ -89,18 +89,18 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Нет.
         /// </summary>
-        public static string ToggleSwitchNo {
+        public static string No {
             get {
-                return ResourceManager.GetString("ToggleSwitchNo", resourceCulture);
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Да.
         /// </summary>
-        public static string ToggleSwitchYes {
+        public static string Yes {
             get {
-                return ResourceManager.GetString("ToggleSwitchYes", resourceCulture);
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

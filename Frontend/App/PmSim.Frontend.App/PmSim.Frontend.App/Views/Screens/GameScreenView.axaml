@@ -13,7 +13,7 @@
 
         <TextBlock Grid.Row="0"
                    Grid.Column="1"
-                   Text="{Binding GameStage}"
+                   Text="{Binding GameStageName}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"
                    TextAlignment="Center"
@@ -112,20 +112,23 @@
                   Items="{Binding Players}"
                   SelectedItem="{Binding SelectedPlayer}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}">
+                <DataGridTextColumn Binding="{Binding Name}"
+                                    IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <TextBlock Text="{x:Static localizations:LocalizationGameScreen.Players}"
                                    Classes="Text"
                                    FontSize="10"/>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Money}">
+                <DataGridTextColumn Binding="{Binding Money}"
+                                    IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <Image Classes="MoneyIcon Icon"
                                HorizontalAlignment="Center" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding CompletedProjects}">
+                <DataGridTextColumn Binding="{Binding CompletedProjects}"
+                                    IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <Image Classes="ProjectsIcon Icon"
                                HorizontalAlignment="Center" />
@@ -142,5 +145,16 @@
                         Content="{Binding MainAreaContent}"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch" />
+        
+        <Viewbox Grid.Row="1"
+                 Grid.RowSpan="2"
+                 Grid.Column="2"
+                 ZIndex="-1"
+                 Stretch="Uniform">
+            <Panel>
+                <Image IsEnabled="False"
+                       Source="avares://PmSim.Frontend.App/Assets/Images/Map0/background_map.png" />
+            </Panel>
+        </Viewbox>
     </Grid>
 </UserControl>

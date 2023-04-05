@@ -21,6 +21,8 @@ internal class StatusChangeNotifier : IStatusChangeNotifier
     public int Creativity { get; set; }
     
     public PlayerStatus AnotherPlayerStatus { get; set; }
+    public IEnumerable<PlayerStatus> Players { get; set; }
+
     public async Task ChangeCurrentStageAsync(GameStages stage, int time)
     {
     }

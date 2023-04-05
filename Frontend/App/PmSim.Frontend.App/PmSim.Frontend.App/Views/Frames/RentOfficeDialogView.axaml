@@ -2,7 +2,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Frames.RentOfficeDialogView">
-    Welcome to Avalonia!
+    
+    <Grid RowDefinitions="*, Auto, Auto, Auto, *"
+          ColumnDefinitions="*, *, *, *">
+        
+        <Border Grid.Row="1"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Classes="CommonBackdrop"/>
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Classes="Header"
+                   Text="{x:Static localizations:LocalizationGameScreen.TextBlockOfficeRent}"/>
+        
+        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Classes="Text"
+                   Text="{Binding Info}"/>
+        
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                Classes="Stretch Menu"
+                Content="{x:Static localizations:LocalizationBasicScreen.Yes}"
+                Command="{Binding RentCommand}"/>
+        
+        <Button Grid.Row="3"
+                Grid.Column="2"
+                Classes="Stretch Menu"
+                Content="{x:Static localizations:LocalizationBasicScreen.No}"
+                Command="{Binding CancelCommand}"/>
+    </Grid>
 </UserControl>

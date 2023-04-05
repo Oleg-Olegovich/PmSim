@@ -9,22 +9,10 @@
     <Grid RowDefinitions="*, Auto, Auto, Auto, *"
           ColumnDefinitions="*, *, *">
         
-        <Viewbox Grid.Row="0"
-                 Grid.Column="0"
-                 Grid.RowSpan="5"
-                 Grid.ColumnSpan="3"
-                 Stretch="Uniform">
-            <Panel>
-                <Image ZIndex="1"
-                       IsEnabled="False"
-                       Source="avares://PmSim.Frontend.App/Assets/Images/Map0/background_map.png" />
-            </Panel>
-        </Viewbox>
-        
         <Border Grid.Row="1"
-               Grid.Column="1"
-               Grid.RowSpan="3"
-               Classes="CommonBackdrop"/>
+                Grid.Column="1"
+                Grid.RowSpan="3"
+                Classes="CommonBackdrop"/>
         
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
@@ -42,7 +30,7 @@
         <Button Grid.Row="3"
                 Grid.Column="1"
                 Classes="Stretch Menu"
-                Content="{x:Static localizations:LocalizationGameScreen.ButtonConfirm}"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
                 Command="{Binding ConfirmationCommand}"/>
     </Grid>
 </UserControl>

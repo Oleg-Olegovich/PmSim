@@ -29,28 +29,28 @@ public class Game
     private readonly GameOptions _settings;
     private readonly List<Player> _players = new();
     private readonly List<Auction> _auctions = new();
-    private Bot[] _bots;
-    private Incident[] _incidents;
-    private Opportunity[] _opportunities;
+    private Bot[] _bots = Array.Empty<Bot>();
+    private Incident[] _incidents = Array.Empty<Incident>();
+    private Opportunity[] _opportunities = Array.Empty<Opportunity>();
 
     private readonly List<Interview> _interviews = new();
     private readonly IGameMap _map;
     private readonly Random _random = new();
+    
+    public Office[] Offices => _map.Offices;
 
-    private GameStages Stage { get; set; } = GameStages.NotStarted;
+    private GameStages _stage = GameStages.NotStarted;
 
     /// <summary>
     /// Seconds of the current stage of the game.
     /// </summary>
     private int Time { get; set; }
 
-    private Incident CurrentIncident { get; set; }
+    private Incident? CurrentIncident { get; set; }
 
     private string Founder { get; }
 
     private int Id { get; }
-
-    internal Office[] Offices => _map.Offices;
 
     private Player[] Actors
     {
@@ -86,7 +86,7 @@ public class Game
 
     public void Connect(int playerId, string playerName, IStatusChangeNotifier statusChangeNotifier)
     {
-        if (Stage != GameStages.Connection && Stage != GameStages.NotStarted)
+        if (_stage != GameStages.Connection && _stage != GameStages.NotStarted)
         {
             throw new PmSimException("Now is not the connection.");
         }
@@ -383,7 +383,7 @@ public class Game
     /// </summary>
     internal Auction[] RequestIncomingOffers(int playerId)
     {
-        if (FindPlayerById(playerId).IsOut || Stage != GameStages.Diplomacy)
+        if (FindPlayerById(playerId).IsOut || _stage != GameStages.Diplomacy)
         {
             throw new PmSimException("It is impossible to request incoming offers.");
         }
@@ -418,24 +418,6 @@ public class Game
     {
         var player = FindPlayerById(playerId);
         player.IsOut = true;
-    }
-
-    /// <summary>
-    /// This feature will be added in the release or multiplayer version.
-    /// It may be worth moving the method to Gateway.
-    /// </summary>
-    private void SendMessage(int playerId, int otherPlayerId, string message)
-    {
-        var player = FindPlayerById(playerId);
-    }
-
-    /// <summary>
-    /// This feature will be added in the release or multiplayer version.
-    /// It may be worth moving the method to Gateway.
-    /// </summary>
-    private void SendMessageToEveryoneAsync(int playerId, string message)
-    {
-        var player = FindPlayerById(playerId);
     }
 
     internal static Project GetProjectRandomly()
@@ -497,8 +479,7 @@ public class Game
 
     private async Task ProcessConnectionAsync()
     {
-        Stage = GameStages.Connection;
-        Time = _settings.ConnectionRealTime;
+        ChangeStage(GameStages.Connection, _settings.ConnectionRealTime);
         while (Time > 0 && _players.Count < _playersQuantity)
         {
             await Task.Delay(1000);
@@ -516,11 +497,29 @@ public class Game
         }
     }
 
+    private void SendPlayerStatusesToEachPlayer()
+    {
+        var statuses = Actors.Select(PlayerLogic.GetPlayerStatus).ToList();
+        foreach (var player in _players)
+        {
+            player.StatusChangeNotifier.Players = statuses;
+        }
+    }
+
+    private void ChangeStage(GameStages stage, int time)
+    {
+        _stage = stage;
+        Time = time;
+        foreach (var player in _players)
+        {
+            player.StatusChangeNotifier.ChangeCurrentStageAsync(stage, time);
+        }
+    }
+
     private async Task ProcessGameStageAsync(GameStages stage, int time)
     {
         _playersCompleted = 0;
-        Stage = stage;
-        Time = time;
+        ChangeStage(stage, time);
         while (Time > 0 && _playersCompleted < _playersQuantity)
         {
             await Task.Delay(1000);
@@ -531,19 +530,18 @@ public class Game
     private async Task ProcessChoosingBackgroundAsync()
         => await ProcessGameStageAsync(GameStages.ChoosingBackground, _settings.ChoosingBackgroundRealTime);
 
-    private async Task ProcessSprintAsync()
+    private async Task ProcessManagementAsync()
         => await ProcessGameStageAsync(GameStages.Management, _settings.SprintRealTime);
 
     private async Task ProcessDiplomacyAsync()
     {
         _playersCompleted = 0;
-        Stage = GameStages.Diplomacy;
-        Time = _settings.DiplomacyRealTime;
+        ChangeStage(GameStages.Diplomacy, _settings.DiplomacyRealTime);
         while (Time > 0 && _playersCompleted < _playersQuantity)
         {
             foreach (var bot in _bots)
             {
-                bot.MakeDiplomaticActions();
+                bot.MakeDiplomaticAction();
             }
 
             await Task.Delay(1000);
@@ -624,7 +622,7 @@ public class Game
 
     private void ProcessSummingUpAsync()
     {
-        Stage = GameStages.SummingUpResults;
+        _stage = GameStages.SummingUpResults;
 
         SummingUpExpenses();
         SummingUpAuctions();
@@ -645,7 +643,7 @@ public class Game
             bot.MakeIncidentDecision();
         }
 
-        Stage = GameStages.IncidentResolution;
+        _stage = GameStages.IncidentResolution;
         if (CurrentIncident.DonationsSum < CurrentIncident.PassCost)
         {
             foreach (var player in _players)
@@ -711,8 +709,9 @@ public class Game
     private async Task ProcessAsync()
     {
         await ProcessConnectionAsync();
+        SendPlayerStatusesToEachPlayer();
         await ProcessChoosingBackgroundAsync();
-        while (Stage != GameStages.IsOver)
+        while (_stage != GameStages.IsOver)
         {
             foreach (var actor in Actors)
             {
@@ -720,7 +719,7 @@ public class Game
                 actor.Projects.Add(GetProjectRandomly());
             }
 
-            await ProcessSprintAsync();
+            await ProcessManagementAsync();
             MakeBotSprintMoves();
             await ProcessDiplomacyAsync();
             ProcessSummingUpAsync();
@@ -739,6 +738,17 @@ public class Game
         }
 
         return interview;
+    }
+
+    private Player FindPlayerById(int playerId)
+    {
+        var player = Actors.FirstOrDefault(x => x.Id == playerId);
+        if (player == null)
+        {
+            throw new PmSimException("There is no such player.");
+        }
+
+        return player;
     }
 
     private static IGameMap FindMap(int number)
@@ -761,16 +771,5 @@ public class Game
         }
 
         return instances;
-    }
-    
-    private Player FindPlayerById(int playerId)
-    {
-        var player = Actors.FirstOrDefault(x => x.Id == playerId);
-        if (player == null)
-        {
-            throw new PmSimException("There is no such player.");
-        }
-
-        return player;
     }
 }

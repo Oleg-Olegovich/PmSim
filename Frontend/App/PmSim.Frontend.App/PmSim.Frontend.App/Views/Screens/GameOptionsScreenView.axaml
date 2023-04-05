@@ -31,30 +31,15 @@
         
         <StackPanel Grid.Row="3"
                     Grid.Column="1"
-                    Orientation="Vertical"
-                    IsVisible="{Binding !IsSingleplayer}">
+                    Orientation="Vertical">
             <TextBlock Classes="Border"
                        Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockPlayers}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="2"
                                Maximum="5"
                                Classes="Bordered BasicInteger"
+                               IsReadOnly="{Binding IsSingleplayer}"
                                Value="{Binding PlayersNumber}"/>
-            </Border>
-        </StackPanel>
-        
-        <StackPanel Grid.Row="3"
-                    Grid.Column="1"
-                    Orientation="Vertical"
-                    IsVisible="{Binding IsSingleplayer}">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockPlayers}"/>
-            <Border Classes="TextStroke">
-                <NumericUpDown Minimum="1"
-                               Maximum="1"
-                               Classes="Bordered BasicInteger"
-                               Value="1"
-                               IsReadOnly="True"/>
             </Border>
         </StackPanel>
         

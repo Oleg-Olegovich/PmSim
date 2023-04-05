@@ -1,5 +1,6 @@
 ﻿using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Interfaces;
@@ -42,6 +43,11 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             }
 
             _gameScreenLogic.Money = value;
+            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == 0);
+            if (status != null)
+            {
+                status.Money = value;
+            }
         }
     }
 
@@ -68,6 +74,11 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             }
 
             _gameScreenLogic.ProjectsNumber = value;
+            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == 0);
+            if (status != null)
+            {
+                status.CompletedProjects = value;
+            }
         }
     }
 
@@ -171,6 +182,22 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
+    public IEnumerable<PlayerStatus> Players
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            foreach (var status in value)
+            {
+                _gameScreenLogic.Players.Add(status);
+            }
+        }
+    }
+
     public SingleplayerClient(string playerName) 
         => _playerName = playerName;
 
@@ -188,7 +215,9 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             await _timer;
         }
 
-        _gameScreenLogic.GameStage = stageName;
+        _gameScreenLogic.GameStage = stage;
+        _gameScreenLogic.GameStageName = stageName;
+        _time = time;
         _timer = Task.Run(ProcessTimerAsync);
     }
 
@@ -201,10 +230,6 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
 
     public void SetBackground(Professions profession) 
         => _game?.SetBackground(0, profession);
-
-    public void CancelOfficeLease()
-    {
-    }
 
     public void DismissAllEmployees()
     {
@@ -226,75 +251,92 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     {
     }
 
-    public void UseOpportunity()
+    public void UseOpportunity(int opportunityNumber)
     {
     }
 
-    public void AssignToWork()
+    public void AssignToWork(int employeeNumber, int projectNumber, Professions profession)
     {
     }
 
-    public void AssignToInventProject()
+    public void AssignToInventProject(int employeeNumber)
     {
     }
 
-    public void AssignToMakeBackup()
+    public void AssignToMakeBackup(int employeeNumber)
     {
     }
 
-    public void CancelTask()
+    public void CancelTask(int employeeNumber)
     {
     }
 
-    public void PutProjectUpForAuction()
+    public void PutProjectUpForAuction(int projectNumber)
     {
     }
 
-    public void ProposeProject()
+    public void ProposeProject(int projectNumber)
     {
     }
 
-    public void PutExecutorUpForAuction()
+    public void PutEmployeeUpForAuction(int employeeNumber)
     {
     }
 
-    public void ProposeExecutor()
+    public void ProposeEmployee(int employeeNumber)
     {
     }
 
-    public void PutOpportunityUpForAuction()
+    public void PutOpportunityUpForAuction(int opportunityNumber)
     {
     }
 
-    public void ProposeOpportunity()
+    public void ProposeOpportunity(int opportunityNumber)
+    {
+    }
+    
+    public void ParticipateInAuction(int auctionNumber, int money)
     {
     }
 
-    public void SendMessage()
+    public void MakeIncidentDecision(int donation)
     {
     }
 
-    public void SendMessageToEveryone()
+    public Office? GetOffice(int officeNumber)
     {
+        if (_game is null || officeNumber < -1 || officeNumber >= _game.Offices.Length)
+        {
+            return null;
+        }
+
+        return _game.Offices[officeNumber];
     }
 
-    public void ParticipateInAuction()
+    public bool IsOfficeMine(int officeNumber) 
+        => GetOffice(officeNumber)?.OwnerId == 0;
+
+    public void RentOffice(int officeNumber)
+    {
+        var office = GetOffice(officeNumber);
+        if (office is null)
+        {
+            throw new PmSimException("Invalid office number!");
+        }
+        
+        office.OwnerId = 0;
+        Money -= office.RentalPrice;
+    }
+    
+    public void CancelOfficeLease(int officeNumber)
     {
     }
-
-    public void SetIncidentAction()
-    {
-    }
-
+    
     public void SkipMove()
     {
     }
 
     public void ExitGame()
-    {
-    }
-
-    public void RentOfficeAsync(int officeNumber)
     {
     }
 
