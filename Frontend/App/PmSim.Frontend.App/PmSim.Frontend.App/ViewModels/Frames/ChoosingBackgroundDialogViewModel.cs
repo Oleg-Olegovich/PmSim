@@ -6,7 +6,7 @@ using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
-public class ChoosingBackgroundDialogViewModel : BasicFrame
+public class ChoosingBackgroundDialogViewModel : BasicFrameViewModel
 {
     private int _selectedBackground;
     

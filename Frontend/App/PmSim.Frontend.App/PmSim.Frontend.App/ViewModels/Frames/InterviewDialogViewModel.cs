@@ -2,7 +2,7 @@
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
-public class InterviewDialogViewModel : BasicFrame
+public class InterviewDialogViewModel : BasicFrameViewModel
 {
     public InterviewDialogViewModel(GameScreenViewModel gameScreen) : base(gameScreen)
     {

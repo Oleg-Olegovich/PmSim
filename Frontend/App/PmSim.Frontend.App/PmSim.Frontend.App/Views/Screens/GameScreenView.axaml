@@ -125,6 +125,7 @@
                     Grid.Column="7"
                     Content="{x:Static localizations:LocalizationGameScreen.ButtonGiveUp}"
                     Command="{Binding GiveUpCommand}"
+                    IsEnabled="{Binding !IsOut}"
                     Classes="Stretch AttentionGrabbing" />
         </Grid>
 
@@ -132,6 +133,7 @@
                 Grid.Column="1"
                 Classes="Stretch Menu"
                 Content="{x:Static localizations:LocalizationGameScreen.ButtonSkip}"
+                IsEnabled="{Binding !IsOut}"
                 Command="{Binding SkipCommand}" />
 
         <!-- Players column -->
@@ -140,10 +142,12 @@
                   Grid.Column="1"
                   Classes="Common"
                   Items="{Binding Players}"
-                  SelectedItem="{Binding SelectedPlayer}">
+                  SelectedItems="{Binding SelectedPlayers}"
+                  IsReadOnly="{Binding !IsOut}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}"
-                                    IsReadOnly="True">
+                                    IsReadOnly="True"
+                                    IsVisible="{Binding !IsOut}">
                     <DataGridTextColumn.Header>
                         <TextBlock Text="{x:Static localizations:LocalizationGameScreen.Players}"
                                    Classes="Text"
@@ -151,14 +155,16 @@
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Money}"
-                                    IsReadOnly="True">
+                                    IsReadOnly="True"
+                                    IsVisible="{Binding !IsOut}">
                     <DataGridTextColumn.Header>
                         <Image Classes="MoneyIcon Icon"
                                HorizontalAlignment="Center" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding CompletedProjects}"
-                                    IsReadOnly="True">
+                                    IsReadOnly="True"
+                                    IsVisible="{Binding !IsOut}">
                     <DataGridTextColumn.Header>
                         <Image Classes="ProjectsIcon Icon"
                                HorizontalAlignment="Center" />

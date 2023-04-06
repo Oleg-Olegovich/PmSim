@@ -12,7 +12,7 @@ using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
-public abstract class BasicGameMapViewModel : BasicFrame
+public abstract class BasicGameMapViewModel : BasicFrameViewModel
 {
     protected readonly string BasePath;
     

@@ -55,6 +55,8 @@ public interface IStatusChangeNotifier
     public int AddOpportunity { set; }
     
     public int RemoveOpportunity { set; }
+    
+    public bool IsOut { set; }
 
     public Task ChangeCurrentStageAsync(GameStages stage, int time);
 

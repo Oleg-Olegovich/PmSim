@@ -2,7 +2,7 @@
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
-public class InformationDialogViewModel : BasicFrame
+public class InformationDialogViewModel : BasicFrameViewModel
 {
     public string Info { get; }
 

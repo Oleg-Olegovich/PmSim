@@ -33,6 +33,8 @@ internal class StatusChangeNotifier : IStatusChangeNotifier
     public Project Project { get; set; }
     public int AddOpportunity { get; set; }
     public int RemoveOpportunity { get; set; }
+    public bool IsOut { get; set; }
+
     public async Task ChangeCurrentStageAsync(GameStages stage, int time)
     {
         

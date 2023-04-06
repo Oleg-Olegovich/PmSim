@@ -6,7 +6,7 @@ using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
-public class RentOfficeDialogViewModel : BasicFrame
+public class RentOfficeDialogViewModel : BasicFrameViewModel
 {
     private readonly int _number, _rentalPrice;
 

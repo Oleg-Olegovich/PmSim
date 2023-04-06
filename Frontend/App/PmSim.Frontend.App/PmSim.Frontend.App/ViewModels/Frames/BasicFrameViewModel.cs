@@ -4,13 +4,13 @@ using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
-public abstract class BasicFrame : ViewModelBase
+public abstract class BasicFrameViewModel : ViewModelBase
 {
     protected readonly GameScreenViewModel GameScreen;
 
     public ReactiveCommand<Unit, Unit> CancelCommand { get; }
     
-    protected BasicFrame(GameScreenViewModel gameScreen)
+    protected BasicFrameViewModel(GameScreenViewModel gameScreen)
     {
         GameScreen = gameScreen;
         CancelCommand = ReactiveCommand.Create(Cancel);

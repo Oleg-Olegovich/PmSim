@@ -85,5 +85,5 @@ public interface IPmSimClient
     
     public void SkipMove();
 
-    public void ExitGame();
+    public void GiveUp();
 }

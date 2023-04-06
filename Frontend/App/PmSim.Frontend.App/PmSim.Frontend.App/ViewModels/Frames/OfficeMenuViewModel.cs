@@ -2,7 +2,7 @@
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
-public class OfficeMenuViewModel : BasicFrame
+public class OfficeMenuViewModel : BasicFrameViewModel
 {
     public OfficeMenuViewModel(GameScreenViewModel gameScreen) : base(gameScreen)
     {

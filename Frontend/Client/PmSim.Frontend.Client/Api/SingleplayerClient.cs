@@ -252,7 +252,18 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
-    public int RemovePlayer { get; set; }
+    public int RemovePlayer
+    {
+        set
+        {
+            if (_gameScreenLogic is null || value < 0 || value >= _gameScreenLogic.Players.Count)
+            {
+                return;
+            }
+
+            _gameScreenLogic.Players[value].IsOut = true;
+        }
+    }
 
     public EmployeeStatus AddEmployee
     {
@@ -270,7 +281,13 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
-    public Project Project { get; set; }
+    public Project Project
+    {
+        set
+        {
+            
+        }
+    }
 
     public int AddOpportunity
     {
@@ -285,6 +302,19 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         set
         {
             
+        }
+    }
+
+    public bool IsOut
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.ProcessLosing();
         }
     }
 
@@ -435,7 +465,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     {
     }
 
-    public void ExitGame()
+    public void GiveUp()
     {
     }
 

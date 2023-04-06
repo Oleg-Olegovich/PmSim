@@ -50,4 +50,6 @@ public interface IGameScreenLogic
     public ObservableCollection<PlayerStatus> Players { get; }
 
     public void SetOfficeState(int officeId, OfficeStates officeState);
+
+    public void ProcessLosing();
 }

@@ -179,7 +179,7 @@ public class MultiplayerClient : IPmSimClient
     {
     }
 
-    public void ExitGame()
+    public void GiveUp()
     {
     }
 

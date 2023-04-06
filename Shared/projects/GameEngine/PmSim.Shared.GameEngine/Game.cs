@@ -123,6 +123,7 @@ public class Game
 
         Offices[officeId].OwnerId = playerId;
         player.Money -= Offices[officeId].RentalPrice;
+        player.TotalRentPayment += Offices[officeId].RentalPrice;
         ++player.OfficesNumber;
         player.IsStartupOpen = true;
         SendOfficeStateToEachPlayer(officeId);
@@ -139,6 +140,7 @@ public class Game
         }
 
         Offices[officeId].OwnerId = -1;
+        player.TotalRentPayment -= Offices[officeId].RentalPrice;
         --player.OfficesNumber;
         SendOfficeStateToEachPlayer(officeId);
     }
@@ -270,8 +272,7 @@ public class Game
     public void CancelTask(int playerId, int employeeId)
     {
         var player = FindPlayerById(playerId);
-        if (player is null || player.IsOut || employeeId < 0
-            || employeeId >= player.Employees.Count)
+        if (player.IsOut || employeeId < 0 || employeeId >= player.Employees.Count)
         {
             throw new PmSimException("It is impossible to cancel the task.");
         }
@@ -406,11 +407,13 @@ public class Game
         player.ActionsNumber = 0;
     }
 
-    private void GiveUp(int playerId)
+    private void GiveUp(Player player)
     {
-        var player = FindPlayerById(playerId);
         player.IsOut = true;
     }
+    
+    private void GiveUp(int playerId) 
+        => GiveUp(FindPlayerById(playerId));
 
     internal static Project GetProjectRandomly()
         => new Project(GameConstants.Projects[new Random().Next(GameConstants.Projects.Length)]);
@@ -477,8 +480,7 @@ public class Game
         }
 
         _playersQuantity = _players.Count;
-        var actors = Actors;
-        foreach (var actor in actors)
+        foreach (var actor in Actors)
         {
             foreach (var player in _players)
             {
@@ -557,6 +559,11 @@ public class Game
         foreach (var actor in Actors)
         {
             actor.Money -= actor.TechSupportOfficersNumber * GameConstants.TechSupportSalary;
+            if (actor.Money < 0)
+            {
+                GiveUp(actor);
+                continue;
+            }
             foreach (var employee in actor.Employees)
             {
                 actor.Money -= employee.Salary;
@@ -666,10 +673,6 @@ public class Game
         }
 
         Winner = _bots.FirstOrDefault(condition);
-        if (Winner == null)
-        {
-            throw new PmSimException("There is no winner.");
-        }
     }
 
     private void ApproveWinner()
@@ -677,23 +680,38 @@ public class Game
         switch (_settings.Mode)
         {
             case GameModes.Survival:
-                ApproveWinner((player => !player.IsOut));
+                ApproveWinner(player => !player.IsOut);
                 break;
             case GameModes.TimerAndMoney:
                 var max = Math.Max(_players.Max(player => player.Money),
                     _bots.Max(bot => bot.Money));
-                ApproveWinner((player => player.Money == max));
+                ApproveWinner(player => !player.IsOut && player.Money == max);
                 break;
             case GameModes.TimerAndProjects:
+            default:
                 var projects = Math.Max(_players.Max(player => player.CompletedProjects),
                     _bots.Max(bot => bot.CompletedProjects));
-                ApproveWinner((player => player.CompletedProjects == projects));
+                ApproveWinner(player => !player.IsOut && player.CompletedProjects == projects);
                 break;
-            default:
-                throw new PmSimException("Game mode is out of range.");
         }
     }
 
+    private void StartSprint()
+    {
+        foreach (var actor in Actors)
+        {
+            actor.Money -= actor.TotalRentPayment;
+            if (actor.Money < 0)
+            {
+                GiveUp(actor);
+                continue;
+            }
+
+            actor.ActionsNumber = _settings.SprintActionsNumbers;
+            actor.Projects.Add(GetProjectRandomly());
+        }
+    }
+    
     private async Task ProcessAsync()
     {
         await ProcessConnectionAsync();
@@ -701,12 +719,7 @@ public class Game
         await ProcessChoosingBackgroundAsync();
         while (_stage != GameStages.IsOver)
         {
-            foreach (var actor in Actors)
-            {
-                actor.ActionsNumber = _settings.SprintActionsNumbers;
-                actor.Projects.Add(GetProjectRandomly());
-            }
-
+            StartSprint();
             await ProcessManagementAsync();
             MakeBotSprintMoves();
             await ProcessDiplomacyAsync();
@@ -731,7 +744,7 @@ public class Game
     private Player FindPlayerById(int playerId)
     {
         var player = Actors.FirstOrDefault(x => x.Id == playerId);
-        if (player == null)
+        if (player is null)
         {
             throw new PmSimException("There is no such player.");
         }

@@ -43,7 +43,7 @@ public class Player : Employee
         set => StatusChangeNotifier.ActionsNumber = _actionsNumber = value;
     }
 
-    private int _maxEmployeesNumber = 1;
+    private int _maxEmployeesNumber;
 
     public int MaxEmployeesNumber
     {
@@ -56,7 +56,7 @@ public class Player : Employee
     public int OfficesNumber
     {
         get => _officesNumber;
-        set => StatusChangeNotifier.OfficesNumber = _officesNumber;
+        set => StatusChangeNotifier.OfficesNumber = _officesNumber = value;
     }
 
     private int _techSupportOfficersNumber;
@@ -71,8 +71,16 @@ public class Player : Employee
                 return;
             }
             
-            _techSupportOfficersNumber = value;
+            StatusChangeNotifier.TechSupportOfficersNumber = _techSupportOfficersNumber = value;
         }
+    }
+    
+    private bool _isOut;
+    
+    public bool IsOut 
+    { 
+        get => _isOut; 
+        set => StatusChangeNotifier.IsOut = _isOut = value; 
     }
 
     public ObservableCollection<Employee> Employees { get; } = new();
@@ -84,11 +92,11 @@ public class Player : Employee
 
     public ObservableCollection<int> Opportunities { get; } = new();
 
+    public int TotalRentPayment { get; set; }
+    
     public bool IsBackgroundChosen { get; set; }
 
     public bool IsStartupOpen { get; set; }
-
-    public bool IsOut { get; set; }
 
     public Player(int id, string name, int capital, IStatusChangeNotifier notifier)
     {
@@ -96,6 +104,7 @@ public class Player : Employee
         Id = id;
         Name = name;
         Money = capital;
+        MaxEmployeesNumber = 1;
         Employees.CollectionChanged += EmployeesCollectionChanged;
         Employees.Add(this);
         Projects.CollectionChanged += ProjectsCollectionChanged;
@@ -108,6 +117,7 @@ public class Player : Employee
         StatusChangeNotifier = notifier;
         Id = id;
         Money = capital;
+        MaxEmployeesNumber = 1;
         if (profession == Professions.Major)
         {
             Money *= 2;

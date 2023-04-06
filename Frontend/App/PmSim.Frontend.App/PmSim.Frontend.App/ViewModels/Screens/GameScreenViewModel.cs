@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Reactive;
 using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Frames;
@@ -123,12 +124,12 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 
     public ObservableCollection<PlayerStatus> Players { get; } = new();
     
-    private PlayerStatus? _selectedPlayer;
+    private IList<PlayerStatus>? _selectedPlayers;
     
-    public PlayerStatus? SelectedPlayer
+    public IList<PlayerStatus>? SelectedPlayers
     {
-        get => _selectedPlayer;
-        set => this.RaiseAndSetIfChanged(ref _selectedPlayer, value);
+        get => _selectedPlayers;
+        set => this.RaiseAndSetIfChanged(ref _selectedPlayers, value);
     }
 
     private ViewModelBase? _mainAreaContent;
@@ -137,6 +138,14 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     {
         get => _mainAreaContent;
         set => this.RaiseAndSetIfChanged(ref _mainAreaContent, value);
+    }
+
+    private bool _isOut;
+
+    public bool IsOut
+    {
+        get => _isOut;
+        set => this.RaiseAndSetIfChanged(ref _isOut, value);
     }
     
     public ReactiveCommand<Unit, Unit> GiveUpCommand { get; }
@@ -158,15 +167,6 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         _client.SetBackground(selectedBackground);
         ShowMapMenu();
     }
-    
-    private void GiveUp()
-    {
-        _client.ExitGame();
-        BaseWindow.Content = new TitleScreenViewModel(BaseWindow);
-    }
-
-    private void SkipMove()
-        => _client.SkipMove();
 
     public void ShowOffice(int officeId) 
         => MainAreaContent = _client.GetOfficeState(officeId) switch
@@ -215,4 +215,14 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 
     public void SetOfficeState(int officeId, OfficeStates officeState)
         => _gameMap.ChangeOfficeImage(officeId, officeState);
+
+    public void ProcessLosing()
+    {
+        IsOut = true;
+        MainAreaContent = new LosingViewModel(this);
+    }
+        
+    private void GiveUp() => _client.GiveUp();
+
+    private void SkipMove() => _client.SkipMove();
 }

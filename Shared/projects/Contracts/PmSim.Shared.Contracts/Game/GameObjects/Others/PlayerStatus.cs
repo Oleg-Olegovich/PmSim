@@ -51,6 +51,23 @@ public sealed class PlayerStatus : INotifyPropertyChanged
         }
     }
 
+    private bool _isOut;
+
+    public bool IsOut
+    {
+        get => _isOut;
+        set
+        {
+            if (value == _isOut)
+            {
+                return;
+            }
+            
+            _isOut = value;
+            OnPropertyChanged();
+        }
+    }
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null) 
