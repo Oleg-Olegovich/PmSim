@@ -1,25 +1,28 @@
-﻿using System.Reactive;
+﻿using System.Collections.ObjectModel;
+using Avalonia.Media;
 using PmSim.Frontend.App.ViewModels.Screens;
-using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
 public class GameMap0ViewModel : BasicGameMapViewModel
 {
-    public ReactiveCommand<string, Unit> OfficeCommand { get; }
-    
-    public ReactiveCommand<Unit, Unit> AuctionCommand { get; }
+    public override ObservableCollection<IImage> OfficeImages { get; }
     
     public GameMap0ViewModel(GameScreenViewModel gameScreen) 
-        : base(gameScreen)
+        : base(gameScreen, 0)
     {
-        OfficeCommand = ReactiveCommand.Create<string>(ProcessOfficeClick);
-        AuctionCommand = ReactiveCommand.Create(ProcessAuctionClick);
+        OfficeImages = new ObservableCollection<IImage>
+        {
+            LoadImage($"{BasePath}small_office_0_normal.png"),
+            LoadImage($"{BasePath}small_office_1_normal.png"),
+            LoadImage($"{BasePath}small_office_2_normal.png"),
+            LoadImage($"{BasePath}small_office_0_normal.png"),
+            LoadImage($"{BasePath}small_office_0_normal.png"),
+            LoadImage($"{BasePath}middle_office_0_normal.png"),
+            LoadImage($"{BasePath}middle_office_1_normal.png"),
+            LoadImage($"{BasePath}middle_office_0_normal.png"),
+            LoadImage($"{BasePath}big_office_0_normal.png"),
+            LoadImage($"{BasePath}big_office_0_normal.png")
+        };
     }
-
-    private void ProcessOfficeClick(string officeId) 
-        => GameScreen.ShowOffice(int.Parse(officeId));
-    
-    private void ProcessAuctionClick()
-        => GameScreen.ShowAuctionHouseMenu();
 }

@@ -230,7 +230,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToWorkAsync(DevelopmentActionRequest request)
     {
-        await _game.AssignToWorkAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
+        await _game.AssignToWorkAsync(request.PlayerId, request.OfficeId, request.EmployeeId,
             request.FeatureNumber,
             request.ProgressPointNumber);
         return new IsOkResponse()
@@ -241,7 +241,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToInventProjectAsync(ExecutorActionRequest request)
     {
-        await _game.AssignToInventProjectAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber);
+        await _game.AssignToInventProjectAsync(request.PlayerId, request.OfficeId, request.EmployeeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -250,7 +250,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> AssignToMakeBackupAsync(FeaturesActionRequest request)
     {
-        await _game.AssignToMakeBackupAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
+        await _game.AssignToMakeBackupAsync(request.PlayerId, request.OfficeId, request.EmployeeId,
             request.FeatureNumber);
         return new IsOkResponse()
         {
@@ -260,7 +260,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> CancelTaskAsync(ExecutorActionRequest request)
     {
-        await _game.CancelTaskAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber);
+        await _game.CancelTaskAsync(request.PlayerId, request.OfficeId, request.EmployeeId);
         return new IsOkResponse()
         {
             IsOk = true
@@ -288,7 +288,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> PutExecutorUpForAuctionAsync(ExecutorAuctionActionRequest request)
     {
-        await _game.PutExecutorUpForAuctionAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
+        await _game.PutExecutorUpForAuctionAsync(request.PlayerId, request.OfficeId, request.EmployeeId,
             request.StartPrice);
         return new IsOkResponse()
         {
@@ -298,7 +298,7 @@ public class GatewayClient //: IGatewayClient
 
     public async Task<IsOkResponse> ProposeExecutorAsync(ProposeExecutorActionRequest request)
     {
-        await _game.ProposeExecutorAsync(request.PlayerId, request.OfficeId, request.ExecutorNumber,
+        await _game.ProposeExecutorAsync(request.PlayerId, request.OfficeId, request.EmployeeId,
             request.StartPrice, request.BuyerId);
         return new IsOkResponse()
         {

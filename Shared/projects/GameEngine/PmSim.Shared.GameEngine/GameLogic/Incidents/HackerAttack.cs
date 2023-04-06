@@ -1,7 +1,6 @@
 ﻿using System;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Game.GameObjects.Projects;
-using PmSim.Shared.GameEngine.Dto;
 
 namespace PmSim.Shared.GameEngine.GameLogic.Incidents
 {
@@ -14,7 +13,7 @@ namespace PmSim.Shared.GameEngine.GameLogic.Incidents
         internal override void Process(Player targetPlayer)
         {
             var index = new Random().Next(targetPlayer.Projects.Count);
-            targetPlayer.Projects[index] = targetPlayer.Projects[index].LastBackUp.Clone() as Project;
+            targetPlayer.Projects[index].ResetToBackUp();
         }
     }
 }

@@ -73,6 +73,14 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         set => this.RaiseAndSetIfChanged(ref _officesNumber, value);
     }
     
+    private int _techSupportOfficersNumber;
+    
+    public int TechSupportOfficersNumber
+    {
+        get => _techSupportOfficersNumber;
+        set => this.RaiseAndSetIfChanged(ref _techSupportOfficersNumber, value);
+    }
+
     private int _projectsNumber;
     
     public int ProjectsNumber
@@ -87,6 +95,14 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     {
         get => _completedProjectsNumber;
         set => this.RaiseAndSetIfChanged(ref _completedProjectsNumber, value);
+    }
+    
+    private int _failedProjectsNumber;
+
+    public int FailedProjectsNumber
+    {
+        get => _failedProjectsNumber;
+        set => this.RaiseAndSetIfChanged(ref _failedProjectsNumber, value);
     }
 
     private int _employeesNumber;
@@ -198,7 +214,5 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         => MainAreaContent = _gameMap;
 
     public void SetOfficeState(int officeId, OfficeStates officeState)
-    {
-        
-    }
+        => _gameMap.ChangeOfficeImage(officeId, officeState);
 }

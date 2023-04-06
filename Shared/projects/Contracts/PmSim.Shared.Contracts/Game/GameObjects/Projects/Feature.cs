@@ -1,26 +1,38 @@
 ﻿using PmSim.Shared.Contracts.Interfaces;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Projects
+namespace PmSim.Shared.Contracts.Game.GameObjects.Projects;
+
+public class Feature : ITranslationObject
 {
-    public class Feature : ITranslationObject, ICloneable
-    {
-        public int DescriptionNumber { get; }
+    public int DescriptionNumber { get; }
 
-        public ProgressPoints Points { get; }
+    public ProgressPoints Points { get; set; }
 
-        public Reward Reward { get; }
+    public Reward Reward { get; }
         
-        public bool IsDone
-            => Points.IsDone;
+    public bool IsDone
+        => Points.IsDone;
 
-        public Feature(int nameNumber, ProgressPoints points, Reward reward)
+    public Feature(int nameNumber, ProgressPoints points, Reward reward)
+    {
+        DescriptionNumber = nameNumber;
+        Points = points;
+        Reward = reward;
+    }
+    
+    public Feature(Feature feature)
+        : this(feature.DescriptionNumber, 
+            new ProgressPoints(feature.Points), new Reward(feature.Reward))
+    { }
+
+    protected static Feature[] Copy(Feature[] features)
+    {
+        var newFeatures = new Feature[features.Length];
+        for (var i = 0; i < features.Length; ++i)
         {
-            DescriptionNumber = nameNumber;
-            Points = points;
-            Reward = reward;
+            newFeatures[i] = new Feature(features[i]);
         }
 
-        public virtual object Clone()
-            => new Feature(DescriptionNumber, Points.Clone() as ProgressPoints, Reward.Clone() as Reward);
+        return newFeatures;
     }
 }

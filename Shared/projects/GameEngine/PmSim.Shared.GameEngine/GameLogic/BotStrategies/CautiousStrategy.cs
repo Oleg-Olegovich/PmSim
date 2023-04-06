@@ -26,7 +26,6 @@ internal class CautiousStrategy : BotStrategy
                 Bot.OfficeIndexes.Add(i);
                 Bot.Money -= Game.Offices[i].RentalPrice;
                 Bot.IsStartupOpen = true;
-                Game.Offices[i].AddEmployee(Bot);
             }
 
             return;
@@ -71,7 +70,7 @@ internal class CautiousStrategy : BotStrategy
         var money = Bot.Money;
         foreach (var index in Bot.OfficeIndexes)
         {
-            while (Game.Offices[index].Employees.Count < Game.Offices[index].Capacity && Bot.ActionsNumber > 0
+            while (Bot.Employees.Count < Game.Offices[index].Capacity && Bot.ActionsNumber > 0
                    && money > 0)
             {
                 --Bot.ActionsNumber;
@@ -91,9 +90,9 @@ internal class CautiousStrategy : BotStrategy
 
     private void AssignToWork()
     {
-        foreach (var employee in Bot.OfficeIndexes.SelectMany(index => Game.Offices[index].Employees))
+        foreach (var employee in Bot.OfficeIndexes.SelectMany(index => Bot.Employees))
         {
-            employee.CurrentTask = new EmployeeWorkTask(Bot, Bot.Projects[Random.Next(Bot.Projects.Count)],
+            employee.CurrentTask = new EmployeeDevelopmentTask(Bot, Bot.Projects[Random.Next(Bot.Projects.Count)],
                 Random.Next(4));
         }
     }

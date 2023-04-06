@@ -11,9 +11,9 @@ namespace PmSim.Shared.GameEngine.GameLogic.Incidents
         
         internal override void Process(Player targetPlayer)
         {
-            for (var i = 0; i < targetPlayer.Projects.Count; ++i)
+            foreach (var project in targetPlayer.Projects)
             {
-                targetPlayer.Projects[i] = targetPlayer.Projects[i].LastBackUp.Clone() as Project;
+                project.ResetToBackUp();
             }
         }
     }

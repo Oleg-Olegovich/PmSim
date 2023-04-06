@@ -33,6 +33,7 @@
                     <Image Classes="TimeIcon Icon" />
                 </Viewbox>
                 <TextBlock Text="{Binding Time}"
+                           Classes="Text"
                            VerticalAlignment="Center" />
             </StackPanel>
 
@@ -44,6 +45,7 @@
                     <Image Classes="ActionsIcon Icon" />
                 </Viewbox>
                 <TextBlock Text="{Binding ActionsNumber}"
+                           Classes="Text"
                            VerticalAlignment="Center" />
             </StackPanel>
 
@@ -55,6 +57,7 @@
                     <Image Classes="MoneyIcon Icon" />
                 </Viewbox>
                 <TextBlock Text="{Binding Money}"
+                           Classes="Text"
                            VerticalAlignment="Center" />
             </StackPanel>
 
@@ -66,10 +69,19 @@
                     <Image Classes="ProjectsIcon Icon" />
                 </Viewbox>
                 <TextBlock Text="{Binding CompletedProjectsNumber}"
+                           Classes="Text"
                            VerticalAlignment="Center" />
                 <TextBlock Text="/"
+                           Classes="Text"
                            VerticalAlignment="Center" />
                 <TextBlock Text="{Binding ProjectsNumber}"
+                           Classes="Text"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="/"
+                           Classes="Text"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="{Binding FailedProjectsNumber}"
+                           Classes="Error"
                            VerticalAlignment="Center" />
             </StackPanel>
 
@@ -80,7 +92,14 @@
                 <Viewbox Stretch="Uniform">
                     <Image Classes="OfficesIcon Icon" />
                 </Viewbox>
+                <TextBlock Text="{Binding TechSupportOfficersNumber}"
+                           Classes="Text"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="/"
+                           Classes="Text"
+                           VerticalAlignment="Center" />
                 <TextBlock Text="{Binding OfficesNumber}"
+                           Classes="Text"
                            VerticalAlignment="Center" />
             </StackPanel>
 
@@ -92,10 +111,13 @@
                     <Image Classes="EmployeesIcon Icon" />
                 </Viewbox>
                 <TextBlock Text="{Binding EmployeesNumber}"
+                           Classes="Text"
                            VerticalAlignment="Center" />
                 <TextBlock Text="/"
+                           Classes="Text"
                            VerticalAlignment="Center" />
                 <TextBlock Text="{Binding MaxEmployeesNumber}"
+                           Classes="Text"
                            VerticalAlignment="Center" />
             </StackPanel>
 

@@ -6,7 +6,7 @@ namespace PmSim.Shared.GameEngine.GameLogic;
 
 internal static class PlayerLogic
 {
-    internal static PlayerStatus GetPlayerStatus(Player player)
+    internal static PlayerStatus GetStatus(Player player)
         => new()
         {
             Id = player.Id,
@@ -53,7 +53,7 @@ internal static class PlayerLogic
             if (project.IsDone && !project.Reward.IsCollected)
             {
                 player.Money += project.Reward.Prize;
-                for (var i = 0; i < project.Reward.Opportunities; ++i)
+                for (var i = 0; i < project.Reward.Opportunity; ++i)
                 {
                     player.Opportunities.Add(random.Next(1));
                 }

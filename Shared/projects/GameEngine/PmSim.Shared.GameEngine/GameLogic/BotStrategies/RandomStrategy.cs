@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.GameObjects.Employees;
-using PmSim.Shared.GameEngine.Dto;
 
 
 namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
@@ -31,7 +30,6 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
                     Bot.OfficeIndexes.Add(i);
                     Bot.Money -= Game.Offices[i].RentalPrice;
                     Bot.IsStartupOpen = true;
-                    Game.Offices[i].AddEmployee(Bot);
                 }
 
                 return;
@@ -76,7 +74,7 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
             var money = Bot.Money;
             foreach (var index in Bot.OfficeIndexes)
             {
-                while (Game.Offices[index].Employees.Count < Game.Offices[index].Capacity && Bot.ActionsNumber > 0
+                while (Bot.Employees.Count < Bot.MaxEmployeesNumber && Bot.ActionsNumber > 0
                        && money > 0)
                 {
                     --Bot.ActionsNumber;
@@ -96,9 +94,9 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
 
         private void AssignToWork()
         {
-            foreach (var employee in Bot.OfficeIndexes.SelectMany(index => Game.Offices[index].Employees))
+            foreach (var employee in Bot.OfficeIndexes.SelectMany(index => Bot.Employees))
             {
-                employee.CurrentTask = new EmployeeWorkTask(Bot, Bot.Projects[Random.Next(Bot.Projects.Count)],
+                employee.CurrentTask = new EmployeeDevelopmentTask(Bot, Bot.Projects[Random.Next(Bot.Projects.Count)],
                     Random.Next(4));
             }
         }

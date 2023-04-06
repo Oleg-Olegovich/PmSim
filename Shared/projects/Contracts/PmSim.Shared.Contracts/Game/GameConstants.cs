@@ -1,6 +1,6 @@
 ﻿using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 using PmSim.Shared.Contracts.Game.GameObjects.Projects;
-using PmSim.Shared.GameEngine.Dto;
 
 namespace PmSim.Shared.Contracts.Game;
 
@@ -96,15 +96,15 @@ public static class GameConstants
         {
             new Project(0, new ProgressPoints(10, 9, 0, 6), new Reward(0, 40, 1), 4, new[]
             {
-                Features[0].Clone() as Feature,
+                new Feature(Features[0])
             }),
             new Project(1, new ProgressPoints(6, 3, 0, 4), new Reward(30, 0, 0), 3, new[]
             {
-                Features[1].Clone() as Feature,
+                new Feature(Features[1])
             }),
             new Project(2, new ProgressPoints(13, 11, 0, 10), new Reward(0, 40, 1), 4, new[]
             {
-                Features[2].Clone() as Feature,
+                new Feature(Features[2])
             }),
             new Project(3, new ProgressPoints(15, 7, 0, 6), new Reward(0, 30, 0), 4, null),
             new Project(4, new ProgressPoints(10, 6, 0, 4), new Reward(0, 20, 0), 3, null),

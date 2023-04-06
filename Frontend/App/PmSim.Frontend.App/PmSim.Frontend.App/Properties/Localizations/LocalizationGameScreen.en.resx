@@ -40,10 +40,10 @@
         <value>Money</value>
     </data>
     <data name="ToolTipOfficesNumber" xml:space="preserve">
-        <value>Number of your offices</value>
+        <value>Number of your offices and tech support</value>
     </data>
     <data name="ToolTipProjectsNumber" xml:space="preserve">
-        <value>Number of your projects</value>
+        <value>Number of your projects: completed, total, failed</value>
     </data>
     <data name="ToolTipTime" xml:space="preserve">
         <value>Time to the end of the stage</value>

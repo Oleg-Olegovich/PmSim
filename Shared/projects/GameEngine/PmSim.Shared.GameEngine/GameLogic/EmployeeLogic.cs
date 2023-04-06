@@ -1,12 +1,20 @@
 ﻿using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 using PmSim.Shared.Contracts.Game.GameObjects.Projects;
-using PmSim.Shared.GameEngine.Dto;
 
 namespace PmSim.Shared.GameEngine.GameLogic;
 
 internal static class EmployeeLogic
 {
+    internal static EmployeeStatus GetStatus(Employee employee)
+        => new()
+        {
+            NameNumbers = employee.NameNumbers,
+            Skills = employee.Skills,
+            Salary = employee.Salary,
+            TaskType = employee.TaskType
+        };
+    
     internal static Employee Generate()
     {
         var name = GenerateName();
@@ -89,9 +97,9 @@ internal static class EmployeeLogic
         switch (employee.CurrentTask)
         {
             case EmployeeBackUpTask backUpTask:
-                backUpTask.Project.LastBackUp = (Project) backUpTask.Project.Clone();
+                backUpTask.Project.LastBackUp = new ProjectBackUp(backUpTask.Project);
                 break;
-            case EmployeeWorkTask workTask:
+            case EmployeeDevelopmentTask workTask:
                 switch (workTask.ProgressPointNumber)
                 {
                     case 0:

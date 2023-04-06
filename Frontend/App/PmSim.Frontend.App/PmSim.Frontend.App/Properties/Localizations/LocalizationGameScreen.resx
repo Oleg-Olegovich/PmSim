@@ -40,10 +40,10 @@
         <value>Деньги</value>
     </data>
     <data name="ToolTipOfficesNumber" xml:space="preserve">
-        <value>Кол-во ваших офисов</value>
+        <value>Кол-во ваших офисов и тех.поддержки</value>
     </data>
     <data name="ToolTipProjectsNumber" xml:space="preserve">
-        <value>Кол-во ваших проектов</value>
+        <value>Кол-во ваших проектов: завершённые, всего, проваленные</value>
     </data>
     <data name="ToolTipEmployeesNumber" xml:space="preserve">
         <value>Кол-во ваших сотрудников</value>

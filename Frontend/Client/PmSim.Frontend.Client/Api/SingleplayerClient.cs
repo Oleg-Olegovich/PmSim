@@ -1,7 +1,9 @@
 ﻿using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.GameObjects.Projects;
 using PmSim.Shared.Contracts.Interfaces;
 using PmSim.Shared.GameEngine;
 
@@ -64,6 +66,19 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
+    public int TechSupportOfficersNumber
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.TechSupportOfficersNumber = value;
+        }
+    }
+
     public int ProjectsNumber
     {
         set
@@ -74,11 +89,6 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             }
 
             _gameScreenLogic.ProjectsNumber = value;
-            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
-            if (status != null)
-            {
-                status.CompletedProjects = value;
-            }
         }
     }
     
@@ -97,6 +107,19 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             {
                 status.CompletedProjects = value;
             }
+        }
+    }
+
+    public int FailedProjectsNumber
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.FailedProjectsNumber = value;
         }
     }
 
@@ -229,7 +252,9 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
-    public int AddEmployee
+    public int RemovePlayer { get; set; }
+
+    public EmployeeStatus AddEmployee
     {
         set
         {
@@ -237,7 +262,25 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
-    public int RemoveEmployee
+    public EmployeeStatus RemoveEmployee
+    {
+        set
+        {
+            
+        }
+    }
+
+    public Project Project { get; set; }
+
+    public int AddOpportunity
+    {
+        set
+        {
+            
+        }
+    }
+
+    public int RemoveOpportunity
     {
         set
         {

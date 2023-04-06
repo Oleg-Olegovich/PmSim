@@ -51,6 +51,30 @@ public class Player : Employee
         set => StatusChangeNotifier.MaxEmployeesNumber = _maxEmployeesNumber = value;
     }
 
+    private int _officesNumber;
+
+    public int OfficesNumber
+    {
+        get => _officesNumber;
+        set => StatusChangeNotifier.OfficesNumber = _officesNumber;
+    }
+
+    private int _techSupportOfficersNumber;
+
+    public int TechSupportOfficersNumber
+    {
+        get => _techSupportOfficersNumber;
+        set
+        {
+            if (value < 0 || value > OfficesNumber)
+            {
+                return;
+            }
+            
+            _techSupportOfficersNumber = value;
+        }
+    }
+
     public ObservableCollection<Employee> Employees { get; } = new();
 
     /// <summary>
@@ -73,6 +97,7 @@ public class Player : Employee
         Name = name;
         Money = capital;
         Employees.CollectionChanged += EmployeesCollectionChanged;
+        Employees.Add(this);
         Projects.CollectionChanged += ProjectsCollectionChanged;
         Opportunities.CollectionChanged += OpportunitiesCollectionChanged;
     }
@@ -89,6 +114,7 @@ public class Player : Employee
         }
 
         Name = name;
+        Employees.Add(this);
     }
 
     private void EmployeesCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -99,14 +125,14 @@ public class Player : Employee
             case NotifyCollectionChangedAction.Add:
                 if (e.NewItems?[0] is Employee newEmployee)
                 {
-                    StatusChangeNotifier.AddEmployee = Employees.Count - 1;
+                    StatusChangeNotifier.AddEmployee = newEmployee;
                 }
 
                 break;
             case NotifyCollectionChangedAction.Remove:
                 if (e.OldItems?[0] is Employee oldEmployee)
                 {
-                    StatusChangeNotifier.RemoveEmployee = Employees.Count - 1;
+                    StatusChangeNotifier.RemoveEmployee = oldEmployee;
                 }
 
                 break;
@@ -124,19 +150,13 @@ public class Player : Employee
         switch (e.Action)
         {
             case NotifyCollectionChangedAction.Add:
-                if (e.NewItems?[0] is Employee newEmployee)
+                if (e.NewItems?[0] is Project newProject)
                 {
-                    StatusChangeNotifier.AddEmployee = Employees.Count - 1;
+                    StatusChangeNotifier.Project = newProject;
                 }
 
                 break;
             case NotifyCollectionChangedAction.Remove:
-                if (e.OldItems?[0] is Employee oldEmployee)
-                {
-                    StatusChangeNotifier.RemoveEmployee = Employees.Count - 1;
-                }
-
-                break;
             case NotifyCollectionChangedAction.Replace:
             case NotifyCollectionChangedAction.Move:
             case NotifyCollectionChangedAction.Reset:
@@ -147,20 +167,19 @@ public class Player : Employee
 
     private void OpportunitiesCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
-        StatusChangeNotifier.EmployeesNumber = Employees.Count;
         switch (e.Action)
         {
             case NotifyCollectionChangedAction.Add:
-                if (e.NewItems?[0] is Employee newEmployee)
+                if (e.NewItems?[0] is int newOpportunity)
                 {
-                    StatusChangeNotifier.AddEmployee = Employees.Count - 1;
+                    StatusChangeNotifier.AddOpportunity = newOpportunity;
                 }
 
                 break;
             case NotifyCollectionChangedAction.Remove:
-                if (e.OldItems?[0] is Employee oldEmployee)
+                if (e.OldItems?[0] is int oldOpportunity)
                 {
-                    StatusChangeNotifier.RemoveEmployee = Employees.Count;
+                    StatusChangeNotifier.RemoveOpportunity = oldOpportunity;
                 }
 
                 break;

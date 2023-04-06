@@ -16,7 +16,7 @@
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="8">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_normal.png" />
+                <Image Source="{Binding OfficeImages[8]}" />
 
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -44,7 +44,7 @@
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="5">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_normal.png" />
+                <Image Source="{Binding OfficeImages[5]}" />
 
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">

@@ -1,6 +1,6 @@
 ﻿namespace PmSim.Shared.Contracts.Game.GameObjects.Projects
 {
-    public class ProgressPoints : ICloneable
+    public class ProgressPoints
     {
         private int _programming = 0, _design = 0, _music = 0, _management = 0;
         
@@ -39,7 +39,12 @@
             Management = management;
         }
 
-        public object Clone()
-            => MemberwiseClone();
+        public ProgressPoints(ProgressPoints points)
+        {
+            Programming = points.Programming;
+            Music = points.Music;
+            Design = points.Design;
+            Management = points.Management;
+        }
     }
 }

@@ -2,6 +2,6 @@
 {
     public class ExecutorActionRequest : OfficeActionRequest
     {
-        public int ExecutorNumber { get; set; }
+        public int EmployeeId { get; set; }
     }
 }

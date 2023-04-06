@@ -1,5 +1,4 @@
 ﻿using PmSim.Shared.Contracts.Enums;
-using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 
 namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
 
@@ -10,8 +9,6 @@ public class Office
     public int Capacity { get; }
         
     public int RentalPrice { get; }
-
-    public bool DoesHaveTechSupport { get; set; }
 
     public Office(OfficeTypes type)
     {
@@ -31,10 +28,5 @@ public class Office
                 RentalPrice = GameConstants.BigOfficeRentPrice;
                 break;
         }
-    }
-
-    public void AddEmployee(Employee employee)
-    {
-        Employees.Add(employee);
     }
 }

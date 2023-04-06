@@ -1,5 +1,7 @@
 ﻿using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Game.GameObjects.Employees;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.GameObjects.Projects;
 
 namespace PmSim.Shared.Contracts.Interfaces;
 
@@ -16,9 +18,13 @@ public interface IStatusChangeNotifier
     
     public int OfficesNumber { set; }
     
+    public int TechSupportOfficersNumber { set; }
+    
     public int ProjectsNumber { set; }
     
     public int CompletedProjectsNumber { set; }
+    
+    public int FailedProjectsNumber { set; }
     
     public int EmployeesNumber { set; }
     
@@ -42,11 +48,11 @@ public interface IStatusChangeNotifier
     
     public EmployeeStatus AddEmployee { set; }
     
-    public int RemoveEmployee { set; }
+    public EmployeeStatus RemoveEmployee { set; }
     
-    public ProjectStatus Project { set; }
+    public Project Project { set; }
     
-    public OpportunityModel AddOpportunity { set; }
+    public int AddOpportunity { set; }
     
     public int RemoveOpportunity { set; }
 
