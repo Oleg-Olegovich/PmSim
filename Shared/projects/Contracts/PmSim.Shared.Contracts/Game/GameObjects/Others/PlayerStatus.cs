@@ -7,9 +7,8 @@ namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
 /// <summary>
 /// Players or bots status (property, money).
 /// </summary>
-public class PlayerStatus : INotifyPropertyChanged
+public sealed class PlayerStatus : INotifyPropertyChanged
 {
-
     [JsonPropertyName("id")] 
     public int Id { get; set; }
 
@@ -54,6 +53,6 @@ public class PlayerStatus : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) 
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null) 
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

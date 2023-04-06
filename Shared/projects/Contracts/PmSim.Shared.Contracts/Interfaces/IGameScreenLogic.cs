@@ -37,6 +37,8 @@ public interface IGameScreenLogic
     
     public int ProjectsNumber { get; set; }
     
+    public int CompletedProjectsNumber { get; set; }
+    
     public int EmployeesNumber { get; set; }
     
     public int MaxEmployeesNumber { get; set; }

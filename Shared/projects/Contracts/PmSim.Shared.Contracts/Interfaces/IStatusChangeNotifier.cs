@@ -18,6 +18,8 @@ public interface IStatusChangeNotifier
     
     public int ProjectsNumber { set; }
     
+    public int CompletedProjectsNumber { set; }
+    
     public int EmployeesNumber { set; }
     
     public int MaxEmployeesNumber { set; }
@@ -35,6 +37,18 @@ public interface IStatusChangeNotifier
     public IEnumerable<PlayerStatus> Players { set; }
     
     public PlayerStatus AnotherPlayerStatus { set; }
+    
+    public int RemovePlayer { set; }
+    
+    public EmployeeStatus AddEmployee { set; }
+    
+    public int RemoveEmployee { set; }
+    
+    public ProjectStatus Project { set; }
+    
+    public OpportunityModel AddOpportunity { set; }
+    
+    public int RemoveOpportunity { set; }
 
     public Task ChangeCurrentStageAsync(GameStages stage, int time);
 

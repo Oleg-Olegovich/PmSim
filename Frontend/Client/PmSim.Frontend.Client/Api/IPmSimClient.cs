@@ -36,7 +36,7 @@ public interface IPmSimClient
 
     public void SetBackground(Professions profession);
 
-    public void DismissAllEmployees();
+    public void DismissEmployees(int[] employeesIds);
 
     public void ConductInterview();
 
@@ -49,21 +49,21 @@ public interface IPmSimClient
 
     public void DismissTechSupportOfficer();
 
-    public void AssignToWork(int employeeNumber, int projectNumber, Professions profession);
+    public void AssignToWork(int employeeId, int projectNumber, Professions profession);
 
-    public void AssignToInventProject(int employeeNumber);
+    public void AssignToInventProject(int employeeId);
 
-    public void AssignToMakeBackup(int employeeNumber);
+    public void AssignToMakeBackup(int employeeId);
 
-    public void CancelTask(int employeeNumber);
+    public void CancelTask(int employeeId);
 
     public void PutProjectUpForAuction(int projectNumber);
 
     public void ProposeProject(int projectNumber);
 
-    public void PutEmployeeUpForAuction(int employeeNumber);
+    public void PutEmployeeUpForAuction(int employeeId);
 
-    public void ProposeEmployee(int employeeNumber);
+    public void ProposeEmployee(int employeeId);
 
     public void UseOpportunity(int opportunityNumber);
     

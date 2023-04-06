@@ -12,8 +12,6 @@ public class Office
     public int RentalPrice { get; }
 
     public bool DoesHaveTechSupport { get; set; }
-    
-    public List<Employee> Employees { get; } = new();
 
     public Office(OfficeTypes type)
     {

@@ -80,7 +80,15 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         get => _projectsNumber;
         set => this.RaiseAndSetIfChanged(ref _projectsNumber, value);
     }
-    
+
+    private int _completedProjectsNumber;
+
+    public int CompletedProjectsNumber
+    {
+        get => _completedProjectsNumber;
+        set => this.RaiseAndSetIfChanged(ref _completedProjectsNumber, value);
+    }
+
     private int _employeesNumber;
     
     public int EmployeesNumber
@@ -161,7 +169,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
             MainAreaContent = new InformationDialogViewModel(this, LocalizationGameScreen.NotEnoughMoney);
             return;
         }
-        
+
         try
         {
             _client.RentOffice(officeId);
@@ -169,6 +177,10 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         catch (PmSimException exception)
         {
             BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+        }
+        finally
+        {
+            ShowMapMenu();
         }
     }
 

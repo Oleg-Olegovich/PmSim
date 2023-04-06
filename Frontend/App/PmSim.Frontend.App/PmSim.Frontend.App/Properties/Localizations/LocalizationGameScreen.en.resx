@@ -55,7 +55,7 @@
         <value>Wait for the other players to connect.</value>
     </data>
     <data name="OfficeRentInfo" xml:space="preserve">
-        <value>This office is unoccupied.
+        <value>                This office is unoccupied.
             Rental price: {0}
             Capacity: {1}
             

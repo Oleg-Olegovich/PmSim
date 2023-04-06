@@ -81,6 +81,24 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             }
         }
     }
+    
+    public int CompletedProjectsNumber
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+
+            _gameScreenLogic.ProjectsNumber = value;
+            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
+            if (status != null)
+            {
+                status.CompletedProjects = value;
+            }
+        }
+    }
 
     public int EmployeesNumber
     {
@@ -211,6 +229,22 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
+    public int AddEmployee
+    {
+        set
+        {
+            
+        }
+    }
+
+    public int RemoveEmployee
+    {
+        set
+        {
+            
+        }
+    }
+
     public SingleplayerClient(string playerName) 
         => _playerName = playerName;
 
@@ -254,7 +288,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     public void SetBackground(Professions profession) 
         => _game?.SetBackground(_playerId, profession);
 
-    public void DismissAllEmployees()
+    public void DismissEmployees(int[] employeesIds)
     {
     }
 
@@ -278,19 +312,19 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     {
     }
 
-    public void AssignToWork(int employeeNumber, int projectNumber, Professions profession)
+    public void AssignToWork(int employeeId, int projectNumber, Professions profession)
     {
     }
 
-    public void AssignToInventProject(int employeeNumber)
+    public void AssignToInventProject(int employeeId)
     {
     }
 
-    public void AssignToMakeBackup(int employeeNumber)
+    public void AssignToMakeBackup(int employeeId)
     {
     }
 
-    public void CancelTask(int employeeNumber)
+    public void CancelTask(int employeeId)
     {
     }
 
@@ -302,11 +336,11 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     {
     }
 
-    public void PutEmployeeUpForAuction(int employeeNumber)
+    public void PutEmployeeUpForAuction(int employeeId)
     {
     }
 
-    public void ProposeEmployee(int employeeNumber)
+    public void ProposeEmployee(int employeeId)
     {
     }
 

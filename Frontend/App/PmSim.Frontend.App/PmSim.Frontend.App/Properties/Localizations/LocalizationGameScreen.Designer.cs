@@ -96,7 +96,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Этот офис незанят.
+        ///   Looks up a localized string similar to                 Этот офис незанят.
         ///            Стоимость аренды: {0}
         ///            Вместимость: {1}
         ///            

@@ -5,7 +5,7 @@ using PmSim.Shared.GameEngine.Dto;
 
 namespace PmSim.Shared.GameEngine.GameLogic;
 
-internal class EmployeeLogic
+internal static class EmployeeLogic
 {
     internal static Employee Generate()
     {

@@ -122,7 +122,7 @@ public class Game
         }
 
         Offices[officeId].OwnerId = playerId;
-        
+        SendOfficeStateToEachPlayer(officeId);
         player.Money -= Offices[officeId].RentalPrice;
         if (player.IsStartupOpen)
         {
@@ -136,29 +136,29 @@ public class Game
     public void CancelOfficeLease(int playerId, int officeId)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || Offices.Count(x => x.OwnerId == playerId) < 2 || officeId < 0
-            || officeId >= Offices.Length || Offices[officeId].OwnerId != playerId)
+        if (player.IsOut || officeId < 0 || officeId >= Offices.Length 
+            || Offices[officeId].OwnerId != playerId 
+            || player.MaxEmployeesNumber - Offices[officeId].Capacity < player.Employees.Count)
         {
             throw new PmSimException("It is impossible to cancel the office lease.");
         }
-
-        Offices[officeId].Employees.Clear();
+        
         Offices[officeId].OwnerId = -1;
+        SendOfficeStateToEachPlayer(officeId);
     }
 
-    private void DismissAllEmployees(int playerId, int officeId)
+    public void DismissEmployees(int playerId, int[] employeesIds)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || officeId < 0 || officeId >= Offices.Length
-            || Offices[officeId].OwnerId != playerId)
+        if (player.IsOut)
         {
             throw new PmSimException("It is impossible to dismiss all employees.");
         }
 
-        Offices[officeId].Employees.Clear();
+        throw new NotImplementedException();
     }
 
-    private Employee ConductInterview(int playerId, int officeId)
+    public Employee ConductInterview(int playerId)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || officeId < 0 || officeId >= Offices.Length
@@ -509,10 +509,15 @@ public class Game
         }
     }
 
-    private void SendOfficeStateToEachPlayer(int officeId, OfficeStates officeState)
+    private void SendOfficeStateToEachPlayer(int officeId)
     {
         foreach (var player in _players)
         {
+            var officeState = Offices[officeId].OwnerId == -1 
+                ? OfficeStates.Unoccupied 
+                : player.Id == Offices[officeId].OwnerId 
+                    ? OfficeStates.Mine 
+                    : OfficeStates.NotMine;
             player.StatusChangeNotifier.ChangeOfficeState(officeId, officeState);
         }
     }

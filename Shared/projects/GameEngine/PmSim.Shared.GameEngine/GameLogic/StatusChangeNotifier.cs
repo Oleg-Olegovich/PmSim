@@ -12,7 +12,7 @@ internal class StatusChangeNotifier : IStatusChangeNotifier
     public int ActionsNumber { get; set; }
     public int Money { get; set; }
     public int OfficesNumber { get; set; }
-    public int ProjectsNumber { get; set; }
+    public int CompletedProjectsNumber { get; set; }
     public int EmployeesNumber { get; set; }
     public int MaxEmployeesNumber { get; set; }
     public int Programming { get; set; }

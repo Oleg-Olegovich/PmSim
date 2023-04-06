@@ -65,6 +65,10 @@
                 <Viewbox Stretch="Uniform">
                     <Image Classes="ProjectsIcon Icon" />
                 </Viewbox>
+                <TextBlock Text="{Binding CompletedProjectsNumber}"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="/"
+                           VerticalAlignment="Center" />
                 <TextBlock Text="{Binding ProjectsNumber}"
                            VerticalAlignment="Center" />
             </StackPanel>

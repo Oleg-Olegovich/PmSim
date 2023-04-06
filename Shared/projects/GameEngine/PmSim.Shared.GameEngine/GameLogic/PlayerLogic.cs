@@ -4,7 +4,7 @@ using PmSim.Shared.Contracts.Game.GameObjects.Others;
 
 namespace PmSim.Shared.GameEngine.GameLogic;
 
-internal class PlayerLogic
+internal static class PlayerLogic
 {
     internal static PlayerStatus GetPlayerStatus(Player player)
         => new()
