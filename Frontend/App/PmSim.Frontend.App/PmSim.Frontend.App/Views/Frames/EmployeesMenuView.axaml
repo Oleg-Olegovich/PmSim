@@ -1,0 +1,52 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d"
+             x:Class="PmSim.Frontend.App.Views.Frames.EmployeesMenuView">
+    
+    <Grid RowDefinitions="*, Auto, Auto, Auto, Auto, *"
+          ColumnDefinitions="*, *, *">
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Classes="Header"
+                   Text="{Binding Name}"/>
+        
+        <ListBox Grid.Row="1"
+                 Grid.Column="1" 
+                 Classes="Common"
+                 SelectionMode="Multiple,Toggle"
+                 Items="{Binding Employees}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto" MinHeight="48"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Stretch="UniformToFill" Source="{Binding Poster}"/>
+                        <Border Grid.Row="1" Classes="title">
+                            <Grid ColumnDefinitions="*, 0.4*" Margin="4">
+                                <TextBlock FontSize="18" Text="{Binding Title}" />
+                                <TextBlock FontSize="24" Grid.Column="1" Text="{Binding VoteAverage}"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemWidth="340" ItemHeight="480" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        
+        <Button Grid.Row="4"
+                Grid.Column="1"
+                Classes="Stretch AttentionGrabbing"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
+                Command="{Binding DonateCommand}"/>
+    </Grid>
+</UserControl>

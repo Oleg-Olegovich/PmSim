@@ -78,6 +78,35 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Пожертвование.
+        /// </summary>
+        public static string Donation {
+            get {
+                return ResourceManager.GetString("Donation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Собеседование.
+        /// </summary>
+        public static string Interview {
+            get {
+                return ResourceManager.GetString("Interview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to                 Вы проиграли :(
+        ///            Вы всё ещё можете наблюдать за ходом игры. Чтобы выйти, нажмите на кнопку в верхнем правом углу.
+        ///        .
+        /// </summary>
+        public static string Losing {
+            get {
+                return ResourceManager.GetString("Losing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Недостаточно денег!.
         /// </summary>
         public static string NotEnoughMoney {
@@ -115,6 +144,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static string Players {
             get {
                 return ResourceManager.GetString("Players", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Зарплата.
+        /// </summary>
+        public static string Salary {
+            get {
+                return ResourceManager.GetString("Salary", resourceCulture);
             }
         }
         

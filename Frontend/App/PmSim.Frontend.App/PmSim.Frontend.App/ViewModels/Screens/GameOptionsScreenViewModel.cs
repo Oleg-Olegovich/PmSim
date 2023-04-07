@@ -214,6 +214,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
             var gameScreen = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
             _client.CreateNewGame(settings, gameScreen);
             BaseWindow.Content = gameScreen;
+            BaseWindow.Logger.Information("Showed GameScreen");
         }
         catch (PmSimException exception)
         {
@@ -235,7 +236,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         DiplomacyRealTime = defaultSettings.DiplomacyRealTime;
         IncidentRealTime = defaultSettings.IncidentRealTime;
         AuctionRealTime = defaultSettings.AuctionRealTime;
-        SprintActionsNumber = defaultSettings.SprintRealTime;
+        SprintActionsNumber = defaultSettings.SprintActionsNumbers;
         StartUpCapital = defaultSettings.StartUpCapital;
     }
 }

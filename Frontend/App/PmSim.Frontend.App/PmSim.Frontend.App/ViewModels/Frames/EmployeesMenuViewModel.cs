@@ -2,9 +2,9 @@
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
 
-public class LosingViewModel : BasicFrameViewModel
+public class EmployeesMenuViewModel : BasicFrameViewModel
 {
-    public LosingViewModel(GameScreenViewModel gameScreen) 
+    public EmployeesMenuViewModel(GameScreenViewModel gameScreen) 
         : base(gameScreen)
     {
     }

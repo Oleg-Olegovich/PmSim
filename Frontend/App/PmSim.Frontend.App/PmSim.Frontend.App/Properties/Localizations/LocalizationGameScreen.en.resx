@@ -71,4 +71,17 @@
     <data name="OfficeIsOccupiedByAnother" xml:space="preserve">
         <value>The office is occupied by another player!</value>
     </data>
+    <data name="Losing" xml:space="preserve">
+        <value>                You have lost : (
+            You can still watch the game progress. To exit, click on the button in the upper right corner.</value>
+    </data>
+    <data name="Donation" xml:space="preserve">
+        <value>Donation</value>
+    </data>
+    <data name="Interview" xml:space="preserve">
+        <value>Interview</value>
+    </data>
+    <data name="Salary" xml:space="preserve">
+        <value>Salary</value>
+    </data>
 </root>

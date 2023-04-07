@@ -16,7 +16,6 @@
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
                    Classes="Header"
-                   TextWrapping="Wrap"
                    Text="{x:Static localizations1:LocalizationGameScreen.TextBlockWaitConnection}"/>
     </Grid>
 </UserControl>

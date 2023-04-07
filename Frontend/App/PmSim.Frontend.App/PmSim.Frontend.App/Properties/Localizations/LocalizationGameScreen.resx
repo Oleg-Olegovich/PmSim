@@ -71,4 +71,18 @@
     <data name="OfficeIsOccupiedByAnother" xml:space="preserve">
         <value>Офис занят другим игроком!</value>
     </data>
+    <data name="Losing" xml:space="preserve">
+        <value>                Вы проиграли :(
+            Вы всё ещё можете наблюдать за ходом игры. Чтобы выйти, нажмите на кнопку в верхнем правом углу.
+        </value>
+    </data>
+    <data name="Donation" xml:space="preserve">
+        <value>Пожертвование</value>
+    </data>
+    <data name="Interview" xml:space="preserve">
+        <value>Собеседование</value>
+    </data>
+    <data name="Salary" xml:space="preserve">
+        <value>Зарплата</value>
+    </data>
 </root>

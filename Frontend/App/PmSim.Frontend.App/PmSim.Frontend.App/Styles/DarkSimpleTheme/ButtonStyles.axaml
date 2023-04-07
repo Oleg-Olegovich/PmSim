@@ -14,44 +14,57 @@
     <!-- Add Styles Here -->
 
     <Styles.Resources>
-        <SolidColorBrush x:Key="AttentionGrabbingButtonBackground"
-                         Color="#FFC30942"/>
-
-        <SolidColorBrush x:Key="AttentionGrabbingButtonBackgroundDisabled"
-                         Color="#FF8C2645"/>
-
-        <SolidColorBrush x:Key="AttentionGrabbingButtonBackgroundPointOver"
-                         Color="#FFFF145C"/>
-
-        <SolidColorBrush x:Key="AttentionGrabbingButtonBackgroundPressed"
-                         Color="#FF9C0B37"/>
-
         <SolidColorBrush x:Key="WhiteForeground"
                          Color="#FFFFFFFF"/>
     </Styles.Resources>
 
     <!-- Menu button -->
-    <Style Selector="Button.Menu">
+    <Style Selector="Button.Menu /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background"
+                Value="#7e7eb0"/>
+        <Setter Property="TextBlock.Foreground"
+                Value="{DynamicResource WhiteForeground}"/>
+    </Style>
+
+    <Style Selector="Button.Menu:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background"
+                Value="#9e9ece"/>
+        <Setter Property="TextBlock.Foreground"
+                Value="{DynamicResource WhiteForeground}"/>
+    </Style>
+
+    <Style Selector="Button.Menu:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background"
+                Value="#6868a2"/>
+        <Setter Property="TextBlock.Foreground"
+                Value="{DynamicResource WhiteForeground}"/>
+    </Style>
+    
+    <Style Selector="Button.Menu:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background"
+                Value="#336363"/>
+        <Setter Property="TextBlock.Foreground"
+                Value="{DynamicResource WhiteForeground}"/>
     </Style>
 
     <!-- Attention-grabbing button -->
     <Style Selector="Button.AttentionGrabbing /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Background"
-                Value="{DynamicResource AttentionGrabbingButtonBackground}"/>
+                Value="#ca4444"/>
         <Setter Property="TextBlock.Foreground"
                 Value="{DynamicResource WhiteForeground}"/>
     </Style>
 
     <Style Selector="Button.AttentionGrabbing:pointerover /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Background"
-                Value="{DynamicResource AttentionGrabbingButtonBackgroundPointOver}"/>
+                Value="#ff6666"/>
         <Setter Property="TextBlock.Foreground"
                 Value="{DynamicResource WhiteForeground}"/>
     </Style>
 
     <Style Selector="Button.AttentionGrabbing:pressed /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Background"
-                Value="{DynamicResource AttentionGrabbingButtonBackgroundPressed}"/>
+                Value="#cc3333"/>
         <Setter Property="TextBlock.Foreground"
                 Value="{DynamicResource WhiteForeground}"/>
     </Style>

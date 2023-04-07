@@ -14,11 +14,7 @@
         <Setter Property="SelectionMode" Value="Single" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
-    </Style>
-
-    <Style Selector="DataGrid.Selection">
-        <Setter Property="SelectionMode"
-                Value="Extended"/>
+        <Setter Property="GridLinesVisibility" Value="All" />
     </Style>
 
     <Style Selector="DataGridColumnHeader">

@@ -10,12 +10,17 @@
     <!-- Add Styles Here -->
     
     <Style Selector="ComboBox.Bordered">
-        <Setter Property="Background" Value="#ffffff"/>
-        <Setter Property="Foreground" Value="#000033"/>
+        <Setter Property="Background" Value="#007e7eb0"/>
+        <Setter Property="Foreground" Value="#e3dbd1"/>
     </Style>
     
     <Style Selector="ComboBoxItem">
-        <Setter Property="Background" Value="#64a4a4"/>
-        <Setter Property="Foreground" Value="#000033"/>
+        <Setter Property="Background" Value="#7e7eb0"/>
+        <Setter Property="Foreground" Value="#e3dbd1"/>
+    </Style>
+    
+    <Style Selector="ComboBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#9e9ece"/>
+        <Setter Property="Foreground" Value="#e3dbd1"/>
     </Style>
 </Styles>

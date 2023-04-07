@@ -9,8 +9,8 @@
     
     <!-- Add Styles Here -->
     
-    <Style Selector="ToggleSwitch.Settings">
-        <Setter Property="Background" Value="#ffffff"/>
-        <Setter Property="Foreground" Value="#000033"/>
+    <Style Selector="NumericUpDown.Bordered">
+        <Setter Property="Background" Value="#454560"/>
+        <Setter Property="Foreground" Value="#e3dbd1"/>
     </Style>
 </Styles>

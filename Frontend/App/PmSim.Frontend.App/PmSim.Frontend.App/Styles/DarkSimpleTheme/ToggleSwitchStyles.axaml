@@ -9,8 +9,21 @@
     
     <!-- Add Styles Here -->
     
+    <Styles.Resources>
+        <SolidColorBrush x:Key="ToggleSwitchContentForeground" Color="#000033" />
+        
+        <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#CA4444" />
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="#CA4444" />
+        
+        <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="#FF6666" />
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOnPointerOver" Color="#FF6666" />
+        
+        <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="#CC3333" />
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="#CC3333" />
+    </Styles.Resources>
+
+
     <Style Selector="ToggleSwitch.Settings">
-        <Setter Property="Background" Value="#ff6666"/>
-        <Setter Property="Foreground" Value="#000033"/>
+        <Setter Property="Foreground" Value="#e3dbd1" />
     </Style>
 </Styles>

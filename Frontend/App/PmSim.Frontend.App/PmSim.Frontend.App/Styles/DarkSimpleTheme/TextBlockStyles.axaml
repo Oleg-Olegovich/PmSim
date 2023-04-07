@@ -16,19 +16,22 @@
 
     <!-- Add Styles Here -->
     
+    <Style Selector="TextBlock.Text">
+        <Setter Property="Foreground" Value="#e3dbd1"/>
+    </Style>
+    
+    <Style Selector="TextBlock.Header">
+        <Setter Property="Foreground" Value="#e3dbd1"/>
+    </Style>
+    
     <!-- Border label -->
     <Style Selector="TextBlock.Border">
-        <Setter Property="Foreground" Value="#FFFFFFFF"/>
-        <Setter Property="Background" Value="#282828"/>
-    </Style>
-
-    <Style Selector="TextBlock.Panel">
-        <Setter Property="Foreground" Value="#FFFFFFFF"/>
-        <Setter Property="Background" Value="#05273A"/>
+        <Setter Property="Foreground" Value="#e3dbd1"/>
+        <Setter Property="Background" Value="#454560"/>
     </Style>
 
     <!-- Error -->
     <Style Selector="TextBlock.Error">
-        <Setter Property="Foreground" Value="#E31E24"/>
+        <Setter Property="Foreground" Value="#cc3333"/>
     </Style>
 </Styles>

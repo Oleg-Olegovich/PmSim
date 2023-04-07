@@ -312,10 +312,10 @@ public class Game
             startPrice, buyerId));
     }
 
-    private void PutExecutorUpForAuction(int playerId, int employeeId, int startPrice)
+    public void PutEmployeeUpForAuction(int playerId, int employeeId, int startPrice)
         => ProposeEmployee(playerId, employeeId, startPrice, -1);
 
-    private void ProposeOpportunity(int sellerId, int opportunityNumber, int startPrice, int buyerId)
+    public void ProposeOpportunity(int sellerId, int opportunityNumber, int startPrice, int buyerId)
     {
         var seller = FindPlayerById(sellerId);
         if (seller.IsOut || opportunityNumber < 0 || opportunityNumber >= _opportunities.Length
@@ -328,7 +328,7 @@ public class Game
             new Auction(_auctions.Count, _opportunities[opportunityNumber], sellerId, startPrice, buyerId));
     }
 
-    private void PutOpportunityUpForAuction(int playerId, int opportunityNumber, int startPrice)
+    public void PutOpportunityUpForAuction(int playerId, int opportunityNumber, int startPrice)
         => ProposeOpportunity(playerId, opportunityNumber, startPrice, -1);
 
     /// <summary>
@@ -336,7 +336,7 @@ public class Game
     /// If the auction is private, then the seller does not participate, the bid can only increase.
     /// Otherwise, the seller can participate and raise the bid, the buyer can lower it.
     /// </summary>
-    internal void ParticipateInAuction(int buyerId, int auctionNumber, int offerSum)
+    public void ParticipateInAuction(int buyerId, int auctionNumber, int offerSum)
     {
         var buyer = FindPlayerById(buyerId);
         if (buyer.IsOut || auctionNumber < 0 || auctionNumber >= _auctions.Count
@@ -374,7 +374,7 @@ public class Game
     /// <summary>
     /// Returns a list of private auctions, personal offers for this player and offers made by this player.
     /// </summary>
-    internal Auction[] RequestIncomingOffers(int playerId)
+    public Auction[] RequestIncomingOffers(int playerId)
     {
         if (FindPlayerById(playerId).IsOut || _stage != GameStages.Diplomacy)
         {
@@ -384,7 +384,7 @@ public class Game
         return _auctions.Where(x => x.IsPublic || x.SellerId == playerId || x.LastBuyerId == playerId).ToArray();
     }
 
-    internal void MakeDecisionOnIncident(int playerId, int donation)
+    public void MakeDecisionOnIncident(int playerId, int donation)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || player.Money < donation)
@@ -396,7 +396,7 @@ public class Game
         player.Money -= donation;
     }
 
-    private void SkipMove(int playerId)
+    public void SkipMove(int playerId)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut)
@@ -407,16 +407,16 @@ public class Game
         player.ActionsNumber = 0;
     }
 
+    public void GiveUp(int playerId) 
+        => GiveUp(FindPlayerById(playerId));
+    
     private void GiveUp(Player player)
     {
         player.IsOut = true;
     }
-    
-    private void GiveUp(int playerId) 
-        => GiveUp(FindPlayerById(playerId));
 
     internal static Project GetProjectRandomly()
-        => new Project(GameConstants.Projects[new Random().Next(GameConstants.Projects.Length)]);
+        => new(GameConstants.Projects[new Random().Next(GameConstants.Projects.Length)]);
 
     private void AssignToTask(int playerId, int employeeId, EmployeeTask task)
     {
@@ -472,6 +472,9 @@ public class Game
 
     private async Task ProcessConnectionAsync()
     {
+        await File.WriteAllTextAsync("TEST.txt", "Start process connection");
+        
+        
         ChangeStage(GameStages.Connection, _settings.ConnectionRealTime);
         while (Time > 0 && _players.Count < _playersQuantity)
         {

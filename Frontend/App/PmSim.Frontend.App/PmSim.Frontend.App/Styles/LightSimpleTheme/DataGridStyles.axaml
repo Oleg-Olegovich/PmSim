@@ -4,16 +4,15 @@
     <!-- Add Styles Here -->
 
     <Style Selector="DataGrid.Common">
-        <Setter Property="Foreground" Value="#000000"/>
-        <Setter Property="Background" Value="#FFFFFFFF"/>
-        <Setter Property="RowBackground" Value="#FFFFFFFF"/>
-        <Setter Property="BorderBrush" Value="#000000"/>
-        <Setter Property="HorizontalGridLinesBrush" Value="#000000"/>
-        <Setter Property="VerticalGridLinesBrush" Value="#000000"/>
+        <Setter Property="Foreground" Value="#000033"/>
+        <Setter Property="RowBackground" Value="#cae099"/>
+        <Setter Property="BorderBrush" Value="#879e53"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#879e53"/>
+        <Setter Property="VerticalGridLinesBrush" Value="#879e53"/>
     </Style>
     
     <Style Selector="DataGridColumnHeader">
-        <Setter Property="Foreground" Value="#000000"/>
-        <Setter Property="Background" Value="#FFFFFFFF"/>
+        <Setter Property="Foreground" Value="#000033"/>
+        <Setter Property="Background" Value="#cae7e3"/>
     </Style>
 </Styles>

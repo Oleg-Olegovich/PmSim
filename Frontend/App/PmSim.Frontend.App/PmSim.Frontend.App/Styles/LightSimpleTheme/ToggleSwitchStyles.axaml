@@ -24,7 +24,6 @@
 
 
     <Style Selector="ToggleSwitch.Settings">
-        <Setter Property="Background" Value="#ff6666" />
         <Setter Property="Foreground" Value="#000033" />
     </Style>
 </Styles>

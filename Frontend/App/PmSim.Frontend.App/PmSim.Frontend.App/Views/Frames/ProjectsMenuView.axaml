@@ -4,47 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
-             x:Class="PmSim.Frontend.App.Views.Frames.InterviewDialogView">
+             x:Class="PmSim.Frontend.App.Views.Frames.ProjectsMenuView">
     
     <Grid RowDefinitions="*, Auto, Auto, Auto, Auto, *"
-          ColumnDefinitions="*, *, *, *">
+          ColumnDefinitions="*, *, *">
         
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Grid.ColumnSpan="2"
                    Classes="Header"
-                   Text="{x:Static localizations:LocalizationGameScreen.Interview}"/>
+                   Text="{Binding Name}"/>
         
         <TextBlock Grid.Row="2"
                    Grid.Column="1"
-                   Grid.ColumnSpan="2"
                    Classes="Text"
                    Text="{Binding Description}"/>
         
         <StackPanel Grid.Row="3"
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameScreen.Salary}"/>
+                       Text="{x:Static localizations:LocalizationGameScreen.Donation}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="2"
                                Maximum="5"
                                Classes="Bordered BasicInteger"
-                               Value="{Binding Salary}"/>
+                               IsReadOnly="{Binding IsSingleplayer}"
+                               Value="{Binding PlayersNumber}"/>
             </Border>
         </StackPanel>
         
         <Button Grid.Row="4"
                 Grid.Column="1"
-                Classes="Stretch Menu"
-                Content="{x:Static localizations:LocalizationBasicScreen.Yes}"
-                Command="{Binding HireCommand}"/>
-        
-        <Button Grid.Row="4"
-                Grid.Column="2"
                 Classes="Stretch AttentionGrabbing"
-                Content="{x:Static localizations:LocalizationBasicScreen.No}"
-                Command="{Binding CancelCommand}"/>
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
+                Command="{Binding DonateCommand}"/>
     </Grid>
 </UserControl>

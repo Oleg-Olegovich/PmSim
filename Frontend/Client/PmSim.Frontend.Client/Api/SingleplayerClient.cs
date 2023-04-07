@@ -461,13 +461,9 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     {
     }
     
-    public void SkipMove()
-    {
-    }
+    public void SkipMove() => _game?.SkipMove(_playerId);
 
-    public void GiveUp()
-    {
-    }
+    public void GiveUp() => _game?.GiveUp(_playerId);
 
     private async Task ProcessTimerAsync()
     {
