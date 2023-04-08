@@ -10,7 +10,7 @@
     <!-- Add Styles Here -->
     
     <Style Selector="ComboBox.Bordered">
-        <Setter Property="Background" Value="#00cae7e3"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#000033"/>
     </Style>
     

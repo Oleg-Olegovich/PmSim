@@ -1,4 +1,4 @@
-﻿namespace PmSim.Shared.Contracts.Game.GameObjects.Projects;
+﻿namespace PmSim.Shared.Contracts.Game.Projects;
 
 /// <summary>
 /// Data transfer object.

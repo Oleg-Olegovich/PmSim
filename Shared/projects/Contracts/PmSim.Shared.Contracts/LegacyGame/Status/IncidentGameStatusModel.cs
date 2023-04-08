@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
-using PmSim.Shared.Contracts.Game.GameObjects.Diplomacy;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.Diplomacy;
+using PmSim.Shared.Contracts.Game.Others;
 
 namespace PmSim.Shared.Contracts.Game.Status
 {

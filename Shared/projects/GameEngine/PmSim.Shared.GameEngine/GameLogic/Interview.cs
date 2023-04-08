@@ -1,4 +1,4 @@
-﻿using PmSim.Shared.Contracts.Game.GameObjects.Employees;
+﻿using PmSim.Shared.Contracts.Game.Employees;
 using PmSim.Shared.Contracts.Interfaces;
 
 namespace PmSim.Shared.GameEngine.GameLogic

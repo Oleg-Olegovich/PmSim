@@ -1,5 +1,5 @@
 ﻿using PmSim.Shared.Contracts.Game;
-using PmSim.Shared.Contracts.Game.GameObjects.Employees;
+using PmSim.Shared.Contracts.Game.Employees;
 
 namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies;
 

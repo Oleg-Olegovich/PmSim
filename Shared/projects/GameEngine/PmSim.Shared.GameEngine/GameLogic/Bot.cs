@@ -1,6 +1,6 @@
 ﻿using PmSim.Shared.GameEngine.GameLogic.BotStrategies;
 using PmSim.Shared.Contracts.Enums;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.Others;
 
 namespace PmSim.Shared.GameEngine.GameLogic
 {

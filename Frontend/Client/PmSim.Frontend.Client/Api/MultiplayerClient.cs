@@ -3,7 +3,7 @@ using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.Others;
 using PmSim.Shared.Contracts.Interfaces;
 using PmSim.Shared.Contracts.User;
 

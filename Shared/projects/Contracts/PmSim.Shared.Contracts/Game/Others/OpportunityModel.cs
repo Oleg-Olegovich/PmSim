@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
+namespace PmSim.Shared.Contracts.Game.Others;
 
 public class OpportunityModel
 {

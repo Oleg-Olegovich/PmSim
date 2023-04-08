@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
+namespace PmSim.Shared.Contracts.Game.Others;
 
 /// <summary>
 /// Players or bots status (property, money).

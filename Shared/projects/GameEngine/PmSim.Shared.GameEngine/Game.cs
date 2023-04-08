@@ -5,11 +5,11 @@ using PmSim.Shared.GameEngine.GameLogic.Opportunities;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game;
-using PmSim.Shared.Contracts.Game.GameObjects.Diplomacy;
-using PmSim.Shared.Contracts.Game.GameObjects.Employees;
-using PmSim.Shared.Contracts.Game.GameObjects.Maps;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
-using PmSim.Shared.Contracts.Game.GameObjects.Projects;
+using PmSim.Shared.Contracts.Game.Diplomacy;
+using PmSim.Shared.Contracts.Game.Employees;
+using PmSim.Shared.Contracts.Game.Maps;
+using PmSim.Shared.Contracts.Game.Others;
+using PmSim.Shared.Contracts.Game.Projects;
 using PmSim.Shared.Contracts.Interfaces;
 
 namespace PmSim.Shared.GameEngine;

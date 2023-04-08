@@ -2,11 +2,11 @@
 using System.Collections.Specialized;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Exceptions;
-using PmSim.Shared.Contracts.Game.GameObjects.Employees;
-using PmSim.Shared.Contracts.Game.GameObjects.Projects;
+using PmSim.Shared.Contracts.Game.Employees;
+using PmSim.Shared.Contracts.Game.Projects;
 using PmSim.Shared.Contracts.Interfaces;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
+namespace PmSim.Shared.Contracts.Game.Others;
 
 public class Player : Employee
 {

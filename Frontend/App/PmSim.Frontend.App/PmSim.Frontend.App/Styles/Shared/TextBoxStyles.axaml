@@ -10,9 +10,9 @@
 
     <Styles.Resources>
         <SolidColorBrush x:Key="BorderedTextBoxBackground"
-                         Color="#00000000"/>
+                         Color="Transparent"/>
         <SolidColorBrush x:Key="BorderedTextBoxBorderBrush"
-                         Color="#00000000"/>
+                         Color="Transparent"/>
     </Styles.Resources>
 
     <!-- Text box for text border -->

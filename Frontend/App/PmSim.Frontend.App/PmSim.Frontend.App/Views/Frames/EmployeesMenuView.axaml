@@ -5,48 +5,116 @@
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Frames.EmployeesMenuView">
-    
-    <Grid RowDefinitions="*, Auto, Auto, Auto, Auto, *"
-          ColumnDefinitions="*, *, *">
-        
+
+    <Grid RowDefinitions="*, Auto, 3*, *"
+          ColumnDefinitions="*, 3*, Auto, *">
+
+        <Border Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Classes="CommonBackdrop" />
+
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
+                   Grid.ColumnSpan="2"
                    Classes="Header"
-                   Text="{Binding Name}"/>
-        
-        <ListBox Grid.Row="1"
-                 Grid.Column="1" 
-                 Classes="Common"
-                 SelectionMode="Multiple,Toggle"
-                 Items="{Binding Employees}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto" MinHeight="48"/>
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Stretch="UniformToFill" Source="{Binding Poster}"/>
-                        <Border Grid.Row="1" Classes="title">
-                            <Grid ColumnDefinitions="*, 0.4*" Margin="4">
-                                <TextBlock FontSize="18" Text="{Binding Title}" />
-                                <TextBlock FontSize="24" Grid.Column="1" Text="{Binding VoteAverage}"/>
+                   Text="{x:Static localizations:LocalizationGameScreen.Employees}" />
+
+        <ScrollViewer Grid.Row="2"
+                      Grid.Column="1"
+                      VerticalScrollBarVisibility="Auto">
+            <ListBox Classes="Common"
+                     SelectionMode="Multiple,Toggle"
+                     Items="{Binding Employees}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Classes="TextStroke"
+                                Padding="2">
+                            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                  ColumnDefinitions="Auto, Auto">
+
+                                <TextBlock Grid.Row="0"
+                                           Grid.Column="0"
+                                           Grid.ColumnSpan="2"
+                                           Classes="Header"
+                                           Text="{Binding Name}" />
+
+                                <TextBlock Grid.Row="1"
+                                           Grid.Column="0"
+                                           Classes="Text"
+                                           Text="{x:Static localizations:LocalizationGameScreen.Programming}" />
+                                <TextBlock Grid.Row="1"
+                                           Grid.Column="1"
+                                           Classes="Text"
+                                           TextAlignment="Right"
+                                           Text="{Binding Skills.Programming}" />
+
+                                <TextBlock Grid.Row="2"
+                                           Grid.Column="0"
+                                           Classes="Text"
+                                           Text="{x:Static localizations:LocalizationGameScreen.Music}" />
+                                <TextBlock Grid.Row="2"
+                                           Grid.Column="1"
+                                           Classes="Text"
+                                           TextAlignment="Right"
+                                           Text="{Binding Skills.Music}" />
+
+                                <TextBlock Grid.Row="3"
+                                           Grid.Column="0"
+                                           Classes="Text"
+                                           Text="{x:Static localizations:LocalizationGameScreen.Design}" />
+                                <TextBlock Grid.Row="3"
+                                           Grid.Column="1"
+                                           Classes="Text"
+                                           TextAlignment="Right"
+                                           Text="{Binding Skills.Design}" />
+
+                                <TextBlock Grid.Row="4"
+                                           Grid.Column="0"
+                                           Classes="Text"
+                                           Text="{x:Static localizations:LocalizationGameScreen.Management}" />
+                                <TextBlock Grid.Row="4"
+                                           Grid.Column="1"
+                                           Classes="Text"
+                                           TextAlignment="Right"
+                                           Text="{Binding Skills.Management}" />
+
+                                <TextBlock Grid.Row="5"
+                                           Grid.Column="0"
+                                           Classes="Text"
+                                           Text="{x:Static localizations:LocalizationGameScreen.Creativity}" />
+                                <TextBlock Grid.Row="5"
+                                           Grid.Column="1"
+                                           Classes="Text"
+                                           TextAlignment="Right"
+                                           Text="{Binding Skills.Creativity}" />
+
+                                <TextBlock Grid.Row="6"
+                                           Grid.Column="0"
+                                           Classes="Text"
+                                           Text="{x:Static localizations:LocalizationGameScreen.Salary}" />
+                                <TextBlock Grid.Row="6"
+                                           Grid.Column="1"
+                                           Classes="Text"
+                                           TextAlignment="Right"
+                                           Text="{Binding Salary}" />
+
+                                <TextBlock Grid.Row="7"
+                                           Grid.Column="0"
+                                           Grid.ColumnSpan="2"
+                                           Classes="Header"
+                                           Text="{Binding TaskTypeName}" />
                             </Grid>
                         </Border>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel ItemWidth="340" ItemHeight="480" Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-        </ListBox>
-        
-        <Button Grid.Row="4"
-                Grid.Column="1"
-                Classes="Stretch AttentionGrabbing"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
-                Command="{Binding DonateCommand}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </ScrollViewer>
     </Grid>
 </UserControl>

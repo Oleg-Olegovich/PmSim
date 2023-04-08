@@ -7,4 +7,10 @@
     </Design.PreviewWith>
 
     <!-- Add Styles Here -->
+    <Style Selector="ListBox.Common">
+        <Setter Property="SelectionMode"
+                Value="Multiple,Toggle"/>
+        <Setter Property="Background"
+                Value="Transparent"/>
+    </Style>
 </Styles>

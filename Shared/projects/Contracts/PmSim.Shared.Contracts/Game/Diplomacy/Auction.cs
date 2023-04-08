@@ -1,7 +1,7 @@
 ﻿using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Interfaces;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Diplomacy;
+namespace PmSim.Shared.Contracts.Game.Diplomacy;
 
 public class Auction
 {

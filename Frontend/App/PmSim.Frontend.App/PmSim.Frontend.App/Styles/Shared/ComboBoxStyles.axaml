@@ -10,9 +10,9 @@
 
     <Styles.Resources>
         <SolidColorBrush x:Key="BorderedComboBoxBackground"
-                         Color="#00000000"/>
+                         Color="Transparent"/>
         <SolidColorBrush x:Key="BorderedComboBoxBorderBrush"
-                         Color="#00000000"/>
+                         Color="Transparent"/>
     </Styles.Resources>
 
     <!-- Combo box for text border -->

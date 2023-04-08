@@ -78,11 +78,38 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Креативность.
+        /// </summary>
+        public static string Creativity {
+            get {
+                return ResourceManager.GetString("Creativity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дизайн.
+        /// </summary>
+        public static string Design {
+            get {
+                return ResourceManager.GetString("Design", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пожертвование.
         /// </summary>
         public static string Donation {
             get {
                 return ResourceManager.GetString("Donation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сотрудники.
+        /// </summary>
+        public static string Employees {
+            get {
+                return ResourceManager.GetString("Employees", resourceCulture);
             }
         }
         
@@ -103,6 +130,33 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static string Losing {
             get {
                 return ResourceManager.GetString("Losing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Менеджмент.
+        /// </summary>
+        public static string Management {
+            get {
+                return ResourceManager.GetString("Management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Карта.
+        /// </summary>
+        public static string Map {
+            get {
+                return ResourceManager.GetString("Map", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Музыка.
+        /// </summary>
+        public static string Music {
+            get {
+                return ResourceManager.GetString("Music", resourceCulture);
             }
         }
         
@@ -139,11 +193,38 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Возможности.
+        /// </summary>
+        public static string Opportunities {
+            get {
+                return ResourceManager.GetString("Opportunities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Игроки.
         /// </summary>
         public static string Players {
             get {
                 return ResourceManager.GetString("Players", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Программирование.
+        /// </summary>
+        public static string Programming {
+            get {
+                return ResourceManager.GetString("Programming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проекты.
+        /// </summary>
+        public static string Projects {
+            get {
+                return ResourceManager.GetString("Projects", resourceCulture);
             }
         }
         

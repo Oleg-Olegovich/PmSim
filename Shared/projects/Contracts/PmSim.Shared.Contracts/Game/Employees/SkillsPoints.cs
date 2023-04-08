@@ -1,4 +1,4 @@
-﻿namespace PmSim.Shared.Contracts.Game.GameObjects.Employees;
+﻿namespace PmSim.Shared.Contracts.Game.Employees;
 
 public class SkillsPoints
 {

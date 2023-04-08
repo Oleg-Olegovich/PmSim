@@ -1,6 +1,6 @@
 ﻿using PmSim.Shared.Contracts.Enums;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Others;
+namespace PmSim.Shared.Contracts.Game.Others;
 
 public class Office
 {

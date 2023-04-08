@@ -4,8 +4,11 @@
     <!-- Add Styles Here -->
 
     <Style Selector="TabItem.Common">
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="VerticalContentAlignment" 
+                Value="Center"/>
+        <Setter Property="FontSize" 
+                Value="14"/>
+        <Setter Property="FontWeight" 
+                Value="Bold"/>
     </Style>
 </Styles>

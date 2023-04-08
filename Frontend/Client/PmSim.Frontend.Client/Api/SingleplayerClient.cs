@@ -2,9 +2,9 @@
 using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
-using PmSim.Shared.Contracts.Game.GameObjects.Employees;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
-using PmSim.Shared.Contracts.Game.GameObjects.Projects;
+using PmSim.Shared.Contracts.Game.Employees;
+using PmSim.Shared.Contracts.Game.Others;
+using PmSim.Shared.Contracts.Game.Projects;
 using PmSim.Shared.Contracts.Interfaces;
 using PmSim.Shared.GameEngine;
 

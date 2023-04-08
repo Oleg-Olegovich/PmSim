@@ -6,7 +6,7 @@ using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client.Api;
 using PmSim.Shared.Contracts.Enums;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.Others;
 using PmSim.Shared.Contracts.Interfaces;
 using ReactiveUI;
 
@@ -17,6 +17,8 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     private readonly IPmSimClient _client;
 
     private readonly BasicGameMapViewModel _gameMap;
+
+    private readonly AuctionMenuViewModel _auctionMenu;
 
     private GameStages _gameStage;
 
@@ -138,6 +140,12 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         get => _mainAreaContent;
         set => this.RaiseAndSetIfChanged(ref _mainAreaContent, value);
     }
+    
+    public EmployeesMenuViewModel EmployeesMenu { get; }
+    
+    public ProjectsMenuViewModel ProjectsMenu { get; }
+
+    public OpportunityMenuViewModel OpportunitiesMenu { get; }
 
     private bool _showSkipButton;
 
@@ -163,6 +171,14 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         set => this.RaiseAndSetIfChanged(ref _isFinish, value);
     }
 
+    private int _currentTabIndex;
+
+    public int CurrentTabIndex
+    {
+        get => _currentTabIndex;
+        set => this.RaiseAndSetIfChanged(ref _currentTabIndex, value);
+    }
+
     public ReactiveCommand<Unit, Unit> GiveUpCommand { get; }
 
     public ReactiveCommand<Unit, Unit> SkipCommand { get; }
@@ -174,6 +190,10 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     {
         _client = client;
         _gameMap = new GameMap0ViewModel(this);
+        EmployeesMenu = new EmployeesMenuViewModel(this);
+        ProjectsMenu = new ProjectsMenuViewModel(this);
+        OpportunitiesMenu = new OpportunityMenuViewModel(this);
+        _auctionMenu = new AuctionMenuViewModel(this);
         MainAreaContent = new ConnectionDialogViewModel();
         GiveUpCommand = ReactiveCommand.Create(GiveUp);
         SkipCommand = ReactiveCommand.Create(SkipMove);
@@ -187,14 +207,18 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     }
 
     public void ShowOffice(int officeId)
-        => MainAreaContent = _client.GetOfficeState(officeId) switch
+    {
+        var state = _client.GetOfficeState(officeId);
+        if (state is OfficeStates.Mine)
         {
-            OfficeStates.Unoccupied => new RentOfficeDialogViewModel(this,
-                _client.GetOffice(officeId)!, officeId),
-            OfficeStates.Mine => new EmployeesMenuViewModel(this),
-            _ => new InformationDialogViewModel(this,
-                LocalizationGameScreen.OfficeIsOccupiedByAnother)
-        };
+            CurrentTabIndex = 1;
+            return;
+        }
+        
+        MainAreaContent = state == OfficeStates.Unoccupied 
+            ? new RentOfficeDialogViewModel(this, _client.GetOffice(officeId)!, officeId) 
+            : new InformationDialogViewModel(this, LocalizationGameScreen.OfficeIsOccupiedByAnother);
+    }
 
     public void RentOffice(int officeId, int rentalPrice)
     {
@@ -225,7 +249,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
             return;
         }
 
-        throw new System.NotImplementedException();
+        MainAreaContent = _auctionMenu;
     }
 
     public void ShowMapMenu() => MainAreaContent = IsFinish ? null : _gameMap;

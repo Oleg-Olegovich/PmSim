@@ -1,8 +1,8 @@
 ﻿using PmSim.Shared.Contracts.Enums;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.Others;
 using PmSim.Shared.Contracts.Interfaces;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Maps;
+namespace PmSim.Shared.Contracts.Game.Maps;
 
 public class Map0 : IGameMap
 {

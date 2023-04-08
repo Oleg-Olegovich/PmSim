@@ -1,6 +1,6 @@
 ﻿using PmSim.Shared.Contracts.Interfaces;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Projects;
+namespace PmSim.Shared.Contracts.Game.Projects;
 
 public class Project : Feature, IAuctionLot
 {

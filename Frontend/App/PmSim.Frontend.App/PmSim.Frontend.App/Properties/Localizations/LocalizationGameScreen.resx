@@ -85,4 +85,31 @@
     <data name="Salary" xml:space="preserve">
         <value>Зарплата</value>
     </data>
+    <data name="Programming" xml:space="preserve">
+        <value>Программирование</value>
+    </data>
+    <data name="Music" xml:space="preserve">
+        <value>Музыка</value>
+    </data>
+    <data name="Design" xml:space="preserve">
+        <value>Дизайн</value>
+    </data>
+    <data name="Management" xml:space="preserve">
+        <value>Менеджмент</value>
+    </data>
+    <data name="Creativity" xml:space="preserve">
+        <value>Креативность</value>
+    </data>
+    <data name="Employees" xml:space="preserve">
+        <value>Сотрудники</value>
+    </data>
+    <data name="Map" xml:space="preserve">
+        <value>Карта</value>
+    </data>
+    <data name="Projects" xml:space="preserve">
+        <value>Проекты</value>
+    </data>
+    <data name="Opportunities" xml:space="preserve">
+        <value>Возможности</value>
+    </data>
 </root>

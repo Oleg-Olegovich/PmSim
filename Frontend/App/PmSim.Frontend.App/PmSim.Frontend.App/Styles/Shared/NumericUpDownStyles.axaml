@@ -5,9 +5,9 @@
 
     <Styles.Resources>
         <SolidColorBrush x:Key="BorderedNumericUpDownBackground"
-                         Color="#00000000"/>
+                         Color="Transparent"/>
         <SolidColorBrush x:Key="BorderedNumericUpDownBorderBrush"
-                         Color="#00000000"/>
+                         Color="Transparent"/>
     </Styles.Resources>
 
     <Style Selector="NumericUpDown.BasicInteger">

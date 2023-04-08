@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.Others;
 
 namespace PmSim.Shared.GameEngine.GameLogic.Incidents
 {

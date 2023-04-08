@@ -1,6 +1,6 @@
 ﻿using PmSim.Shared.Contracts.Enums;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Employees;
+namespace PmSim.Shared.Contracts.Game.Employees;
 
 public class Employee : EmployeeStatus
 {

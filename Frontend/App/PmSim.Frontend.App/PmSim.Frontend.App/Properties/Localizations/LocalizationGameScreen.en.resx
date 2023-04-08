@@ -84,4 +84,31 @@
     <data name="Salary" xml:space="preserve">
         <value>Salary</value>
     </data>
+    <data name="Creativity" xml:space="preserve">
+        <value>Creativity</value>
+    </data>
+    <data name="Design" xml:space="preserve">
+        <value>Design</value>
+    </data>
+    <data name="Management" xml:space="preserve">
+        <value>Management</value>
+    </data>
+    <data name="Music" xml:space="preserve">
+        <value>Music</value>
+    </data>
+    <data name="Programming" xml:space="preserve">
+        <value>Programming</value>
+    </data>
+    <data name="Employees" xml:space="preserve">
+        <value>Employees</value>
+    </data>
+    <data name="Map" xml:space="preserve">
+        <value>Map</value>
+    </data>
+    <data name="Projects" xml:space="preserve">
+        <value>Projects</value>
+    </data>
+    <data name="Opportunities" xml:space="preserve">
+        <value>Opportunities</value>
+    </data>
 </root>

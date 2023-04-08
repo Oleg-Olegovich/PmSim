@@ -13,14 +13,12 @@
 
         <TextBlock Grid.Row="0"
                    Grid.Column="1"
+                   Classes="Header"
                    Text="{Binding GameStageName}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Stretch"
-                   TextAlignment="Center"
                    ToolTip.Tip="{x:Static localizations:LocalizationGameScreen.ToolTipGameStage}" />
 
         <Grid Grid.Row="0"
-              Grid.Column="2"
+              Grid.Column="3"
               MaxHeight="50"
               ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, *, Auto">
 
@@ -127,7 +125,7 @@
                     Command="{Binding GiveUpCommand}"
                     IsVisible="{Binding ShowGiveUpButton}"
                     Classes="Stretch AttentionGrabbing" />
-            
+
             <Button Grid.Row="0"
                     Grid.Column="7"
                     Content="{x:Static localizations:LocalizationTitleScreen.ButtonExit}"
@@ -144,7 +142,7 @@
                 Command="{Binding SkipCommand}" />
 
         <!-- Players column -->
-        
+
         <DataGrid Grid.Row="2"
                   Grid.Column="1"
                   Classes="Common"
@@ -155,7 +153,7 @@
                     <DataGridTextColumn.Header>
                         <TextBlock Text="{x:Static localizations:LocalizationGameScreen.Players}"
                                    Classes="Text"
-                                   FontSize="10"/>
+                                   FontSize="10" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Money}"
@@ -178,18 +176,52 @@
         <GridSplitter Grid.Row="1"
                       Grid.RowSpan="2"
                       Grid.Column="2"
-                      Background="#00000000"
-                      ResizeDirection="Columns"/>
-        
+                      Background="Transparent"
+                      ResizeDirection="Columns" />
+
         <!-- Main area (game map or action dialog) -->
 
-        <ContentControl Grid.Row="1"
-                        Grid.RowSpan="2"
-                        Grid.Column="3"
-                        Content="{Binding MainAreaContent}"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch" />
-        
+        <TabControl Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Grid.Column="3"
+                    VerticalAlignment="Top"
+                    Margin="0 -12 0 0"
+                    Background="Transparent"
+                    SelectedIndex="{Binding CurrentTabIndex}">
+
+            <TabItem Classes="Common"
+                     Header="{x:Static localizations:LocalizationGameScreen.Map}">
+
+                <ContentControl Content="{Binding MainAreaContent}"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch" />
+            </TabItem>
+
+            <TabItem Classes="Common"
+                     Header="{x:Static localizations:LocalizationGameScreen.Employees}">
+
+                <ContentControl Content="{Binding EmployeesMenu}"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch" />
+            </TabItem>
+
+            <TabItem Classes="Common"
+                     Header="{x:Static localizations:LocalizationGameScreen.Projects}">
+
+                <ContentControl Content="{Binding ProjectsMenu}"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch" />
+            </TabItem>
+
+            <TabItem Classes="Common"
+                     Header="{x:Static localizations:LocalizationGameScreen.Opportunities}">
+
+                <ContentControl Content="{Binding OpportunitiesMenu}"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch" />
+            </TabItem>
+        </TabControl>
+
         <Viewbox Grid.Row="1"
                  Grid.RowSpan="2"
                  Grid.Column="3"

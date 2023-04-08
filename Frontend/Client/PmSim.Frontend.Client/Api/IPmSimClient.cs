@@ -1,7 +1,7 @@
 ﻿using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
-using PmSim.Shared.Contracts.Game.GameObjects.Others;
+using PmSim.Shared.Contracts.Game.Others;
 using PmSim.Shared.Contracts.Interfaces;
 
 namespace PmSim.Frontend.Client.Api;

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Diplomacy;
+namespace PmSim.Shared.Contracts.Game.Diplomacy;
 
 public class IncidentModel
 {

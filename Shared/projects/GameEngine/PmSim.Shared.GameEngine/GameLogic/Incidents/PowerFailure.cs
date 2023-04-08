@@ -1,5 +1,5 @@
-﻿using PmSim.Shared.Contracts.Game.GameObjects.Others;
-using PmSim.Shared.Contracts.Game.GameObjects.Projects;
+﻿using PmSim.Shared.Contracts.Game.Others;
+using PmSim.Shared.Contracts.Game.Projects;
 
 namespace PmSim.Shared.GameEngine.GameLogic.Incidents
 {

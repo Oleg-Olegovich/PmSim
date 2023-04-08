@@ -1,6 +1,6 @@
-﻿using PmSim.Shared.Contracts.Game.GameObjects.Others;
+﻿using PmSim.Shared.Contracts.Game.Others;
 
-namespace PmSim.Shared.Contracts.Game.GameObjects.Employees;
+namespace PmSim.Shared.Contracts.Game.Employees;
 
 /// <summary>
 /// Base class or for assign to invent project.
