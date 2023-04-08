@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
-             x:Class="PmSim.Frontend.App.Views.Frames.EmployeesMenuView">
-
+             x:Class="PmSim.Frontend.App.Views.Frames.SelectEmployeeView">
+    
     <Grid RowDefinitions="*, Auto, 10*, *"
-          ColumnDefinitions="*, 10*, Auto, *">
+          ColumnDefinitions="*, 10*, *">
 
         <Border Grid.Row="1"
                 Grid.RowSpan="2"
@@ -19,15 +19,15 @@
                    Grid.Column="1"
                    Grid.ColumnSpan="2"
                    Classes="Header"
-                   Text="{x:Static localizations:LocalizationGameScreen.Employees}" />
+                   Text="{x:Static localizations:LocalizationGameScreen.SelectEmployee}" />
 
         <ScrollViewer Grid.Row="2"
                       Grid.Column="1"
                       VerticalScrollBarVisibility="Auto">
             <ListBox Classes="Common"
-                     SelectionMode="Multiple,Toggle"
+                     SelectionMode="Single"
                      Items="{Binding Employees}"
-                     Selection="{Binding Selection}">
+                     SelectedItem="{Binding SelectedEmployee}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Classes="TextStroke"
@@ -116,37 +116,6 @@
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>
-        </ScrollViewer>
-        
-        <ScrollViewer Grid.Row="2"
-                      Grid.Column="2"
-                      VerticalScrollBarVisibility="Auto">
-            
-            <StackPanel>
-                <Button Classes="Menu Stretch"
-                        Content="{x:Static localizations:LocalizationGameScreen.Interview}"
-                        Command="{Binding InterviewCommand}"/>
-                
-                <Button Classes="Menu Stretch"
-                        IsEnabled="{Binding IsSelectionNonEmpty}"
-                        Content="{x:Static localizations:LocalizationGameScreen.Development}"
-                        Command="{Binding DevelopmentCommand}"/>
-                
-                <Button Classes="Menu Stretch"
-                        IsEnabled="{Binding IsSelectionNonEmpty}"
-                        Content="{x:Static localizations:LocalizationGameScreen.BackUp}"
-                        Command="{Binding BackUpCommand}"/>
-                
-                <Button Classes="Menu Stretch"
-                        IsEnabled="{Binding IsSelectionNonEmpty}"
-                        Content="{x:Static localizations:LocalizationGameScreen.Designing}"
-                        Command="{Binding InventionCommand}"/>
-                
-                <Button Classes="Menu Stretch"
-                        IsEnabled="{Binding IsSelectionNonEmpty}"
-                        Content="{x:Static localizations:LocalizationGameScreen.Dismiss}"
-                        Command="{Binding DismissalCommand}"/>
-            </StackPanel>
         </ScrollViewer>
     </Grid>
 </UserControl>

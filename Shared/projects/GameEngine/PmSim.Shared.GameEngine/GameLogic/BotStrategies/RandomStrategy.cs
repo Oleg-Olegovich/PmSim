@@ -46,15 +46,9 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies
 
         internal override void MakeDiplomaticMove()
         {
-            var auctions = Game.RequestIncomingOffers(Bot.Id);
-            foreach (var auction in auctions)
+            foreach (var auction in Game.Auctions.Where(
+                         auction => Random.Next(100) >= 50 && auction.LastPrice < Bot.Money))
             {
-                if (Random.Next(100) < 50 || !auction.IsPublic || auction.LastBuyerId == Bot.Id 
-                    || auction.LastPrice >= Bot.Money)
-                {
-                    continue;
-                }
-
                 Game.ParticipateInAuction(Bot.Id, auction.Id, auction.LastPrice + 1);
             }
         }

@@ -23,8 +23,8 @@
     <data name="TextBlockSprintRealTime" xml:space="preserve">
         <value>Спринт (сек.)</value>
     </data>
-    <data name="TextBlockDiplomacyRealTime" xml:space="preserve">
-        <value>Дипломатия (сек.)</value>
+    <data name="TextBlockMaxSprintNumber" xml:space="preserve">
+        <value>Макс. кол-во спринтов</value>
     </data>
     <data name="TextBlockIncidentRealTime" xml:space="preserve">
         <value>Происшествие (сек.)</value>

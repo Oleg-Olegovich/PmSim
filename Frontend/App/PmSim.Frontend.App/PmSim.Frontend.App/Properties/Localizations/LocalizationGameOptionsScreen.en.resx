@@ -33,8 +33,8 @@
     <data name="TextBlockAuctionRealTime" xml:space="preserve">
         <value>Auction (sec.)</value>
     </data>
-    <data name="TextBlockDiplomacyRealTime" xml:space="preserve">
-        <value>Diplomacy (sec.)</value>
+    <data name="TextBlockMaxSprintNumber" xml:space="preserve">
+        <value>Sprints max number</value>
     </data>
     <data name="TextBlockIncidentRealTime" xml:space="preserve">
         <value>Incident (sec.)</value>

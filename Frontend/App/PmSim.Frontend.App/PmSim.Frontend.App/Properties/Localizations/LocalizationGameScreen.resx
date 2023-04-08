@@ -112,4 +112,58 @@
     <data name="Opportunities" xml:space="preserve">
         <value>Возможности</value>
     </data>
+    <data name="Dismiss" xml:space="preserve">
+        <value>Уволить</value>
+    </data>
+    <data name="Development" xml:space="preserve">
+        <value>Разработка</value>
+    </data>
+    <data name="BackUp" xml:space="preserve">
+        <value>Бэкап</value>
+    </data>
+    <data name="Designing" xml:space="preserve">
+        <value>Проектирование</value>
+    </data>
+    <data name="Auctions" xml:space="preserve">
+        <value>Аукционы</value>
+    </data>
+    <data name="SelectEmployee" xml:space="preserve">
+        <value>Выберите сотрудника</value>
+    </data>
+    <data name="SelectProject" xml:space="preserve">
+        <value>Выберите проект</value>
+    </data>
+    <data name="SelectOpportunity" xml:space="preserve">
+        <value>Выберите возможность</value>
+    </data>
+    <data name="CurrentProjects" xml:space="preserve">
+        <value>Текущие</value>
+    </data>
+    <data name="Ideas" xml:space="preserve">
+        <value>Идеи</value>
+    </data>
+    <data name="CompletedProjects" xml:space="preserve">
+        <value>Завершённые</value>
+    </data>
+    <data name="FailedProjects" xml:space="preserve">
+        <value>Проваленные</value>
+    </data>
+    <data name="Deadline" xml:space="preserve">
+        <value>Дедлайн</value>
+    </data>
+    <data name="Reward" xml:space="preserve">
+        <value>Награда</value>
+    </data>
+    <data name="StartDevelopment" xml:space="preserve">
+        <value>Начать разработку</value>
+    </data>
+    <data name="Use" xml:space="preserve">
+        <value>Использовать</value>
+    </data>
+    <data name="Victory" xml:space="preserve">
+        <value>Вы победили!</value>
+    </data>
+    <data name="Sprint" xml:space="preserve">
+        <value>Спринт</value>
+    </data>
 </root>

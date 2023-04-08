@@ -27,9 +27,13 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     public int SelectedMode
     {
         get => _selectedMode;
-        set => this.RaiseAndSetIfChanged(ref _selectedMode, value);
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _selectedMode, value);
+            ShowMaxSprintNumber = value > 0;
+        }
     }
-    
+
     private int _selectedMap;
     
     public int SelectedMap
@@ -108,20 +112,6 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         }
     }
 
-    private int _diplomacyRealTime;
-    
-    public int DiplomacyRealTime
-    {
-        get => _diplomacyRealTime;
-        set
-        {
-            if (value != 0)
-            {
-                this.RaiseAndSetIfChanged(ref _diplomacyRealTime, value);
-            }
-        }
-    }
-
     private int _incidentRealTime;
     
     public int IncidentRealTime
@@ -177,6 +167,28 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         }
     }
 
+    private int _maxSprintNumber;
+    
+    public int MaxSprintNumber
+    {
+        get => _maxSprintNumber;
+        set
+        {
+            if (value != 0)
+            {
+                this.RaiseAndSetIfChanged(ref _maxSprintNumber, value);
+            }
+        }
+    }
+
+    private bool _showMaxSprintNumber;
+
+    public bool ShowMaxSprintNumber
+    {
+        get => _showMaxSprintNumber;
+        set => this.RaiseAndSetIfChanged(ref _showMaxSprintNumber, value);
+    }
+    
     // Other field.
     
     public bool IsSingleplayer { get; }
@@ -204,7 +216,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     private void StartGame()
     {
         var settings = new GameOptions(Name, PlayersNumber, BotsNumber, (GameModes)SelectedMode, SelectedMap, 
-            ConnectionRealTime, ChoosingBackgroundRealTime, SprintRealTime, DiplomacyRealTime, IncidentRealTime, 
+            ConnectionRealTime, ChoosingBackgroundRealTime, SprintRealTime, MaxSprintNumber, IncidentRealTime, 
             SprintActionsNumber, AuctionRealTime, StartUpCapital);
         try
         {
@@ -230,10 +242,10 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         ConnectionRealTime = defaultSettings.ConnectionRealTime;
         ChoosingBackgroundRealTime = defaultSettings.ChoosingBackgroundRealTime;
         SprintRealTime = defaultSettings.SprintRealTime;
-        DiplomacyRealTime = defaultSettings.DiplomacyRealTime;
         IncidentRealTime = defaultSettings.IncidentRealTime;
         AuctionRealTime = defaultSettings.AuctionRealTime;
         SprintActionsNumber = defaultSettings.SprintActionsNumbers;
         StartUpCapital = defaultSettings.StartUpCapital;
+        MaxSprintNumber = defaultSettings.MaxSprintNumber;
     }
 }

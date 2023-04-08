@@ -7,9 +7,9 @@ public class GameOptions
     public static GameOptions Default
         => new("Default", GameConstants.DefaultMaxPlayersNumber, GameConstants.DefaultMaxBotsNumber, 
             GameConstants.DefaultMode, GameConstants.DefaultMapNumber, GameConstants.DefaultConnectionRealTime, 
-            GameConstants.DefaultChoosingBackground, GameConstants.DefaultSprintRealTime, 
-            GameConstants.DefaultDiplomacyRealTime, GameConstants.DefaultIncidentRealTime, 
-            GameConstants.DefaultSprintActionsNumbers, GameConstants.DefaultAuctionRealTime, GameConstants.DefaultStartUpCapital);
+            GameConstants.DefaultChoosingBackground, GameConstants.DefaultManagementRealTime, GameConstants.DefaultIncidentRealTime, 
+            GameConstants.DefaultSprintActionsNumbers, GameConstants.DefaultAuctionRealTime, 
+            GameConstants.DefaultStartUpCapital, GameConstants.DefaultMaxSprintNumber);
     
     public string GameName { get; set; }
     
@@ -27,8 +27,6 @@ public class GameOptions
 
     public int SprintRealTime { get; set; }
 
-    public int DiplomacyRealTime { get; set; }
-
     public int IncidentRealTime { get; set; }
 
     public int SprintActionsNumbers { get; set; }
@@ -36,10 +34,12 @@ public class GameOptions
     public int AuctionRealTime { get; set; }
 
     public int StartUpCapital { get; set; }
+    
+    public int MaxSprintNumber { get; set; }
 
     public GameOptions(string gameName, int maxPlayersNumber, int botsNumber, GameModes mode, int mapNumber, 
-        int connectionRealTime, int choosingBackgroundRealTime, int sprintRealTime, int diplomacyRealTime, 
-        int incidentRealTime, int sprintActionsNumbers, int auctionRealTime, int startUpCapital)
+        int connectionRealTime, int choosingBackgroundRealTime, int sprintRealTime, int incidentRealTime, 
+        int sprintActionsNumbers, int auctionRealTime, int startUpCapital, int mapSprintNumber)
     {
         GameName = gameName;
         MaxPlayersNumber = maxPlayersNumber;
@@ -49,10 +49,10 @@ public class GameOptions
         ConnectionRealTime = connectionRealTime;
         ChoosingBackgroundRealTime = choosingBackgroundRealTime;
         SprintRealTime = sprintRealTime;
-        DiplomacyRealTime = diplomacyRealTime;
         IncidentRealTime = incidentRealTime;
         SprintActionsNumbers = sprintActionsNumbers;
         AuctionRealTime = auctionRealTime;
         StartUpCapital = startUpCapital;
+        MaxSprintNumber = mapSprintNumber;
     }
 }

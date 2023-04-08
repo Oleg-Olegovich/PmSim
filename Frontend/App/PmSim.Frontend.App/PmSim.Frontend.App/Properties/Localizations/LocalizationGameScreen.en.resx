@@ -111,4 +111,58 @@
     <data name="Opportunities" xml:space="preserve">
         <value>Opportunities</value>
     </data>
+    <data name="Dismiss" xml:space="preserve">
+        <value>Dismiss</value>
+    </data>
+    <data name="Development" xml:space="preserve">
+        <value>Develop</value>
+    </data>
+    <data name="BackUp" xml:space="preserve">
+        <value>Backup</value>
+    </data>
+    <data name="Designing" xml:space="preserve">
+        <value>Designing</value>
+    </data>
+    <data name="Auctions" xml:space="preserve">
+        <value>Auctions</value>
+    </data>
+    <data name="SelectEmployee" xml:space="preserve">
+        <value>Select an employee</value>
+    </data>
+    <data name="SelectProject" xml:space="preserve">
+        <value>Select a project</value>
+    </data>
+    <data name="SelectOpportunity" xml:space="preserve">
+        <value>Select an opportunity</value>
+    </data>
+    <data name="CurrentProjects" xml:space="preserve">
+        <value>Current</value>
+    </data>
+    <data name="Ideas" xml:space="preserve">
+        <value>Ideas</value>
+    </data>
+    <data name="CompletedProjects" xml:space="preserve">
+        <value>Completed</value>
+    </data>
+    <data name="FailedProjects" xml:space="preserve">
+        <value>Failed</value>
+    </data>
+    <data name="Deadline" xml:space="preserve">
+        <value>Deadline</value>
+    </data>
+    <data name="Reward" xml:space="preserve">
+        <value>Reward</value>
+    </data>
+    <data name="StartDevelopment" xml:space="preserve">
+        <value>Start development</value>
+    </data>
+    <data name="Use" xml:space="preserve">
+        <value>Use</value>
+    </data>
+    <data name="Victory" xml:space="preserve">
+        <value>You have won!</value>
+    </data>
+    <data name="Sprint" xml:space="preserve">
+        <value>Sprint</value>
+    </data>
 </root>

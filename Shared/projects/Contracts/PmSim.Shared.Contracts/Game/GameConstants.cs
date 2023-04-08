@@ -46,13 +46,7 @@ public static class GameConstants
     /// Sets how much maximum time is given to the players for an action.
     /// Default settings.
     /// </summary>
-    public static int DefaultSprintRealTime => 180;
-
-    /// <summary>
-    /// Sets how much maximum time is given to the players for an action.
-    /// Default settings.
-    /// </summary>
-    public static int DefaultDiplomacyRealTime => 180;
+    public static int DefaultManagementRealTime => 300;
 
     /// <summary>
     /// Sets how much maximum time is given to the players for an action.
@@ -65,6 +59,8 @@ public static class GameConstants
     public static int DefaultAuctionRealTime => 10;
 
     public static int DefaultStartUpCapital => 10;
+    
+    public static int DefaultMaxSprintNumber => 10;
 
     public static int MaxActorsNumber => 10;
 

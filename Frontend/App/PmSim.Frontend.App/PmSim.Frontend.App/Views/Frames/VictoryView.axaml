@@ -1,0 +1,29 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             mc:Ignorable="d"
+             x:Class="PmSim.Frontend.App.Views.Frames.VictoryView">
+
+    <Grid RowDefinitions="*, Auto, Auto, *"
+          ColumnDefinitions="*, *, *">
+        
+        <Border Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Classes="CommonBackdrop"/>
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Classes="Header"
+                   Text="{x:Static localizations:LocalizationGameScreen.Victory}"/>
+        
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                Classes="Stretch AttentionGrabbing"
+                Command="{Binding ExitCommand}"
+                Content="{x:Static localizations:LocalizationTitleScreen.ButtonExit}"/>
+
+    </Grid>
+</UserControl>

@@ -28,7 +28,6 @@ public class Game
 
     private readonly GameOptions _settings;
     private readonly List<Player> _players = new(), _actors = new();
-    private readonly List<Auction> _auctions = new();
     private Bot[] _bots = Array.Empty<Bot>();
     private Incident[] _incidents = Array.Empty<Incident>();
     private Opportunity[] _opportunities = Array.Empty<Opportunity>();
@@ -55,6 +54,9 @@ public class Game
     public GameModel Model 
         => new(_id, _founder, _settings.GameName, _settings.Mode, (GameMaps)_settings.MapNumber, 
             _players.Count, _playersQuantity);
+    
+    
+    public List<Auction> Auctions { get; } = new();
 
     public Game(int id, string founder, GameOptions settings)
     {
@@ -271,108 +273,66 @@ public class Game
         player.Employees[employeeId].CurrentTask = null;
     }
 
-    public void ProposeProject(int sellerId, int projectNumber, int startPrice, int buyerId)
+    public void PutProjectUpForAuction(int playerId, int projectNumber, int startPrice)
     {
-        var seller = FindPlayerById(sellerId);
-        if (seller.IsOut || buyerId != -1 && FindPlayerById(buyerId).IsOut || projectNumber < 0
-            || projectNumber >= _opportunities.Length
-            || _auctions.Count(x => x.Lot == seller.Projects[projectNumber]) > 0)
+        var seller = FindPlayerById(playerId);
+        if (seller.IsOut || projectNumber < 0 || projectNumber >= _opportunities.Length
+            || Auctions.Count(x => x.Lot == seller.Projects[projectNumber]) > 0)
         {
             throw new PmSimException("It is impossible to put the project up for auction.");
         }
 
-        _auctions.Add(new Auction(_auctions.Count, seller.Projects[projectNumber], sellerId, startPrice, buyerId));
+        Auctions.Add(new Auction(Auctions.Count, seller.Projects[projectNumber], playerId, startPrice));
     }
 
-    public void PutProjectUpForAuction(int playerId, int projectNumber, int startPrice)
-        => ProposeProject(playerId, projectNumber, startPrice, -1);
-
-    public void ProposeEmployee(int sellerId, int employeeId, int startPrice,
-        int buyerId)
+    public void PutEmployeeUpForAuction(int playerId, int employeeId, int startPrice)
     {
-        var seller = FindPlayerById(sellerId);
-        var buyer = FindPlayerById(buyerId);
-        if (seller.IsOut || buyerId != -1 && FindPlayerById(buyerId).IsOut
-                         || employeeId < 0 || employeeId >= buyer.Employees.Count
-                         || _auctions.Count(x => x.Lot == buyer.Employees[employeeId]) > 0)
+        var seller = FindPlayerById(playerId);
+        if (seller.IsOut || employeeId < 0 || employeeId >= seller.Employees.Count
+                         || Auctions.Count(x => x.Lot == seller.Employees[employeeId]) > 0)
         {
             throw new PmSimException("It is impossible to put the executor up for auction.");
         }
 
-        _auctions.Add(new Auction(_auctions.Count, buyer.Employees[employeeId], sellerId,
-            startPrice, buyerId));
+        Auctions.Add(new Auction(Auctions.Count, seller.Employees[employeeId], playerId, startPrice));
     }
 
-    public void PutEmployeeUpForAuction(int playerId, int employeeId, int startPrice)
-        => ProposeEmployee(playerId, employeeId, startPrice, -1);
-
-    public void ProposeOpportunity(int sellerId, int opportunityNumber, int startPrice, int buyerId)
+    public void PutOpportunityUpForAuction(int playerId, int opportunityNumber, int startPrice)
     {
-        var seller = FindPlayerById(sellerId);
+        var seller = FindPlayerById(playerId);
         if (seller.IsOut || opportunityNumber < 0 || opportunityNumber >= _opportunities.Length
             || !seller.Opportunities.Contains(opportunityNumber))
         {
             throw new PmSimException("It is impossible to put the opportunity up for auction.");
         }
 
-        _auctions.Add(
-            new Auction(_auctions.Count, _opportunities[opportunityNumber], sellerId, startPrice, buyerId));
+        Auctions.Add(
+            new Auction(Auctions.Count, _opportunities[opportunityNumber], playerId, startPrice));
     }
-
-    public void PutOpportunityUpForAuction(int playerId, int opportunityNumber, int startPrice)
-        => ProposeOpportunity(playerId, opportunityNumber, startPrice, -1);
 
     /// <summary>
     /// The universal method for private and personal auctions.
     /// If the auction is private, then the seller does not participate, the bid can only increase.
     /// Otherwise, the seller can participate and raise the bid, the buyer can lower it.
     /// </summary>
-    public void ParticipateInAuction(int buyerId, int auctionNumber, int offerSum)
+    public void ParticipateInAuction(int buyerId, int auctionId, int offerSum)
     {
         var buyer = FindPlayerById(buyerId);
-        if (buyer.IsOut || auctionNumber < 0 || auctionNumber >= _auctions.Count
-            || !_auctions[auctionNumber].IsPublic && _auctions[auctionNumber].LastBuyerId != buyerId
-            || !_auctions[auctionNumber].IsPublic && _auctions[auctionNumber].LastBuyerId == buyerId
-                                                  && offerSum >= _auctions[auctionNumber].LastPrice ||
-            _auctions[auctionNumber].IsPublic
-            && _auctions[auctionNumber].SellerId == buyerId || (_auctions[auctionNumber].IsPublic
-                                                                || _auctions[auctionNumber].SellerId == buyerId) &&
-            _auctions[auctionNumber].LastPrice >= offerSum
-            || buyer.Money < offerSum)
+        if (buyer.IsOut || auctionId < 0 || auctionId >= Auctions.Count || Auctions[auctionId].SellerId == buyerId 
+            || Auctions[auctionId].LastPrice >= offerSum || buyer.Money < offerSum)
         {
             throw new PmSimException("It is impossible to participate in the auction.");
         }
 
-        if (_auctions[auctionNumber].LastBuyerId != -1)
+        if (Auctions[auctionId].LastBuyerId != -1)
         {
-            var lastBuyer = FindPlayerById(_auctions[auctionNumber].LastBuyerId);
-            lastBuyer.Money += _auctions[auctionNumber].LastPrice;
+            var lastBuyer = FindPlayerById(Auctions[auctionId].LastBuyerId);
+            lastBuyer.Money += Auctions[auctionId].LastPrice;
         }
 
-        if (_auctions[auctionNumber].IsPublic)
-        {
-            _auctions[auctionNumber].LastBuyerId = buyerId;
-        }
-        else if (_auctions[auctionNumber].SellerId != buyerId)
-        {
-            _auctions[auctionNumber].Accepted = true;
-        }
-
-        _auctions[auctionNumber].LastPrice = offerSum;
+        Auctions[auctionId].LastBuyerId = buyerId;
+        Auctions[auctionId].LastPrice = offerSum;
         buyer.Money -= offerSum;
-    }
-
-    /// <summary>
-    /// Returns a list of private auctions, personal offers for this player and offers made by this player.
-    /// </summary>
-    public Auction[] RequestIncomingOffers(int playerId)
-    {
-        if (FindPlayerById(playerId).IsOut || _stage != GameStages.Diplomacy)
-        {
-            throw new PmSimException("It is impossible to request incoming offers.");
-        }
-
-        return _auctions.Where(x => x.IsPublic || x.SellerId == playerId || x.LastBuyerId == playerId).ToArray();
     }
 
     public void MakeDecisionOnIncident(int playerId, int donation)
@@ -533,22 +493,6 @@ public class Game
     private async Task ProcessManagementAsync()
         => await ProcessGameStageAsync(GameStages.Management, _settings.SprintRealTime);
 
-    private async Task ProcessDiplomacyAsync()
-    {
-        _playersCompleted = 0;
-        ChangeStage(GameStages.Diplomacy, _settings.DiplomacyRealTime);
-        while (_time > 0 && _playersCompleted < _playersQuantity)
-        {
-            foreach (var bot in _bots)
-            {
-                bot.MakeDiplomaticAction();
-            }
-
-            await Task.Delay(1000);
-            --_time;
-        }
-    }
-
     private void SummingUpExpenses()
     {
         foreach (var actor in _actors)
@@ -568,16 +512,15 @@ public class Game
 
     private void SummingUpAuctions()
     {
-        foreach (var auction in _auctions)
+        foreach (var auction in Auctions)
         {
-            if (auction.LastBuyerId == -1 || !auction.IsPublic && !auction.Accepted)
+            if (auction.LastBuyerId == -1)
             {
                 continue;
             }
 
             var seller = FindPlayerById(auction.SellerId);
             var buyer = FindPlayerById(auction.LastBuyerId);
-            buyer.Money -= auction.LastPrice;
             seller.Money += auction.LastPrice;
 
             switch (auction.Lot)
@@ -707,14 +650,18 @@ public class Game
         await ProcessConnectionAsync();
         SendPlayerStatusesToEachPlayer();
         await ProcessChoosingBackgroundAsync();
+        var sprintNumber = 0;
         while (_stage != GameStages.IsOver)
         {
             StartSprint();
             await ProcessManagementAsync();
             MakeBotSprintMoves();
-            await ProcessDiplomacyAsync();
             ProcessSummingUpAsync();
             await ProcessIncidentAsync();
+            if (sprintNumber == _settings.MaxSprintNumber)
+            {
+                _stage = GameStages.IsOver;
+            }
         }
 
         ApproveWinner();

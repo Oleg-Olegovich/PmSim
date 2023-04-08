@@ -6,7 +6,6 @@
         Connection,
         ChoosingBackground,
         Management,
-        Diplomacy,
         SummingUpResults,
         IncidentDiscussion,
         IncidentResolution,

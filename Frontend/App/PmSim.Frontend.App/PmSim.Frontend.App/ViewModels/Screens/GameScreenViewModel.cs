@@ -18,8 +18,6 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 
     private readonly BasicGameMapViewModel _gameMap;
 
-    private readonly AuctionMenuViewModel _auctionMenu;
-
     private GameStages _gameStage;
 
     public GameStages GameStage
@@ -43,6 +41,19 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         }
     }
 
+    private string _sprintNumberLine = $"{LocalizationGameScreen.Sprint} {1}";
+
+    public string SprintNumberLine
+    {
+        get => _sprintNumberLine;
+        set => this.RaiseAndSetIfChanged(ref _sprintNumberLine, value);
+    }
+
+    public int SprintNumber
+    {
+        set => SprintNumberLine = $"{LocalizationGameScreen.Sprint} {value}";
+    }
+        
     private string _gameStageName = "Not started";
 
     public string GameStageName
@@ -146,6 +157,8 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     public ProjectsMenuViewModel ProjectsMenu { get; }
 
     public OpportunityMenuViewModel OpportunitiesMenu { get; }
+    
+    private AuctionMenuViewModel AuctionMenu { get; }
 
     private bool _showSkipButton;
 
@@ -193,7 +206,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         EmployeesMenu = new EmployeesMenuViewModel(this);
         ProjectsMenu = new ProjectsMenuViewModel(this);
         OpportunitiesMenu = new OpportunityMenuViewModel(this);
-        _auctionMenu = new AuctionMenuViewModel(this);
+        AuctionMenu = new AuctionMenuViewModel(this);
         MainAreaContent = new ConnectionDialogViewModel();
         GiveUpCommand = ReactiveCommand.Create(GiveUp);
         SkipCommand = ReactiveCommand.Create(SkipMove);
@@ -242,15 +255,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         }
     }
 
-    public void ShowAuctionHouseMenu()
-    {
-        if (GameStage != GameStages.Diplomacy)
-        {
-            return;
-        }
-
-        MainAreaContent = _auctionMenu;
-    }
+    public void ShowAuctionHouseMenu() => CurrentTabIndex = 4;
 
     public void ShowMapMenu() => MainAreaContent = IsFinish ? null : _gameMap;
 

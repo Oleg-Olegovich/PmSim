@@ -5,11 +5,11 @@ namespace PmSim.Shared.GameEngine.GameLogic.BotStrategies;
 
 internal class CautiousStrategy : BotStrategy
 {
-    internal CautiousStrategy(Game game, Bot bot) 
+    internal CautiousStrategy(Game game, Bot bot)
         : base(game, bot)
     {
     }
-        
+
     internal override void WorkForHire()
     {
         var tryRent = Random.Next(100) < 50;
@@ -42,15 +42,9 @@ internal class CautiousStrategy : BotStrategy
 
     internal override void MakeDiplomaticMove()
     {
-        var auctions = Game.RequestIncomingOffers(Bot.Id);
-        foreach (var auction in auctions)
+        foreach (var auction in Game.Auctions.Where(
+                     auction => Random.Next(100) >= 50 && auction.LastPrice < Bot.Money))
         {
-            if (Random.Next(100) < 50 || !auction.IsPublic || auction.LastBuyerId == Bot.Id 
-                || auction.LastPrice >= Bot.Money)
-            {
-                continue;
-            }
-
             Game.ParticipateInAuction(Bot.Id, auction.Id, auction.LastPrice + 1);
         }
     }
@@ -71,7 +65,7 @@ internal class CautiousStrategy : BotStrategy
         foreach (var index in Bot.OfficeIndexes)
         {
             while (Bot.Employees.Count < Game.Offices[index].Capacity && Bot.ActionsNumber > 0
-                   && money > 0)
+                                                                      && money > 0)
             {
                 --Bot.ActionsNumber;
                 var interview = new Interview(Bot.Id);
