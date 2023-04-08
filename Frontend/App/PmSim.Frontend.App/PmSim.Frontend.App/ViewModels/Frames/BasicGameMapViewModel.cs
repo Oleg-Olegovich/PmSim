@@ -7,7 +7,6 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using PmSim.Frontend.App.ViewModels.Screens;
 using PmSim.Shared.Contracts.Enums;
-using PmSim.Shared.Contracts.Exceptions;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Frames;
@@ -39,26 +38,21 @@ public abstract class BasicGameMapViewModel : BasicFrameViewModel
             _ => "big_office_0_normal"
         };
         var basePath = $"{BasePath}Map0/{officeType}";
-        switch (state)
+        var id = state switch
         {
-            case OfficeStates.Unoccupied:
-                OfficeImages[officeId] = LoadImage($"{basePath}.png");
-                break;
-            case OfficeStates.Mine:
-                OfficeImages[officeId] = LoadImage($"{basePath}_mine.png");
-                break;
-            case OfficeStates.NotMine:
-            default:
-                OfficeImages[officeId] = LoadImage($"{basePath}_not_mine.png");
-                break;
-        }
+            OfficeStates.Unoccupied => 10,
+            OfficeStates.Mine => 20,
+            _ => 30
+        };
+
+        OfficeImages[officeId] = OfficeImages[officeId + id];
     }
     
     protected static IImage LoadImage(string path)
     {
         var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
         var stream = assets?.Open(new Uri(path));
-        return new Bitmap(stream ?? throw new PmSimException("No office image found."));
+        return new Bitmap(stream!);
     }
     
     private void ProcessOfficeClick(string officeId) 

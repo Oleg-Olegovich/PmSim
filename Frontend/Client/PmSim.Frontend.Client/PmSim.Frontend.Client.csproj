@@ -59,4 +59,8 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="11.0.0-preview5" />
+    </ItemGroup>
+
 </Project>

@@ -1,11 +1,8 @@
-﻿using System.Reactive;
-using System.Threading.Tasks;
+﻿using System;
+using System.Reactive;
 using PmSim.Frontend.App.ViewModels.Windows;
-using PmSim.Frontend.Client;
 using PmSim.Frontend.Client.Api;
-using PmSim.Frontend.Client.Dto;
 using PmSim.Shared.Contracts.Enums;
-using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game;
 using ReactiveUI;
 
@@ -216,7 +213,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
             BaseWindow.Content = gameScreen;
             BaseWindow.Logger.Information("Showed GameScreen");
         }
-        catch (PmSimException exception)
+        catch (Exception exception)
         {
             BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
         }

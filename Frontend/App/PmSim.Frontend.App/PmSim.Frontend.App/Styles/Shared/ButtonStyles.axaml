@@ -60,6 +60,8 @@
         <Setter Property="BorderBrush" Value="#00000000"/>
         <Setter Property="Background" Value="#00000000"/>
         <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>
     
     <Style Selector="Button.GameMapButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">

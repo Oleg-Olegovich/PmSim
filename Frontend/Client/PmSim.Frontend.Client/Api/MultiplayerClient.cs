@@ -187,9 +187,15 @@ public class MultiplayerClient : IPmSimClient
     {
         var games = new GameModel[]
         {
-            new(0, "Вася", "Тест", LocalizationGameModes.Survival, LocalizationGameMaps.Map0, 0, 10),
-            new(1, "Петя", "Test", LocalizationGameModes.TimerAndMoney, LocalizationGameMaps.Map0, 0, 5)
+            new(0, "Вася", "Тест", GameModes.Survival, GameMaps.TheSimpleVillage, 0, 10),
+            new(1, "Петя", "Test", GameModes.TimerAndMoney, GameMaps.TheSimpleVillage, 0, 5)
         };
+        foreach (var game in games)
+        {
+            game.ModeName = LocalizationGameModes.ResourceManager.GetString(game.Mode.ToString());
+            game.MapName = LocalizationGameModes.ResourceManager.GetString($"Map{(int)game.Map}");
+        }
+        
         return games;
     }
 }

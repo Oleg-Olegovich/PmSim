@@ -1,11 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Reactive;
 using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client.Api;
 using PmSim.Shared.Contracts.Enums;
-using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using PmSim.Shared.Contracts.Interfaces;
 using ReactiveUI;
@@ -26,20 +26,17 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         set
         {
             _gameStage = value;
+            if (_gameStage == GameStages.ChoosingBackground)
+            {
+                IsFinish = false;
+                MainAreaContent = new ChoosingBackgroundDialogViewModel(this);
+            }
             if (IsFinish)
             {
                 return;
             }
 
-            if (_gameStage == GameStages.ChoosingBackground)
-            {
-                MainAreaContent = new ChoosingBackgroundDialogViewModel(this);
-            }
-            else if (_gameStage != GameStages.Connection)
-            {
-                ShowGiveUpButton = true;
-            }
-
+            ShowGiveUpButton = _gameStage != GameStages.Connection;
             ShowSkipButton = _gameStage == GameStages.Management;
         }
     }
@@ -132,7 +129,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         set => this.RaiseAndSetIfChanged(ref _maxEmployeesNumber, value);
     }
 
-    public ObservableCollection<PlayerStatus> Players { get; } = new();
+    public ObservableCollection<PlayerStatus> Players { get; set; } = new();
 
     private ViewModelBase? _mainAreaContent;
 
@@ -158,7 +155,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         set => this.RaiseAndSetIfChanged(ref _showGiveUpButton, value);
     }
 
-    private bool _isFinish;
+    private bool _isFinish = true;
 
     public bool IsFinish
     {
@@ -206,12 +203,12 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
             MainAreaContent = new InformationDialogViewModel(this, LocalizationGameScreen.NotEnoughMoney);
             return;
         }
-
+        
         try
         {
             _client.RentOffice(officeId);
         }
-        catch (PmSimException exception)
+        catch (Exception exception)
         {
             BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
         }
@@ -231,10 +228,19 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         throw new System.NotImplementedException();
     }
 
-    public void ShowMapMenu() => MainAreaContent = !IsFinish ? _gameMap : null;
+    public void ShowMapMenu() => MainAreaContent = IsFinish ? null : _gameMap;
 
     public void SetOfficeState(int officeId, OfficeStates officeState)
-        => _gameMap.ChangeOfficeImage(officeId, officeState);
+    {
+        try
+        {
+            _gameMap.ChangeOfficeImage(officeId, officeState);
+        }
+        catch (Exception exception)
+        {
+            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+        }
+    }
 
     public void ProcessLosing()
     {

@@ -27,7 +27,7 @@ public class Game
     private int _playersCompleted;
 
     private readonly GameOptions _settings;
-    private readonly List<Player> _players = new();
+    private readonly List<Player> _players = new(), _actors = new();
     private readonly List<Auction> _auctions = new();
     private Bot[] _bots = Array.Empty<Bot>();
     private Incident[] _incidents = Array.Empty<Incident>();
@@ -35,6 +35,8 @@ public class Game
 
     private readonly List<Interview> _interviews = new();
     private readonly IGameMap _map;
+    private readonly string _founder;
+    private readonly int _id;
     private readonly Random _random = new();
 
     public Office[] Offices => _map.Offices;
@@ -44,33 +46,21 @@ public class Game
     /// <summary>
     /// Seconds of the current stage of the game.
     /// </summary>
-    private int Time { get; set; }
+    private int _time;
 
-    private Incident? CurrentIncident { get; set; }
+    private Incident? _currentIncident;
 
-    private string Founder { get; }
+    private Player? _winner;
 
-    private int Id { get; }
+    public GameModel Model 
+        => new(_id, _founder, _settings.GameName, _settings.Mode, (GameMaps)_settings.MapNumber, 
+            _players.Count, _playersQuantity);
 
-    private Player[] Actors
-    {
-        get
-        {
-            var actors = new List<Player>(_players);
-            actors.AddRange(_bots);
-            return actors.ToArray();
-        }
-    }
-
-    private Player? Winner { get; set; }
-
-    private int GameMap => _map.MapImageNumber;
-
-    public Game(string founder, int id, GameOptions settings)
+    public Game(int id, string founder, GameOptions settings)
     {
         _map = FindMap(settings.MapNumber);
-        Founder = founder;
-        Id = id;
+        _id = id;
+        _founder = founder;
         _settings = settings;
         InitializeGameObjects();
         CreateActors(settings.MaxPlayersNumber, settings.BotsNumber);
@@ -97,6 +87,7 @@ public class Game
         }
 
         _players.Add(new Player(playerId, playerName, _settings.StartUpCapital, statusChangeNotifier));
+        statusChangeNotifier.ChangeCurrentStageAsync(_stage, _time);
     }
 
     public void SetBackground(int playerId, Professions profession)
@@ -392,7 +383,7 @@ public class Game
             throw new PmSimException("It is impossible to make decision on the incident.");
         }
 
-        CurrentIncident.DonationsSum += donation;
+        _currentIncident.DonationsSum += donation;
         player.Money -= donation;
     }
 
@@ -413,6 +404,15 @@ public class Game
     private void GiveUp(Player player)
     {
         player.IsOut = true;
+        _actors.Remove(player);
+        if (_actors.Count < 2)
+        {
+            _stage = GameStages.IsOver;
+        }
+        if (player is not Bot)
+        {
+            --_playersQuantity;
+        }
     }
 
     internal static Project GetProjectRandomly()
@@ -472,29 +472,21 @@ public class Game
 
     private async Task ProcessConnectionAsync()
     {
-        await File.WriteAllTextAsync("TEST.txt", "Start process connection");
-        
-        
         ChangeStage(GameStages.Connection, _settings.ConnectionRealTime);
-        while (Time > 0 && _players.Count < _playersQuantity)
+        while (_time > 0 && _players.Count < _playersQuantity)
         {
             await Task.Delay(1000);
-            --Time;
+            --_time;
         }
 
         _playersQuantity = _players.Count;
-        foreach (var actor in Actors)
-        {
-            foreach (var player in _players)
-            {
-                player.StatusChangeNotifier.AnotherPlayerStatus = PlayerLogic.GetStatus(actor);
-            }
-        }
     }
 
     private void SendPlayerStatusesToEachPlayer()
     {
-        var statuses = Actors.Select(PlayerLogic.GetStatus).ToList();
+        _actors.AddRange(_players);
+        _actors.AddRange(_bots);
+        var statuses = _actors.Select(PlayerLogic.GetStatus).ToList();
         foreach (var player in _players)
         {
             player.StatusChangeNotifier.Players = statuses;
@@ -517,7 +509,7 @@ public class Game
     private void ChangeStage(GameStages stage, int time)
     {
         _stage = stage;
-        Time = time;
+        _time = time;
         foreach (var player in _players)
         {
             player.StatusChangeNotifier.ChangeCurrentStageAsync(stage, time);
@@ -528,14 +520,14 @@ public class Game
     {
         _playersCompleted = 0;
         ChangeStage(stage, time);
-        while (Time > 0 && _playersCompleted < _playersQuantity)
+        while (_time > 0 && _playersCompleted < _playersQuantity && _stage != GameStages.IsOver)
         {
             await Task.Delay(1000);
-            --Time;
+            --_time;
         }
     }
 
-    private async Task ProcessChoosingBackgroundAsync()
+    private async Task ProcessChoosingBackgroundAsync() 
         => await ProcessGameStageAsync(GameStages.ChoosingBackground, _settings.ChoosingBackgroundRealTime);
 
     private async Task ProcessManagementAsync()
@@ -545,7 +537,7 @@ public class Game
     {
         _playersCompleted = 0;
         ChangeStage(GameStages.Diplomacy, _settings.DiplomacyRealTime);
-        while (Time > 0 && _playersCompleted < _playersQuantity)
+        while (_time > 0 && _playersCompleted < _playersQuantity)
         {
             foreach (var bot in _bots)
             {
@@ -553,13 +545,13 @@ public class Game
             }
 
             await Task.Delay(1000);
-            --Time;
+            --_time;
         }
     }
 
     private void SummingUpExpenses()
     {
-        foreach (var actor in Actors)
+        foreach (var actor in _actors)
         {
             actor.Money -= actor.TechSupportOfficersNumber * GameConstants.TechSupportSalary;
             if (actor.Money < 0)
@@ -609,7 +601,7 @@ public class Game
 
     private void SummingUpEmployeesTasks()
     {
-        foreach (var actor in Actors)
+        foreach (var actor in _actors)
         {
             foreach (var employee in actor.Employees)
             {
@@ -626,7 +618,7 @@ public class Game
         SummingUpAuctions();
         SummingUpEmployeesTasks();
 
-        foreach (var player in Actors)
+        foreach (var player in _actors)
         {
             PlayerLogic.SummingUp(player);
         }
@@ -634,7 +626,7 @@ public class Game
 
     private async Task ProcessIncidentAsync()
     {
-        CurrentIncident = _incidents[_random.Next(_incidents.Length)];
+        _currentIncident = _incidents[_random.Next(_incidents.Length)];
         await ProcessGameStageAsync(GameStages.IncidentDiscussion, _settings.IncidentRealTime);
         foreach (var bot in _bots)
         {
@@ -642,16 +634,11 @@ public class Game
         }
 
         _stage = GameStages.IncidentResolution;
-        if (CurrentIncident.DonationsSum < CurrentIncident.PassCost)
+        if (_currentIncident.DonationsSum < _currentIncident.PassCost)
         {
-            foreach (var player in _players)
+            foreach (var actor in _actors)
             {
-                CurrentIncident.Process(player);
-            }
-
-            foreach (var bot in _bots)
-            {
-                CurrentIncident.Process(bot);
+                _currentIncident.Process(actor);
             }
         }
     }
@@ -669,13 +656,13 @@ public class Game
 
     private void ApproveWinner(Func<Player, bool> condition)
     {
-        Winner = _players.FirstOrDefault(condition);
-        if (Winner != null)
+        _winner = _players.FirstOrDefault(condition);
+        if (_winner != null)
         {
             return;
         }
 
-        Winner = _bots.FirstOrDefault(condition);
+        _winner = _bots.FirstOrDefault(condition);
     }
 
     private void ApproveWinner()
@@ -701,7 +688,7 @@ public class Game
 
     private void StartSprint()
     {
-        foreach (var actor in Actors)
+        foreach (var actor in _actors)
         {
             actor.Money -= actor.TotalRentPayment;
             if (actor.Money < 0)
@@ -746,7 +733,7 @@ public class Game
 
     private Player FindPlayerById(int playerId)
     {
-        var player = Actors.FirstOrDefault(x => x.Id == playerId);
+        var player = _actors.FirstOrDefault(x => x.Id == playerId);
         if (player is null)
         {
             throw new PmSimException("There is no such player.");

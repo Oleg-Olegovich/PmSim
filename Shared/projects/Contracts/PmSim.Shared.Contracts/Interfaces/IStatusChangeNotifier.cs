@@ -40,7 +40,7 @@ public interface IStatusChangeNotifier
     
     public int Creativity { set; }
 
-    public IEnumerable<PlayerStatus> Players { set; }
+    public List<PlayerStatus> Players { set; }
     
     public PlayerStatus AnotherPlayerStatus { set; }
     

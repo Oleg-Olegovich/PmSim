@@ -12,4 +12,5 @@
     <StyleInclude Source="/Styles/Shared/TabItemStyles.axaml"/>
     <StyleInclude Source="/Styles/Shared/DataGridStyles.axaml"/>
     <StyleInclude Source="/Styles/Shared/ImageStyles.axaml"/>
+    <StyleInclude Source="/Styles/Shared/ListBoxStyles.axaml"/>
 </Styles>

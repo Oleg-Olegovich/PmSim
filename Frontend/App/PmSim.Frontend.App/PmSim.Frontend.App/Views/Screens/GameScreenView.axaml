@@ -7,7 +7,7 @@
              x:Class="PmSim.Frontend.App.Views.Screens.GameScreenView">
 
     <Grid RowDefinitions="*, Auto, 8*, 10"
-          ColumnDefinitions="10, *, 4*, 10">
+          ColumnDefinitions="10, *, 4, 4*, 10">
 
         <!-- Status bar -->
 
@@ -175,18 +175,25 @@
             </DataGrid.Columns>
         </DataGrid>
 
+        <GridSplitter Grid.Row="1"
+                      Grid.RowSpan="2"
+                      Grid.Column="2"
+                      Background="#00000000"
+                      ResizeDirection="Columns"/>
+        
         <!-- Main area (game map or action dialog) -->
 
         <ContentControl Grid.Row="1"
                         Grid.RowSpan="2"
-                        Grid.Column="2"
+                        Grid.Column="3"
                         Content="{Binding MainAreaContent}"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch" />
         
         <Viewbox Grid.Row="1"
                  Grid.RowSpan="2"
-                 Grid.Column="2"
+                 Grid.Column="3"
+                 VerticalAlignment="Top"
                  ZIndex="-1"
                  Stretch="Uniform">
             <Panel>

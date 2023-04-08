@@ -1,4 +1,6 @@
-﻿namespace PmSim.Shared.Contracts.Game;
+﻿using PmSim.Shared.Contracts.Enums;
+
+namespace PmSim.Shared.Contracts.Game;
 
 public class GameModel
 {
@@ -8,15 +10,19 @@ public class GameModel
     
     public string Founder { get; }
     
-    public string Mode { get; }
+    public GameModes Mode { get; }
+    
+    public string? ModeName { get; set; }
 
-    public string Map { get; }
+    public GameMaps Map { get; }
+
+    public string? MapName { get; set; }
     
     public int Players { get; }
     
     public int MaxPlayers { get; }
 
-    public GameModel(int id, string founder, string name, string mode, string map, int players, int mapPlayers)
+    public GameModel(int id, string founder, string name, GameModes mode, GameMaps map, int players, int mapPlayers)
     {
         Id = id;
         Founder = founder;

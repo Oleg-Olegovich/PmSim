@@ -11,7 +11,7 @@
         
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Grid.ColumnSpan="3"
+                   Grid.ColumnSpan="2"
                    Text="{x:Static localizations:LocalizationGamesListScreen.Header}"
                    Classes="Header"/>
         
@@ -32,10 +32,10 @@
                                             Binding="{Binding Name}"
                                             IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Mode}" 
-                                            Binding="{Binding Mode}"
+                                            Binding="{Binding ModeName}"
                                             IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Map}" 
-                                            Binding="{Binding Map}"
+                                            Binding="{Binding ModeName}"
                                             IsReadOnly="True"/>
                         <DataGridTextColumn Header="{x:Static localizations:LocalizationGamesListScreen.Players}" 
                                             Binding="{Binding Players}"

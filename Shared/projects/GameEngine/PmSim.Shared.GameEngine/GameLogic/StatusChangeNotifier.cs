@@ -25,7 +25,7 @@ internal class StatusChangeNotifier : IStatusChangeNotifier
     public int Design { get; set; }
     public int Management { get; set; }
     public int Creativity { get; set; }
-    public IEnumerable<PlayerStatus> Players { get; set; }
+    public List<PlayerStatus> Players { get; set; }
     public PlayerStatus AnotherPlayerStatus { get; set; }
     public int RemovePlayer { get; set; }
     public EmployeeStatus AddEmployee { get; set; }

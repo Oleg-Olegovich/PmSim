@@ -1,6 +1,7 @@
 ﻿using System.Reactive;
 using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Screens;
+using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game.GameObjects.Others;
 using ReactiveUI;
 
@@ -8,7 +9,7 @@ namespace PmSim.Frontend.App.ViewModels.Frames;
 
 public class RentOfficeDialogViewModel : BasicFrameViewModel
 {
-    private readonly int _number, _rentalPrice;
+    private readonly int _id, _rentalPrice;
 
     public string Info { get; }
     
@@ -16,10 +17,10 @@ public class RentOfficeDialogViewModel : BasicFrameViewModel
     
     public ReactiveCommand<Unit, Unit> CancelCommand { get; }
     
-    public RentOfficeDialogViewModel(GameScreenViewModel gameScreen, Office office, int number) 
+    public RentOfficeDialogViewModel(GameScreenViewModel gameScreen, Office office, int id) 
         : base(gameScreen)
     {
-        _number = number;
+        _id = id;
         _rentalPrice = office.RentalPrice;
         Info = string.Format(LocalizationGameScreen.OfficeRentInfo, office.RentalPrice, office.Capacity);
         RentCommand = ReactiveCommand.Create(Rent);
@@ -27,8 +28,11 @@ public class RentOfficeDialogViewModel : BasicFrameViewModel
     }
 
     private void Rent()
-        => GameScreen.RentOffice(_number, _rentalPrice);
+        => GameScreen.RentOffice(_id, _rentalPrice);
 
     private void Cancel()
-        => GameScreen.ShowMapMenu();
+    {
+        GameScreen.SetOfficeState(_id, OfficeStates.NotMine);
+        GameScreen.ShowMapMenu();
+    }
 }

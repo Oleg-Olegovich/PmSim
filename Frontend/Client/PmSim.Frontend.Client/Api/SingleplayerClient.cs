@@ -1,4 +1,5 @@
-﻿using PmSim.Frontend.Client.Properties;
+﻿using Avalonia.Threading;
+using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.GameObjects.Employees;
@@ -30,8 +31,11 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             {
                 return;
             }
-
-            _gameScreenLogic.ActionsNumber = value;
+            
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.ActionsNumber = value;
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -44,12 +48,15 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            _gameScreenLogic.Money = value;
-            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
-            if (status != null)
+            Dispatcher.UIThread.Post(() =>
             {
-                status.Money = value;
-            }
+                _gameScreenLogic.Money = value;
+                var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
+                if (status != null)
+                {
+                    status.Money = value;
+                }
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -61,8 +68,11 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             {
                 return;
             }
-
-            _gameScreenLogic.OfficesNumber = value;
+            
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.OfficesNumber = value;
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -75,7 +85,10 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            _gameScreenLogic.TechSupportOfficersNumber = value;
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.TechSupportOfficersNumber = value;
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -87,8 +100,11 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             {
                 return;
             }
-
-            _gameScreenLogic.ProjectsNumber = value;
+            
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.ProjectsNumber = value;
+            }, DispatcherPriority.Background);
         }
     }
     
@@ -101,12 +117,15 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            _gameScreenLogic.ProjectsNumber = value;
-            var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
-            if (status != null)
+            Dispatcher.UIThread.Post(() =>
             {
-                status.CompletedProjects = value;
-            }
+                _gameScreenLogic.ProjectsNumber = value;
+                var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
+                if (status != null)
+                {
+                    status.CompletedProjects = value;
+                }
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -119,7 +138,10 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            _gameScreenLogic.FailedProjectsNumber = value;
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.FailedProjectsNumber = value;
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -132,7 +154,10 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            _gameScreenLogic.EmployeesNumber = value;
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.EmployeesNumber = value;
+            }, DispatcherPriority.Background);
         }
     }
     
@@ -145,7 +170,10 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            _gameScreenLogic.MaxEmployeesNumber = value;
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.MaxEmployeesNumber = value;
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -214,7 +242,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
-    public IEnumerable<PlayerStatus> Players
+    public List<PlayerStatus> Players
     {
         set
         {
@@ -223,10 +251,13 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            foreach (var status in value)
+            Dispatcher.UIThread.Post(() =>
             {
-                _gameScreenLogic.Players.Add(status);
-            }
+                foreach (var status in value)
+                {
+                    _gameScreenLogic.Players.Add(status);
+                }
+            }, DispatcherPriority.Background);
         }
     }
     
@@ -239,16 +270,19 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            for (var i = 0; i < _gameScreenLogic.Players.Count; ++i)
+            Dispatcher.UIThread.Post(() =>
             {
-                if (_gameScreenLogic.Players[i].Id != value.Id)
+                for (var i = 0; i < _gameScreenLogic.Players.Count; ++i)
                 {
-                    continue;
-                }
+                    if (_gameScreenLogic.Players[i].Id != value.Id)
+                    {
+                        continue;
+                    }
 
-                _gameScreenLogic.Players[i] = value;
-                return;
-            }
+                    _gameScreenLogic.Players[i] = value;
+                    return;
+                }
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -260,8 +294,11 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             {
                 return;
             }
-
-            _gameScreenLogic.Players[value].IsOut = true;
+            
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.Players[value].IsOut = true;
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -313,8 +350,11 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             {
                 return;
             }
-
-            _gameScreenLogic.ProcessLosing();
+            
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.ProcessLosing();
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -335,10 +375,13 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             await _timer;
         }
 
-        _gameScreenLogic.GameStage = stage;
-        _gameScreenLogic.GameStageName = stageName;
-        _time = time;
-        _timer = Task.Run(ProcessTimerAsync);
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.GameStage = stage;
+            _gameScreenLogic.GameStageName = stageName;
+            _time = time;
+            _timer = Task.Run(ProcessTimerAsync);
+        }, DispatcherPriority.Background);
     }
 
     public void ChangeOfficeState(int officeId, OfficeStates officeState)
@@ -347,14 +390,17 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         {
             return;
         }
-        
-        _gameScreenLogic.SetOfficeState(officeId, officeState);
+
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.SetOfficeState(officeId, officeState);
+        }, DispatcherPriority.Background);
     }
 
     public void CreateNewGame(GameOptions gameOptions, IGameScreenLogic gameScreenLogic)
     {
         _gameScreenLogic = gameScreenLogic;
-        _game = new Game(_playerName, _playerId, gameOptions);
+        _game = new Game(_playerId, _playerName, gameOptions);
         _game.Connect(_playerId, _playerName, this);
     }
 
@@ -474,7 +520,10 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
                 return;
             }
 
-            _gameScreenLogic.Time = $"{_time / 60:D2}:{_time % 60:D2}";
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.Time = $"{_time / 60:D2}:{_time % 60:D2}";
+            }, DispatcherPriority.Background);
             await Task.Delay(1000);
         }
     }

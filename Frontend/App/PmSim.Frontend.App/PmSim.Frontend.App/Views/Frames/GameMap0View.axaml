@@ -5,14 +5,15 @@
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Frames.GameMap0View">
 
-    <Viewbox Stretch="Uniform">
+    <Viewbox Stretch="Uniform"
+             VerticalAlignment="Top">
         <Panel>
             
             <Image ZIndex="1"
                    IsEnabled="False"
                    Source="avares://PmSim.Frontend.App/Assets/Images/Map0/map.png" />
 
-            <Button Margin="73 -210 0 0"
+            <Button Margin="55 114 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="8">
@@ -40,7 +41,7 @@
                 </Button.Styles>
             </Button>
 
-            <Button Margin="720 -285 0 0"
+            <Button Margin="702 76 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="5">
@@ -69,11 +70,11 @@
                 </Button.Styles>
             </Button>
 
-            <Button Margin="454 -435 0 0"
+            <Button Margin="434 0 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="6">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_1_normal.png" />
+                <Image Source="{Binding OfficeImages[6]}" />
 
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -98,11 +99,11 @@
                 </Button.Styles>
             </Button>
 
-            <Button Margin="280 -238 0 0"
+            <Button Margin="261 101 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="0">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png" />
+                <Image Source="{Binding OfficeImages[0]}" />
 
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -127,11 +128,11 @@
                 </Button.Styles>
             </Button>
 
-            <Button Margin="843 -178 0 0"
+            <Button Margin="831 131 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="1">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_1_normal.png" />
+                <Image Source="{Binding OfficeImages[1]}" />
 
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -156,11 +157,11 @@
                 </Button.Styles>
             </Button>
 
-            <Button Margin="199 -27 0 0"
+            <Button Margin="181 206 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="7">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/middle_office_0_normal.png"/>
+                <Image Source="{Binding OfficeImages[7]}"/>
             
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -183,11 +184,11 @@
                 </Button.Styles>
             </Button>
             
-            <Button Margin="700 170 0 0"
+            <Button Margin="694 304 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="2">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_2_normal.png"/>
+                <Image Source="{Binding OfficeImages[2]}"/>
             
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -210,11 +211,11 @@
                 </Button.Styles>
             </Button>
             
-            <Button Margin="610 378 0 0"
+            <Button Margin="593 408 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="9">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/big_office_0_normal.png"/>
+                <Image Source="{Binding OfficeImages[9]}"/>
             
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -237,11 +238,11 @@
                 </Button.Styles>
             </Button>
             
-            <Button Margin="325 284 0 0"
+            <Button Margin="308 362 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="3">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png"/>
+                <Image Source="{Binding OfficeImages[3]}"/>
             
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -264,11 +265,11 @@
                 </Button.Styles>
             </Button>
             
-            <Button Margin="45 272 0 0"
+            <Button Margin="28 356 0 0"
                     Classes="GameMapButton"
                     Command="{Binding OfficeCommand}"
                     CommandParameter="4">
-                <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/small_office_0_normal.png"/>
+                <Image Source="{Binding OfficeImages[4]}"/>
             
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -291,7 +292,7 @@
                 </Button.Styles>
             </Button>
             
-            <Button Margin="436 -89 0 0"
+            <Button Margin="436 167 0 0"
                     Classes="GameMapButton"
                     Command="{Binding AuctionCommand}">
                 <Image Source="avares://PmSim.Frontend.App/Assets/Images/Map0/auctions_house_normal.png" />

@@ -47,7 +47,7 @@ public interface IGameScreenLogic
     
     public int MaxEmployeesNumber { get; set; }
     
-    public ObservableCollection<PlayerStatus> Players { get; }
+    public ObservableCollection<PlayerStatus> Players { get; set; }
 
     public void SetOfficeState(int officeId, OfficeStates officeState);
 
