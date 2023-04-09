@@ -39,8 +39,8 @@
     <data name="TextBlockIncidentRealTime" xml:space="preserve">
         <value>Incident (sec.)</value>
     </data>
-    <data name="TextBlockSprintRealTime" xml:space="preserve">
-        <value>Sprint (sec.)</value>
+    <data name="TextBlockManagementRealTime" xml:space="preserve">
+        <value>Managementt (sec.)</value>
     </data>
     <data name="TextBlockStartUpCapital" xml:space="preserve">
         <value>Start up capital</value>

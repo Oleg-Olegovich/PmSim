@@ -5,6 +5,8 @@ namespace PmSim.Shared.Contracts.Game.Projects;
 public class Feature : ITranslationObject
 {
     public int DescriptionNumber { get; }
+    
+    public string? Name { get; set; }
 
     public ProgressPoints Points { get; set; }
 

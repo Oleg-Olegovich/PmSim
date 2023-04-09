@@ -20,8 +20,8 @@
     <data name="Header" xml:space="preserve">
         <value>Настройки партии</value>
     </data>
-    <data name="TextBlockSprintRealTime" xml:space="preserve">
-        <value>Спринт (сек.)</value>
+    <data name="TextBlockManagementRealTime" xml:space="preserve">
+        <value>Менеджмент (сек.)</value>
     </data>
     <data name="TextBlockMaxSprintNumber" xml:space="preserve">
         <value>Макс. кол-во спринтов</value>

@@ -93,7 +93,7 @@
                                                    Grid.Column="1"
                                                    Classes="Text"
                                                    TextAlignment="Right"
-                                                   Text="{Binding Reward}" />
+                                                   Text="{Binding Reward.Prize}" />
 
                                         <TextBlock Grid.Row="6"
                                                    Grid.Column="0"

@@ -110,7 +110,7 @@
                     Grid.Column="1"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockSprintRealTime}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockManagementRealTime}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
