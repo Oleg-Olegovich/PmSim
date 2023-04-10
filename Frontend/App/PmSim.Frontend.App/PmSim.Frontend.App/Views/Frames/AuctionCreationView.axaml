@@ -6,37 +6,254 @@
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Frames.AuctionCreationView">
     
-    <Grid RowDefinitions="*, Auto, Auto, 10*, *"
-          ColumnDefinitions="*, 5*, 5*, Auto, *">
+    <Grid RowDefinitions="*, Auto, 10*, *"
+          ColumnDefinitions="*, 7*, 3*, *">
         
         <Border Grid.Row="1"
                 Grid.RowSpan="2"
                 Grid.Column="1"
-                Grid.ColumnSpan="3"
+                Grid.ColumnSpan="2"
+                Background="#cae7e3"
                 Classes="CommonBackdrop" />
         
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Grid.ColumnSpan="3"
+                   Grid.ColumnSpan="2"
                    Classes="Header"
                    Text="{x:Static localizations:LocalizationGameScreen.AuctionCreation}" />
         
-        <StackPanel Grid.Row="2"
-                    Grid.Column="1"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameScreen.LotType}"/>
-            <Border Classes="TextStroke">
-                <ComboBox Classes="Bordered"
-                          Items="{Binding LotTypeNames}"
-                          SelectedIndex="{Binding CurrentLotType}"/>
-            </Border>
-        </StackPanel>
+        <TabControl Grid.Row="2"
+                    Grid.Column="1">
+
+            <TabItem Classes="Common"
+                     Header="{x:Static localizations:LocalizationGameScreen.Employees}">
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListBox Classes="Common"
+                             SelectionMode="Single"
+                             Items="{Binding Employees}"
+                             SelectedItem="{Binding SelectedLot}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Classes="TextStroke"
+                                        Padding="2">
+                                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                          ColumnDefinitions="Auto, Auto">
+
+                                        <TextBlock Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Grid.ColumnSpan="2"
+                                                   Classes="Header"
+                                                   Text="{Binding Name}" />
+
+                                        <TextBlock Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Programming}" />
+                                        <TextBlock Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Skills.Programming}" />
+
+                                        <TextBlock Grid.Row="2"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Music}" />
+                                        <TextBlock Grid.Row="2"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Skills.Music}" />
+
+                                        <TextBlock Grid.Row="3"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Design}" />
+                                        <TextBlock Grid.Row="3"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Skills.Design}" />
+
+                                        <TextBlock Grid.Row="4"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Management}" />
+                                        <TextBlock Grid.Row="4"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Skills.Management}" />
+
+                                        <TextBlock Grid.Row="5"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Creativity}" />
+                                        <TextBlock Grid.Row="5"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Skills.Creativity}" />
+
+                                        <TextBlock Grid.Row="6"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Salary}" />
+                                        <TextBlock Grid.Row="6"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Salary}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Classes="Common"
+                     Header="{x:Static localizations:LocalizationGameScreen.Projects}">
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                    <ListBox Classes="Common"
+                             SelectionMode="Single"
+                             Items="{Binding Projects}"
+                             SelectedItem="{Binding SelectedLot}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Classes="TextStroke"
+                                        Padding="2">
+                                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                          ColumnDefinitions="Auto, Auto">
+
+                                        <TextBlock Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Grid.ColumnSpan="2"
+                                                   Classes="Header"
+                                                   Text="{Binding Name}" />
+
+                                        <TextBlock Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Programming}" />
+                                        <TextBlock Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Points.Programming}" />
+
+                                        <TextBlock Grid.Row="2"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Music}" />
+                                        <TextBlock Grid.Row="2"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Points.Music}" />
+
+                                        <TextBlock Grid.Row="3"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Design}" />
+                                        <TextBlock Grid.Row="3"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Points.Design}" />
+
+                                        <TextBlock Grid.Row="4"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Management}" />
+                                        <TextBlock Grid.Row="4"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Points.Management}" />
+
+                                        <TextBlock Grid.Row="5"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Reward}" />
+                                        <TextBlock Grid.Row="5"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Reward}" />
+
+                                        <TextBlock Grid.Row="6"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                        <TextBlock Grid.Row="6"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Deadline}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Classes="Common"
+                     Header="{x:Static localizations:LocalizationGameScreen.Opportunities}">
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListBox Classes="Common"
+                             SelectionMode="Single"
+                             Items="{Binding Opportunities}"
+                             SelectedItem="{Binding SelectedLot}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Classes="TextStroke"
+                                        Padding="2">
+                                    <Grid RowDefinitions="Auto, Auto">
+                                        <TextBlock Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Classes="Header"
+                                                   Text="{Binding Name}" />
+
+                                        <TextBlock Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{Binding Description}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"
+                                           ItemWidth="200" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
         
         <StackPanel Grid.Row="2"
                     Grid.Column="2"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
+                       Background="#cae7e3"
                        Text="{x:Static localizations:LocalizationGameScreen.InitialPrice}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Classes="Bordered"
@@ -44,19 +261,14 @@
                                Minimum="1"
                                Maximum="100"/>
             </Border>
+            
+            <Button Classes="Menu Stretch"
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
+                    Command="{Binding ConfirmCommand}"/>
+            
+            <Button Classes="AttentionGrabbing Stretch"
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                    Command="{Binding CancelCommand}"/>
         </StackPanel>
-        
-        <Button Grid.Row="2"
-                Grid.Column="3"
-                Classes="Menu Stretch"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
-                Command="{Binding ConfirmCommand}"/>
-        
-        <ContentControl Grid.Row="3"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="3"
-                        Content="{Binding SelectionFrame}"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch" />
     </Grid>
 </UserControl>

@@ -16,7 +16,6 @@
 
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Grid.ColumnSpan="2"
                    Classes="Header"
                    Text="{x:Static localizations:LocalizationGameScreen.Opportunities}" />
 
@@ -51,7 +50,8 @@
                     </ListBox.ItemTemplate>
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal" />
+                            <WrapPanel Orientation="Horizontal"
+                                       ItemWidth="200"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListBox>

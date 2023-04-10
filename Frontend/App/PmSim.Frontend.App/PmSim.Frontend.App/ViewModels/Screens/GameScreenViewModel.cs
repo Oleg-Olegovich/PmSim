@@ -158,7 +158,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 
     public OpportunityMenuViewModel OpportunitiesMenu { get; }
     
-    private AuctionMenuViewModel AuctionMenu { get; }
+    private AuctionMenuViewModel AuctionsMenu { get; }
 
     private bool _showSkipButton;
 
@@ -206,7 +206,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         EmployeesMenu = new EmployeesMenuViewModel(this);
         ProjectsMenu = new ProjectsMenuViewModel(this);
         OpportunitiesMenu = new OpportunityMenuViewModel(this);
-        AuctionMenu = new AuctionMenuViewModel(this);
+        AuctionsMenu = new AuctionMenuViewModel(this);
         MainAreaContent = new ConnectionDialogViewModel();
         GiveUpCommand = ReactiveCommand.Create(GiveUp);
         SkipCommand = ReactiveCommand.Create(SkipMove);

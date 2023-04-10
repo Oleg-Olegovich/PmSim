@@ -5,46 +5,120 @@
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Frames.InterviewDialogView">
-    
+
     <Grid RowDefinitions="*, Auto, Auto, Auto, Auto, *"
           ColumnDefinitions="*, *, *, *">
-        
+
+        <Border Grid.Row="1"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Background="#cae7e3"
+                Classes="CommonBackdrop" />
+
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
                    Grid.ColumnSpan="2"
                    Classes="Header"
-                   Text="{x:Static localizations:LocalizationGameScreen.Interview}"/>
-        
-        <TextBlock Grid.Row="2"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Classes="Text"
-                   Text="{Binding Description}"/>
-        
+                   Text="{x:Static localizations:LocalizationGameScreen.Interview}" />
+
+        <Grid Grid.Row="2"
+              Grid.Column="1"
+              Grid.ColumnSpan="2"
+              RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+              ColumnDefinitions="Auto, Auto">
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       Classes="Header"
+                       Text="{Binding Employee.Name}" />
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Classes="Text"
+                       Text="{x:Static localizations:LocalizationGameScreen.Programming}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Classes="Text"
+                       TextAlignment="Right"
+                       Text="{Binding Employee.Skills.Programming}" />
+
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0"
+                       Classes="Text"
+                       Text="{x:Static localizations:LocalizationGameScreen.Music}" />
+            <TextBlock Grid.Row="2"
+                       Grid.Column="1"
+                       Classes="Text"
+                       TextAlignment="Right"
+                       Text="{Binding Employee.Skills.Music}" />
+
+            <TextBlock Grid.Row="3"
+                       Grid.Column="0"
+                       Classes="Text"
+                       Text="{x:Static localizations:LocalizationGameScreen.Design}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="1"
+                       Classes="Text"
+                       TextAlignment="Right"
+                       Text="{Binding Employee.Skills.Design}" />
+
+            <TextBlock Grid.Row="4"
+                       Grid.Column="0"
+                       Classes="Text"
+                       Text="{x:Static localizations:LocalizationGameScreen.Management}" />
+            <TextBlock Grid.Row="4"
+                       Grid.Column="1"
+                       Classes="Text"
+                       TextAlignment="Right"
+                       Text="{Binding Employee.Skills.Management}" />
+
+            <TextBlock Grid.Row="5"
+                       Grid.Column="0"
+                       Classes="Text"
+                       Text="{x:Static localizations:LocalizationGameScreen.Creativity}" />
+            <TextBlock Grid.Row="5"
+                       Grid.Column="1"
+                       Classes="Text"
+                       TextAlignment="Right"
+                       Text="{Binding Employee.Skills.Creativity}" />
+
+            <TextBlock Grid.Row="6"
+                       Grid.Column="0"
+                       Classes="Text"
+                       Text="{x:Static localizations:LocalizationGameScreen.Salary}" />
+            <TextBlock Grid.Row="6"
+                       Grid.Column="1"
+                       Classes="Text"
+                       TextAlignment="Right" />
+        </Grid>
+
         <StackPanel Grid.Row="3"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameScreen.Salary}"/>
+                       Background="#cae7e3"
+                       Text="{x:Static localizations:LocalizationGameScreen.Salary}" />
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="2"
                                Maximum="5"
                                Classes="Bordered BasicInteger"
-                               Value="{Binding Salary}"/>
+                               Value="{Binding Salary}" />
             </Border>
         </StackPanel>
-        
+
         <Button Grid.Row="4"
                 Grid.Column="1"
                 Classes="Stretch Menu"
                 Content="{x:Static localizations:LocalizationBasicScreen.Yes}"
-                Command="{Binding HireCommand}"/>
-        
+                Command="{Binding HireCommand}" />
+
         <Button Grid.Row="4"
                 Grid.Column="2"
                 Classes="Stretch AttentionGrabbing"
                 Content="{x:Static localizations:LocalizationBasicScreen.No}"
-                Command="{Binding CancelCommand}"/>
+                Command="{Binding CancelCommand}" />
     </Grid>
 </UserControl>

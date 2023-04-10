@@ -2,6 +2,7 @@
 using System.Reactive;
 using Avalonia.Controls.Selection;
 using PmSim.Frontend.App.ViewModels.Screens;
+using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game.Employees;
 using ReactiveUI;
 
@@ -29,6 +30,8 @@ public class EmployeesMenuViewModel : BasicFrameViewModel
     
     public ReactiveCommand<Unit, Unit> InventionCommand { get; }
     
+    public ReactiveCommand<Unit, Unit> CancelTaskCommand { get; }
+    
     public ReactiveCommand<Unit, Unit> DismissalCommand { get; }
     
     public EmployeesMenuViewModel(GameScreenViewModel gameScreen) 
@@ -42,6 +45,7 @@ public class EmployeesMenuViewModel : BasicFrameViewModel
         DevelopmentCommand = ReactiveCommand.Create(ProcessDevelopmentCommand);
         BackUpCommand =ReactiveCommand.Create(ProcessBackUpCommand) ;
         InventionCommand = ReactiveCommand.Create(ProcessInventionCommand);
+        CancelTaskCommand = ReactiveCommand.Create(ProcessCancelTaskCommand);
         DismissalCommand = ReactiveCommand.Create(ProcessDismissCommand);
     }
 
@@ -69,6 +73,15 @@ public class EmployeesMenuViewModel : BasicFrameViewModel
     private void ProcessInventionCommand()
     {
         
+    }
+
+    private void ProcessCancelTaskCommand()
+    {
+        foreach (var employee in Selection.SelectedItems)
+        {
+            employee.TaskType = EmployeeTaskTypes.Non;
+            employee.TaskTypeName = "";
+        }
     }
     
     private void ProcessDismissCommand()

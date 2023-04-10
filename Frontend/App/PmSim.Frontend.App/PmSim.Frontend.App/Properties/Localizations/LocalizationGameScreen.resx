@@ -175,4 +175,10 @@
     <data name="InitialPrice" xml:space="preserve">
         <value>Начальная цена</value>
     </data>
+    <data name="Bet" xml:space="preserve">
+        <value>Ставка</value>
+    </data>
+    <data name="Create" xml:space="preserve">
+        <value>Создать</value>
+    </data>
 </root>

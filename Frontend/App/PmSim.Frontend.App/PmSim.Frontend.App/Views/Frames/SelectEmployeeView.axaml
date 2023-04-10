@@ -5,7 +5,7 @@
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Frames.SelectEmployeeView">
-    
+
     <Grid RowDefinitions="*, Auto, 10*, *"
           ColumnDefinitions="*, 10*, *">
 
@@ -32,7 +32,7 @@
                     <DataTemplate>
                         <Border Classes="TextStroke"
                                 Padding="2">
-                            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                                   ColumnDefinitions="Auto, Auto">
 
                                 <TextBlock Grid.Row="0"
@@ -100,12 +100,6 @@
                                            Classes="Text"
                                            TextAlignment="Right"
                                            Text="{Binding Salary}" />
-
-                                <TextBlock Grid.Row="7"
-                                           Grid.Column="0"
-                                           Grid.ColumnSpan="2"
-                                           Classes="Header"
-                                           Text="{Binding TaskTypeName}" />
                             </Grid>
                         </Border>
                     </DataTemplate>

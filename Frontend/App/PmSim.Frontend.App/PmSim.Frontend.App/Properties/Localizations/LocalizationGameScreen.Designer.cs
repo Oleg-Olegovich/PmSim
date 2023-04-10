@@ -87,6 +87,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ставка.
+        /// </summary>
+        public static string Bet {
+            get {
+                return ResourceManager.GetString("Bet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Сдаться.
         /// </summary>
         public static string ButtonGiveUp {
@@ -110,6 +119,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static string CompletedProjects {
             get {
                 return ResourceManager.GetString("CompletedProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создать.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
             }
         }
         
