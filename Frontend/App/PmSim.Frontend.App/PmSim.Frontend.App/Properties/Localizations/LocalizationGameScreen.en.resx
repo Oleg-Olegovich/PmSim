@@ -165,4 +165,13 @@
     <data name="Sprint" xml:space="preserve">
         <value>Sprint</value>
     </data>
+    <data name="AuctionCreation" xml:space="preserve">
+        <value>Auction creation</value>
+    </data>
+    <data name="LotType" xml:space="preserve">
+        <value>Lot type</value>
+    </data>
+    <data name="InitialPrice" xml:space="preserve">
+        <value>Initial price</value>
+    </data>
 </root>

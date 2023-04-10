@@ -166,4 +166,13 @@
     <data name="Sprint" xml:space="preserve">
         <value>Спринт</value>
     </data>
+    <data name="AuctionCreation" xml:space="preserve">
+        <value>Создание аукциона</value>
+    </data>
+    <data name="LotType" xml:space="preserve">
+        <value>Тип лота</value>
+    </data>
+    <data name="InitialPrice" xml:space="preserve">
+        <value>Начальная цена</value>
+    </data>
 </root>

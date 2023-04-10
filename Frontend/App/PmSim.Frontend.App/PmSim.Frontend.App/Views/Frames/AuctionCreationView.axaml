@@ -2,12 +2,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Frames.AuctionCreationView">
     
-    <Grid RowDefinitions="*, Auto, Auto, Auto, Auto, Auto, *"
-          ColumnDefinitions="*, *, *">
+    <Grid RowDefinitions="*, Auto, Auto, 10*, *"
+          ColumnDefinitions="*, 5*, 5*, Auto, *">
         
+        <Border Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Classes="CommonBackdrop" />
         
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Classes="Header"
+                   Text="{x:Static localizations:LocalizationGameScreen.AuctionCreation}" />
+        
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Orientation="Vertical">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationGameScreen.LotType}"/>
+            <Border Classes="TextStroke">
+                <ComboBox Classes="Bordered"
+                          Items="{Binding LotTypeNames}"
+                          SelectedIndex="{Binding CurrentLotType}"/>
+            </Border>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2"
+                    Grid.Column="2"
+                    Orientation="Vertical">
+            <TextBlock Classes="Border"
+                       Text="{x:Static localizations:LocalizationGameScreen.InitialPrice}"/>
+            <Border Classes="TextStroke">
+                <NumericUpDown Classes="Bordered"
+                               Value="{Binding InitialPrice}"
+                               Minimum="1"
+                               Maximum="100"/>
+            </Border>
+        </StackPanel>
+        
+        <Button Grid.Row="2"
+                Grid.Column="3"
+                Classes="Menu Stretch"
+                Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
+                Command="{Binding ConfirmCommand}"/>
+        
+        <ContentControl Grid.Row="3"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3"
+                        Content="{Binding SelectionFrame}"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch" />
     </Grid>
 </UserControl>

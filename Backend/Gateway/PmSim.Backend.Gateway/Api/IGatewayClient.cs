@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
-using PmSim.Shared.Contracts.Actions;
+﻿using PmSim.Shared.Contracts.Actions;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Game;
-using PmSim.Shared.Contracts.Game.Status;
-using PmSim.Shared.Contracts.User;
 
 namespace PmSim.Backend.Gateway.Api;
 
@@ -13,7 +10,7 @@ public interface IGatewayClient
         
     Task<TokenResponse> GetAccountAsync(AuthorizationRequest request);
 
-    Task<GameModel> CreateNewGameAsync(CreateGameRequest request);
+    Task<GameModel> CreateNewGameAsync();
         
     Task<IsOkResponse> ConnectToGame(ActionRequest request);
 
@@ -23,8 +20,6 @@ public interface IGatewayClient
     /// Finds the game by its founder's login.
     /// </summary>
     Task<GameModel> GetGameAsync(string founder);
-
-    Task<GameStatusModel> GetGameStatusAsync(ActionRequest request);
 
     Task<IsOkResponse> SkipMove(ActionRequest request);
         

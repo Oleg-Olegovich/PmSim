@@ -60,6 +60,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Создание аукциона.
+        /// </summary>
+        public static string AuctionCreation {
+            get {
+                return ResourceManager.GetString("AuctionCreation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Аукционы.
         /// </summary>
         public static string Auctions {
@@ -204,6 +213,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Начальная цена.
+        /// </summary>
+        public static string InitialPrice {
+            get {
+                return ResourceManager.GetString("InitialPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Собеседование.
         /// </summary>
         public static string Interview {
@@ -220,6 +238,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static string Losing {
             get {
                 return ResourceManager.GetString("Losing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Тип лота.
+        /// </summary>
+        public static string LotType {
+            get {
+                return ResourceManager.GetString("LotType", resourceCulture);
             }
         }
         

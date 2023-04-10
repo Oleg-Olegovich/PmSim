@@ -31,7 +31,9 @@
                        Text="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.MoneyAmount}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Classes="Bordered"
-                               Value="{Binding MoneyAmount}"/>
+                               Value="{Binding MoneyAmount}"
+                               Minimum="10"
+                               Maximum="10000" />
             </Border>
         </StackPanel>
         

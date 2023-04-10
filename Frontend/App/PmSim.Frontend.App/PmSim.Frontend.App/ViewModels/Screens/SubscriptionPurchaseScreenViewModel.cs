@@ -9,7 +9,7 @@ public class SubscriptionPurchaseScreenViewModel : BasicScreenViewModel
 {
     private readonly GamesListScreenViewModel _gamesListScreen;
     
-    private int _moneyAmount;
+    private int _moneyAmount = 10;
     
     public int MoneyAmount
     {
