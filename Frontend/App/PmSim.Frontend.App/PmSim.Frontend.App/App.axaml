@@ -10,11 +10,4 @@
     <Application.Styles>
         <StyleInclude Source="avares://PmSim.Frontend.App/Styles/LightFluentTheme/ThemeStyle.axaml"/>
     </Application.Styles>
-    
-    <TrayIcon.Icons>
-        <TrayIcons>
-            <TrayIcon Icon="/Assets/app-logo.ico" 
-                      ToolTipText="PM Sim" />
-        </TrayIcons>
-    </TrayIcon.Icons>
 </Application>
