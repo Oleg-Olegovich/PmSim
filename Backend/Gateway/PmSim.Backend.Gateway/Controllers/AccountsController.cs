@@ -1,26 +1,14 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using OneGate.Backend.Core.Users.Api.Client;
-using OneGate.Backend.Core.Users.Api.Contracts.Account;
-using OneGate.Backend.Gateway.Shared.Api;
-using OneGate.Backend.Gateway.Shared.Api.Extensions.Claims;
-using OneGate.Backend.Gateway.Shared.Api.Options;
-using OneGate.Backend.Gateway.Shared.Api.Utils;
-using OneGate.Backend.Gateway.User.Api.Contracts.Account;
-using Swashbuckle.AspNetCore.Annotations;
 
-namespace OneGate.Backend.Gateway.User.Api.Controllers
+namespace PmSim.Backend.Gateway.Controllers
 {
-    [ApiVersion("1")]
-    [Route(RouteBase + "accounts")]
-    public class AccountsController : BaseController
+    //[ApiVersion("1")]
+    //[Route(RouteBase + "accounts")]
+    public class AccountsController //: BaseController
     {
+        /*
         private readonly IMapper _mapper;
         private readonly ILogger<AccountsController> _logger;
         private readonly IUsersApiClient _usersApiClient;
@@ -71,5 +59,6 @@ namespace OneGate.Backend.Gateway.User.Api.Controllers
             var account = _mapper.Map<AccountDto, AccountModel>(accountDto);
             return StrictOk(account);
         }
+        //*/
     }
 }

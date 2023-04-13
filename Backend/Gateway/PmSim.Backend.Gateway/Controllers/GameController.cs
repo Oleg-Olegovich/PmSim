@@ -1,22 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using OneGate.Backend.Core.Assets.Api.Client;
-using OneGate.Backend.Core.Assets.Api.Contracts.Asset;
-using OneGate.Backend.Gateway.Shared.Api;
-using OneGate.Backend.Gateway.User.Api.Contracts.Asset;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace OneGate.Backend.Gateway.User.Api.Controllers
+namespace PmSim.Backend.Gateway.Controllers
 {
-    [ApiVersion("1")]
-    [Route(RouteBase + "assets")]
-    public class GameController : BaseController
+    //[ApiVersion("1")]
+    //[Route(RouteBase + "assets")]
+    public class GameController
     {
+        /*
         private readonly IMapper _mapper;
         private readonly ILogger<GameController> _logger;
         private readonly IAssetsApiClient _assetsApiClient;
@@ -56,5 +46,6 @@ namespace OneGate.Backend.Gateway.User.Api.Controllers
             var assets = _mapper.Map<AssetDto, AssetModel>(assetDto);
             return StrictOk(assets);
         }
+        //*/
     }
 }
