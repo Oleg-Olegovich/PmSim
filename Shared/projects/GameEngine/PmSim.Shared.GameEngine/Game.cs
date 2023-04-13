@@ -640,7 +640,7 @@ public class Game
                 continue;
             }
 
-            actor.ActionsNumber = _settings.SprintActionsNumbers;
+            actor.ActionsNumber = _settings.ManagementActionsNumbers;
             actor.Projects.Add(GetProjectRandomly());
         }
     }

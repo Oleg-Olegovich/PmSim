@@ -139,16 +139,16 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         }
     }
 
-    private int _sprintActionsNumber;
+    private int _managementActionsNumber;
     
-    public int SprintActionsNumber
+    public int ManagementActionsNumber
     {
-        get => _sprintActionsNumber;
+        get => _managementActionsNumber;
         set
         {
             if (value != 0)
             {
-                this.RaiseAndSetIfChanged(ref _sprintActionsNumber, value);
+                this.RaiseAndSetIfChanged(ref _managementActionsNumber, value);
             }
         }
     }
@@ -216,8 +216,8 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     private void StartGame()
     {
         var settings = new GameOptions(Name, PlayersNumber, BotsNumber, (GameModes)SelectedMode, SelectedMap, 
-            ConnectionRealTime, ChoosingBackgroundRealTime, SprintRealTime, MaxSprintNumber, IncidentRealTime, 
-            SprintActionsNumber, AuctionRealTime, StartUpCapital);
+            ConnectionRealTime, ChoosingBackgroundRealTime, SprintRealTime, IncidentRealTime, 
+            ManagementActionsNumber, AuctionRealTime, StartUpCapital, MaxSprintNumber);
         try
         {
             var gameScreen = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
@@ -244,7 +244,7 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
         SprintRealTime = defaultSettings.SprintRealTime;
         IncidentRealTime = defaultSettings.IncidentRealTime;
         AuctionRealTime = defaultSettings.AuctionRealTime;
-        SprintActionsNumber = defaultSettings.SprintActionsNumbers;
+        ManagementActionsNumber = defaultSettings.ManagementActionsNumbers;
         StartUpCapital = defaultSettings.StartUpCapital;
         MaxSprintNumber = defaultSettings.MaxSprintNumber;
     }

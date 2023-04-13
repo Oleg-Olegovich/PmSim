@@ -54,7 +54,7 @@ public static class GameConstants
     /// </summary>
     public static int DefaultIncidentRealTime => 60;
 
-    public static int DefaultSprintActionsNumbers => 2;
+    public static int DefaultManagementActionsNumbers => 2;
 
     public static int DefaultAuctionRealTime => 10;
 

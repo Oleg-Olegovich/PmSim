@@ -132,6 +132,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Действий спринта.
+        /// </summary>
+        public static string TextBlockManagementActionsNumber {
+            get {
+                return ResourceManager.GetString("TextBlockManagementActionsNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Менеджмент (сек.).
         /// </summary>
         public static string TextBlockManagementRealTime {
@@ -155,15 +164,6 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         public static string TextBlockPlayers {
             get {
                 return ResourceManager.GetString("TextBlockPlayers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Действий спринта.
-        /// </summary>
-        public static string TextBlockSprintActionsNumber {
-            get {
-                return ResourceManager.GetString("TextBlockSprintActionsNumber", resourceCulture);
             }
         }
         

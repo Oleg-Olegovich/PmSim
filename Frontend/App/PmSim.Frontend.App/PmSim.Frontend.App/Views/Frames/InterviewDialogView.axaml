@@ -7,23 +7,23 @@
              x:Class="PmSim.Frontend.App.Views.Frames.InterviewDialogView">
 
     <Grid RowDefinitions="*, Auto, Auto, Auto, Auto, *"
-          ColumnDefinitions="*, *, *, *">
+          ColumnDefinitions="*, *, *, *, *, *">
 
         <Border Grid.Row="1"
-                Grid.RowSpan="3"
+                Grid.RowSpan="4"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="4"
                 Background="#cae7e3"
                 Classes="CommonBackdrop" />
 
         <TextBlock Grid.Row="1"
-                   Grid.Column="1"
+                   Grid.Column="2"
                    Grid.ColumnSpan="2"
                    Classes="Header"
                    Text="{x:Static localizations:LocalizationGameScreen.Interview}" />
 
         <Grid Grid.Row="2"
-              Grid.Column="1"
+              Grid.Column="2"
               Grid.ColumnSpan="2"
               RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
               ColumnDefinitions="Auto, Auto">
@@ -83,19 +83,10 @@
                        Classes="Text"
                        TextAlignment="Right"
                        Text="{Binding Employee.Skills.Creativity}" />
-
-            <TextBlock Grid.Row="6"
-                       Grid.Column="0"
-                       Classes="Text"
-                       Text="{x:Static localizations:LocalizationGameScreen.Salary}" />
-            <TextBlock Grid.Row="6"
-                       Grid.Column="1"
-                       Classes="Text"
-                       TextAlignment="Right" />
         </Grid>
 
         <StackPanel Grid.Row="3"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     Grid.ColumnSpan="2"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
@@ -110,13 +101,13 @@
         </StackPanel>
 
         <Button Grid.Row="4"
-                Grid.Column="1"
+                Grid.Column="2"
                 Classes="Stretch Menu"
                 Content="{x:Static localizations:LocalizationBasicScreen.Yes}"
                 Command="{Binding HireCommand}" />
 
         <Button Grid.Row="4"
-                Grid.Column="2"
+                Grid.Column="3"
                 Classes="Stretch AttentionGrabbing"
                 Content="{x:Static localizations:LocalizationBasicScreen.No}"
                 Command="{Binding CancelCommand}" />

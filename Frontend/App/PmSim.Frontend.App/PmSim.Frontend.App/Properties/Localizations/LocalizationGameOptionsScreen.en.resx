@@ -27,7 +27,7 @@
     <data name="Header" xml:space="preserve">
         <value>Game settings</value>
     </data>
-    <data name="TextBlockSprintActionsNumber" xml:space="preserve">
+    <data name="TextBlockManagementActionsNumber" xml:space="preserve">
         <value>Sprint actions</value>
     </data>
     <data name="TextBlockAuctionRealTime" xml:space="preserve">

@@ -19,12 +19,11 @@ public class InterviewDialogViewModel : BasicFrameViewModel
     
     public InterviewDialogViewModel(GameScreenViewModel gameScreen) : base(gameScreen)
     {
-        Employee = new EmployeeStatus();
+        Employee = Generate();
     }
     
     private static EmployeeStatus Generate()
     {
-        var name = "Иван Иванов";
         var skills = new int[4];
         var random = new Random();
         var profession = random.Next(4);
@@ -60,8 +59,8 @@ public class InterviewDialogViewModel : BasicFrameViewModel
 
         return new EmployeeStatus()
         {
-            Name = name,
-            Skills = new SkillsPoints(skills[0], skills[1], skills[2], skills[3], skills[4])
+            Name = "Иван Иванов",
+            Skills = new SkillsPoints(skills[0], skills[1], skills[2], skills[3], creativity)
         };
     }
 }

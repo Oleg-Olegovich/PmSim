@@ -6,9 +6,10 @@ public class GameOptions
 {
     public static GameOptions Default
         => new("Default", GameConstants.DefaultMaxPlayersNumber, GameConstants.DefaultMaxBotsNumber, 
-            GameConstants.DefaultMode, GameConstants.DefaultMapNumber, GameConstants.DefaultConnectionRealTime, 
-            GameConstants.DefaultChoosingBackground, GameConstants.DefaultManagementRealTime, GameConstants.DefaultIncidentRealTime, 
-            GameConstants.DefaultSprintActionsNumbers, GameConstants.DefaultAuctionRealTime, 
+            GameConstants.DefaultMode, GameConstants.DefaultMapNumber, 
+            GameConstants.DefaultConnectionRealTime, GameConstants.DefaultChoosingBackground, 
+            GameConstants.DefaultManagementRealTime, GameConstants.DefaultIncidentRealTime, 
+            GameConstants.DefaultManagementActionsNumbers, GameConstants.DefaultAuctionRealTime, 
             GameConstants.DefaultStartUpCapital, GameConstants.DefaultMaxSprintNumber);
     
     public string GameName { get; set; }
@@ -29,7 +30,7 @@ public class GameOptions
 
     public int IncidentRealTime { get; set; }
 
-    public int SprintActionsNumbers { get; set; }
+    public int ManagementActionsNumbers { get; set; }
 
     public int AuctionRealTime { get; set; }
 
@@ -39,7 +40,7 @@ public class GameOptions
 
     public GameOptions(string gameName, int maxPlayersNumber, int botsNumber, GameModes mode, int mapNumber, 
         int connectionRealTime, int choosingBackgroundRealTime, int sprintRealTime, int incidentRealTime, 
-        int sprintActionsNumbers, int auctionRealTime, int startUpCapital, int mapSprintNumber)
+        int managementActionsNumbers, int auctionRealTime, int startUpCapital, int maxSprintNumber)
     {
         GameName = gameName;
         MaxPlayersNumber = maxPlayersNumber;
@@ -50,9 +51,9 @@ public class GameOptions
         ChoosingBackgroundRealTime = choosingBackgroundRealTime;
         SprintRealTime = sprintRealTime;
         IncidentRealTime = incidentRealTime;
-        SprintActionsNumbers = sprintActionsNumbers;
+        ManagementActionsNumbers = managementActionsNumbers;
         AuctionRealTime = auctionRealTime;
         StartUpCapital = startUpCapital;
-        MaxSprintNumber = mapSprintNumber;
+        MaxSprintNumber = maxSprintNumber;
     }
 }

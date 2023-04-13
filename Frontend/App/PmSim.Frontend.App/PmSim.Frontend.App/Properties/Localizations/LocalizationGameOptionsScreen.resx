@@ -29,7 +29,7 @@
     <data name="TextBlockIncidentRealTime" xml:space="preserve">
         <value>Происшествие (сек.)</value>
     </data>
-    <data name="TextBlockSprintActionsNumber" xml:space="preserve">
+    <data name="TextBlockManagementActionsNumber" xml:space="preserve">
         <value>Действий спринта</value>
     </data>
     <data name="TextBlockAuctionRealTime" xml:space="preserve">

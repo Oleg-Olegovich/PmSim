@@ -149,12 +149,12 @@
                     Grid.Column="1"
                     Orientation="Vertical">
             <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockSprintActionsNumber}"/>
+                       Text="{x:Static localizations:LocalizationGameOptionsScreen.TextBlockManagementActionsNumber}"/>
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="1"
                                Maximum="300"
                                Classes="Bordered BasicInteger"
-                               Value="{Binding SprintActionsNumber}"/>
+                               Value="{Binding ManagementActionsNumber}"/>
             </Border>
         </StackPanel>
         
