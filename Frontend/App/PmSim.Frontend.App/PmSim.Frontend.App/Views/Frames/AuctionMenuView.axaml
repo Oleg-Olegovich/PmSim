@@ -7,19 +7,19 @@
              x:Class="PmSim.Frontend.App.Views.Frames.AuctionMenuView">
 
     <Grid RowDefinitions="*, Auto, 10*, *"
-          ColumnDefinitions="*, 7*, 3*, *">
+          ColumnDefinitions="3*, 21*, 6*, *, 3*">
 
         <Border Grid.Row="1"
                 Grid.RowSpan="2"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Classes="CommonBackdrop"
                 Background="#cae7e3"
                 />
 
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="3"
                    Classes="Header"
                    Text="{x:Static localizations:LocalizationGameScreen.Auctions}" />
 
@@ -260,7 +260,7 @@
                                Background="#cae7e3"
                                Text="{x:Static localizations:LocalizationGameScreen.Bet}"/>
                     <Border Classes="TextStroke">
-                        <NumericUpDown Classes="Bordered"
+                        <NumericUpDown Classes="Game BasicInteger"
                                        Value="{Binding Bet}"
                                        Minimum="1"
                                        Maximum="100"/>

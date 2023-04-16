@@ -13,6 +13,6 @@
     </Style>
 
     <Style Selector="Border.CommonBackdrop">
-        <Setter Property="Background" Value="#C867678a"/>
+        <Setter Property="Background" Value="#67678a"/>
     </Style>
 </Styles>

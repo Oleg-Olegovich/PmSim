@@ -13,4 +13,9 @@
         <Setter Property="Background" Value="#ffffff"/>
         <Setter Property="Foreground" Value="#000033"/>
     </Style>
+    
+    <Style Selector="NumericUpDown.Game">
+        <Setter Property="Background" Value="#cae7e3"/>
+        <Setter Property="Foreground" Value="#000033"/>
+    </Style>
 </Styles>

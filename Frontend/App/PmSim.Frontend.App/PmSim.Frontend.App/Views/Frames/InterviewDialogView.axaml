@@ -95,7 +95,7 @@
             <Border Classes="TextStroke">
                 <NumericUpDown Minimum="2"
                                Maximum="5"
-                               Classes="Bordered BasicInteger"
+                               Classes="Game BasicInteger"
                                Value="{Binding Salary}" />
             </Border>
         </StackPanel>
