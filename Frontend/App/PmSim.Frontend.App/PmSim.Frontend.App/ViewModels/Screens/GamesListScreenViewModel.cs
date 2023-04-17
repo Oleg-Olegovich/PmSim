@@ -10,7 +10,7 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class GamesListScreenViewModel : BasicScreenViewModel
 {
-    private readonly MultiplayerClient _client;
+    private readonly MultiPlayerClient _client;
 
     private GameModel[]? _games;
     public GameModel[]? Games
@@ -33,7 +33,7 @@ public class GamesListScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> SubscriptionPurchaseCommand { get; }
 
-    public GamesListScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, MultiplayerClient client) 
+    public GamesListScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, MultiPlayerClient client) 
         : base(baseWindow, previous)
     {
         NewGameCommand = ReactiveCommand.Create(ProcessNewGameCommand);

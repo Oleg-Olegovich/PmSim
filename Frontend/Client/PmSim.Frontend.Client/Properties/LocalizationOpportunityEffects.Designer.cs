@@ -58,5 +58,14 @@ namespace PmSim.Frontend.Client.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Случайный сотрудник производит дополнительное очко прогресса за текущий спринт..
+        /// </summary>
+        internal static string _0 {
+            get {
+                return ResourceManager.GetString("0", resourceCulture);
+            }
+        }
     }
 }

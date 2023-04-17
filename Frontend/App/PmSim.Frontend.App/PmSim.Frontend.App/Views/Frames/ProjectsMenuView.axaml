@@ -134,12 +134,12 @@
                     <StackPanel>
                         <Button Classes="Menu Stretch"
                                 Content="{x:Static localizations:LocalizationGameScreen.StartDevelopment}"
-                                Command="{Binding InterviewCommand}" />
+                                Command="{Binding StartDevelopmentCommand}" />
 
                         <ListBox Classes="Common"
-                                 SelectionMode="Multiple,Toggle"
+                                 SelectionMode="Single,Toggle"
                                  Items="{Binding Ideas}"
-                                 Selection="{Binding Selection}">
+                                 SelectedItem="{Binding SelectedIdea}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border Classes="TextStroke"
@@ -201,7 +201,7 @@
                                                        Grid.Column="1"
                                                        Classes="Text"
                                                        TextAlignment="Right"
-                                                       Text="{Binding Reward}" />
+                                                       Text="{Binding Reward.Prize}" />
                                             
                                             <TextBlock Grid.Row="6"
                                                        Grid.Column="0"
@@ -305,7 +305,7 @@
                                                    Grid.Column="1"
                                                    Classes="Text"
                                                    TextAlignment="Right"
-                                                   Text="{Binding Reward}" />
+                                                   Text="{Binding Reward.Prize}" />
                                         
                                         <TextBlock Grid.Row="6"
                                                    Grid.Column="0"
@@ -408,7 +408,7 @@
                                                    Grid.Column="1"
                                                    Classes="Text"
                                                    TextAlignment="Right"
-                                                   Text="{Binding Reward}" />
+                                                   Text="{Binding Reward.Prize}" />
                                         
                                         <TextBlock Grid.Row="6"
                                                    Grid.Column="0"

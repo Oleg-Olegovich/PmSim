@@ -127,14 +127,14 @@ public class SignUpScreenViewModel : BasicScreenViewModel
     {
         try
         {
-            if (!MultiplayerClient.ReserveLogin(Login))
+            if (!MultiPlayerClient.ReserveLogin(Login))
             {
                 ErrorMessage = LocalizationSignUpScreen.LoginIsOccupied;
                 return;
             }
 
             ErrorMessage = "";
-            var code = MultiplayerClient.SendCodeToEmailAsync(Email);
+            var code = MultiPlayerClient.SendCodeToEmailAsync(Email);
             var user = new User(Email, Login, Password);
             BaseWindow.Content = new EmailConfirmationScreenViewModel(
                 BaseWindow, this, _titleScreen, user, code);

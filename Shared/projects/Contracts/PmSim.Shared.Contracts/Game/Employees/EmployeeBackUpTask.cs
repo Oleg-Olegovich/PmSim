@@ -5,11 +5,7 @@ namespace PmSim.Shared.Contracts.Game.Employees;
 
 public class EmployeeBackUpTask : EmployeeProjectTask
 {
-    public int OfficeId { get; }
-
-    public EmployeeBackUpTask(Player player, Project project, int officeId) 
+    public EmployeeBackUpTask(Player player, Project project) 
         : base(player, project)
-    {
-        OfficeId = officeId;
-    }
+    { }
 }

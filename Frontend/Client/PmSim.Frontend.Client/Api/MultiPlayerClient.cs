@@ -3,13 +3,14 @@ using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.Employees;
 using PmSim.Shared.Contracts.Game.Others;
 using PmSim.Shared.Contracts.Interfaces;
 using PmSim.Shared.Contracts.User;
 
 namespace PmSim.Frontend.Client.Api;
 
-public class MultiplayerClient : IPmSimClient
+public class MultiPlayerClient : IPmSimClient
 {
     //private readonly IGatewayClient _gateway;
     private readonly ClientOptions _clientOptions;
@@ -17,7 +18,7 @@ public class MultiplayerClient : IPmSimClient
     public bool IsSubscriptionPaid
         => true;
     
-    private MultiplayerClient()
+    private MultiPlayerClient()
     {
         _clientOptions = new ClientOptions();
         /*
@@ -44,17 +45,17 @@ public class MultiplayerClient : IPmSimClient
         return code.ToString();
     }
 
-    public static MultiplayerClient SignUp(User user)
+    public static MultiPlayerClient SignUp(User user)
     {
         //var response = await _gateway.CreateAccountAsync(request);
-        return new MultiplayerClient();
+        return new MultiPlayerClient();
     }
 
-    public static MultiplayerClient SignInAsync(string login, string password)
+    public static MultiPlayerClient SignInAsync(string login, string password)
     {
         var request = new AuthorizationRequest();
         //var response = await _gateway.GetAccountAsync(request);
-        return new MultiplayerClient();
+        return new MultiPlayerClient();
     }
 
     public void CreateNewGame(GameOptions gameOptions, IGameScreenLogic gameScreenLogic)
@@ -90,12 +91,14 @@ public class MultiplayerClient : IPmSimClient
     {
     }
 
-    public void ConductInterview()
+    public EmployeeStatus? ConductInterview()
     {
+        return null;
     }
 
-    public void ProcessInterview()
+    public bool ProcessInterview(int salary)
     {
+        return false;
     }
 
     public void HireTechSupportOfficer()
@@ -106,11 +109,11 @@ public class MultiplayerClient : IPmSimClient
     {
     }
 
-    public void UseOpportunity(int opportunityNumber)
+    public void UseOpportunity(int opportunityNumber, int targetPlayer)
     {
     }
 
-    public void AssignToWork(int employeeId, int projectNumber, Professions profession)
+    public void AssignToDevelop(int employeeId, int projectNumber, Professions profession)
     {
     }
 
@@ -118,7 +121,7 @@ public class MultiplayerClient : IPmSimClient
     {
     }
 
-    public void AssignToMakeBackup(int employeeId)
+    public void AssignToMakeBackup(int employeeId, int projectId)
     {
     }
 
@@ -126,30 +129,18 @@ public class MultiplayerClient : IPmSimClient
     {
     }
 
-    public void PutProjectUpForAuction(int projectNumber)
+    public void PutProjectUpForAuction(int projectNumber, int startPrice)
     {
     }
 
-    public void ProposeProject(int projectNumber)
+    public void PutEmployeeUpForAuction(int employeeId, int startPrice)
     {
     }
 
-    public void PutEmployeeUpForAuction(int employeeId)
+    public void PutOpportunityUpForAuction(int opportunityNumber, int startPrice)
     {
     }
 
-    public void ProposeEmployee(int employeeId)
-    {
-    }
-
-    public void PutOpportunityUpForAuction(int opportunityNumber)
-    {
-    }
-
-    public void ProposeOpportunity(int opportunityNumber)
-    {
-    }
-    
     public void ParticipateInAuction(int auctionNumber, int money)
     {
     }
@@ -181,6 +172,11 @@ public class MultiplayerClient : IPmSimClient
 
     public void GiveUp()
     {
+    }
+    
+    public void RequestStartProject(int id)
+    {
+        
     }
 
     public GameModel[] GetActiveGames()

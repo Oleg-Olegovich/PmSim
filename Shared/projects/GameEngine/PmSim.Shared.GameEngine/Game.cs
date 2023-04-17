@@ -151,7 +151,7 @@ public class Game
         throw new NotImplementedException();
     }
 
-    public Employee ConductInterview(int playerId)
+    public EmployeeStatus ConductInterview(int playerId)
     {
         var player = FindPlayerById(playerId);
         if (player.IsOut || player.Employees.Count < player.MaxEmployeesNumber)
@@ -167,7 +167,7 @@ public class Game
         --player.ActionsNumber;
         var interview = new Interview(playerId);
         _interviews.Add(interview);
-        return interview.Employee;
+        return EmployeeLogic.GetStatus(interview.Employee);
     }
 
     public bool ProcessInterview(int playerId, int proposedSalary)
@@ -249,19 +249,19 @@ public class Game
             new EmployeeDevelopmentTask(player, player.Projects[featureNumber], progressPointNumber));
     }
 
-    public void AssignToInventProject(int playerId, int officeId, int employeeId)
+    public void AssignToInventProject(int playerId, int employeeId)
         => AssignToTask(playerId, employeeId, new EmployeeTask(FindPlayerById(playerId)));
 
-    public void AssignToMakeBackup(int playerId, int officeId, int employeeId, int projectNumber)
+    public void AssignToMakeBackup(int playerId, int employeeId, int projectId)
     {
         var player = FindPlayerById(playerId);
-        if (projectNumber < 0 || projectNumber >= player.Projects.Count)
+        if (projectId < 0 || projectId >= player.Projects.Count)
         {
             throw new PmSimException("There is no such feature.");
         }
 
         AssignToTask(playerId, employeeId,
-            new EmployeeBackUpTask(player, player.Projects[projectNumber], officeId));
+            new EmployeeBackUpTask(player, player.Projects[projectId]));
     }
 
     public void CancelTask(int playerId, int employeeId)
@@ -275,6 +275,18 @@ public class Game
         player.Employees[employeeId].CurrentTask = null;
     }
 
+    public void StartProject(int playerId, int projectId)
+    {
+        var player = FindPlayerById(playerId);
+        if (projectId < 0 || projectId >= player.Projects.Count)
+        {
+            throw new PmSimException("There is no such feature.");
+        }
+
+        player.Projects[projectId].IsStart = true;
+        player.StatusChangeNotifier.StartProject(projectId);
+    }
+    
     public void PutProjectUpForAuction(int playerId, int projectId, int startPrice)
     {
         var seller = FindPlayerById(playerId);
@@ -341,7 +353,7 @@ public class Game
     public void MakeDecisionOnIncident(int playerId, int donation)
     {
         var player = FindPlayerById(playerId);
-        if (player.IsOut || player.Money < donation)
+        if (player.IsOut || player.Money < donation || _currentIncident is null)
         {
             throw new PmSimException("It is impossible to make decision on the incident.");
         }
@@ -554,12 +566,9 @@ public class Game
 
     private void SummingUpEmployeesTasks()
     {
-        foreach (var actor in _actors)
+        foreach (var employee in _actors.SelectMany(actor => actor.Employees))
         {
-            foreach (var employee in actor.Employees)
-            {
-                EmployeeLogic.Work(employee);
-            }
+            EmployeeLogic.Work(employee);
         }
     }
 

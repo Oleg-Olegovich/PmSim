@@ -1,11 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<root>
-    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <xsd:element name="root" msdata:IsDataSet="true">
-            
-        </xsd:element>
-    </xsd:schema>
+﻿<root>
     <resheader name="resmimetype">
         <value>text/microsoft-resx</value>
     </resheader>
@@ -19,60 +12,60 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="0" xml:space="preserve">
-        <value>Социальная сеть</value>
+        <value>Social Network</value>
     </data>
     <data name="1" xml:space="preserve">
-        <value>Мессенджер</value>
+        <value>Messenger</value>
     </data>
     <data name="2" xml:space="preserve">
-        <value>Интернет-магазин</value>
+        <value>Online store</value>
     </data>
     <data name="3" xml:space="preserve">
-        <value>Видеохостинг</value>
+        <value>Video hosting</value>
     </data>
     <data name="4" xml:space="preserve">
-        <value>Хостинг картинок</value>
+        <value>Image hosting</value>
     </data>
     <data name="5" xml:space="preserve">
-        <value>Форум</value>
+        <value>Forum</value>
     </data>
     <data name="6" xml:space="preserve">
-        <value>Новостной портал</value>
+        <value>News Portal</value>
     </data>
     <data name="7" xml:space="preserve">
-        <value>Сервис голосований</value>
+        <value>Voting Service</value>
     </data>
     <data name="8" xml:space="preserve">
-        <value>2d-аркада</value>
+        <value>2d arcade</value>
     </data>
     <data name="9" xml:space="preserve">
-        <value>Платформер</value>
+        <value>Platformer</value>
     </data>
     <data name="10" xml:space="preserve">
-        <value>Гоночная игра</value>
+        <value>Racing game</value>
     </data>
     <data name="11" xml:space="preserve">
-        <value>Шутер</value>
+        <value>Shooter</value>
     </data>
     <data name="12" xml:space="preserve">
-        <value>Симулятор стартапа</value>
+        <value>Startup Simulator</value>
     </data>
     <data name="13" xml:space="preserve">
-        <value>Электронная почта</value>
+        <value>Email</value>
     </data>
     <data name="14" xml:space="preserve">
-        <value>Графический редактор</value>
+        <value>Graphic Editor</value>
     </data>
     <data name="15" xml:space="preserve">
-        <value>Графический редактор Online</value>
+        <value>Online Graphic Editor</value>
     </data>
     <data name="16" xml:space="preserve">
-        <value>Умный калькулятор</value>
+        <value>Smart calculator</value>
     </data>
     <data name="17" xml:space="preserve">
-        <value>Школьный журнал</value>
+        <value>School magazine</value>
     </data>
     <data name="18" xml:space="preserve">
-        <value>ИИ</value>
+        <value>AI</value>
     </data>
 </root>

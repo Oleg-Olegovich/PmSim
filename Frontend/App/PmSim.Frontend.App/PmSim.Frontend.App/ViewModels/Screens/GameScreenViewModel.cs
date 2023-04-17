@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
@@ -21,8 +20,6 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     private readonly IPmSimClient _client;
 
     private readonly BasicGameMapViewModel _gameMap;
-    
-    private readonly List<Project> _projects = new();
 
     private GameStages _gameStage;
 
@@ -309,38 +306,41 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     
     public void Add(Project project)
     {
-        _projects.Add(project);
+        ProjectsMenu.Projects.Add(project);
         ProjectsMenu.Ideas.Add(project);
         ++IdeasNumber;
     }
+
+    public void RequestStartProject(int id)
+        => _client.RequestStartProject(id);
     
     public void StartProject(int id)
     {
-        ProjectsMenu.Ideas.Remove(_projects[id]);
-        ProjectsMenu.CurrentProjects.Add(_projects[id]);
-        _projects[id].IsStart = true;
+        ProjectsMenu.Ideas.Remove(ProjectsMenu.Projects[id]);
+        ProjectsMenu.CurrentProjects.Add(ProjectsMenu.Projects[id]);
+        ProjectsMenu.Projects[id].IsStart = true;
         --IdeasNumber;
         ++CurrentProjectsNumber;
     }
 
     public void CompleteProject(int id)
     {
-        ProjectsMenu.CurrentProjects.Remove(_projects[id]);
-        ProjectsMenu.CompletedProjects.Add(_projects[id]);
+        ProjectsMenu.CurrentProjects.Remove(ProjectsMenu.Projects[id]);
+        ProjectsMenu.CompletedProjects.Add(ProjectsMenu.Projects[id]);
         --CurrentProjectsNumber;
         ++CompletedProjectsNumber;
     }
 
     public void FailProject(int id)
     {
-        ProjectsMenu.CurrentProjects.Remove(_projects[id]);
-        ProjectsMenu.FailedProjects.Add(_projects[id]);
+        ProjectsMenu.CurrentProjects.Remove(ProjectsMenu.Projects[id]);
+        ProjectsMenu.FailedProjects.Add(ProjectsMenu.Projects[id]);
         --CurrentProjectsNumber;
         ++FailedProjectsNumber;
     }
 
     public void UpdateProjectProgress(int id, ProgressPoints points) 
-        => _projects[id].Points = points;
+        => ProjectsMenu.Projects[id].Points = points;
 
     public void AddOpportunity(OpportunityModel opportunity) 
         => OpportunitiesMenu.Opportunities.Add(opportunity);
@@ -355,11 +355,17 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         }
     }
 
+    public void AssignToDevelop()
+    {
+        _client.AssignToDevelop(0, 0, Professions.Designer);
+    }
+
     public void ProcessLosing()
     {
         IsFinish = true;
         ShowSkipButton = ShowGiveUpButton = false;
         MainAreaContent = new InformationDialogViewModel(this, LocalizationGameScreen.Losing);
+        CurrentTabIndex = 0;
     }
 
     private void GiveUp() => _client.GiveUp();

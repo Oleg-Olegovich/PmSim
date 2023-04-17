@@ -10,7 +10,7 @@ using PmSim.Shared.GameEngine;
 
 namespace PmSim.Frontend.Client.Api;
 
-public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
+public class SinglePlayerClient : IPmSimClient, IStatusChangeNotifier
 {
     private readonly int _playerId = 0;
     private readonly string _playerName;
@@ -208,7 +208,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
     
-    public SingleplayerClient(string playerName) 
+    public SinglePlayerClient(string playerName) 
         => _playerName = playerName;
     
     public void SetAnotherStatus(PlayerStatus player)
@@ -421,77 +421,50 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     public void SetBackground(Professions profession) 
         => _game?.SetBackground(_playerId, profession);
 
-    public void DismissEmployees(int[] employeesIds)
-    {
-    }
+    public void DismissEmployees(int[] employeesIds) 
+        => _game?.DismissEmployees(_playerId, employeesIds);
 
-    public void ConductInterview()
-    {
-    }
+    public EmployeeStatus? ConductInterview() 
+        => _game?.ConductInterview(_playerId);
 
-    public void ProcessInterview()
-    {
-    }
+    public bool ProcessInterview(int salary) 
+        => _game is not null && _game.ProcessInterview(_playerId, salary);
 
-    public void HireTechSupportOfficer()
-    {
-    }
+    public void HireTechSupportOfficer() 
+        => _game?.HireTechSupportOfficer(_playerId);
 
-    public void DismissTechSupportOfficer()
-    {
-    }
+    public void DismissTechSupportOfficer() 
+        => _game?.DismissTechSupportOfficer(_playerId);
 
-    public void UseOpportunity(int opportunityNumber)
-    {
-    }
+    public void UseOpportunity(int opportunityNumber, int targetPlayer) 
+        => _game?.UseOpportunity(_playerId, opportunityNumber, targetPlayer);
 
-    public void AssignToWork(int employeeId, int projectNumber, Professions profession)
-    {
-    }
+    public void AssignToDevelop(int employeeId, int projectNumber, Professions profession) 
+        => _game?.AssignToDevelop(_playerId, employeeId, projectNumber, (int)profession);
 
-    public void AssignToInventProject(int employeeId)
-    {
-    }
+    public void AssignToInventProject(int employeeId) 
+        => _game?.AssignToInventProject(_playerId, employeeId);
 
-    public void AssignToMakeBackup(int employeeId)
-    {
-    }
+    public void AssignToMakeBackup(int employeeId, int projectId) 
+        => _game?.AssignToMakeBackup(_playerId, employeeId, projectId);
 
     public void CancelTask(int employeeId)
-    {
-    }
+        => _game?.CancelTask(_playerId, employeeId);
 
-    public void PutProjectUpForAuction(int projectNumber)
-    {
-    }
+    public void PutProjectUpForAuction(int projectNumber, int startPrice) 
+        => _game?.PutProjectUpForAuction(_playerId, projectNumber, startPrice);
 
-    public void ProposeProject(int projectNumber)
-    {
-    }
+    public void PutEmployeeUpForAuction(int employeeId, int startPrice)
+        => _game?.PutEmployeeUpForAuction(_playerId, employeeId, startPrice);
 
-    public void PutEmployeeUpForAuction(int employeeId)
-    {
-    }
+    public void PutOpportunityUpForAuction(int opportunityNumber, int startPrice)
+        => _game?.PutOpportunityUpForAuction(_playerId, opportunityNumber, startPrice);
 
-    public void ProposeEmployee(int employeeId)
-    {
-    }
+    public void ParticipateInAuction(int auctionNumber, int money) 
+        => _game?.ParticipateInAuction(_playerId, auctionNumber, money);
 
-    public void PutOpportunityUpForAuction(int opportunityNumber)
-    {
-    }
-
-    public void ProposeOpportunity(int opportunityNumber)
-    {
-    }
-    
-    public void ParticipateInAuction(int auctionNumber, int money)
-    {
-    }
-
-    public void MakeIncidentDecision(int donation)
-    {
-    }
+    public void MakeIncidentDecision(int donation) 
+        => _game?.MakeDecisionOnIncident(_playerId, donation);
 
     public Office? GetOffice(int officeId)
     {
@@ -523,6 +496,16 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
     public void SkipMove() => _game?.SkipMove(_playerId);
 
     public void GiveUp() => _game?.GiveUp(_playerId);
+
+    public void RequestStartProject(int id)
+    {
+        if (_game is null)
+        {
+            return;
+        }
+
+        _game.StartProject(_playerId, id);
+    }
 
     private async Task ProcessTimerAsync()
     {

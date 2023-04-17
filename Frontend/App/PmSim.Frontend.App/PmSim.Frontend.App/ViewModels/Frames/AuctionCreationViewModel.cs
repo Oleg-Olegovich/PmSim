@@ -40,6 +40,7 @@ public class AuctionCreationViewModel : BasicFrameViewModel
     
     public AuctionCreationViewModel(GameScreenViewModel gameScreen) : base(gameScreen)
     {
+        /*
         Employees.Add(new EmployeeStatus() { Name = "Oleg", Salary = 10, Skills = new SkillsPoints(1, 1, 1, 1, 1), TaskTypeName = "Работает"});
         var p0 = GameConstants.Projects[0];
         var p1 = GameConstants.Projects[1];
@@ -56,6 +57,7 @@ public class AuctionCreationViewModel : BasicFrameViewModel
             Description = "Брак вашего сотрудника внезапно распался. Вы любезно предложили пожить в офисе, попутно решив пару рабочих задач."
         };
         Opportunities.Add(o);
+        //*/
         
         ConfirmCommand = ReactiveCommand.Create(ProcessConfirmation);
         CancelCommand = ReactiveCommand.Create(ProcessCancel);

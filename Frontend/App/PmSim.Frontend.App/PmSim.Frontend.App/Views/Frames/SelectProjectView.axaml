@@ -12,7 +12,6 @@
         <Border Grid.Row="1"
                 Grid.RowSpan="2"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
                 Classes="CommonBackdrop" />
 
         <TextBlock Grid.Row="1"
@@ -26,13 +25,13 @@
                       VerticalScrollBarVisibility="Auto">
             <ListBox Classes="Common"
                      SelectionMode="Single"
-                     Items="{Binding Projects}"
+                     Items="{Binding CurrentProjects}"
                      SelectedItem="{Binding SelectedProject}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Classes="TextStroke"
                                 Padding="2">
-                            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                                   ColumnDefinitions="Auto, Auto">
 
                                 <TextBlock Grid.Row="0"
@@ -89,13 +88,23 @@
                                            Grid.Column="1"
                                            Classes="Text"
                                            TextAlignment="Right"
-                                           Text="{Binding Reward}" />
-
+                                           Text="{Binding Reward.Prize}" />
+                                
                                 <TextBlock Grid.Row="6"
                                            Grid.Column="0"
                                            Classes="Text"
-                                           Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                           Text="{x:Static localizations:LocalizationGameScreen.Income}" />
                                 <TextBlock Grid.Row="6"
+                                           Grid.Column="1"
+                                           Classes="Text"
+                                           TextAlignment="Right"
+                                           Text="{Binding Reward.Income}" />
+
+                                <TextBlock Grid.Row="7"
+                                           Grid.Column="0"
+                                           Classes="Text"
+                                           Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                <TextBlock Grid.Row="7"
                                            Grid.Column="1"
                                            Classes="Text"
                                            TextAlignment="Right"

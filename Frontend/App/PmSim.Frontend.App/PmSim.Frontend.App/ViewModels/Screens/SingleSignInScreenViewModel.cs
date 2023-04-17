@@ -57,7 +57,7 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
 
     private void OpenGameOptionsScreen()
     {
-        var client = new SingleplayerClient(Login);
+        var client = new SinglePlayerClient(Login);
         BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, client, true);
     }
 }

@@ -1,11 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<root>
-    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <xsd:element name="root" msdata:IsDataSet="true">
-            
-        </xsd:element>
-    </xsd:schema>
+﻿<root>
     <resheader name="resmimetype">
         <value>text/microsoft-resx</value>
     </resheader>
@@ -19,18 +12,12 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="0" xml:space="preserve">
-        <value>Александра</value>
+        <value>Due to the frequent interruptions of the Internet, the main provider of the city plans to turn off the network for prevention. In this case, no one will receive income on this sprint. However, the provider promises to find another solution for a little help ...</value>
     </data>
     <data name="1" xml:space="preserve">
-        <value>Юлия</value>
+        <value>An emergency situation has been declared at the power plant. In case of a power failure in the middle of the working day, everyone will lose unsaved data. To avoid this, it is necessary to raise money for urgent repairs.</value>
     </data>
     <data name="2" xml:space="preserve">
-        <value>Лара</value>
-    </data>
-    <data name="3" xml:space="preserve">
-        <value>Изабелла</value>
-    </data>
-    <data name="4" xml:space="preserve">
-        <value>Екатерина</value>
+        <value>Hackers threaten to delete one repository of each IT startup and promise not to do it if they transfer some money.</value>
     </data>
 </root>

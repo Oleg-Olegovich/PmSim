@@ -58,5 +58,14 @@ namespace PmSim.Frontend.Client.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Брак вашего сотрудника внезапно распался. Вы любезно предложили пожить в офисе, попутно решив пару рабочих задач..
+        /// </summary>
+        internal static string _0 {
+            get {
+                return ResourceManager.GetString("0", resourceCulture);
+            }
+        }
     }
 }

@@ -21,14 +21,14 @@ namespace PmSim.Frontend.Client.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LocalizationFemaleSurnames {
+    internal class LocalizationIncidentDescriptions {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LocalizationFemaleSurnames() {
+        internal LocalizationIncidentDescriptions() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace PmSim.Frontend.Client.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.Client.Properties.LocalizationFemaleSurnames", typeof(LocalizationFemaleSurnames).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PmSim.Frontend.Client.Properties.LocalizationIncidentDescriptions", typeof(LocalizationIncidentDescriptions).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,7 +60,7 @@ namespace PmSim.Frontend.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сидорова.
+        ///   Looks up a localized string similar to Из-за участившихся перебоев интернета главный провайдер города планирует отключить сеть на профилактику. В этом случае никто не получит доход на этом спринте. Однако провайдер обещает найти другое решение за небольшую помощь....
         /// </summary>
         internal static string _0 {
             get {
@@ -69,7 +69,7 @@ namespace PmSim.Frontend.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Джексон.
+        ///   Looks up a localized string similar to Объявлена аварийная ситуация на электростанции. В случае сбоя электричества посреди рабочего дня все потеряют несохранённые данные. Чтобы избежать это, необходимо собрать деньги на срочный ремонт..
         /// </summary>
         internal static string _1 {
             get {
@@ -78,29 +78,11 @@ namespace PmSim.Frontend.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Лентяева.
+        ///   Looks up a localized string similar to Хакеры угрожают удалить по одному репозиторию каждого IT-стартапа и обещают не делать это, если им переведут немного денег..
         /// </summary>
         internal static string _2 {
             get {
                 return ResourceManager.GetString("2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Трудоголикова.
-        /// </summary>
-        internal static string _3 {
-            get {
-                return ResourceManager.GetString("3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Кларк.
-        /// </summary>
-        internal static string _4 {
-            get {
-                return ResourceManager.GetString("4", resourceCulture);
             }
         }
     }

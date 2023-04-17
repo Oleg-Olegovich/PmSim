@@ -1,6 +1,7 @@
 ﻿using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Enums;
 using PmSim.Shared.Contracts.Game;
+using PmSim.Shared.Contracts.Game.Employees;
 using PmSim.Shared.Contracts.Game.Others;
 using PmSim.Shared.Contracts.Interfaces;
 
@@ -38,9 +39,9 @@ public interface IPmSimClient
 
     public void DismissEmployees(int[] employeesIds);
 
-    public void ConductInterview();
+    public EmployeeStatus? ConductInterview();
 
-    public void ProcessInterview();
+    public bool ProcessInterview(int salary);
 
     /// <summary>
     /// The maximum number of tech support staff is the number of player offices.
@@ -49,27 +50,21 @@ public interface IPmSimClient
 
     public void DismissTechSupportOfficer();
 
-    public void AssignToWork(int employeeId, int projectNumber, Professions profession);
+    public void AssignToDevelop(int employeeId, int projectNumber, Professions profession);
 
     public void AssignToInventProject(int employeeId);
 
-    public void AssignToMakeBackup(int employeeId);
+    public void AssignToMakeBackup(int employeeId, int projectId);
 
     public void CancelTask(int employeeId);
 
-    public void PutProjectUpForAuction(int projectNumber);
+    public void PutProjectUpForAuction(int projectNumber, int startPrice);
 
-    public void ProposeProject(int projectNumber);
+    public void PutEmployeeUpForAuction(int employeeId, int startPrice);
 
-    public void PutEmployeeUpForAuction(int employeeId);
-
-    public void ProposeEmployee(int employeeId);
-
-    public void UseOpportunity(int opportunityNumber);
+    public void UseOpportunity(int opportunityNumber, int targetPlayer);
     
-    public void PutOpportunityUpForAuction(int opportunityNumber);
-
-    public void ProposeOpportunity(int opportunityNumber);
+    public void PutOpportunityUpForAuction(int opportunityNumber, int startPrice);
 
     public void ParticipateInAuction(int auctionNumber, int money);
 
@@ -86,4 +81,6 @@ public interface IPmSimClient
     public void SkipMove();
 
     public void GiveUp();
+
+    public void RequestStartProject(int id);
 }

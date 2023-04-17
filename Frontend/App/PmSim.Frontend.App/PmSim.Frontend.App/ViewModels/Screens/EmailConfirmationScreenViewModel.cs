@@ -66,7 +66,7 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
 
         try
         {
-            var client = MultiplayerClient.SignUp(_user);
+            var client = MultiPlayerClient.SignUp(_user);
             var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
             var subscriptionPurchaseScreen 
                 = new SubscriptionPurchaseScreenViewModel(BaseWindow, _titleScreen, gamesListScreen, true);

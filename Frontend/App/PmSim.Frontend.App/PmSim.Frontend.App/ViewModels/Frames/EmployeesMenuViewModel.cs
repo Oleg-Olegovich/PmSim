@@ -59,13 +59,19 @@ public class EmployeesMenuViewModel : BasicFrameViewModel
     
     private void ProcessDevelopmentCommand()
     {
-        GameScreen.MainAreaContent = new SelectProjectViewModel(GameScreen);
+        //var employess = Selection.SelectedItems.To;
+        GameScreen.MainAreaContent = new SelectProjectViewModel(GameScreen, GameScreen.ProjectsMenu.CurrentProjects);
         GameScreen.CurrentTabIndex = 0;
+
+        var employee = Employees[0];
+        employee.TaskTypeName = "Разработка";
+        Employees[0] = null;
+        Employees[0] = employee;
     }
     
     private void ProcessBackUpCommand()
     {
-        GameScreen.MainAreaContent = new SelectProjectViewModel(GameScreen);
+        GameScreen.MainAreaContent = new SelectProjectViewModel(GameScreen, GameScreen.ProjectsMenu.CurrentProjects);
         GameScreen.CurrentTabIndex = 0;
     }
     

@@ -58,5 +58,50 @@ namespace PmSim.Frontend.Client.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Юрий.
+        /// </summary>
+        internal static string _0 {
+            get {
+                return ResourceManager.GetString("0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Алексей.
+        /// </summary>
+        internal static string _1 {
+            get {
+                return ResourceManager.GetString("1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пётр.
+        /// </summary>
+        internal static string _2 {
+            get {
+                return ResourceManager.GetString("2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Квентин.
+        /// </summary>
+        internal static string _3 {
+            get {
+                return ResourceManager.GetString("3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сэмюэль.
+        /// </summary>
+        internal static string _4 {
+            get {
+                return ResourceManager.GetString("4", resourceCulture);
+            }
+        }
     }
 }
