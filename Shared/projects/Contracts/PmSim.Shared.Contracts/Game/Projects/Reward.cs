@@ -5,25 +5,23 @@
 /// </summary>
 public class Reward
 {
-    public int Prize { get; }
+    public int Prize { get; set; }
 
     public int Revenue { get; }
 
     /// <summary>
     /// The reward brings several random opportunities.
     /// </summary>
-    public int Opportunity { get; }
+    public int Opportunities { get; set; }
 
-    public bool IsCollected { get; set; }
-
-    public Reward(int prize, int revenue, int opportunity)
+    public Reward(int prize, int revenue, int opportunities)
     {
         Prize = prize;
         Revenue = revenue;
-        Opportunity = opportunity;
+        Opportunities = opportunities;
     }
 
     public Reward(Reward reward)
-        : this(reward.Prize, reward.Revenue, reward.Opportunity)
+        : this(reward.Prize, reward.Revenue, reward.Opportunities)
     { }
 }

@@ -55,11 +55,11 @@
         <value>Подождите, пока остальные игроки подключатся.</value>
     </data>
     <data name="OfficeRentInfo" xml:space="preserve">
-        <value>                Этот офис незанят.
-            Стоимость аренды: {0}
-            Вместимость: {1}
+        <value>Этот офис незанят.
+Стоимость аренды: {0}
+Вместимость: {1}
             
-            Арендовать?
+Арендовать?
         </value>
     </data>
     <data name="TextBlockOfficeRent" xml:space="preserve">
@@ -180,5 +180,16 @@
     </data>
     <data name="Create" xml:space="preserve">
         <value>Создать</value>
+    </data>
+    <data name="CancelTask" xml:space="preserve">
+        <value>Отменить задание</value>
+    </data>
+    <data name="OfficeCancelRentInfo" xml:space="preserve">
+        <value>Это ваш офис.
+Стоимость аренды: {0}
+Вместимость: {1}
+            
+Отменить аренду?
+        </value>
     </data>
 </root>

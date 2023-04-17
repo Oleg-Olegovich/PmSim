@@ -144,6 +144,11 @@
                 
                 <Button Classes="Menu Stretch"
                         IsEnabled="{Binding IsSelectionNonEmpty}"
+                        Content="{x:Static localizations:LocalizationGameScreen.CancelTask}"
+                        Command="{Binding CancelTaskCommand}"/>
+                
+                <Button Classes="AttentionGrabbing Stretch"
+                        IsEnabled="{Binding IsSelectionNonEmpty}"
                         Content="{x:Static localizations:LocalizationGameScreen.Dismiss}"
                         Command="{Binding DismissalCommand}"/>
             </StackPanel>

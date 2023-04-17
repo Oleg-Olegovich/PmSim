@@ -12,6 +12,8 @@ public class Project : Feature, IAuctionLot
         get => _deadline;
         set => _deadline = value < 0 ?  0 : value;
     }
+    
+    public bool IsStart { get; set; }
 
     public bool IsFailed
         => Deadline == 0 && !IsDone;
@@ -33,10 +35,10 @@ public class Project : Feature, IAuctionLot
     
     public void ResetToBackUp()
     {
-        Points = new ProgressPoints(LastBackUp.Points);
+        Points = LastBackUp.Points;
         for (var i = 0; i < Features.Length; ++i)
         {
-            Features[i].Points = new ProgressPoints(LastBackUp.FeatureBackUps[i].Points);
+            Features[i].Points = LastBackUp.FeatureBackUps[i].Points;
         }
     }
 }

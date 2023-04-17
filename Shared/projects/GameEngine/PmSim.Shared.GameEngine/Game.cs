@@ -117,6 +117,7 @@ public class Game
         Offices[officeId].OwnerId = playerId;
         player.Money -= Offices[officeId].RentalPrice;
         player.TotalRentPayment += Offices[officeId].RentalPrice;
+        player.MaxEmployeesNumber += Offices[officeId].Capacity;
         ++player.OfficesNumber;
         player.IsStartupOpen = true;
         SendOfficeStateToEachPlayer(officeId);
@@ -134,6 +135,7 @@ public class Game
 
         Offices[officeId].OwnerId = -1;
         player.TotalRentPayment -= Offices[officeId].RentalPrice;
+        player.MaxEmployeesNumber -= Offices[officeId].Capacity;
         --player.OfficesNumber;
         SendOfficeStateToEachPlayer(officeId);
     }
@@ -363,8 +365,14 @@ public class Game
     
     private void GiveUp(Player player)
     {
-        player.IsOut = true;
         _actors.Remove(player);
+        for (var i = 0; i < Offices.Length; ++i)
+        {
+            if (Offices[i].OwnerId == player.Id)
+            {
+                CancelOfficeLease(player.Id, i);
+            }
+        }
         if (_actors.Count < 2)
         {
             _stage = GameStages.IsOver;
@@ -373,6 +381,7 @@ public class Game
         {
             --_playersQuantity;
         }
+        player.IsOut = true;
     }
 
     internal static Project GetProjectRandomly()

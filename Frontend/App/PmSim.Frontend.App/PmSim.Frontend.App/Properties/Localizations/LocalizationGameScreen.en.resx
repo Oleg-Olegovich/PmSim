@@ -55,11 +55,11 @@
         <value>Wait for the other players to connect.</value>
     </data>
     <data name="OfficeRentInfo" xml:space="preserve">
-        <value>                This office is unoccupied.
-            Rental price: {0}
-            Capacity: {1}
+        <value>This office is unoccupied.
+Rental price: {0}
+Capacity: {1}
             
-            Rent?
+Rent?
         </value>
     </data>
     <data name="TextBlockOfficeRent" xml:space="preserve">
@@ -179,5 +179,15 @@
     </data>
     <data name="Create" xml:space="preserve">
         <value>Create</value>
+    </data>
+    <data name="CancelTask" xml:space="preserve">
+        <value>Cancel task</value>
+    </data>
+    <data name="OfficeCancelRentInfo" xml:space="preserve">
+        <value>This is your office.
+Rental price: {0}
+Capacity: {1}
+
+Cancel the lease?</value>
     </data>
 </root>

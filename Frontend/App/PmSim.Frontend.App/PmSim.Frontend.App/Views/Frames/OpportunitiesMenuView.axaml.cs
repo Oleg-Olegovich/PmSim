@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace PmSim.Frontend.App.Views.Frames;
 
-public partial class OpportunityMenuView : UserControl
+public partial class OpportunitiesMenuView : UserControl
 {
-    public OpportunityMenuView()
+    public OpportunitiesMenuView()
     {
         InitializeComponent();
     }

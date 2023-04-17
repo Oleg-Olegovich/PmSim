@@ -12,6 +12,8 @@ public class RentOfficeDialogViewModel : BasicFrameViewModel
 
     public string Info { get; }
     
+    public bool IsFree { get; }
+    
     public ReactiveCommand<Unit, Unit> RentCommand { get; }
 
     public RentOfficeDialogViewModel(GameScreenViewModel gameScreen, Office office, int id) 
@@ -19,10 +21,21 @@ public class RentOfficeDialogViewModel : BasicFrameViewModel
     {
         _id = id;
         _rentalPrice = office.RentalPrice;
-        Info = string.Format(LocalizationGameScreen.OfficeRentInfo, office.RentalPrice, office.Capacity);
         RentCommand = ReactiveCommand.Create(Rent);
+        IsFree = office.OwnerId == -1;
+        Info = string.Format(IsFree 
+            ? LocalizationGameScreen.OfficeRentInfo 
+            : LocalizationGameScreen.OfficeCancelRentInfo, office.RentalPrice, office.Capacity);
     }
 
     private void Rent()
-        => GameScreen.RentOffice(_id, _rentalPrice);
+    {
+        if (IsFree)
+        {
+            GameScreen.RentOffice(_id, _rentalPrice);
+            return;
+        }
+        
+        GameScreen.CancelOfficeLease(_id);
+    }
 }

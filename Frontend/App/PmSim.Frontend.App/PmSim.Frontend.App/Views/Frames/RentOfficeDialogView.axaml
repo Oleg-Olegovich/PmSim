@@ -25,17 +25,34 @@
                    Grid.Column="1"
                    Grid.ColumnSpan="2"
                    Classes="Text"
+                   TextAlignment="Center"
                    Text="{Binding Info}"/>
         
         <Button Grid.Row="3"
                 Grid.Column="1"
                 Classes="Stretch Menu"
+                IsVisible="{Binding IsFree}"
                 Content="{x:Static localizations:LocalizationBasicScreen.Yes}"
                 Command="{Binding RentCommand}"/>
         
         <Button Grid.Row="3"
                 Grid.Column="2"
                 Classes="Stretch AttentionGrabbing"
+                IsVisible="{Binding IsFree}"
+                Content="{x:Static localizations:LocalizationBasicScreen.No}"
+                Command="{Binding CancelCommand}"/>
+        
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                Classes="Stretch AttentionGrabbing"
+                IsVisible="{Binding !IsFree}"
+                Content="{x:Static localizations:LocalizationBasicScreen.Yes}"
+                Command="{Binding RentCommand}"/>
+        
+        <Button Grid.Row="3"
+                Grid.Column="2"
+                Classes="Stretch Menu"
+                IsVisible="{Binding !IsFree}"
                 Content="{x:Static localizations:LocalizationBasicScreen.No}"
                 Command="{Binding CancelCommand}"/>
     </Grid>

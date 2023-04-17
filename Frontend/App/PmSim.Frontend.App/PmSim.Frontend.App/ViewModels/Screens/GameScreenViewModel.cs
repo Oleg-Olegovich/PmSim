@@ -156,7 +156,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     
     public ProjectsMenuViewModel ProjectsMenu { get; }
 
-    public OpportunityMenuViewModel OpportunitiesMenu { get; }
+    public OpportunitiesMenuViewModel OpportunitiesMenu { get; }
     
     private AuctionMenuViewModel AuctionsMenu { get; }
 
@@ -205,7 +205,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         _gameMap = new GameMap0ViewModel(this);
         EmployeesMenu = new EmployeesMenuViewModel(this);
         ProjectsMenu = new ProjectsMenuViewModel(this);
-        OpportunitiesMenu = new OpportunityMenuViewModel(this);
+        OpportunitiesMenu = new OpportunitiesMenuViewModel(this);
         AuctionsMenu = new AuctionMenuViewModel(this);
         MainAreaContent = new ConnectionDialogViewModel();
         GiveUpCommand = ReactiveCommand.Create(GiveUp);
@@ -222,15 +222,9 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     public void ShowOffice(int officeId)
     {
         var state = _client.GetOfficeState(officeId);
-        if (state is OfficeStates.Mine)
-        {
-            CurrentTabIndex = 1;
-            return;
-        }
-        
-        MainAreaContent = state == OfficeStates.Unoccupied 
-            ? new RentOfficeDialogViewModel(this, _client.GetOffice(officeId)!, officeId) 
-            : new InformationDialogViewModel(this, LocalizationGameScreen.OfficeIsOccupiedByAnother);
+        MainAreaContent = state == OfficeStates.NotMine 
+            ? new InformationDialogViewModel(this, LocalizationGameScreen.OfficeIsOccupiedByAnother) 
+            : new RentOfficeDialogViewModel(this, _client.GetOffice(officeId)!, officeId);
     }
 
     public void RentOffice(int officeId, int rentalPrice)
@@ -244,6 +238,22 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         try
         {
             _client.RentOffice(officeId);
+        }
+        catch (Exception exception)
+        {
+            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+        }
+        finally
+        {
+            ShowMapMenu();
+        }
+    }
+
+    public void CancelOfficeLease(int officeId)
+    {
+        try
+        {
+            _client.CancelOfficeLease(officeId);
         }
         catch (Exception exception)
         {

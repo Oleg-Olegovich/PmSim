@@ -8,7 +8,19 @@ public class Feature : ITranslationObject
     
     public string? Name { get; set; }
 
-    public ProgressPoints Points { get; set; }
+    private ProgressPoints _points;
+
+    public ProgressPoints Points
+    {
+        get => _points;
+        set
+        {
+            _points.Programming = value.Programming;
+            _points.Design = value.Design;
+            _points.Management = value.Management;
+            _points.Music = value.Music;
+        }
+    }
 
     public Reward Reward { get; }
         

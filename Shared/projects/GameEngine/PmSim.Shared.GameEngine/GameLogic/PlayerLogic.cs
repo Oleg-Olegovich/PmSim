@@ -36,7 +36,6 @@ internal static class PlayerLogic
     {
         player.ActionsNumber = 0;
         SummarizeProjectsResults(player);
-        CollectIncome(player);
         CheckIsOut(player);
     }
 
@@ -50,33 +49,25 @@ internal static class PlayerLogic
         var random = new Random();
         foreach (var project in player.Projects)
         {
-            if (project.IsDone && !project.Reward.IsCollected)
+            if (project.IsDone)
             {
-                player.Money += project.Reward.Prize;
-                for (var i = 0; i < project.Reward.Opportunity; ++i)
+                player.Money += project.Reward.Prize + project.Reward.Revenue;
+                for (var i = 0; i < project.Reward.Opportunities; ++i)
                 {
                     player.Opportunities.Add(random.Next(1));
                 }
 
-                project.Reward.IsCollected = true;
+                project.Reward.Prize = project.Reward.Opportunities = 0;
                 continue;
             }
 
-            project.Deadline -= 1;
+            if (project.IsStart)
+            {
+                --project.Deadline;
+            }
         }
     }
 
-    /// <summary>
-    /// Collects income from projects.
-    /// </summary>
-    private static void CollectIncome(Player player)
-    {
-        foreach (var project in player.Projects.Where(project => project.IsDone))
-        {
-            player.Money += project.Reward.Revenue;
-        }
-    }
-    
     private static void CheckIsOut(Player player)
     {
         if (player.Money < 0)

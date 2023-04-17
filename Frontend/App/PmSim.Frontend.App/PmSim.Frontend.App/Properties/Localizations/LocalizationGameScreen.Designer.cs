@@ -114,6 +114,15 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отменить задание.
+        /// </summary>
+        public static string CancelTask {
+            get {
+                return ResourceManager.GetString("CancelTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Завершённые.
         /// </summary>
         public static string CompletedProjects {
@@ -305,6 +314,20 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Это ваш офис.
+        ///Стоимость аренды: {0}
+        ///Вместимость: {1}
+        ///            
+        ///Отменить аренду?
+        ///        .
+        /// </summary>
+        public static string OfficeCancelRentInfo {
+            get {
+                return ResourceManager.GetString("OfficeCancelRentInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Офис занят другим игроком!.
         /// </summary>
         public static string OfficeIsOccupiedByAnother {
@@ -314,11 +337,11 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to                 Этот офис незанят.
-        ///            Стоимость аренды: {0}
-        ///            Вместимость: {1}
+        ///   Looks up a localized string similar to Этот офис незанят.
+        ///Стоимость аренды: {0}
+        ///Вместимость: {1}
         ///            
-        ///            Арендовать?
+        ///Арендовать?
         ///        .
         /// </summary>
         public static string OfficeRentInfo {

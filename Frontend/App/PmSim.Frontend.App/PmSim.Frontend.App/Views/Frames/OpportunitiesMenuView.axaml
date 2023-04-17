@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
-             x:Class="PmSim.Frontend.App.Views.Frames.OpportunityMenuView">
+             x:Class="PmSim.Frontend.App.Views.Frames.OpportunitiesMenuView">
 
     <Grid RowDefinitions="*, Auto, 10*, *"
           ColumnDefinitions="*, 10*, *">
@@ -34,16 +34,19 @@
                         <DataTemplate>
                             <Border Classes="TextStroke"
                                     Padding="2">
-                                <Grid RowDefinitions="Auto, Auto">
+                                <Grid RowDefinitions="Auto, Auto, Auto"
+                                      ShowGridLines="True">
                                     <TextBlock Grid.Row="0"
-                                               Grid.Column="0"
                                                Classes="Header"
                                                Text="{Binding Name}" />
 
                                     <TextBlock Grid.Row="1"
-                                               Grid.Column="0"
                                                Classes="Text"
                                                Text="{Binding Description}" />
+                                    
+                                    <TextBlock Grid.Row="2"
+                                               Classes="Text"
+                                               Text="{Binding Effect}" />
                                 </Grid>
                             </Border>
                         </DataTemplate>

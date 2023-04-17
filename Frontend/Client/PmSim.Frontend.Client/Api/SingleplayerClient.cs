@@ -504,8 +504,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         => _game?.RentOffice(_playerId, officeId);
 
     public void CancelOfficeLease(int officeId)
-    {
-    }
+        => _game?.CancelOfficeLease(_playerId, officeId);
     
     public void SkipMove() => _game?.SkipMove(_playerId);
 

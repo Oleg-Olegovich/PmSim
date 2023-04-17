@@ -7,20 +7,22 @@
              x:Class="PmSim.Frontend.App.Views.Frames.ChoosingBackgroundDialogView">
     
     <Grid RowDefinitions="*, Auto, Auto, Auto, *"
-          ColumnDefinitions="*, *, *">
+          ColumnDefinitions="*, *, *, *, *">
         
         <Border Grid.Row="1"
-                Grid.Column="1"
                 Grid.RowSpan="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
                 Classes="CommonBackdrop"/>
         
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
+                   Grid.ColumnSpan="3"
                    Classes="Header"
                    Text="{x:Static localizations:LocalizationGameScreen.TextBlockChooseBackground}"/>
         
         <Border Grid.Row="2"
-                Grid.Column="1"
+                Grid.Column="2"
                 Classes="TextStroke">
             <ComboBox Classes="Bordered"
                       Items="{Binding Backgrounds}"
@@ -28,7 +30,7 @@
         </Border>
         
         <Button Grid.Row="3"
-                Grid.Column="1"
+                Grid.Column="2"
                 Classes="Stretch Menu"
                 Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
                 Command="{Binding ConfirmationCommand}"/>
