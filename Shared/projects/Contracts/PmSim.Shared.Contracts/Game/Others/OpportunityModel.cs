@@ -1,11 +1,8 @@
-﻿using System.Text.Json.Serialization;
-
-namespace PmSim.Shared.Contracts.Game.Others;
+﻿namespace PmSim.Shared.Contracts.Game.Others;
 
 public class OpportunityModel
 {
-    [JsonPropertyName("descriptionNumber")] 
-    public int DescriptionNumber { get; set; }
+    public int Number { get; set; }
     
     public string? Name { get; set; }
     

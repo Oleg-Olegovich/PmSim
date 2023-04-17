@@ -34,6 +34,18 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>LocalizationProfessions.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationOpportunityDescriptions.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationOpportunityDescriptions.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationOpportunityNames.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationOpportunityNames.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationOpportunityEffects.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationOpportunityEffects.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -56,6 +68,21 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>LocalizationProfessions.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationOpportunityDescriptions.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationOpportunityDescriptions.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationOpportunityNames.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationOpportunityNames.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationOpportunityEffects.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationOpportunityEffects.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

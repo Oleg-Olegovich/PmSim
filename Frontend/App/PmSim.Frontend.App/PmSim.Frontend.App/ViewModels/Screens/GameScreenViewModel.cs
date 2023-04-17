@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reactive;
 using PmSim.Frontend.App.Properties.Localizations;
 using PmSim.Frontend.App.ViewModels.Frames;
 using PmSim.Frontend.App.ViewModels.Windows;
 using PmSim.Frontend.Client.Api;
 using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Game.Employees;
 using PmSim.Shared.Contracts.Game.Others;
+using PmSim.Shared.Contracts.Game.Projects;
 using PmSim.Shared.Contracts.Interfaces;
 using ReactiveUI;
 
@@ -17,6 +21,8 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     private readonly IPmSimClient _client;
 
     private readonly BasicGameMapViewModel _gameMap;
+    
+    private readonly List<Project> _projects = new();
 
     private GameStages _gameStage;
 
@@ -286,6 +292,66 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         catch (Exception exception)
         {
             BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+        }
+    }
+
+    public void Add(EmployeeStatus employee)
+    {
+        EmployeesMenu.Employees.Add(employee);
+        ++EmployeesNumber;
+    }
+
+    public void Remove(EmployeeStatus employee)
+    {
+        EmployeesMenu.Employees.Remove(employee);
+        --EmployeesNumber;
+    }
+    
+    public void Add(Project project)
+    {
+        _projects.Add(project);
+        ProjectsMenu.Ideas.Add(project);
+        ++IdeasNumber;
+    }
+    
+    public void StartProject(int id)
+    {
+        ProjectsMenu.Ideas.Remove(_projects[id]);
+        ProjectsMenu.CurrentProjects.Add(_projects[id]);
+        _projects[id].IsStart = true;
+        --IdeasNumber;
+        ++CurrentProjectsNumber;
+    }
+
+    public void CompleteProject(int id)
+    {
+        ProjectsMenu.CurrentProjects.Remove(_projects[id]);
+        ProjectsMenu.CompletedProjects.Add(_projects[id]);
+        --CurrentProjectsNumber;
+        ++CompletedProjectsNumber;
+    }
+
+    public void FailProject(int id)
+    {
+        ProjectsMenu.CurrentProjects.Remove(_projects[id]);
+        ProjectsMenu.FailedProjects.Add(_projects[id]);
+        --CurrentProjectsNumber;
+        ++FailedProjectsNumber;
+    }
+
+    public void UpdateProjectProgress(int id, ProgressPoints points) 
+        => _projects[id].Points = points;
+
+    public void AddOpportunity(OpportunityModel opportunity) 
+        => OpportunitiesMenu.Opportunities.Add(opportunity);
+
+    public void RemoveOpportunity(int number)
+    {
+        var opportunity = OpportunitiesMenu.Opportunities
+            .FirstOrDefault(x => x.Number == number);
+        if (opportunity is not null)
+        {
+            OpportunitiesMenu.Opportunities.Remove(opportunity);
         }
     }
 

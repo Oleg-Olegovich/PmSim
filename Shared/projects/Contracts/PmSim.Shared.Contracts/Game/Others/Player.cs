@@ -10,11 +10,9 @@ namespace PmSim.Shared.Contracts.Game.Others;
 
 public class Player : Employee
 {
-    public IStatusChangeNotifier StatusChangeNotifier { get; set; }
+    public IStatusChangeNotifier StatusChangeNotifier { get; }
 
     public int Id { get; }
-
-    public string Name { get; }
 
     private int _money;
 
@@ -24,37 +22,9 @@ public class Player : Employee
         set => StatusChangeNotifier.Money = _money = value;
     }
 
-    private int _currentProjects;
+    public int CompletedProjects { get; set; }
 
-    public int CurrentProjects
-    {
-        get => _currentProjects;
-        set => StatusChangeNotifier.CurrentProjectsNumber = _currentProjects = value;
-    }
-    
-    private int _ideas;
-
-    public int Ideas
-    {
-        get => _ideas;
-        set => StatusChangeNotifier.IdeasNumber = _ideas = value;
-    }
-    
-    private int _completedProjects;
-
-    public int CompletedProjects
-    {
-        get => _completedProjects;
-        set => StatusChangeNotifier.CompletedProjectsNumber = _completedProjects = value;
-    }
-    
-    private int _failedProjects;
-
-    public int FailedProjects
-    {
-        get => _failedProjects;
-        set => StatusChangeNotifier.FailedProjectsNumber = _failedProjects = value;
-    }
+    public int FailedProjects { get; set; }
 
     private int _actionsNumber;
 
@@ -150,7 +120,6 @@ public class Player : Employee
 
     private void EmployeesCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
-        StatusChangeNotifier.EmployeesNumber = Employees.Count;
         switch (e.Action)
         {
             case NotifyCollectionChangedAction.Add:
@@ -183,7 +152,6 @@ public class Player : Employee
                 if (e.NewItems?[0] is Project newProject)
                 {
                     StatusChangeNotifier.Add(newProject);
-                    ++Ideas;
                 }
 
                 break;

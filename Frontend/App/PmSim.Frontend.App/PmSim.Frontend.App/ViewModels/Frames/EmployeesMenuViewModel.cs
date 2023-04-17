@@ -37,8 +37,7 @@ public class EmployeesMenuViewModel : BasicFrameViewModel
     public EmployeesMenuViewModel(GameScreenViewModel gameScreen) 
         : base(gameScreen)
     {
-        Employees.Add(new EmployeeStatus() { Name = "Oleg", Salary = 10, Skills = new SkillsPoints(1, 1, 1, 1, 1), TaskTypeName = "Работает"});
-
+        //Employees.Add(new EmployeeStatus() { Name = "Oleg", Salary = 10, Skills = new SkillsPoints(1, 1, 1, 1, 1), TaskTypeName = "Работает"});
         Selection = new SelectionModel<EmployeeStatus>();
         Selection.SelectionChanged += ProcessSelectionChanged;
         InterviewCommand = ReactiveCommand.Create(ProcessInterviewCommand);

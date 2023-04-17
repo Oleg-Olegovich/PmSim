@@ -11,6 +11,7 @@ public class OpportunitiesMenuViewModel : BasicFrameViewModel
     public OpportunitiesMenuViewModel(GameScreenViewModel gameScreen) 
         : base(gameScreen)
     {
+        /*
         var o = new OpportunityModel
         {
             Name = "Развод сотрудника",
@@ -18,5 +19,6 @@ public class OpportunitiesMenuViewModel : BasicFrameViewModel
             Effect = "Случайный сотрудник производит дополнительное очко прогресса за текущий спринт."
         };
         Opportunities.Add(o);
+        //*/
     }
 }

@@ -19,17 +19,7 @@ public interface IStatusChangeNotifier
     public int OfficesNumber { set; }
     
     public int TechSupportOfficersNumber { set; }
-    
-    public int CurrentProjectsNumber { set; }
-    
-    public int IdeasNumber { set; }
-    
-    public int CompletedProjectsNumber { set; }
-    
-    public int FailedProjectsNumber { set; }
-    
-    public int EmployeesNumber { set; }
-    
+
     public int MaxEmployeesNumber { set; }
     
     public int Programming { set; }
@@ -41,6 +31,8 @@ public interface IStatusChangeNotifier
     public int Management { set; }
     
     public int Creativity { set; }
+    
+    public bool IsOut { set; }
 
     public List<PlayerStatus> Players { set; }
 
@@ -53,12 +45,18 @@ public interface IStatusChangeNotifier
     public void Remove(EmployeeStatus employee);
 
     public void Add(Project project);
+    
+    public void StartProject(int id);
+
+    public void CompleteProject(int id);
+
+    public void FailProject(int id);
+
+    public void UpdateProjectProgress(int id, ProgressPoints points);
 
     public void AddOpportunity(int number);
 
     public void RemoveOpportunity(int number);
-    
-    public bool IsOut { set; }
 
     public Task ChangeCurrentStageAsync(GameStages stage, int time);
 

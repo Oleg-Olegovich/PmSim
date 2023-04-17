@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using PmSim.Frontend.App.ViewModels.Screens;
-using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.Projects;
 
 namespace PmSim.Frontend.App.ViewModels.Frames;

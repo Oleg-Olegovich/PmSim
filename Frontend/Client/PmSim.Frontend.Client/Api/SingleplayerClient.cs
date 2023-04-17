@@ -92,91 +92,6 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
-    public int CurrentProjectsNumber
-    {
-        set
-        {
-            if (_gameScreenLogic is null)
-            {
-                return;
-            }
-            
-            Dispatcher.UIThread.Post(() =>
-            {
-                _gameScreenLogic.CurrentProjectsNumber = value;
-            }, DispatcherPriority.Background);
-        }
-    }
-    
-    public int IdeasNumber
-    {
-        set
-        {
-            if (_gameScreenLogic is null)
-            {
-                return;
-            }
-            
-            Dispatcher.UIThread.Post(() =>
-            {
-                _gameScreenLogic.IdeasNumber = value;
-            }, DispatcherPriority.Background);
-        }
-    }
-    
-    public int CompletedProjectsNumber
-    {
-        set
-        {
-            if (_gameScreenLogic is null)
-            {
-                return;
-            }
-
-            Dispatcher.UIThread.Post(() =>
-            {
-                _gameScreenLogic.CurrentProjectsNumber = value;
-                var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
-                if (status != null)
-                {
-                    status.CompletedProjects = value;
-                }
-            }, DispatcherPriority.Background);
-        }
-    }
-
-    public int FailedProjectsNumber
-    {
-        set
-        {
-            if (_gameScreenLogic is null)
-            {
-                return;
-            }
-
-            Dispatcher.UIThread.Post(() =>
-            {
-                _gameScreenLogic.FailedProjectsNumber = value;
-            }, DispatcherPriority.Background);
-        }
-    }
-
-    public int EmployeesNumber
-    {
-        set
-        {
-            if (_gameScreenLogic is null)
-            {
-                return;
-            }
-
-            Dispatcher.UIThread.Post(() =>
-            {
-                _gameScreenLogic.EmployeesNumber = value;
-            }, DispatcherPriority.Background);
-        }
-    }
-    
     public int MaxEmployeesNumber
     {
         set
@@ -333,27 +248,129 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
 
     public void Add(EmployeeStatus employee)
     {
-        
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.Add(employee);
+        }, DispatcherPriority.Background);
     }
 
     public void Remove(EmployeeStatus employee)
     {
-        
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.Remove(employee);
+        }, DispatcherPriority.Background);
     }
 
     public void Add(Project project)
     {
-        
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.Add(project);
+        }, DispatcherPriority.Background);
+    }
+    
+    public void StartProject(int id)
+    {
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.StartProject(id);
+        }, DispatcherPriority.Background);
+    }
+
+    public void CompleteProject(int id)
+    {
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.CompleteProject(id);
+        }, DispatcherPriority.Background);
+    }
+
+    public void FailProject(int id)
+    {
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.FailProject(id);
+        }, DispatcherPriority.Background);
+    }
+
+    public void UpdateProjectProgress(int id, ProgressPoints points)
+    {
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.UpdateProjectProgress(id, points);
+        }, DispatcherPriority.Background);
     }
 
     public void AddOpportunity(int number)
     {
-        
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+
+        var opportunity = new OpportunityModel
+        {
+            Number = number,
+            Name = LocalizationOpportunityNames
+                .ResourceManager.GetString(number.ToString()),
+            Description = LocalizationOpportunityDescriptions
+                .ResourceManager.GetString(number.ToString()),
+            Effect = LocalizationOpportunityEffects
+                .ResourceManager.GetString(number.ToString())
+        };
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.AddOpportunity(opportunity);
+        }, DispatcherPriority.Background);
     }
 
     public void RemoveOpportunity(int number)
     {
-        
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.RemoveOpportunity(number);
+        }, DispatcherPriority.Background);
     }
 
     public async Task ChangeCurrentStageAsync(GameStages stage, int time)

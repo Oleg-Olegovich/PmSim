@@ -52,6 +52,31 @@ internal class StatusChangeNotifier : IStatusChangeNotifier
         
     }
 
+    public void StartProject(int id)
+    {
+        
+    }
+
+    public void CompleteProject(int id)
+    {
+        
+    }
+
+    public void FailProject(int id)
+    {
+        
+    }
+
+    public void UpdateProjectProgress(int id, ProgressPoints points)
+    {
+        
+    }
+
+    public void UpdateProject(int id, Project project)
+    {
+        
+    }
+
     public void AddOpportunity(int number)
     {
         

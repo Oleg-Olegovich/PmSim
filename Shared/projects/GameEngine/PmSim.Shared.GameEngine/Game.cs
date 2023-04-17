@@ -275,16 +275,17 @@ public class Game
         player.Employees[employeeId].CurrentTask = null;
     }
 
-    public void PutProjectUpForAuction(int playerId, int projectNumber, int startPrice)
+    public void PutProjectUpForAuction(int playerId, int projectId, int startPrice)
     {
         var seller = FindPlayerById(playerId);
-        if (seller.IsOut || projectNumber < 0 || projectNumber >= _opportunities.Length
-            || Auctions.Count(x => x.Lot == seller.Projects[projectNumber]) > 0)
+        if (seller.IsOut || projectId < 0 || projectId >= seller.Projects.Count
+            || seller.Projects[projectId].IsStart
+            || Auctions.Any(x => x.Lot == seller.Projects[projectId]))
         {
             throw new PmSimException("It is impossible to put the project up for auction.");
         }
 
-        Auctions.Add(new Auction(Auctions.Count, seller.Projects[projectNumber], playerId, startPrice));
+        Auctions.Add(new Auction(Auctions.Count, seller.Projects[projectId], playerId, startPrice));
     }
 
     public void PutEmployeeUpForAuction(int playerId, int employeeId, int startPrice)

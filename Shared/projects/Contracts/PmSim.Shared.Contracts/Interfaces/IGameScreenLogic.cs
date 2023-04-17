@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Game.Employees;
 using PmSim.Shared.Contracts.Game.Others;
+using PmSim.Shared.Contracts.Game.Projects;
 
 namespace PmSim.Shared.Contracts.Interfaces;
 
@@ -36,22 +38,30 @@ public interface IGameScreenLogic
     public int OfficesNumber { get; set; }
     
     public int TechSupportOfficersNumber { get; set; }
-    
-    public int CurrentProjectsNumber { get; set; }
-    
-    public int IdeasNumber { get; set; }
-    
-    public int CompletedProjectsNumber { get; set; }
-    
-    public int FailedProjectsNumber { get; set; }
-    
-    public int EmployeesNumber { get; set; }
-    
+
     public int MaxEmployeesNumber { get; set; }
     
     public ObservableCollection<PlayerStatus> Players { get; set; }
 
     public void SetOfficeState(int officeId, OfficeStates officeState);
+
+    public void Add(EmployeeStatus employee);
+
+    public void Remove(EmployeeStatus employee);
+
+    public void Add(Project project);
+    
+    public void StartProject(int id);
+
+    public void CompleteProject(int id);
+
+    public void FailProject(int id);
+
+    public void UpdateProjectProgress(int id, ProgressPoints points);
+    
+    public void AddOpportunity(OpportunityModel opportunity);
+
+    public void RemoveOpportunity(int number);
 
     public void ProcessLosing();
 }
