@@ -71,13 +71,19 @@
                 <Viewbox Stretch="Uniform">
                     <Image Classes="ProjectsIcon Icon" />
                 </Viewbox>
+                <TextBlock Text="{Binding IdeasNumber}"
+                           Classes="Text"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="/"
+                           Classes="Text"
+                           VerticalAlignment="Center" />
                 <TextBlock Text="{Binding CompletedProjectsNumber}"
                            Classes="Text"
                            VerticalAlignment="Center" />
                 <TextBlock Text="/"
                            Classes="Text"
                            VerticalAlignment="Center" />
-                <TextBlock Text="{Binding ProjectsNumber}"
+                <TextBlock Text="{Binding CurrentProjectsNumber}"
                            Classes="Text"
                            VerticalAlignment="Center" />
                 <TextBlock Text="/"

@@ -20,7 +20,9 @@ public interface IStatusChangeNotifier
     
     public int TechSupportOfficersNumber { set; }
     
-    public int ProjectsNumber { set; }
+    public int CurrentProjectsNumber { set; }
+    
+    public int IdeasNumber { set; }
     
     public int CompletedProjectsNumber { set; }
     
@@ -41,20 +43,20 @@ public interface IStatusChangeNotifier
     public int Creativity { set; }
 
     public List<PlayerStatus> Players { set; }
-    
-    public PlayerStatus AnotherPlayerStatus { set; }
-    
-    public int RemovePlayer { set; }
-    
-    public EmployeeStatus AddEmployee { set; }
-    
-    public EmployeeStatus RemoveEmployee { set; }
-    
-    public Project Project { set; }
-    
-    public int AddOpportunity { set; }
-    
-    public int RemoveOpportunity { set; }
+
+    public void SetAnotherStatus(PlayerStatus player);
+
+    public void RemovePlayer(int id);
+
+    public void Add(EmployeeStatus employee);
+
+    public void Remove(EmployeeStatus employee);
+
+    public void Add(Project project);
+
+    public void AddOpportunity(int number);
+
+    public void RemoveOpportunity(int number);
     
     public bool IsOut { set; }
 

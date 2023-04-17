@@ -522,7 +522,7 @@ namespace PmSim.Frontend.App.Properties.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Кол-во ваших проектов: завершённые, всего, проваленные.
+        ///   Looks up a localized string similar to Кол-во ваших проектов: идеи, завершённые, всего, проваленные.
         /// </summary>
         public static string ToolTipProjectsNumber {
             get {

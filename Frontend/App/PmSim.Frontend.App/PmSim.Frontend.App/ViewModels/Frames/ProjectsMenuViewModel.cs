@@ -9,9 +9,16 @@ public class ProjectsMenuViewModel : BasicFrameViewModel
 {
     public ObservableCollection<Project> CurrentProjects { get; } = new();
     
+    public ObservableCollection<Project> Ideas { get; } = new();
+    
+    public ObservableCollection<Project> CompletedProjects { get; } = new();
+    
+    public ObservableCollection<Project> FailedProjects { get; } = new();
+    
     public ProjectsMenuViewModel(GameScreenViewModel gameScreen) 
         : base(gameScreen)
     {
+        /*
         var p0 = GameConstants.Projects[0];
         var p1 = GameConstants.Projects[1];
         var p2 = GameConstants.Projects[2];
@@ -21,5 +28,6 @@ public class ProjectsMenuViewModel : BasicFrameViewModel
         CurrentProjects.Add(p0);
         CurrentProjects.Add(p1);
         CurrentProjects.Add(p2);
+        //*/
     }
 }

@@ -37,7 +37,9 @@ public interface IGameScreenLogic
     
     public int TechSupportOfficersNumber { get; set; }
     
-    public int ProjectsNumber { get; set; }
+    public int CurrentProjectsNumber { get; set; }
+    
+    public int IdeasNumber { get; set; }
     
     public int CompletedProjectsNumber { get; set; }
     

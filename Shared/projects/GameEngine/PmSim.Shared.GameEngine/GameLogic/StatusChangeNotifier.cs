@@ -15,7 +15,8 @@ internal class StatusChangeNotifier : IStatusChangeNotifier
     public int Money { get; set; }
     public int OfficesNumber { get; set; }
     public int TechSupportOfficersNumber { get; set; }
-    public int ProjectsNumber { get; set; }
+    public int CurrentProjectsNumber { get; set; }
+    public int IdeasNumber { get; set; }
     public int CompletedProjectsNumber { get; set; }
     public int FailedProjectsNumber { get; set; }
     public int EmployeesNumber { get; set; }
@@ -26,15 +27,43 @@ internal class StatusChangeNotifier : IStatusChangeNotifier
     public int Management { get; set; }
     public int Creativity { get; set; }
     public List<PlayerStatus> Players { get; set; }
-    public PlayerStatus AnotherPlayerStatus { get; set; }
-    public int RemovePlayer { get; set; }
-    public EmployeeStatus AddEmployee { get; set; }
-    public EmployeeStatus RemoveEmployee { get; set; }
-    public Project Project { get; set; }
-    public int AddOpportunity { get; set; }
-    public int RemoveOpportunity { get; set; }
-    public bool IsOut { get; set; }
+    public void SetAnotherStatus(PlayerStatus player)
+    {
+        
+    }
 
+    public void RemovePlayer(int id)
+    {
+        
+    }
+
+    public void Add(EmployeeStatus employee)
+    {
+        
+    }
+
+    public void Remove(EmployeeStatus employee)
+    {
+        
+    }
+
+    public void Add(Project project)
+    {
+        
+    }
+
+    public void AddOpportunity(int number)
+    {
+        
+    }
+
+    public void RemoveOpportunity(int number)
+    {
+        
+    }
+
+    public bool IsOut { get; set; }
+    
     public async Task ChangeCurrentStageAsync(GameStages stage, int time)
     {
         

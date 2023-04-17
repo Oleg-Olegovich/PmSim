@@ -102,12 +102,20 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         set => this.RaiseAndSetIfChanged(ref _techSupportOfficersNumber, value);
     }
 
-    private int _projectsNumber;
+    private int _currentProjectsNumber;
 
-    public int ProjectsNumber
+    public int CurrentProjectsNumber
     {
-        get => _projectsNumber;
-        set => this.RaiseAndSetIfChanged(ref _projectsNumber, value);
+        get => _currentProjectsNumber;
+        set => this.RaiseAndSetIfChanged(ref _currentProjectsNumber, value);
+    }
+    
+    private int _ideasNumber;
+
+    public int IdeasNumber
+    {
+        get => _ideasNumber;
+        set => this.RaiseAndSetIfChanged(ref _ideasNumber, value);
     }
 
     private int _completedProjectsNumber;

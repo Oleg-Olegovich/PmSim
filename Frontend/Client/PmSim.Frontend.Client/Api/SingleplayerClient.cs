@@ -92,7 +92,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
 
-    public int ProjectsNumber
+    public int CurrentProjectsNumber
     {
         set
         {
@@ -103,7 +103,23 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             
             Dispatcher.UIThread.Post(() =>
             {
-                _gameScreenLogic.ProjectsNumber = value;
+                _gameScreenLogic.CurrentProjectsNumber = value;
+            }, DispatcherPriority.Background);
+        }
+    }
+    
+    public int IdeasNumber
+    {
+        set
+        {
+            if (_gameScreenLogic is null)
+            {
+                return;
+            }
+            
+            Dispatcher.UIThread.Post(() =>
+            {
+                _gameScreenLogic.IdeasNumber = value;
             }, DispatcherPriority.Background);
         }
     }
@@ -119,7 +135,7 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
 
             Dispatcher.UIThread.Post(() =>
             {
-                _gameScreenLogic.ProjectsNumber = value;
+                _gameScreenLogic.CurrentProjectsNumber = value;
                 var status = _gameScreenLogic.Players.FirstOrDefault(player => player.Id == _playerId);
                 if (status != null)
                 {
@@ -261,87 +277,6 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         }
     }
     
-    public PlayerStatus AnotherPlayerStatus
-    {
-        set
-        {
-            if (_gameScreenLogic is null)
-            {
-                return;
-            }
-
-            Dispatcher.UIThread.Post(() =>
-            {
-                for (var i = 0; i < _gameScreenLogic.Players.Count; ++i)
-                {
-                    if (_gameScreenLogic.Players[i].Id != value.Id)
-                    {
-                        continue;
-                    }
-
-                    _gameScreenLogic.Players[i] = value;
-                    return;
-                }
-            }, DispatcherPriority.Background);
-        }
-    }
-
-    public int RemovePlayer
-    {
-        set
-        {
-            if (_gameScreenLogic is null || value < 0 || value >= _gameScreenLogic.Players.Count)
-            {
-                return;
-            }
-            
-            Dispatcher.UIThread.Post(() =>
-            {
-                _gameScreenLogic.Players[value].IsOut = true;
-            }, DispatcherPriority.Background);
-        }
-    }
-
-    public EmployeeStatus AddEmployee
-    {
-        set
-        {
-            
-        }
-    }
-
-    public EmployeeStatus RemoveEmployee
-    {
-        set
-        {
-            
-        }
-    }
-
-    public Project Project
-    {
-        set
-        {
-            
-        }
-    }
-
-    public int AddOpportunity
-    {
-        set
-        {
-            
-        }
-    }
-
-    public int RemoveOpportunity
-    {
-        set
-        {
-            
-        }
-    }
-
     public bool IsOut
     {
         set
@@ -357,9 +292,69 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
             }, DispatcherPriority.Background);
         }
     }
-
+    
     public SingleplayerClient(string playerName) 
         => _playerName = playerName;
+    
+    public void SetAnotherStatus(PlayerStatus player)
+    {
+        if (_gameScreenLogic is null)
+        {
+            return;
+        }
+
+        Dispatcher.UIThread.Post(() =>
+        {
+            for (var i = 0; i < _gameScreenLogic.Players.Count; ++i)
+            {
+                if (_gameScreenLogic.Players[i].Id != player.Id)
+                {
+                    continue;
+                }
+
+                _gameScreenLogic.Players[i] = player;
+                return;
+            }
+        }, DispatcherPriority.Background);
+    }
+
+    public void RemovePlayer(int id)
+    {
+        if (_gameScreenLogic is null || id < 0 || id >= _gameScreenLogic.Players.Count)
+        {
+            return;
+        }
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            _gameScreenLogic.Players[id].IsOut = true;
+        }, DispatcherPriority.Background);
+    }
+
+    public void Add(EmployeeStatus employee)
+    {
+        
+    }
+
+    public void Remove(EmployeeStatus employee)
+    {
+        
+    }
+
+    public void Add(Project project)
+    {
+        
+    }
+
+    public void AddOpportunity(int number)
+    {
+        
+    }
+
+    public void RemoveOpportunity(int number)
+    {
+        
+    }
 
     public async Task ChangeCurrentStageAsync(GameStages stage, int time)
     {

@@ -24,12 +24,36 @@ public class Player : Employee
         set => StatusChangeNotifier.Money = _money = value;
     }
 
+    private int _currentProjects;
+
+    public int CurrentProjects
+    {
+        get => _currentProjects;
+        set => StatusChangeNotifier.CurrentProjectsNumber = _currentProjects = value;
+    }
+    
+    private int _ideas;
+
+    public int Ideas
+    {
+        get => _ideas;
+        set => StatusChangeNotifier.IdeasNumber = _ideas = value;
+    }
+    
     private int _completedProjects;
 
     public int CompletedProjects
     {
         get => _completedProjects;
         set => StatusChangeNotifier.CompletedProjectsNumber = _completedProjects = value;
+    }
+    
+    private int _failedProjects;
+
+    public int FailedProjects
+    {
+        get => _failedProjects;
+        set => StatusChangeNotifier.FailedProjectsNumber = _failedProjects = value;
     }
 
     private int _actionsNumber;
@@ -85,9 +109,6 @@ public class Player : Employee
 
     public ObservableCollection<Employee> Employees { get; } = new();
 
-    /// <summary>
-    /// This repository contains projects.
-    /// </summary>
     public ObservableCollection<Project> Projects { get; } = new();
 
     public ObservableCollection<int> Opportunities { get; } = new();
@@ -135,14 +156,14 @@ public class Player : Employee
             case NotifyCollectionChangedAction.Add:
                 if (e.NewItems?[0] is Employee newEmployee)
                 {
-                    StatusChangeNotifier.AddEmployee = newEmployee;
+                    StatusChangeNotifier.Add(newEmployee);
                 }
 
                 break;
             case NotifyCollectionChangedAction.Remove:
                 if (e.OldItems?[0] is Employee oldEmployee)
                 {
-                    StatusChangeNotifier.RemoveEmployee = oldEmployee;
+                    StatusChangeNotifier.Remove(oldEmployee);
                 }
 
                 break;
@@ -156,13 +177,13 @@ public class Player : Employee
 
     private void ProjectsCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
-        StatusChangeNotifier.ProjectsNumber = Projects.Count;
         switch (e.Action)
         {
             case NotifyCollectionChangedAction.Add:
                 if (e.NewItems?[0] is Project newProject)
                 {
-                    StatusChangeNotifier.Project = newProject;
+                    StatusChangeNotifier.Add(newProject);
+                    ++Ideas;
                 }
 
                 break;
@@ -182,14 +203,14 @@ public class Player : Employee
             case NotifyCollectionChangedAction.Add:
                 if (e.NewItems?[0] is int newOpportunity)
                 {
-                    StatusChangeNotifier.AddOpportunity = newOpportunity;
+                    StatusChangeNotifier.AddOpportunity(newOpportunity);
                 }
 
                 break;
             case NotifyCollectionChangedAction.Remove:
                 if (e.OldItems?[0] is int oldOpportunity)
                 {
-                    StatusChangeNotifier.RemoveOpportunity = oldOpportunity;
+                    StatusChangeNotifier.RemoveOpportunity(oldOpportunity);
                 }
 
                 break;
