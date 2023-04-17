@@ -8,7 +8,7 @@ public class Feature : ITranslationObject
     
     public string? Name { get; set; }
 
-    private ProgressPoints _points;
+    private readonly ProgressPoints _points = new();
 
     public ProgressPoints Points
     {

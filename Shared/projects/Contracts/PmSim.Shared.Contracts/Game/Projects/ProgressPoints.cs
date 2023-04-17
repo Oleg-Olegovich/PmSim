@@ -31,6 +31,8 @@
         public bool IsDone
             => Programming == 0 && Music == 0 && Design == 0 && Management == 0;
 
+        public ProgressPoints() { }
+        
         public ProgressPoints(int programming, int design, int music, int management)
         {
             Programming = programming;

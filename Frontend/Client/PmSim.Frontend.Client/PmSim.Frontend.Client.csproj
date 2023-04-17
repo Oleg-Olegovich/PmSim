@@ -46,6 +46,32 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>LocalizationOpportunityEffects.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationProjectNames.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationProjectNames.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationProfessions.en.resx">
+        <DependentUpon>LocalizationProfessions.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationGameStages.en.resx">
+        <DependentUpon>LocalizationGameStages.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationMaleNames.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationMaleNames.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationMaleSurnames.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationMaleSurnames.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationFemaleNames.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationFemaleNames.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\LocalizationFemaleSurnames.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationFemaleSurnames.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -83,6 +109,31 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>LocalizationOpportunityEffects.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationProjectNames.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationProjectNames.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationMaleNames.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationMaleNames.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationMaleSurnames.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationMaleSurnames.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationFemaleNames.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationFemaleNames.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\LocalizationFemaleSurnames.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LocalizationFemaleSurnames.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

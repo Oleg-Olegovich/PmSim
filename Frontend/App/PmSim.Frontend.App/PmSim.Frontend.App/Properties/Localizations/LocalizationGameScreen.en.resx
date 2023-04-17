@@ -190,4 +190,7 @@ Capacity: {1}
 
 Cancel the lease?</value>
     </data>
+    <data name="Income" xml:space="preserve">
+        <value>Income</value>
+    </data>
 </root>

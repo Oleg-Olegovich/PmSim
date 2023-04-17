@@ -10,7 +10,6 @@
 
     <PropertyGroup>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <PublishSingleFile>true</PublishSingleFile>
         <DebugType>embedded</DebugType>
     </PropertyGroup>
 

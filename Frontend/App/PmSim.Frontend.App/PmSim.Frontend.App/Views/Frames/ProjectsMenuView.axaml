@@ -36,7 +36,7 @@
                             <DataTemplate>
                                 <Border Classes="TextStroke"
                                         Padding="2">
-                                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                                           ColumnDefinitions="Auto, Auto">
 
                                         <TextBlock Grid.Row="0"
@@ -94,12 +94,22 @@
                                                    Classes="Text"
                                                    TextAlignment="Right"
                                                    Text="{Binding Reward.Prize}" />
-
+                                        
                                         <TextBlock Grid.Row="6"
                                                    Grid.Column="0"
                                                    Classes="Text"
-                                                   Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Income}" />
                                         <TextBlock Grid.Row="6"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Reward.Income}" />
+
+                                        <TextBlock Grid.Row="7"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                        <TextBlock Grid.Row="7"
                                                    Grid.Column="1"
                                                    Classes="Text"
                                                    TextAlignment="Right"
@@ -134,7 +144,7 @@
                                 <DataTemplate>
                                     <Border Classes="TextStroke"
                                             Padding="2">
-                                        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                                               ColumnDefinitions="Auto, Auto">
 
                                             <TextBlock Grid.Row="0"
@@ -192,12 +202,22 @@
                                                        Classes="Text"
                                                        TextAlignment="Right"
                                                        Text="{Binding Reward}" />
-
+                                            
                                             <TextBlock Grid.Row="6"
                                                        Grid.Column="0"
                                                        Classes="Text"
-                                                       Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                                       Text="{x:Static localizations:LocalizationGameScreen.Income}" />
                                             <TextBlock Grid.Row="6"
+                                                       Grid.Column="1"
+                                                       Classes="Text"
+                                                       TextAlignment="Right"
+                                                       Text="{Binding Reward.Income}" />
+
+                                            <TextBlock Grid.Row="7"
+                                                       Grid.Column="0"
+                                                       Classes="Text"
+                                                       Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                            <TextBlock Grid.Row="7"
                                                        Grid.Column="1"
                                                        Classes="Text"
                                                        TextAlignment="Right"
@@ -228,7 +248,7 @@
                             <DataTemplate>
                                 <Border Classes="TextStroke"
                                         Padding="2">
-                                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                                           ColumnDefinitions="Auto, Auto">
 
                                         <TextBlock Grid.Row="0"
@@ -286,12 +306,22 @@
                                                    Classes="Text"
                                                    TextAlignment="Right"
                                                    Text="{Binding Reward}" />
-
+                                        
                                         <TextBlock Grid.Row="6"
                                                    Grid.Column="0"
                                                    Classes="Text"
-                                                   Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Income}" />
                                         <TextBlock Grid.Row="6"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Reward.Income}" />
+
+                                        <TextBlock Grid.Row="7"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                        <TextBlock Grid.Row="7"
                                                    Grid.Column="1"
                                                    Classes="Text"
                                                    TextAlignment="Right"
@@ -321,7 +351,7 @@
                             <DataTemplate>
                                 <Border Classes="TextStroke"
                                         Padding="2">
-                                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                                           ColumnDefinitions="Auto, Auto">
 
                                         <TextBlock Grid.Row="0"
@@ -379,12 +409,22 @@
                                                    Classes="Text"
                                                    TextAlignment="Right"
                                                    Text="{Binding Reward}" />
-
+                                        
                                         <TextBlock Grid.Row="6"
                                                    Grid.Column="0"
                                                    Classes="Text"
-                                                   Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Income}" />
                                         <TextBlock Grid.Row="6"
+                                                   Grid.Column="1"
+                                                   Classes="Text"
+                                                   TextAlignment="Right"
+                                                   Text="{Binding Reward.Income}" />
+
+                                        <TextBlock Grid.Row="7"
+                                                   Grid.Column="0"
+                                                   Classes="Text"
+                                                   Text="{x:Static localizations:LocalizationGameScreen.Deadline}" />
+                                        <TextBlock Grid.Row="7"
                                                    Grid.Column="1"
                                                    Classes="Text"
                                                    TextAlignment="Right"

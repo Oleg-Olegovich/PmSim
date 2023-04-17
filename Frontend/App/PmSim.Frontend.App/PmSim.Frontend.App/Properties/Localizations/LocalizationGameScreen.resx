@@ -192,4 +192,7 @@
 Отменить аренду?
         </value>
     </data>
+    <data name="Income" xml:space="preserve">
+        <value>Доход</value>
+    </data>
 </root>

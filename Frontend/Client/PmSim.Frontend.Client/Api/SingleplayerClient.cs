@@ -278,7 +278,9 @@ public class SingleplayerClient : IPmSimClient, IStatusChangeNotifier
         {
             return;
         }
-            
+
+        project.Name = LocalizationProjectNames.ResourceManager
+            .GetString(project.DescriptionNumber.ToString());    
         Dispatcher.UIThread.Post(() =>
         {
             _gameScreenLogic.Add(project);
