@@ -1,6 +1,6 @@
 ﻿namespace PmSim.Shared.Contracts.Actions
 {
-    public class ExecutorActionRequest : OfficeActionRequest
+    public class EmployeeActionRequest : OfficeActionRequest
     {
         public int EmployeeId { get; set; }
     }

@@ -10,11 +10,12 @@ using PmSim.Shared.Contracts.User;
 
 namespace PmSim.Frontend.Client.Api;
 
-public class MultiPlayerClient : IPmSimClient
+public class MultiPlayerClient : BaseClient
 {
-    //private readonly IGatewayClient _gateway;
     private readonly ClientOptions _clientOptions;
 
+    public static MultiPlayerClient? Client { get; private set; }
+    
     public bool IsSubscriptionPaid
         => true;
     
@@ -30,6 +31,7 @@ public class MultiPlayerClient : IPmSimClient
             });
         _gateway = new Backend.Gateway.MultiplayerModeApi.GatewayClient(gatewayClientOptions);
         */
+        Client = this;
     }
 
     public static bool ReserveLogin(string login)
@@ -51,14 +53,14 @@ public class MultiPlayerClient : IPmSimClient
         return new MultiPlayerClient();
     }
 
-    public static MultiPlayerClient SignInAsync(string login, string password)
+    public static MultiPlayerClient SignIn(string login, string password)
     {
-        var request = new AuthorizationRequest();
+        var request = new SignInRequest();
         //var response = await _gateway.GetAccountAsync(request);
         return new MultiPlayerClient();
     }
 
-    public void CreateNewGame(GameOptions gameOptions, IGameScreenLogic gameScreenLogic)
+    public override void CreateNewGame(GameOptions gameOptions, IGameScreenLogic gameScreenLogic)
     {
         _clientOptions.GameId = 0;
         /*
@@ -82,99 +84,99 @@ public class MultiPlayerClient : IPmSimClient
         
     }
 
-    public void SetBackground(Professions profession)
+    public override void SetBackground(Professions profession)
     {
         
     }
 
-    public void DismissEmployees(int[] employeesIds)
+    public override void DismissEmployees(int[] employeesIds)
     {
     }
 
-    public EmployeeStatus? ConductInterview()
+    public override EmployeeStatus? ConductInterview()
     {
         return null;
     }
 
-    public bool ProcessInterview(int salary)
+    public override bool ProcessInterview(int salary)
     {
         return false;
     }
 
-    public void HireTechSupportOfficer()
+    public override void HireTechSupportOfficer()
     {
     }
 
-    public void DismissTechSupportOfficer()
+    public override void DismissTechSupportOfficer()
     {
     }
 
-    public void UseOpportunity(int opportunityNumber, int targetPlayer)
+    public override void UseOpportunity(int opportunityNumber, int targetPlayer)
     {
     }
 
-    public void AssignToDevelop(int employeeId, int projectNumber, Professions profession)
+    public override void AssignToDevelop(int employeeId, int projectNumber, Professions profession)
     {
     }
 
-    public void AssignToInventProject(int employeeId)
+    public override void AssignToInventProject(int employeeId)
     {
     }
 
-    public void AssignToMakeBackup(int employeeId, int projectId)
+    public override void AssignToMakeBackup(int employeeId, int projectId)
     {
     }
 
-    public void CancelTask(int employeeId)
+    public override void CancelTask(int employeeId)
     {
     }
 
-    public void PutProjectUpForAuction(int projectNumber, int startPrice)
+    public override void PutProjectUpForAuction(int projectNumber, int startPrice)
     {
     }
 
-    public void PutEmployeeUpForAuction(int employeeId, int startPrice)
+    public override void PutEmployeeUpForAuction(int employeeId, int startPrice)
     {
     }
 
-    public void PutOpportunityUpForAuction(int opportunityNumber, int startPrice)
+    public override void PutOpportunityUpForAuction(int opportunityNumber, int startPrice)
     {
     }
 
-    public void ParticipateInAuction(int auctionNumber, int money)
+    public override void ParticipateInAuction(int auctionNumber, int money)
     {
     }
 
-    public void MakeIncidentDecision(int donation)
+    public override void MakeIncidentDecision(int donation)
     {
     }
 
-    public Office? GetOffice(int officeId)
+    public override Office? GetOffice(int officeId)
     {
         return null;
     }
 
-    public OfficeStates GetOfficeState(int officeId)
+    public override OfficeStates GetOfficeState(int officeId)
         => OfficeStates.Unoccupied;
 
-    public void RentOffice(int officeId)
+    public override void RentOffice(int officeId)
     {
         
     }
     
-    public void CancelOfficeLease(int officeId)
+    public override void CancelOfficeLease(int officeId)
     {
     }
     
-    public void SkipMove()
+    public override void SkipMove()
     {
     }
 
-    public void GiveUp()
+    public override void GiveUp()
     {
     }
     
-    public void RequestStartProject(int id)
+    public override void RequestStartProject(int id)
     {
         
     }

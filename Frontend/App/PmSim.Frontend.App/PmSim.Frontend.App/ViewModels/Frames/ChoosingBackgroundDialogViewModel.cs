@@ -23,7 +23,7 @@ public class ChoosingBackgroundDialogViewModel : BasicFrameViewModel
     public ChoosingBackgroundDialogViewModel(GameScreenViewModel gameScreen) 
         : base(gameScreen)
     {
-        Backgrounds = IPmSimClient.GetBackgrounds();
+        Backgrounds = BaseClient.GetBackgrounds();
         ConfirmationCommand = ReactiveCommand.Create(Confirm);
     }
 

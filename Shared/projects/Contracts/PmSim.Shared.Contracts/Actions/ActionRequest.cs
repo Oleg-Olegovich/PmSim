@@ -1,12 +1,10 @@
-﻿namespace PmSim.Shared.Contracts.Actions
+﻿using PmSim.Shared.Contracts.Credentials;
+
+namespace PmSim.Shared.Contracts.Actions
 {
 
-    public class ActionRequest
+    public class ActionRequest : BasicRequest
     {
         public int GameId { get; set; }
-
-        public int PlayerId { get; set; }
-
-        public string PlayerToken { get; set; }
     }
 }

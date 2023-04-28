@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
+      <ProjectReference Include="..\PmSim.Frontend.Client\PmSim.Frontend.Client.csproj" />
     </ItemGroup>
 
 </Project>

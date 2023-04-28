@@ -10,7 +10,7 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class GameOptionsScreenViewModel : BasicScreenViewModel
 {
-    private readonly IPmSimClient _client;
+    private readonly BaseClient _client;
     
     // Option fields.
     
@@ -202,12 +202,12 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     public ReactiveCommand<Unit, Unit> StartCommand { get; }
 
     public GameOptionsScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous, 
-        IPmSimClient client, bool isSingleplayer) : base(mainView, previous)
+        BaseClient client, bool isSingleplayer) : base(mainView, previous)
     {
         _client = client;
         IsSingleplayer = isSingleplayer;
-        Modes = IPmSimClient.GetModes();
-        Maps = IPmSimClient.GetMaps();
+        Modes = BaseClient.GetModes();
+        Maps = BaseClient.GetMaps();
         ProcessDefaultClick();
         DefaultCommand = ReactiveCommand.Create(ProcessDefaultClick);
         StartCommand = ReactiveCommand.Create(StartGame);

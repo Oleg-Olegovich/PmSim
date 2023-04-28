@@ -17,7 +17,7 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 
 public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 {
-    private readonly IPmSimClient _client;
+    private readonly BaseClient _client;
 
     private readonly BasicGameMapViewModel _gameMap;
 
@@ -209,7 +209,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 
     public ReactiveCommand<Unit, Unit> ExitCommand { get; }
 
-    public GameScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous, IPmSimClient client)
+    public GameScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous, BaseClient client)
         : base(mainView, previous)
     {
         _client = client;

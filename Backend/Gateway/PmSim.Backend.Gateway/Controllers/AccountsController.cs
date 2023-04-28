@@ -1,64 +1,47 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
+using PmSim.Shared.Contracts.Credentials;
 
-namespace PmSim.Backend.Gateway.Controllers
+namespace PmSim.Backend.Gateway.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class AccountsController : ControllerBase
 {
-    //[ApiVersion("1")]
-    //[Route(RouteBase + "accounts")]
-    public class AccountsController //: BaseController
+    private static readonly HttpClient Client = new HttpClient();
+    
+    [HttpPost]
+    [AllowAnonymous]
+    public async Task<TokenResponse?> SignUpAsync([FromBody] SignUpRequest request)
     {
-        /*
-        private readonly IMapper _mapper;
-        private readonly ILogger<AccountsController> _logger;
-        private readonly IUsersApiClient _usersApiClient;
-        private readonly IHashProvider _hashProvider;
+        var response = await Client.PostAsJsonAsync(
+            "api/accounts/sign_up", request);
+        // Здесь нужно через DatabaseManager добавить запись о пользователе и сгенерировать TokenResponse.
+        // Если какая-то ошибка, то значение токена - null.
+        return new TokenResponse();
+    }
+    
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<TokenResponse?> SignInAsync([FromBody] SignInRequest request)
+    {
+        // Здесь нужно найти в DatabaseManager нужную запись и сгенерировать TokenResponse.
+        // Если какая-то ошибка, то возвращаем null.
+        return null;
+    }
 
-        private readonly JwtOptions _authenticationOptions;
-
-        public AccountsController(ILogger<AccountsController> logger,
-            IOptions<JwtOptions> authenticationOptions, IMapper mapper,
-            IUsersApiClient usersApiClient, IHashProvider hashProvider)
-        {
-            _logger = logger;
-            _mapper = mapper;
-            _usersApiClient = usersApiClient;
-            _hashProvider = hashProvider;
-            _authenticationOptions = authenticationOptions.Value;
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [SwaggerOperation("Create new account")]
-        public async Task<IActionResult> CreateAccountAsync([FromBody] CreateAccountRequest request)
-        {
-            if (request.ClientFingerprint != _authenticationOptions.ClientFingerprint)
-                return Challenge();
-
-            var accountDto = _mapper.Map<CreateAccountRequest, CreateAccountDto>(request);
-
-            accountDto.Password = _hashProvider.Hash(accountDto.Password);
-            await _usersApiClient.CreateAccountAsync(accountDto);
-
-            return Ok();
-        }
-
-        [HttpGet]
-        [ProducesResponseType(typeof(AccountModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [SwaggerOperation("Current account details")]
-        public async Task<IActionResult> GetCurrentAccountAsync()
-        {
-            var payload = await _usersApiClient.GetAccountsAsync(new FilterAccountsDto
-            {
-                Id = User.GetAccountId()
-            });
-            var accountDto = payload.FirstOrDefault();
-
-            var account = _mapper.Map<AccountDto, AccountModel>(accountDto);
-            return StrictOk(account);
-        }
-        //*/
+    [HttpPost]
+    public async Task<IActionResult> UpdateMoneyBalanceAsync([FromBody] PaymentRequest request)
+    {
+        // Здесь нужно найти по request.UserId нужную запись о пользователе, прибавить значение Payment.
+        // Позже ещё будет добавлена проверка токена и факта оплаты (удалить этот комментарий).
+        return Ok();
+    }
+    
+    [HttpGet]
+    public async Task<int> GetCurrentMoneyBalanceAsync([FromBody] BasicRequest request)
+    {
+        // Здесь нужно найти по request.UserId нужную запись о пользователе, вернуть значение баланса.
+        return 0;
     }
 }

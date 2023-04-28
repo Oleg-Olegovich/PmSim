@@ -1,6 +1,6 @@
 ﻿namespace PmSim.Shared.Contracts.Actions
 {
-    public class FeaturesActionRequest : ExecutorActionRequest
+    public class FeaturesActionRequest : EmployeeActionRequest
     {
         public int FeatureNumber { get; set; }
     }

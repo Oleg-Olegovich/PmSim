@@ -108,7 +108,7 @@ public class SignInScreenViewModel : BasicScreenViewModel
     {
         try
         {
-            var client = MultiPlayerClient.SignInAsync(Login, Password);
+            var client = MultiPlayerClient.SignIn(Login, Password);
             if (client.IsSubscriptionPaid)
             {
             }
