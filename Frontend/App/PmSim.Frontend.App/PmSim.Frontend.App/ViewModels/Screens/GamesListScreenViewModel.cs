@@ -33,8 +33,8 @@ public class GamesListScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> SubscriptionPurchaseCommand { get; }
 
-    public GamesListScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, MultiPlayerClient client) 
-        : base(baseWindow, previous)
+    public GamesListScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous, MultiPlayerClient client) 
+        : base(mainView, previous)
     {
         NewGameCommand = ReactiveCommand.Create(ProcessNewGameCommand);
         ConnectCommand = ReactiveCommand.Create(ProcessConnectCommand);
@@ -44,7 +44,7 @@ public class GamesListScreenViewModel : BasicScreenViewModel
     }
 
     private void ProcessNewGameCommand()
-        => BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, _client, false);
+        => MainView.Content = new GameOptionsScreenViewModel(MainView, this, _client, false);
     
     private void ProcessConnectCommand()
     {
@@ -53,21 +53,21 @@ public class GamesListScreenViewModel : BasicScreenViewModel
             try
             {
                 _client.ConnectToGame(SelectedGame.Id);
-                BaseWindow.Content = new GameScreenViewModel(BaseWindow, this, _client);
+                MainView.Content = new GameScreenViewModel(MainView, this, _client);
             }
             catch (PmSimException exception)
             {
-                BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+                MainView.Content = new ErrorScreenViewModel(MainView, this, exception.Message);
             }
         }
     }
     
     private void ProcessSubscriptionPurchase()
-        => BaseWindow.Content = new SubscriptionPurchaseScreenViewModel(BaseWindow, this, this);
+        => MainView.Content = new SubscriptionPurchaseScreenViewModel(MainView, this, this);
     
     private async Task UpdateGamesList()
     {
-        while (BaseWindow.Content == this)
+        while (MainView.Content == this)
         {
             Games = _client.GetActiveGames();
             await Task.Delay(1000);

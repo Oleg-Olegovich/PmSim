@@ -209,8 +209,8 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
 
     public ReactiveCommand<Unit, Unit> ExitCommand { get; }
 
-    public GameScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, IPmSimClient client)
-        : base(baseWindow, previous)
+    public GameScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous, IPmSimClient client)
+        : base(mainView, previous)
     {
         _client = client;
         _gameMap = new GameMap0ViewModel(this);
@@ -252,7 +252,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         }
         catch (Exception exception)
         {
-            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+            MainView.Content = new ErrorScreenViewModel(MainView, this, exception.Message);
         }
         finally
         {
@@ -268,7 +268,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         }
         catch (Exception exception)
         {
-            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+            MainView.Content = new ErrorScreenViewModel(MainView, this, exception.Message);
         }
         finally
         {
@@ -288,7 +288,7 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
         }
         catch (Exception exception)
         {
-            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+            MainView.Content = new ErrorScreenViewModel(MainView, this, exception.Message);
         }
     }
 
@@ -373,5 +373,5 @@ public class GameScreenViewModel : BasicScreenViewModel, IGameScreenLogic
     private void SkipMove() => _client.SkipMove();
 
     private void ExitToTitleScreen()
-        => BaseWindow.Content = new TitleScreenViewModel(BaseWindow);
+        => MainView.Content = new TitleScreenViewModel(MainView);
 }

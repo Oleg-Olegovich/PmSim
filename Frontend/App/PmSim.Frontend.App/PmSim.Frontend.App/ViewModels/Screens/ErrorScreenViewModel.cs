@@ -6,7 +6,7 @@ public class ErrorScreenViewModel : BasicScreenViewModel
 {
     public string ErrorMessage { get; }
 
-    public ErrorScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel? previous, string errorMessage)
-        : base(baseWindow, previous)
+    public ErrorScreenViewModel(MainViewModel mainView, BasicScreenViewModel? previous, string errorMessage)
+        : base(mainView, previous)
         => ErrorMessage = errorMessage;
 }

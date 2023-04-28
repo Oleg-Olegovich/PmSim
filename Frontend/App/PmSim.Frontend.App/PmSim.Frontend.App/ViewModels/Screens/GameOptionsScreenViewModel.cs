@@ -201,8 +201,8 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> StartCommand { get; }
 
-    public GameOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous, 
-        IPmSimClient client, bool isSingleplayer) : base(baseWindow, previous)
+    public GameOptionsScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous, 
+        IPmSimClient client, bool isSingleplayer) : base(mainView, previous)
     {
         _client = client;
         IsSingleplayer = isSingleplayer;
@@ -220,14 +220,14 @@ public class GameOptionsScreenViewModel : BasicScreenViewModel
             ManagementActionsNumber, AuctionRealTime, StartUpCapital, MaxSprintNumber);
         try
         {
-            var gameScreen = new GameScreenViewModel(BaseWindow, new TitleScreenViewModel(BaseWindow), _client);
+            var gameScreen = new GameScreenViewModel(MainView, new TitleScreenViewModel(MainView), _client);
             _client.CreateNewGame(settings, gameScreen);
-            BaseWindow.Content = gameScreen;
-            BaseWindow.Logger.Information("Showed GameScreen");
+            MainView.Content = gameScreen;
+            MainView.MainWindow?.Logger.Information("Showed GameScreen");
         }
         catch (Exception exception)
         {
-            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+            MainView.Content = new ErrorScreenViewModel(MainView, this, exception.Message);
         }
     }
     

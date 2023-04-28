@@ -2,7 +2,6 @@
 using PmSim.Frontend.App.Models;
 using PmSim.Frontend.App.ViewModels.ThemesManagement;
 using PmSim.Frontend.Client.LanguagesManager;
-using PmSim.Shared.Contracts.Enums;
 
 namespace PmSim.Frontend.App.ViewModels.Windows;
 

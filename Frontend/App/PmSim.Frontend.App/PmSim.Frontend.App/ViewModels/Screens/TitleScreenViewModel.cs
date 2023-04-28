@@ -30,8 +30,8 @@ public class TitleScreenViewModel : BasicScreenViewModel
     /// </summary>
     public ReactiveCommand<Unit, Unit> ExitCommand { get; }
 
-    public TitleScreenViewModel(BasicWindowViewModel baseWindow)
-        : base(baseWindow)
+    public TitleScreenViewModel(MainViewModel mainView)
+        : base(mainView)
     {
         SingleplayerModeCommand = ReactiveCommand.Create(OpenSingleplayerGameScreen);
         MultiplayerModeCommand = ReactiveCommand.Create(OpenMultiplayerGameScreen);
@@ -50,14 +50,14 @@ public class TitleScreenViewModel : BasicScreenViewModel
     }
 
     private void OpenSingleplayerGameScreen()
-        => BaseWindow.Content = new SingleSignInScreenViewModel(BaseWindow, this);
+        => MainView.Content = new SingleSignInScreenViewModel(MainView, this);
 
     private void OpenMultiplayerGameScreen()
-        => BaseWindow.Content = new SignInScreenViewModel(BaseWindow, this);
+        => MainView.Content = new SignInScreenViewModel(MainView, this);
     
     private void OpenSettingsScreen()
-        => BaseWindow.Content = new AppOptionsScreenViewModel(BaseWindow, this);
+        => MainView.Content = new AppOptionsScreenViewModel(MainView, this);
 
     private void OpenAppDescriptionScreen()
-        => BaseWindow.Content = new AppDescriptionScreenViewModel(BaseWindow, this);
+        => MainView.Content = new AppDescriptionScreenViewModel(MainView, this);
 }

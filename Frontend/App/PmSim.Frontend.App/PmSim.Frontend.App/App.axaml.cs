@@ -2,10 +2,14 @@ using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PmSim.Frontend.App.ViewModels.Screens;
+using PmSim.Frontend.App.ViewModels.ThemesManagement;
 using PmSim.Frontend.App.ViewModels.Windows;
+using PmSim.Frontend.App.Views.Screens;
 using PmSim.Frontend.App.Views.Windows;
 using PmSim.Frontend.Client.FileManagement;
 using Serilog;
@@ -14,33 +18,34 @@ namespace PmSim.Frontend.App;
 
 public class App : Application
 {
-    private IHost? _host;
-
-    public override void Initialize()
-    {
-        AvaloniaXamlLoader.Load(this);
-        InitializeHost();
-    }
+    public override void Initialize() 
+        => AvaloniaXamlLoader.Load(this);
 
     public override void OnFrameworkInitializationCompleted()
     {
-        if (_host is null)
-        {
-            throw new NullReferenceException("Host is null!");
-        }
-        
         switch (ApplicationLifetime)
         {
             case IClassicDesktopStyleApplicationLifetime desktop:
+                var host = InitializeHost();
+                if (host is null)
+                {
+                    throw new NullReferenceException("Host is null!");
+                }
+                
                 desktop.MainWindow = new MainWindowView
                 {
-                    DataContext = _host.Services.GetRequiredService<MainWindowViewModel>()
+                    DataContext = host.Services.GetRequiredService<MainWindowViewModel>()
                 };
                 break;
             case ISingleViewApplicationLifetime singleViewPlatform:
-                singleViewPlatform.MainView = new MainWindowView
+                if (Current != null)
                 {
-                    DataContext = _host.Services.GetRequiredService<MainWindowViewModel>()
+                    ThemesManager.Theme = Current.ActualThemeVariant == ThemeVariant.Dark 
+                        ? Themes.DarkSimple : Themes.LightSimple;
+                }
+                singleViewPlatform.MainView = new MainView
+                {
+                    DataContext = new MainViewModel()
                 };
                 break;
         }
@@ -48,8 +53,8 @@ public class App : Application
         base.OnFrameworkInitializationCompleted();
     }
     
-    private void InitializeHost()
-        => _host = new HostBuilder()
+    private static IHost InitializeHost()
+        => new HostBuilder()
             .ConfigureAppConfiguration(config 
                 => config.AddJsonFile(FileManager.GetConfigurationFileName(typeof(AppOptions)), 
                     true, true))

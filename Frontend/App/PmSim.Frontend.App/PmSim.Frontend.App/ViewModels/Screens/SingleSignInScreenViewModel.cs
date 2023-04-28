@@ -16,9 +16,9 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
         set
         {
             this.RaiseAndSetIfChanged(ref _login, value);
-            if (IsDataRemembered)
+            if (IsDataRemembered && MainView.MainWindow != null)
             {
-                BaseWindow.Options.AutofillUserData.SingleLogin = Login;
+                MainView.Options.AutofillUserData.SingleLogin = Login;
             }
         }
     }
@@ -31,33 +31,43 @@ public class SingleSignInScreenViewModel : BasicScreenViewModel
         set
         {
             this.RaiseAndSetIfChanged(ref _isDataRemembered, value);
-            BaseWindow.Options.AutofillUserData.IsSingleDataRemembered = value;
+            if (MainView.MainWindow is null)
+            {
+                return;
+            }
+            
+            MainView.Options.AutofillUserData.IsSingleDataRemembered = value;
             if (value)
             {
-                BaseWindow.Options.AutofillUserData.SingleLogin = Login;
+                MainView.Options.AutofillUserData.SingleLogin = Login;
                 return;
             }
 
-            BaseWindow.Options.AutofillUserData.SingleLogin = null;
+            MainView.Options.AutofillUserData.SingleLogin = null;
         }
     }
 
     public ReactiveCommand<Unit, Unit> NextCommand { get; }
 
-    public SingleSignInScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous)
-        : base(baseWindow, previous)
+    public SingleSignInScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous)
+        : base(mainView, previous)
     {
         NextCommand = ReactiveCommand.Create(OpenGameOptionsScreen);
-        _isDataRemembered = baseWindow.Options.AutofillUserData.IsSingleDataRemembered;
+        if (mainView.MainWindow is null)
+        {
+            return;
+        }
+        
+        _isDataRemembered = MainView.Options.AutofillUserData.IsSingleDataRemembered;
         if (_isDataRemembered)
         {
-            Login = baseWindow.Options.AutofillUserData.SingleLogin ?? "";
+            Login = MainView.Options.AutofillUserData.SingleLogin ?? "";
         }
     }
 
     private void OpenGameOptionsScreen()
     {
         var client = new SinglePlayerClient(Login);
-        BaseWindow.Content = new GameOptionsScreenViewModel(BaseWindow, this, client, true);
+        MainView.Content = new GameOptionsScreenViewModel(MainView, this, client, true);
     }
 }

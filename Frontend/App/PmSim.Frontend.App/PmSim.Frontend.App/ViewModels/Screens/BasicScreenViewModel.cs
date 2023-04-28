@@ -1,5 +1,4 @@
 using System.Reactive;
-using PmSim.Frontend.App.ViewModels.Windows;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -17,20 +16,16 @@ public abstract class BasicScreenViewModel : ViewModelBase
     /// If previous screen is null, returns to the title screen.
     /// </summary>
     public ReactiveCommand<Unit, Unit> BackCommand { get; }
+    
+    public MainViewModel MainView { get; }
 
-    /// <summary>
-    /// Reference to the base window of the 
-    /// application where the controls are located.
-    /// </summary>
-    public BasicWindowViewModel BaseWindow { get; }
-
-    protected BasicScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel? previous = null)
+    protected BasicScreenViewModel(MainViewModel mainView, BasicScreenViewModel? previous = null)
     {
-        BaseWindow = baseWindow;
+        MainView = mainView;
         _previousScreen = previous;
         BackCommand = ReactiveCommand.Create(ProcessBackClick);
     }
 
     private void ProcessBackClick()
-        => BaseWindow.Content = _previousScreen ?? new TitleScreenViewModel(BaseWindow);
+        => MainView.Content = _previousScreen ?? new TitleScreenViewModel(MainView);
 }

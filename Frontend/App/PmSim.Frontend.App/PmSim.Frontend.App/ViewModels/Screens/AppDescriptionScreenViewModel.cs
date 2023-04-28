@@ -8,7 +8,7 @@ namespace PmSim.Frontend.App.ViewModels.Screens;
 /// </summary>
 public class AppDescriptionScreenViewModel : BasicScreenViewModel
 {
-    public AppDescriptionScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous) 
-        : base(baseWindow, previous)
+    public AppDescriptionScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous) 
+        : base(mainView, previous)
     { }
 }
