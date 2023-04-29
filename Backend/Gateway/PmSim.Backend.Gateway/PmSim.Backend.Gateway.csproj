@@ -9,11 +9,8 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\Shared\projects\Contracts\PmSim.Shared.Contracts\PmSim.Shared.Contracts.csproj" />
-      <ProjectReference Include="..\..\..\Shared\projects\GameEngine\PmSim.Shared.GameEngine\PmSim.Shared.GameEngine.csproj" />
+        <PackageReference Include="PmSim.Shared.Contracts" Version="1.0.0" />
+        <PackageReference Include="PmSim.Shared.GameEngine" Version="1.0.0" />
     </ItemGroup>
 
 </Project>
