@@ -19,4 +19,12 @@
         <Setter Property="Background"
                 Value="#454560"/>
     </Style>
+    <Style Selector="UserControl.MainView">
+        <Setter Property="Background"
+                Value="#454560"/>
+    </Style>
+    <Style Selector="Grid.MainView">
+        <Setter Property="Background"
+                Value="#454560"/>
+    </Style>
 </Styles>

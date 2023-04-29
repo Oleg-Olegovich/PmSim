@@ -39,9 +39,9 @@ public class SubscriptionPurchaseScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> PurchaseCommand { get; }
     
-    public SubscriptionPurchaseScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel? previous,
+    public SubscriptionPurchaseScreenViewModel(MainViewModel mainView, BasicScreenViewModel? previous,
         GamesListScreenViewModel gamesListScreen, bool showError = false) 
-        : base(baseWindow, previous)
+        : base(mainView, previous)
     {
         PurchaseCommand = ReactiveCommand.Create(ProcessSubscriptionPurchase);
         _gamesListScreen = gamesListScreen;
@@ -53,6 +53,6 @@ public class SubscriptionPurchaseScreenViewModel : BasicScreenViewModel
 
     private void ProcessSubscriptionPurchase()
     {
-        BaseWindow.Content = _gamesListScreen;
+        MainView.Content = _gamesListScreen;
     }
 }

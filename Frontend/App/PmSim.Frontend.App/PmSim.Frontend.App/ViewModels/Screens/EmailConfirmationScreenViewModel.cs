@@ -46,10 +46,10 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> ConfirmCommand { get; }
     
-    public EmailConfirmationScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous,
-        TitleScreenViewModel titleScreen, User user, string code) : base(baseWindow, previous)
+    public EmailConfirmationScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous,
+        TitleScreenViewModel titleScreen, User user, string code) : base(mainView, previous)
     {
-        BaseWindow.Logger.Information("Send code to Email: {Code}", code);
+        MainView.MainWindow?.Logger.Information("Send code to Email: {Code}", code);
         _user = user;
         _titleScreen = titleScreen;
         _code = code;
@@ -67,14 +67,14 @@ public class EmailConfirmationScreenViewModel : BasicScreenViewModel
         try
         {
             var client = MultiPlayerClient.SignUp(_user);
-            var gamesListScreen = new GamesListScreenViewModel(BaseWindow, _titleScreen, client);
+            var gamesListScreen = new GamesListScreenViewModel(MainView, _titleScreen, client);
             var subscriptionPurchaseScreen 
-                = new SubscriptionPurchaseScreenViewModel(BaseWindow, _titleScreen, gamesListScreen, true);
-            BaseWindow.Content = subscriptionPurchaseScreen;
+                = new SubscriptionPurchaseScreenViewModel(MainView, _titleScreen, gamesListScreen, true);
+            MainView.Content = subscriptionPurchaseScreen;
         }
         catch (PmSimException exception)
         {
-            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+            MainView.Content = new ErrorScreenViewModel(MainView, this, exception.Message);
         }
     }
 }

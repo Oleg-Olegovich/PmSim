@@ -84,9 +84,9 @@ public class SignUpScreenViewModel : BasicScreenViewModel
     
     public ReactiveCommand<Unit, Unit> SignUpCommand { get; }
     
-    public SignUpScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous,
+    public SignUpScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous,
         TitleScreenViewModel titleScreen) 
-        : base(baseWindow, previous)
+        : base(mainView, previous)
     {
         _titleScreen = titleScreen;
         SignUpCommand = ReactiveCommand.Create(SignUp);
@@ -136,12 +136,12 @@ public class SignUpScreenViewModel : BasicScreenViewModel
             ErrorMessage = "";
             var code = MultiPlayerClient.SendCodeToEmailAsync(Email);
             var user = new User(Email, Login, Password);
-            BaseWindow.Content = new EmailConfirmationScreenViewModel(
-                BaseWindow, this, _titleScreen, user, code);
+            MainView.Content = new EmailConfirmationScreenViewModel(
+                MainView, this, _titleScreen, user, code);
         }
         catch (PmSimException exception)
         {
-            BaseWindow.Content = new ErrorScreenViewModel(BaseWindow, this, exception.Message);
+            MainView.Content = new ErrorScreenViewModel(MainView, this, exception.Message);
         }
     }
 }

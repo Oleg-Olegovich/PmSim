@@ -1,7 +1,5 @@
 using System;
-using System.ComponentModel;
 using Avalonia.Controls;
-using PmSim.Frontend.App.ViewModels.Screens;
 using PmSim.Frontend.App.ViewModels.ThemesManagement;
 using PmSim.Frontend.Client.FileManagement;
 using PmSim.Frontend.Client.LanguagesManager;
@@ -19,6 +17,8 @@ public abstract class BasicWindowViewModel : ViewModelBase
     /// Handler for closing the application.
     /// </summary>
     public EventHandler<WindowClosingEventArgs> ClosingHandler { get; }
+
+    public AppOptions Options { get; }
 
     private double _width;
 
@@ -62,29 +62,6 @@ public abstract class BasicWindowViewModel : ViewModelBase
     }
 
     /// <summary>
-    /// Reference to the changing content of the window.
-    /// </summary>
-    private BasicScreenViewModel? _content;
-
-    /// <summary>
-    /// Implements getting access to the reference to 
-    /// the changing content of the window.
-    /// </summary>
-    public BasicScreenViewModel? Content
-    {
-        get => _content;
-        set => this.RaiseAndSetIfChanged(ref _content, value);
-    }
-
-    private AppOptions _options;
-    
-    public AppOptions Options
-    {
-        get => _options;
-        set => this.RaiseAndSetIfChanged(ref _options, value);
-    }
-
-    /// <summary>
     /// It is necessary to return to the previous state of
     /// the window when the fullscreen mode is turned off.
     /// </summary>
@@ -115,7 +92,7 @@ public abstract class BasicWindowViewModel : ViewModelBase
 
     protected BasicWindowViewModel(AppOptions options, Logger logger)
     {
-        _options = options;
+        Options = options;
         Logger = logger;
         Logger.Information("A window has been created");
         ClosingHandler = ProcessClosing;

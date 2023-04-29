@@ -1,8 +1,5 @@
-﻿using PmSim.Frontend.App.Properties.Localizations;
-using PmSim.Frontend.App.ViewModels.ThemesManagement;
-using PmSim.Frontend.App.ViewModels.Windows;
+﻿using PmSim.Frontend.App.ViewModels.ThemesManagement;
 using PmSim.Frontend.Client.LanguagesManager;
-using PmSim.Shared.Contracts.Enums;
 using ReactiveUI;
 
 namespace PmSim.Frontend.App.ViewModels.Screens;
@@ -40,10 +37,10 @@ public class AppOptionsScreenViewModel : BasicScreenViewModel
             }
 
             var language = (Languages)value;
+            MainView.Options.Language = language;
             LocalizationsProvider.Localization = language;
-            BaseWindow.Options.Language = language;
             this.RaiseAndSetIfChanged(ref _currentLanguageIndex, value);
-            BaseWindow.Content = new AppOptionsScreenViewModel(BaseWindow, _previous);
+            MainView.Content = new AppOptionsScreenViewModel(MainView, _previous);
         }
     }
 
@@ -63,7 +60,7 @@ public class AppOptionsScreenViewModel : BasicScreenViewModel
             }
 
             var theme = (Themes)value;
-            BaseWindow.Options.Theme = theme;
+            MainView.Options.Theme = theme;
             ThemesManager.Theme = theme;
             this.RaiseAndSetIfChanged(ref _currentThemeIndex, value);
         }
@@ -79,17 +76,28 @@ public class AppOptionsScreenViewModel : BasicScreenViewModel
         get => _isFullscreen;
         set
         {
-            BaseWindow.IsFullscreen = value;
+            if (MainView.MainWindow != null)
+            {
+                MainView.MainWindow.IsFullscreen = value;
+            }
+            
             this.RaiseAndSetIfChanged(ref _isFullscreen, value);
         }
     }
+    
+    public bool IsWindowMode => MainView.MainWindow != null;
 
-    public AppOptionsScreenViewModel(BasicWindowViewModel baseWindow, BasicScreenViewModel previous)
-        : base(baseWindow, previous)
+    public AppOptionsScreenViewModel(MainViewModel mainView, BasicScreenViewModel previous)
+        : base(mainView, previous)
     {
         _previous = previous;
-        _currentLanguageIndex = (int)baseWindow.Options.Language;
-        _currentThemeIndex = (int)baseWindow.Options.Theme;
-        _isFullscreen = baseWindow.IsFullscreen;
+        if (mainView.MainWindow is null)
+        {
+            return;
+        }
+        
+        _currentLanguageIndex = (int)MainView.Options.Language;
+        _currentThemeIndex = (int)MainView.Options.Theme;
+        _isFullscreen = mainView.MainWindow.IsFullscreen;
     }
 }

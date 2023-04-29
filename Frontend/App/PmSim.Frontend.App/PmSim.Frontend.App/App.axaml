@@ -8,6 +8,6 @@
     </Application.DataTemplates>
     
     <Application.Styles>
-        <StyleInclude Source="avares://PmSim.Frontend.App/Styles/LightFluentTheme/ThemeStyle.axaml"/>
+        <StyleInclude Source="avares://PmSim.Frontend.App/Styles/LightSimpleTheme/ThemeStyle.axaml"/>
     </Application.Styles>
 </Application>
