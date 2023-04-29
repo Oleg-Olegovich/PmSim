@@ -5,3 +5,17 @@
 Игровой симулятор управления групповой разработкой.
 
 Исполнитель: Манжула Олег Олегов, студент группы БПИ 206.
+
+## Bootstrp
+
+Run:
+
+```bash
+. ./bootstrap.sh
+```
+
+## Start docker compose
+
+```bash
+docker compose up
+```
