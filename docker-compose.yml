@@ -1,0 +1,51 @@
+version: "3.8"
+services:
+  gateway:
+    build: 
+      context: .
+      dockerfile: ./Gateway.Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - gameprocessor_balancer
+      - databasemanager_balancer
+
+  gameprocessor_balancer:
+    image: nginx
+    volumes:
+      - ./nginx/gameprocessor.conf:/etc/nginx/nginx.conf
+    ports:
+      - "81:80"
+    depends_on:
+      - gameprocessor_1
+      - gameprocessor_2
+
+  gameprocessor_1:
+    build: 
+      context: .
+      dockerfile: ./GameProcessor.Dockerfile
+
+  gameprocessor_2:
+    build: 
+      context: .
+      dockerfile: ./GameProcessor.Dockerfile
+
+  databasemanager_balancer:
+    image: nginx
+    volumes:
+      - ./nginx/databasemanager.conf:/etc/nginx/nginx.conf
+    ports:
+      - "82:80"
+    depends_on:
+      - databasemanager_1
+      - databasemanager_2
+
+  databasemanager_1:
+    build: 
+      context: .
+      dockerfile: ./DatabaseManager.Dockerfile
+
+  databasemanager_2:
+    build: 
+      context: .
+      dockerfile: ./DatabaseManager.Dockerfile
