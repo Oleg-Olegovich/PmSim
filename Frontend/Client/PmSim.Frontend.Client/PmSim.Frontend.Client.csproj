@@ -166,6 +166,7 @@
 
     <ItemGroup>
       <PackageReference Include="Avalonia" Version="11.0.0-preview5" />
+      <PackageReference Include="MailKit" Version="4.0.0" />
     </ItemGroup>
 
 </Project>

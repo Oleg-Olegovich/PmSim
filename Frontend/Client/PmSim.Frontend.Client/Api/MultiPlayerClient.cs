@@ -1,4 +1,6 @@
-﻿using PmSim.Frontend.Client.Dto;
+﻿using MailKit.Net.Smtp;
+using MimeKit;
+using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
@@ -40,10 +42,25 @@ public class MultiPlayerClient : BaseClient
         return true;
     }
     
-    public static string SendCodeToEmailAsync(string email)
+    /// <summary>
+    /// Sends an Email with a code. Returns the code that was sent to the mail.
+    /// </summary>
+    public static string SendCodeToEmailAsync(string login, string email)
     {
         var code = new Random().Next(100000, 999999);
-        // Отправляет Email с кодом. Возращает код, который был отправлен на почту.
+        
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress("PM Sim", "noreply@pmsim.ru"));
+        message.To.Add(new MailboxAddress(login, email));
+        message.Subject = "PM Sim sign up verification code";
+        message.Body = new TextPart("plain") { Text = "Your verification code: " + code };
+
+        using var client = new SmtpClient();
+        client.Connect("mail.google.com");
+        client.Authenticate("pm.sim.noreplay@gmail.com", "qwerty12345qwerty33");
+        client.Send(message);
+        client.Disconnect(true);
+        
         return code.ToString();
     }
 

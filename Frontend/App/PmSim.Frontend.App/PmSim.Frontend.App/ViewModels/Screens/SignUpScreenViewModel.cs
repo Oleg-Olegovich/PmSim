@@ -134,7 +134,7 @@ public class SignUpScreenViewModel : BasicScreenViewModel
             }
 
             ErrorMessage = "";
-            var code = MultiPlayerClient.SendCodeToEmailAsync(Email);
+            var code = MultiPlayerClient.SendCodeToEmailAsync(Login, Email);
             var user = new User(Email, Login, Password);
             MainView.Content = new EmailConfirmationScreenViewModel(
                 MainView, this, _titleScreen, user, code);
