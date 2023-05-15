@@ -4,6 +4,7 @@ using PmSim.Frontend.Client.Dto;
 using PmSim.Frontend.Client.Properties;
 using PmSim.Shared.Contracts.Credentials;
 using PmSim.Shared.Contracts.Enums;
+using PmSim.Shared.Contracts.Exceptions;
 using PmSim.Shared.Contracts.Game;
 using PmSim.Shared.Contracts.Game.Employees;
 using PmSim.Shared.Contracts.Game.Others;
@@ -47,21 +48,31 @@ public class MultiPlayerClient : BaseClient
     /// </summary>
     public static string SendCodeToEmailAsync(string login, string email)
     {
-        var code = new Random().Next(100000, 999999);
-        
-        var message = new MimeMessage();
-        message.From.Add(new MailboxAddress("PM Sim", "noreply@pmsim.ru"));
-        message.To.Add(new MailboxAddress(login, email));
-        message.Subject = "PM Sim sign up verification code";
-        message.Body = new TextPart("plain") { Text = "Your verification code: " + code };
+        try
+        {
+            var code = new Random().Next(100000, 999999);
 
-        using var client = new SmtpClient();
-        client.Connect("mail.google.com");
-        client.Authenticate("pm.sim.noreplay@gmail.com", "qwerty12345qwerty33");
-        client.Send(message);
-        client.Disconnect(true);
-        
-        return code.ToString();
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("PM Sim", "noreply@pmsim.ru"));
+            message.To.Add(new MailboxAddress(login, email));
+            message.Subject = "Sign up verification code";
+            message.Body = new TextPart("plain")
+            {
+                Text = "Your verification code:" + Environment.NewLine + code
+            };
+
+            using var client = new SmtpClient();
+            client.Connect("smtp.gmail.com", 587);
+            client.Authenticate("pm.sim.noreplay", "owetzlltqbgfiyfh");
+            client.Send(message);
+            client.Disconnect(true);
+
+            return code.ToString();
+        }
+        catch (Exception exception)
+        {
+            throw new PmSimException("The email could not be sent." + Environment.NewLine + exception.Message);
+        }
     }
 
     public static MultiPlayerClient SignUp(User user)
