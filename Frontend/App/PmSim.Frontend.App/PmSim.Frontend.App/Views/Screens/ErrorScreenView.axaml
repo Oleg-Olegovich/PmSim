@@ -5,32 +5,34 @@
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.ErrorScreenView">
-    
-    <Grid RowDefinitions="*,Auto,Auto,Auto,*"
-          ColumnDefinitions="*,*,*,*,*">
 
-        <!-- Header -->
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="3"
-                   Text="{x:Static localizations:LocalizationErrorScreen.Header}"
-                   Classes="Header Error"/>
+    <Viewbox Stretch="Uniform">
+        <Grid RowDefinitions="*,Auto,Auto,Auto,*"
+              ColumnDefinitions="*,*,*,*,*">
 
-        <!-- Error text -->
-        <TextBlock Grid.Row="2"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="3"
-                   Text="{Binding ErrorMessage}"
-                   Classes="Text"
-                   HorizontalAlignment="Center"
-                   TextAlignment="Center"
-                   Margin="0 20 0 0"/>
+            <!-- Header -->
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Text="{x:Static localizations:LocalizationErrorScreen.Header}"
+                       Classes="Header Error" />
 
-        <!-- Back button -->
-        <Button Grid.Row="3"
-                Grid.Column="2"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"/>
-    </Grid>
+            <!-- Error text -->
+            <TextBlock Grid.Row="2"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Text="{Binding ErrorMessage}"
+                       Classes="Text"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       Margin="0 20 0 0" />
+
+            <!-- Back button -->
+            <Button Grid.Row="3"
+                    Grid.Column="2"
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                    Command="{Binding BackCommand}"
+                    Classes="Stretch AttentionGrabbing" />
+        </Grid>
+    </Viewbox>
 </UserControl>

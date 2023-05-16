@@ -3,17 +3,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             xmlns:controls="clr-namespace:PmSim.Frontend.App.Views.Controls"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.GamesListScreenView">
     
-    <Grid RowDefinitions="10, Auto, *, Auto, Auto, 10"
+    <Grid RowDefinitions="10, *, 5*, *, *, 10"
           ColumnDefinitions="*, 3*, 3*, *">
         
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Text="{x:Static localizations:LocalizationGamesListScreen.Header}"
-                   Classes="Header"/>
+        <controls:AutoResizableTextBlock Grid.Row="1"
+                                         Grid.Column="1"
+                                         Grid.ColumnSpan="2"
+                                         Text="{x:Static localizations:LocalizationGamesListScreen.Header}"
+                                         Classes="Header"/>
         
         <DataGrid Grid.Row="2"
                   Grid.Column="1"
@@ -46,28 +47,28 @@
                 </DataGrid.Columns>
         </DataGrid>
         
-        <Button Grid.Row="3"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationGamesListScreen.ButtonNewGame}"
-                Command="{Binding NewGameCommand}"
-                Classes="Stretch Menu"/>
+        <controls:AutoResizableButton Grid.Row="3"
+                                      Grid.Column="1"
+                                      Content="{x:Static localizations:LocalizationGamesListScreen.ButtonNewGame}"
+                                      Command="{Binding NewGameCommand}"
+                                      Classes="Stretch Menu"/>
         
-        <Button Grid.Row="3"
-                Grid.Column="2"
-                Content="{x:Static localizations:LocalizationGamesListScreen.ButtonConnect}"
-                Command="{Binding ConnectCommand}"
-                Classes="Stretch Menu"/>
+        <controls:AutoResizableButton Grid.Row="3"
+                                      Grid.Column="2"
+                                      Content="{x:Static localizations:LocalizationGamesListScreen.ButtonConnect}"
+                                      Command="{Binding ConnectCommand}"
+                                      Classes="Stretch Menu"/>
         
-        <Button Grid.Row="4"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.Header}"
-                Command="{Binding SubscriptionPurchaseCommand}"
-                Classes="Stretch Menu"/>
+        <controls:AutoResizableButton Grid.Row="4"
+                                      Grid.Column="1"
+                                      Content="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.Header}"
+                                      Command="{Binding SubscriptionPurchaseCommand}"
+                                      Classes="Stretch Menu"/>
         
-        <Button Grid.Row="4"
-                Grid.Column="2"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"/>
+        <controls:AutoResizableButton Grid.Row="4"
+                                      Grid.Column="2"
+                                      Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                                      Command="{Binding BackCommand}"
+                                      Classes="Stretch AttentionGrabbing"/>
     </Grid>
 </UserControl>

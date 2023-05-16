@@ -3,17 +3,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             xmlns:controls="clr-namespace:PmSim.Frontend.App.Views.Controls"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.AppDescriptionScreenView">
 
-    <Grid RowDefinitions="*,*,*,*,*"
-          ColumnDefinitions="*,2*,*">
+    <Grid RowDefinitions="10,*,3*,*,10"
+          ColumnDefinitions="*,3*,*">
 
         <!-- Header -->
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Text="{x:Static localizations:LocalizationAppDescriptionScreen.Header}"
-                   Classes="Header" />
+        <controls:AutoResizableTextBlock Grid.Row="1"
+                                         Grid.Column="1"
+                                         Text="{x:Static localizations:LocalizationAppDescriptionScreen.Header}"
+                                         Classes="Header"/>
 
         <!-- Description text -->
         <ScrollViewer Grid.Row="2"
@@ -22,15 +23,16 @@
             <TextBlock Text="{x:Static localizations:LocalizationAppDescriptionScreen.TextBlockAppDescription}"
                        Classes="Text"
                        FontWeight="Normal"
+                       FontSize="24"
                        TextWrapping="Wrap"
                        Margin="0 20 0 0"/>
         </ScrollViewer>
 
         <!-- Back button -->
-        <Button Grid.Row="3"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing" />
+        <controls:AutoResizableButton Grid.Row="3"
+                                      Grid.Column="1"
+                                      Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                                      Command="{Binding BackCommand}"
+                                      Classes="Stretch AttentionGrabbing" />
     </Grid>
 </UserControl>

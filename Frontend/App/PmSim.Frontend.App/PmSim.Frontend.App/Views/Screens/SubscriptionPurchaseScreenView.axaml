@@ -5,58 +5,60 @@
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.SubscriptionPurchaseScreenView">
-    
-    <Grid RowDefinitions="*, *, *, *, *, *, *"
-          ColumnDefinitions="*, *, *, *">
-        
-        <!-- Header -->
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Text="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.Header}"
-                   Classes="Header"/>
-        
-        <TextBlock Grid.Row="2"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Text="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.Info}"
-                   Classes="Text"/>
-        
-        <!-- Input -->
-        <StackPanel Grid.Row="3"
+
+    <Viewbox>
+        <Grid RowDefinitions="*, *, *, *, *, *, *"
+              ColumnDefinitions="10, *, *, 10">
+
+            <!-- Header -->
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Text="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.Header}"
+                       Classes="Header" />
+
+            <TextBlock Grid.Row="2"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Text="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.Info}"
+                       Classes="Text" />
+
+            <!-- Input -->
+            <StackPanel Grid.Row="3"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Orientation="Vertical">
+                <TextBlock Classes="Border"
+                           Text="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.MoneyAmount}" />
+                <Border Classes="TextStroke">
+                    <NumericUpDown Classes="Bordered"
+                                   Value="{Binding MoneyAmount}"
+                                   Minimum="10"
+                                   Maximum="10000" />
+                </Border>
+            </StackPanel>
+
+            <!-- Error message -->
+            <TextBlock Grid.Row="4"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Classes="Error Text"
+                       Text="{Binding ErrorMessage}" />
+
+            <!-- Confirm button -->
+            <Button Grid.Row="5"
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationSubscriptionPurchaseScreen.MoneyAmount}"/>
-            <Border Classes="TextStroke">
-                <NumericUpDown Classes="Bordered"
-                               Value="{Binding MoneyAmount}"
-                               Minimum="10"
-                               Maximum="10000" />
-            </Border>
-        </StackPanel>
-        
-        <!-- Error message -->
-        <TextBlock Grid.Row="4"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Classes="Error Text"
-                   Text="{Binding ErrorMessage}"/>
-        
-        <!-- Confirm button -->
-        <Button Grid.Row="5"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
-                Command="{Binding PurchaseCommand}"
-                IsEnabled="{Binding IsPurchaseAvailable}"
-                Classes="Stretch Menu"/>
-        
-        <!-- Back button -->
-        <Button Grid.Row="5"
-                Grid.Column="2"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"/>
-    </Grid>
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
+                    Command="{Binding PurchaseCommand}"
+                    IsEnabled="{Binding IsPurchaseAvailable}"
+                    Classes="Stretch Menu" />
+
+            <!-- Back button -->
+            <Button Grid.Row="5"
+                    Grid.Column="2"
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                    Command="{Binding BackCommand}"
+                    Classes="Stretch AttentionGrabbing" />
+        </Grid>
+    </Viewbox>
 </UserControl>

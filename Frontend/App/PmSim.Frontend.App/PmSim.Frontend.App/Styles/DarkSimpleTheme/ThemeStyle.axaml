@@ -15,14 +15,7 @@
     <StyleInclude Source="/Styles/DarkSimpleTheme/ToggleSwitchStyles.axaml"/>
     <StyleInclude Source="/Styles/DarkSimpleTheme/NumericUpDownStyles.axaml"/>
     <StyleInclude Source="/Styles/DarkSimpleTheme/ComboBoxStyles.axaml"/>
-    <Style Selector="Window">
-        <Setter Property="Background"
-                Value="#454560"/>
-    </Style>
-    <Style Selector="UserControl.MainView">
-        <Setter Property="Background"
-                Value="#454560"/>
-    </Style>
+    
     <Style Selector="Grid.MainView">
         <Setter Property="Background"
                 Value="#454560"/>

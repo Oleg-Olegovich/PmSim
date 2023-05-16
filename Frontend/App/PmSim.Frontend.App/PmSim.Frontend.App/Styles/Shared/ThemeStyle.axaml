@@ -13,4 +13,7 @@
     <StyleInclude Source="/Styles/Shared/DataGridStyles.axaml"/>
     <StyleInclude Source="/Styles/Shared/ImageStyles.axaml"/>
     <StyleInclude Source="/Styles/Shared/ListBoxStyles.axaml"/>
+    
+    <StyleInclude Source="avares://PmSim.Frontend.App/Views/Controls/AutoResizableTextBlock.axaml"/>
+    <StyleInclude Source="avares://PmSim.Frontend.App/Views/Controls/AutoResizableButton.axaml"/>
 </Styles>

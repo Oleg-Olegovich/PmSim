@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
+             xmlns:controls="clr-namespace:PmSim.Frontend.App.Views.Controls"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.TitleScreenView">
 
@@ -11,35 +12,35 @@
 
         <!-- Buttons -->
 
-        <Button Grid.Row="1"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationTitleScreen.ButtonSingleplayerMode}"
-                Command="{Binding SingleplayerModeCommand}"
-                Classes="Stretch Menu"/>
+        <controls:AutoResizableButton Grid.Row="1"
+                                      Grid.Column="1"
+                                      Content="{x:Static localizations:LocalizationTitleScreen.ButtonSingleplayerMode}"
+                                      Command="{Binding SingleplayerModeCommand}"
+                                      Classes="Stretch Menu"/>
         
-        <Button Grid.Row="2"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationTitleScreen.ButtonMultiplayerMode}"
-                Command="{Binding MultiplayerModeCommand}"
-                Classes="Stretch Menu"/>
+        <controls:AutoResizableButton Grid.Row="2"
+                                      Grid.Column="1"
+                                      Content="{x:Static localizations:LocalizationTitleScreen.ButtonMultiplayerMode}"
+                                      Command="{Binding MultiplayerModeCommand}"
+                                      Classes="Stretch Menu"/>
         
-        <Button Grid.Row="3"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationTitleScreen.ButtonSettings}"
-                Command="{Binding SettingsCommand}"
-                Classes="Stretch Menu"/>
+        <controls:AutoResizableButton Grid.Row="3"
+                                      Grid.Column="1"
+                                      Content="{x:Static localizations:LocalizationTitleScreen.ButtonSettings}"
+                                      Command="{Binding SettingsCommand}"
+                                      Classes="Stretch Menu"/>
 
-        <Button Grid.Row="4"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationTitleScreen.ButtonAppDescription}"
-                Command="{Binding AppDescriptionCommand}"
-                Classes="Stretch Menu"/>
+        <controls:AutoResizableButton Grid.Row="4"
+                                      Grid.Column="1"
+                                      Content="{x:Static localizations:LocalizationTitleScreen.ButtonAppDescription}"
+                                      Command="{Binding AppDescriptionCommand}"
+                                      Classes="Stretch Menu"/>
 
-        <Button Grid.Row="5"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationTitleScreen.ButtonExit}"
-                Command="{Binding ExitCommand}"
-                Classes="Stretch AttentionGrabbing"/>
+        <controls:AutoResizableButton Grid.Row="5"
+                                      Grid.Column="1"
+                                      Content="{x:Static localizations:LocalizationTitleScreen.ButtonExit}"
+                                      Command="{Binding ExitCommand}"
+                                      Classes="Stretch AttentionGrabbing"/>
         
         <!-- Background image -->
         

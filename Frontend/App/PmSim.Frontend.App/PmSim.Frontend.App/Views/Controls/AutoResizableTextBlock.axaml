@@ -1,0 +1,19 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:PmSim.Frontend.App.Views.Controls">
+    <Design.PreviewWith>
+        <controls:AutoResizableTextBlock />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|AutoResizableTextBlock">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="{TemplateBinding Text}"
+                               controls:BindableStyleClasses.Classes="{TemplateBinding Classes}">
+                    </TextBlock>
+                </Viewbox>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

@@ -6,74 +6,62 @@
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.AppOptionsScreenView">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <Viewbox Stretch="Uniform">
+        <Grid RowDefinitions="*,*,*,*,*,*,*" 
+              ColumnDefinitions="*,*,*">
 
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Text="{x:Static localizations:LocalizationAppOptionsScreen.Header}"
-                   Classes="Header"/>
-        
-        <!-- Settings -->
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{x:Static localizations:LocalizationAppOptionsScreen.Header}"
+                       Classes="Header" />
 
-        <StackPanel Grid.Row="2"
+            <!-- Settings -->
+
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1"
+                        Orientation="Vertical">
+                <TextBlock Classes="Border"
+                           Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockLanguage}" />
+                <Border Classes="TextStroke">
+                    <ComboBox Classes="Bordered"
+                              Items="{Binding LocalizationNames}"
+                              SelectedIndex="{Binding CurrentLanguageIndex}" />
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3"
+                        Grid.Column="1"
+                        Orientation="Vertical">
+                <TextBlock Classes="Border"
+                           Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockTheme}" />
+                <Border Classes="TextStroke">
+                    <ComboBox Classes="Bordered"
+                              Items="{Binding ThemeNames}"
+                              SelectedIndex="{Binding CurrentThemeIndex}" />
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4"
+                        Grid.Column="1"
+                        Orientation="Vertical"
+                        IsVisible="{Binding IsWindowMode}">
+                <TextBlock Classes="Border"
+                           Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockWindowState}" />
+                <Border Classes="TextStroke">
+                    <ToggleSwitch Classes="Settings"
+                                  OnContent="{x:Static localizations:LocalizationAppOptionsScreen.ToggleSwitchFullscreen}"
+                                  OffContent="{x:Static localizations:LocalizationAppOptionsScreen.ToggleSwitchWindowed}"
+                                  IsChecked="{Binding IsFullscreen}" />
+                </Border>
+            </StackPanel>
+
+            <!-- Back button -->
+            <Button Grid.Row="5"
                     Grid.Column="1"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockLanguage}"/>
-            <Border Classes="TextStroke">
-                <ComboBox Classes="Bordered"
-                          Items="{Binding LocalizationNames}"
-                          SelectedIndex="{Binding CurrentLanguageIndex}"/>
-            </Border>
-        </StackPanel>
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                    Command="{Binding BackCommand}"
+                    Classes="Stretch AttentionGrabbing" />
 
-        <StackPanel Grid.Row="3"
-                    Grid.Column="1"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockTheme}"/>
-            <Border Classes="TextStroke">
-                <ComboBox Classes="Bordered"
-                          Items="{Binding ThemeNames}"
-                          SelectedIndex="{Binding CurrentThemeIndex}"/>
-            </Border>
-        </StackPanel>
-
-        <StackPanel Grid.Row="4"
-                    Grid.Column="1"
-                    Orientation="Vertical"
-                    IsVisible="{Binding IsWindowMode}">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationAppOptionsScreen.TextBlockWindowState}"/>
-            <Border Classes="TextStroke">
-                <ToggleSwitch Classes="Settings"
-                              OnContent="{x:Static localizations:LocalizationAppOptionsScreen.ToggleSwitchFullscreen}"
-                              OffContent="{x:Static localizations:LocalizationAppOptionsScreen.ToggleSwitchWindowed}"
-                              IsChecked="{Binding IsFullscreen}"/>
-            </Border>
-        </StackPanel>
-        
-        <!-- Back button -->
-        <Button Grid.Row="5"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"/>
-        
-    </Grid>
+        </Grid>
+    </Viewbox>
 </UserControl>

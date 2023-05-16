@@ -5,84 +5,86 @@
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.SignUpScreenView">
-    
-    <Grid RowDefinitions="*,*,*,*,*,*,*,*,*"
-          ColumnDefinitions="*,*,*,*">
 
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Text="{x:Static localizations:LocalizationSignUpScreen.Header}"
-                   Classes="Header"/>
-        
-        <!-- Input form -->
-        
-        <StackPanel Grid.Row="2"
+    <Viewbox Stretch="Uniform">
+        <Grid RowDefinitions="*,*,*,*,*,*,*,*,*"
+              ColumnDefinitions="*,*,*,*">
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Text="{x:Static localizations:LocalizationSignUpScreen.Header}"
+                       Classes="Header" />
+
+            <!-- Input form -->
+
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Orientation="Vertical">
+                <TextBlock Classes="Border"
+                           Text="Email" />
+                <Border Classes="TextStroke">
+                    <TextBox Text="{Binding Email}" />
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Orientation="Vertical">
+                <TextBlock Classes="Border"
+                           Text="{x:Static localizations:LocalizationSignInScreen.TextBlockLogin}" />
+                <Border Classes="TextStroke">
+                    <TextBox Text="{Binding Login}" />
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Orientation="Vertical">
+                <TextBlock Classes="Border"
+                           Text="{x:Static localizations:LocalizationSignInScreen.TextBlockPassword}" />
+                <Border Classes="TextStroke">
+                    <TextBox Text="{Binding Password}"
+                             PasswordChar="*" />
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Orientation="Vertical">
+                <TextBlock Classes="Border"
+                           Text="{x:Static localizations:LocalizationSignUpScreen.TextBlockRepeatPassword}" />
+                <Border Classes="TextStroke">
+                    <TextBox Text="{Binding RepeatedPassword}"
+                             PasswordChar="*" />
+                </Border>
+            </StackPanel>
+
+            <!-- Error message -->
+            <TextBlock Grid.Row="6"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Classes="Error Text"
+                       Text="{Binding ErrorMessage}" />
+
+            <!-- Buttons -->
+
+            <Button Grid.Row="7"
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="Email"/>
-            <Border Classes="TextStroke">
-                <TextBox Text="{Binding Email}"/>
-            </Border>
-        </StackPanel>
-        
-        <StackPanel Grid.Row="3"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationSignInScreen.TextBlockLogin}"/>
-            <Border Classes="TextStroke">
-                <TextBox Text="{Binding Login}"/>
-            </Border>
-        </StackPanel>
-        
-        <StackPanel Grid.Row="4"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationSignInScreen.TextBlockPassword}"/>
-            <Border Classes="TextStroke">
-                <TextBox Text="{Binding Password}"
-                         PasswordChar="*"/>
-            </Border>
-        </StackPanel>
-        
-        <StackPanel Grid.Row="5"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationSignUpScreen.TextBlockRepeatPassword}"/>
-            <Border Classes="TextStroke">
-                <TextBox Text="{Binding RepeatedPassword}"
-                         PasswordChar="*"/>
-            </Border>
-        </StackPanel>
-        
-        <!-- Error message -->
-        <TextBlock Grid.Row="6"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Classes="Error Text"
-                   Text="{Binding ErrorMessage}"/>
-        
-        <!-- Buttons -->
-        
-        <Button Grid.Row="7"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationSignUpScreen.Header}"
-                Command="{Binding SignUpCommand}"
-                IsEnabled="{Binding IsSignUpAvailable}"
-                Classes="Stretch Menu"/>
-        
-        <Button Grid.Row="7"
-                Grid.Column="2"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"/>
-    </Grid>
+                    Content="{x:Static localizations:LocalizationSignUpScreen.Header}"
+                    Command="{Binding SignUpCommand}"
+                    IsEnabled="{Binding IsSignUpAvailable}"
+                    Classes="Stretch Menu" />
+
+            <Button Grid.Row="7"
+                    Grid.Column="2"
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                    Command="{Binding BackCommand}"
+                    Classes="Stretch AttentionGrabbing" />
+        </Grid>
+    </Viewbox>
 </UserControl>

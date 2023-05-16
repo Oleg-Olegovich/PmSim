@@ -5,50 +5,52 @@
              xmlns:localizations="clr-namespace:PmSim.Frontend.App.Properties.Localizations"
              mc:Ignorable="d"
              x:Class="PmSim.Frontend.App.Views.Screens.EmailConfirmationScreenView">
-    
-    <Grid RowDefinitions="*,*,*,*,*,*"
-          ColumnDefinitions="*,*,*,*">
 
-        <!-- Header -->
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Text="{x:Static localizations:LocalizationEmailConfirmationScreen.Header}"
-                   Classes="Header"/>
+    <Viewbox Stretch="Uniform">
+        <Grid RowDefinitions="*,*,*,*,*,*"
+              ColumnDefinitions="*,*,*,*">
 
-        <!-- Input code -->
-        <StackPanel Grid.Row="2"
+            <!-- Header -->
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Text="{x:Static localizations:LocalizationEmailConfirmationScreen.Header}"
+                       Classes="Header" />
+
+            <!-- Input code -->
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Orientation="Vertical">
+                <TextBlock Classes="Border"
+                           Text="{x:Static localizations:LocalizationEmailConfirmationScreen.ConfirmationCode}" />
+                <Border Classes="TextStroke">
+                    <TextBox Classes="Bordered"
+                             Text="{Binding InputCode}" />
+                </Border>
+            </StackPanel>
+
+            <!-- Error message -->
+            <TextBlock Grid.Row="3"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Classes="Error Text"
+                       Text="{Binding ErrorMessage}" />
+
+            <!-- Confirm button -->
+            <Button Grid.Row="4"
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Orientation="Vertical">
-            <TextBlock Classes="Border"
-                       Text="{x:Static localizations:LocalizationEmailConfirmationScreen.ConfirmationCode}"/>
-            <Border Classes="TextStroke">
-                <TextBox Classes="Bordered"
-                         Text="{Binding InputCode}"/>
-            </Border>
-        </StackPanel>
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
+                    Command="{Binding ConfirmCommand}"
+                    IsEnabled="{Binding IsConfirmationAvailable}"
+                    Classes="Stretch Menu" />
 
-        <!-- Error message -->
-        <TextBlock Grid.Row="3"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Classes="Error Text"
-                   Text="{Binding ErrorMessage}"/>
-        
-        <!-- Confirm button -->
-        <Button Grid.Row="4"
-                Grid.Column="1"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonConfirm}"
-                Command="{Binding ConfirmCommand}"
-                IsEnabled="{Binding IsConfirmationAvailable}"
-                Classes="Stretch Menu"/>
-        
-        <!-- Back button -->
-        <Button Grid.Row="4"
-                Grid.Column="2"
-                Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
-                Command="{Binding BackCommand}"
-                Classes="Stretch AttentionGrabbing"/>
-    </Grid>
+            <!-- Back button -->
+            <Button Grid.Row="4"
+                    Grid.Column="2"
+                    Content="{x:Static localizations:LocalizationBasicScreen.ButtonBack}"
+                    Command="{Binding BackCommand}"
+                    Classes="Stretch AttentionGrabbing" />
+        </Grid>
+    </Viewbox>
 </UserControl>

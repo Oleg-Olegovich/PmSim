@@ -3,17 +3,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="PmSim.Frontend.App.Views.Screens.MainView"
-             Classes="MainView">
+             x:Class="PmSim.Frontend.App.Views.Screens.MainView">
     
-    <Grid RowDefinitions="20,*"
-          Classes="MainView">
+    <Grid Classes="MainView"
+          IsHitTestVisible="True">
 
-        <ScrollViewer Grid.Row="1">
-            <ContentControl Content="{Binding Content}"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch" />
-        </ScrollViewer>
-
+        <ContentControl Content="{Binding Content}"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch" />
     </Grid>
 </UserControl>
